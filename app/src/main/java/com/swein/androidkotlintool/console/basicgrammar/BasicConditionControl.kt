@@ -4,7 +4,10 @@ import com.swein.androidkotlintool.framework.util.ILog
 
 class BasicConditionControl {
 
-    val TAG: String = "BasicConditionControl"
+    companion object {
+        private const val TAG: String = "BasicConditionControl"
+    }
+
 
     constructor(){}
 

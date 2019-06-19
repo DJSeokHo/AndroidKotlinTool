@@ -2,8 +2,9 @@ package com.swein.androidkotlintool.console.basicgrammar
 
 class BasicGrammar {
 
-    /* 常量 */
-    private val TAG: String = "BasicGrammar"
+    companion object {
+        private const val TAG: String = "BasicGrammar"
+    }
 
     /* 变量 */
     private var a: Int

@@ -7,7 +7,10 @@ import com.swein.androidkotlintool.framework.util.ILog
  */
 class BasicDataType {
 
-    val TAG: String = "BasicDataType"
+    companion object {
+        private const val TAG: String = "BasicDataType"
+    }
+
 
     private var a: String
     private var b: String
@@ -30,7 +33,8 @@ class BasicDataType {
      */
     fun compareAddress() {
         val isSameAddress: Boolean = (a === b)
-        println(isSameAddress)
+
+        ILog.debug(TAG, isSameAddress)
     }
 
     fun printMultiRowString(string: String) {
@@ -41,7 +45,8 @@ class BasicDataType {
             !!! '$' "$" $string
             hahaha
         """.trimIndent()
-        println(multiRowString)
+
+        ILog.debug(TAG, multiRowString)
     }
 
     override fun toString(): String {
@@ -63,6 +68,4 @@ fun main(args: Array<String>) {
     basicDataType.compareAddress()
 
     basicDataType.printMultiRowString("parameter string")
-
-    ILog.debug("???", "hahaha")
 }

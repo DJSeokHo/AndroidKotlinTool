@@ -2,7 +2,10 @@ package com.swein.androidkotlintool.console.basicgrammar
 
 class BasicIterator {
 
-    val TAG: String = "BasicIterator"
+    companion object {
+        const private val TAG: String = "BasicIterator"
+    }
+
 
     constructor(){}
 
