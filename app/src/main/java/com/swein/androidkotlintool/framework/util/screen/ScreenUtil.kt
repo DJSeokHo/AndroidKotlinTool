@@ -6,7 +6,6 @@ import android.os.Build
 import android.view.View
 import android.view.Window
 import android.view.WindowManager
-import com.swein.androidkotlintool.constants.Constants
 
 
 class ScreenUtil {
@@ -37,7 +36,7 @@ class ScreenUtil {
                 val window = activity.window
                 val attributes = window.attributes
                 val flagTranslucentStatus = WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS
-                val flagTranslucentNavigation = WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION
+//                val flagTranslucentNavigation = WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION
                 attributes.flags = attributes.flags or flagTranslucentStatus
                 //                attributes.flags |= flagTranslucentNavigation;
                 window.attributes = attributes
@@ -57,9 +56,7 @@ class ScreenUtil {
                         or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
                         or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
                         or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION // hide nav bar
-
                         or View.SYSTEM_UI_FLAG_FULLSCREEN // hide status bar
-
                         or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY)
             }
         }
@@ -83,10 +80,17 @@ class ScreenUtil {
             )
         }
 
-        fun setTitleBarColor(activity: Activity) {
+        fun setTitleBarColor(activity: Activity, color: Int) {
 
             if (Build.VERSION.SDK_INT >= 21) {
-                activity.window.statusBarColor = Color.parseColor(Constants.APP_BASIC_THEME_COLOR)
+                activity.window.statusBarColor = color
+            }
+        }
+
+        fun setTitleBarColor(activity: Activity, color: String) {
+
+            if (Build.VERSION.SDK_INT >= 21) {
+                activity.window.statusBarColor = Color.parseColor(color)
             }
         }
     }

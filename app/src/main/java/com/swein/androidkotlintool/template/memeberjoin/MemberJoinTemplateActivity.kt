@@ -1,9 +1,8 @@
 package com.swein.androidkotlintool.template.memeberjoin
 
 import android.graphics.Color
-import android.os.Build
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.FrameLayout
 import com.swein.androidkotlintool.R
@@ -27,7 +26,7 @@ class MemberJoinTemplateActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_member_join_template)
 
-        ScreenUtil.setTitleBarColor(this)
+        ScreenUtil.setTitleBarColor(this, Color.parseColor(Constants.APP_BASIC_THEME_COLOR))
 
         initData()
         findView()

@@ -1,8 +1,10 @@
 package com.swein.androidkotlintool
 
+import android.graphics.Color
 import android.os.Bundle
 import android.support.v4.app.FragmentActivity
 import android.widget.Button
+import com.swein.androidkotlintool.constants.Constants
 import com.swein.androidkotlintool.framework.util.activity.ActivityUtil
 import com.swein.androidkotlintool.framework.util.log.ILog
 import com.swein.androidkotlintool.framework.util.screen.ScreenUtil
@@ -18,12 +20,14 @@ class MainActivity : FragmentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        ScreenUtil.hideTitleBarWithFullScreen(this)
         setContentView(R.layout.activity_main)
+
+        ScreenUtil.setTitleBarColor(this, Color.parseColor(Constants.APP_BASIC_THEME_COLOR))
 
         findView()
         setListener()
     }
+
 
     private fun findView() {
         buttonLoginTemplate = findViewById(R.id.buttonLoginTemplate)
