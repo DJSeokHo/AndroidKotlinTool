@@ -5,73 +5,108 @@ import com.swein.androidkotlintool.framework.util.ILog
 class BasicIterator(stringList: List<String>) {
 
     companion object {
-        const private val TAG: String = "BasicIterator"
+        private const val TAG: String = "BasicIterator"
     }
 
     private val stringList: List<String>? = stringList
 
     fun iterator() {
 
-        if(stringList == null) {
-            return
+        /**
+
+        stringList?.let {
         }
 
-        for(string in stringList) {
-            ILog.debug(TAG, string)
+        检查空的方式
+
+        if(stringList != null) {
+        }
+
+         */
+        stringList?.let {
+            for(string in stringList) {
+                ILog.debug(TAG, string)
+            }
         }
     }
 
     fun iteratorWithIndex() {
 
-        if(stringList == null) {
-            return
+        /**
+
+        stringList?.let {
         }
 
-        for(index in stringList.indices) {
-            ILog.debug(TAG, "$index - ${stringList[index]}")
+        检查空的方式
+
+        if(stringList != null) {
+        }
+
+         */
+        stringList?.let {
+            for(index in stringList.indices) {
+                ILog.debug(TAG, "$index - ${stringList[index]}")
+            }
         }
     }
 
     fun iteratorForeach() {
 
-        if(stringList == null) {
-            return
+        stringList?.let {
+            stringList.forEach(
+                fun(string: String) {
+                    ILog.debug(TAG, string)
+                }
+            )
         }
-
-        stringList.forEach(
-            fun(string: String) {
-                ILog.debug(TAG, string)
-            }
-        )
     }
 
     fun whileMethod() {
 
-        if(stringList == null) {
-            return
+        /**
+
+        stringList?.let {
         }
 
-        var index: Int = 0
+        检查空的方式
 
-        while (index < stringList.size) {
-            ILog.debug(TAG, "$index - ${stringList[index]}")
-            index++
+        if(stringList != null) {
         }
+
+         */
+        stringList?.let {
+            var index: Int = 0
+
+            while (index < stringList.size) {
+                ILog.debug(TAG, "$index - ${stringList[index]}")
+                index++
+            }
+        }
+
     }
 
     fun doWhileMethod() {
 
-        if(stringList == null) {
-            return
+        /**
+
+        stringList?.let {
         }
 
-        var index: Int = 0
+        检查空的方式
 
-        do {
-            ILog.debug(TAG, "$index - ${stringList[index]}")
-            index++
+        if(stringList != null) {
         }
-        while (index < stringList.size)
+
+        */
+        stringList?.let {
+            var index: Int = 0
+
+            do {
+                ILog.debug(TAG, "$index - ${stringList[index]}")
+                index++
+            } while (index < stringList.size)
+        }
+
     }
 
     override fun toString(): String {
