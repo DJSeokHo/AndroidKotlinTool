@@ -1,6 +1,6 @@
 package com.swein.androidkotlintool.console.basicgrammar
 
-import com.swein.androidkotlintool.framework.util.ILog
+import com.swein.androidkotlintool.framework.util.log.ILog
 
 /**
  * Kotlin 中没有基础数据类型，只有封装的数据类型

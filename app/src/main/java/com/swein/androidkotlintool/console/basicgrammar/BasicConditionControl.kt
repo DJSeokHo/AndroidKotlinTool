@@ -1,6 +1,6 @@
 package com.swein.androidkotlintool.console.basicgrammar
 
-import com.swein.androidkotlintool.framework.util.ILog
+import com.swein.androidkotlintool.framework.util.log.ILog
 
 class BasicConditionControl {
 

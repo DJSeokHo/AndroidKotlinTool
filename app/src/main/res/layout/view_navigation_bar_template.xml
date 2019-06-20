@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:background="@color/app_basic_theme_color"
+                                             android:layout_width="match_parent"
+                                             android:layout_height="80dp">
+	
+	<ImageButton
+			android:id="@+id/imageButtonLeft"
+			android:layout_width="80dp" android:layout_height="80dp"
+	android:background="@color/transparent"
+	android:scaleType="centerInside"/>
+	
+	<ImageButton
+			android:layout_gravity="right"
+			android:id="@+id/imageButtonRight"
+			android:layout_width="80dp" android:layout_height="80dp"
+			android:background="@color/transparent"
+			android:scaleType="centerInside"/>
+	
+	<TextView
+			android:id="@+id/textViewTitle" android:layout_width="wrap_content" android:layout_height="wrap_content"
+	android:layout_gravity="center"
+	android:textStyle="bold"
+	android:textSize="10pt"
+	android:textColor="@color/white"/>
+	
+</FrameLayout>

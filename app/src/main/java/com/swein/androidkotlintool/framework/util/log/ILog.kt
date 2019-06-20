@@ -1,4 +1,4 @@
-package com.swein.androidkotlintool.framework.util
+package com.swein.androidkotlintool.framework.util.log
 
 /**
  * object 说明是一个静态方法类
