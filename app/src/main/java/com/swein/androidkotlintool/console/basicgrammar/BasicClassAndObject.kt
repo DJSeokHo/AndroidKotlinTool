@@ -46,13 +46,32 @@ open class OpenClass {
         private const val TAG: String = "OpenClass"
     }
 
+    /**
+     * open 代表该方法可以被子类重写
+     */
     open fun openMethod() {
         ILog.debug(TAG, "parent openMethod")
     }
     open fun openMethod(parameter: String) {}
+
+    open fun print() {
+        ILog.debug(TAG, "print")
+    }
 }
 
-class ImplOpenClass : OpenClass() {
+interface OpenClassDelegate {
+
+    /**
+     * 接口的成员方法默认是 open 的
+     * interface 允许方法有默认实现
+     * 一个类或者对象可以实现一个或多个接口
+     */
+    fun print() {
+        println("print from OpenClassDelegate")
+    }
+}
+
+class ImplOpenClass : OpenClass(), OpenClassDelegate {
 
     companion object {
         private const val TAG: String = "ImplOpenClass"
@@ -66,6 +85,11 @@ class ImplOpenClass : OpenClass() {
         super.openMethod(parameter)
         ILog.debug(TAG, "openMethod $parameter")
     }
+
+    override fun print() {
+        super<OpenClass>.print()
+        super<OpenClassDelegate>.print()
+    }
 }
 
 /**
@@ -78,10 +102,8 @@ abstract class AbstractClass {
         private const val TAG: String = "AbstractClass"
     }
 
-    open fun abstractMethod() {
-        ILog.debug(TAG, "parent abstractMethod")
-    }
-    open fun abstractMethod(parameter: String) {}
+    abstract fun abstractMethod()
+    abstract fun abstractMethod(parameter: String)
 }
 
 class ImplAbstractClass : AbstractClass() {
@@ -91,12 +113,10 @@ class ImplAbstractClass : AbstractClass() {
     }
 
     override fun abstractMethod() {
-        super.abstractMethod()
         ILog.debug(TAG, "abstractMethod")
     }
 
     override fun abstractMethod(parameter: String) {
-        super.abstractMethod(parameter)
         ILog.debug(TAG, "abstractMethod $parameter")
     }
 }
@@ -127,4 +147,5 @@ fun main(args: Array<String>) {
     var openClass: OpenClass = ImplOpenClass()
     openClass.openMethod()
     openClass.openMethod("hehe")
+    openClass.print()
 }
