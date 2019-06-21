@@ -87,7 +87,6 @@ class SHListActivity : Activity() {
             override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
                 super.onScrollStateChanged(recyclerView, newState)
 
-                /*  */
 //                val totalItemCount = recyclerView.layoutManager!!.itemCount
 //                val lastVisibleItemPosition =  layoutManager!!.findLastVisibleItemPosition()
 //
