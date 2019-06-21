@@ -50,11 +50,11 @@ class MemberJoinTemplateActivity : AppCompatActivity() {
 
             NavigationBarTemplate(this).setDelegate(object: NavigationBarTemplate.NavigationBarTemplateDelegate {
 
-                override fun onLeftButtonClick() {
+                override fun onLeftButtonClick(navigationBarTemplate: NavigationBarTemplate) {
                     TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
                 }
 
-                override fun onRightButtonClick() {
+                override fun onRightButtonClick(navigationBarTemplate: NavigationBarTemplate) {
                     TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
                 }
             }).setTitle("Login").hideRightButton().hideLeftButton().getView()

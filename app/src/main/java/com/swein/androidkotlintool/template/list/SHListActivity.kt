@@ -11,6 +11,7 @@ import android.widget.FrameLayout
 import android.widget.LinearLayout
 import com.swein.androidkotlintool.R
 import com.swein.androidkotlintool.constants.Constants
+import com.swein.androidkotlintool.framework.util.eventsplitshot.subject.ESSArrows
 import com.swein.androidkotlintool.framework.util.log.ILog
 import com.swein.androidkotlintool.framework.util.screen.ScreenUtil
 import com.swein.androidkotlintool.framework.util.thread.ThreadUtil
@@ -32,6 +33,7 @@ class SHListActivity : Activity() {
     private var frameLayoutNavigationContainer: FrameLayout? = null
     private var frameLayoutProgress: FrameLayout? = null
 
+    private var navigationBarTemplate: NavigationBarTemplate? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,19 +55,20 @@ class SHListActivity : Activity() {
     }
 
     private fun initNavigationBar() {
-        frameLayoutNavigationContainer?.addView(
 
-            NavigationBarTemplate(this).setDelegate(object: NavigationBarTemplate.NavigationBarTemplateDelegate {
+        navigationBarTemplate = NavigationBarTemplate(this).setDelegate(object: NavigationBarTemplate.NavigationBarTemplateDelegate {
 
-                override fun onLeftButtonClick() {
+            override fun onLeftButtonClick(navigationBarTemplate: NavigationBarTemplate) {
 
-                }
+            }
 
-                override fun onRightButtonClick() {
+            override fun onRightButtonClick(navigationBarTemplate: NavigationBarTemplate) {
+                recyclerView?.scrollToPosition(0)
+                navigationBarTemplate.hideRightButton()
+            }
+        }).setTitle("List").setRightButton(R.drawable.icon_scroll_up).hideRightButton().hideLeftButton()
 
-                }
-            }).setTitle("List").hideRightButton().hideLeftButton().getView()
-        )
+        frameLayoutNavigationContainer?.addView(navigationBarTemplate?.getView())
     }
 
     private fun initList() {
@@ -87,12 +90,13 @@ class SHListActivity : Activity() {
             override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
                 super.onScrollStateChanged(recyclerView, newState)
 
-//                val totalItemCount = recyclerView.layoutManager!!.itemCount
-//                val lastVisibleItemPosition =  layoutManager!!.findLastVisibleItemPosition()
-//
-//                if (newState == 0 && totalItemCount == lastVisibleItemPosition + 1) {
-//                    loadMore()
-//                }
+                val lastVisibleItemPosition =  layoutManager!!.findLastVisibleItemPosition()
+                if(lastVisibleItemPosition > 20) {
+                    navigationBarTemplate?.showRightButton()
+                }
+                else {
+                    navigationBarTemplate?.hideRightButton()
+                }
             }
 
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {

@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentActivity
 import android.widget.Button
 import com.swein.androidkotlintool.constants.Constants
 import com.swein.androidkotlintool.framework.util.activity.ActivityUtil
+import com.swein.androidkotlintool.framework.util.eventsplitshot.eventcenter.EventCenter
 import com.swein.androidkotlintool.framework.util.log.ILog
 import com.swein.androidkotlintool.framework.util.screen.ScreenUtil
 import com.swein.androidkotlintool.template.list.SHListActivity
@@ -25,11 +26,9 @@ class MainActivity : FragmentActivity() {
         setContentView(R.layout.activity_main)
 
         ScreenUtil.setTitleBarColor(this, Color.parseColor(Constants.APP_BASIC_THEME_COLOR))
-
         findView()
         setListener()
     }
-
 
     private fun findView() {
         buttonLoginTemplate = findViewById(R.id.buttonLoginTemplate)

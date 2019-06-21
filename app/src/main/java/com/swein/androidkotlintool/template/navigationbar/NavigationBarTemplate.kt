@@ -10,8 +10,8 @@ import com.swein.androidkotlintool.framework.util.views.ViewUtil
 class NavigationBarTemplate {
 
     interface NavigationBarTemplateDelegate {
-        fun onLeftButtonClick()
-        fun onRightButtonClick()
+        fun onLeftButtonClick(navigationBarTemplate: NavigationBarTemplate)
+        fun onRightButtonClick(navigationBarTemplate: NavigationBarTemplate)
     }
 
     companion object {
@@ -43,11 +43,11 @@ class NavigationBarTemplate {
     }
     private fun setListener() {
         imageButtonLeft?.setOnClickListener {
-            navigationBarTemplateDelegate?.onLeftButtonClick()
+            navigationBarTemplateDelegate?.onLeftButtonClick(this)
         }
 
         imageButtonRight?.setOnClickListener {
-            navigationBarTemplateDelegate?.onRightButtonClick()
+            navigationBarTemplateDelegate?.onRightButtonClick(this)
         }
     }
 
@@ -66,6 +66,9 @@ class NavigationBarTemplate {
         imageButtonLeft?.visibility = View.VISIBLE
         return this
     }
+    fun showLeftButton() {
+        imageButtonLeft?.visibility = View.VISIBLE
+    }
     fun hideLeftButton(): NavigationBarTemplate {
         imageButtonLeft?.visibility = View.GONE
         return this
@@ -74,6 +77,9 @@ class NavigationBarTemplate {
     fun setRightButton(resourceId: Int): NavigationBarTemplate {
         imageButtonRight?.setImageResource(resourceId)
         return this
+    }
+    fun showRightButton() {
+        imageButtonRight?.visibility = View.VISIBLE
     }
     fun hideRightButton(): NavigationBarTemplate {
         imageButtonRight?.visibility = View.GONE
