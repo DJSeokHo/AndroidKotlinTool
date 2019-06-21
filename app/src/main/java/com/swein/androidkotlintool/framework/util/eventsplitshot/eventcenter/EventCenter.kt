@@ -40,7 +40,6 @@ object EventCenter {
 
             for(observer in arrayList) {
                 if(observer.objectWeakReference?.get() === obj) {
-                    ILog.debug(TAG, "yes")
                     deleteList.add(observer)
                 }
             }
