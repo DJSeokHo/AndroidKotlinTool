@@ -8,6 +8,7 @@ import com.swein.androidkotlintool.constants.Constants
 import com.swein.androidkotlintool.framework.util.activity.ActivityUtil
 import com.swein.androidkotlintool.framework.util.log.ILog
 import com.swein.androidkotlintool.framework.util.screen.ScreenUtil
+import com.swein.androidkotlintool.template.list.SHListActivity
 import com.swein.androidkotlintool.template.memeberjoin.MemberJoinTemplateActivity
 
 class MainActivity : FragmentActivity() {
@@ -17,6 +18,7 @@ class MainActivity : FragmentActivity() {
     }
 
     private var buttonLoginTemplate: Button? = null
+    private var buttonListTemplate: Button? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,6 +33,7 @@ class MainActivity : FragmentActivity() {
 
     private fun findView() {
         buttonLoginTemplate = findViewById(R.id.buttonLoginTemplate)
+        buttonListTemplate = findViewById(R.id.buttonListTemplate)
     }
 
     private fun setListener() {
@@ -38,6 +41,12 @@ class MainActivity : FragmentActivity() {
         buttonLoginTemplate?.let {
             it.setOnClickListener {
                 ActivityUtil.startNewActivityWithoutFinish(this, MemberJoinTemplateActivity::class.java)
+            }
+        }
+
+        buttonListTemplate?.let {
+            it.setOnClickListener {
+                ActivityUtil.startNewActivityWithoutFinish(this, SHListActivity::class.java)
             }
         }
     }

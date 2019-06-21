@@ -9,10 +9,12 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".template.memeberjoin.MemberJoinTemplateActivity"
-                  android:launchMode="singleTask">
+        <activity android:name=".template.list.SHListActivity"
+                  android:launchMode="singleTask"/>
+        <activity
+                android:name=".template.memeberjoin.MemberJoinTemplateActivity"
+                android:launchMode="singleTask">
         </activity>
-       
         <activity
                 android:name=".splash.SplashActivity"
                 android:launchMode="singleTask">
