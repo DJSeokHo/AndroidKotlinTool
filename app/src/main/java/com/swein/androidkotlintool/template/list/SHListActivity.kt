@@ -8,15 +8,11 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.widget.FrameLayout
-import android.widget.LinearLayout
 import com.swein.androidkotlintool.R
 import com.swein.androidkotlintool.constants.Constants
-import com.swein.androidkotlintool.framework.util.eventsplitshot.subject.ESSArrows
-import com.swein.androidkotlintool.framework.util.log.ILog
 import com.swein.androidkotlintool.framework.util.screen.ScreenUtil
 import com.swein.androidkotlintool.framework.util.thread.ThreadUtil
 import com.swein.androidkotlintool.template.list.adapter.SHListAdapter
-import com.swein.androidkotlintool.template.list.adapter.item.model.ItemDataModel
 import com.swein.androidkotlintool.template.navigationbar.NavigationBarTemplate
 
 class SHListActivity : Activity() {
@@ -150,8 +146,5 @@ class SHListActivity : Activity() {
                 hideProgress()
             })
         })
-
     }
-
-
 }
