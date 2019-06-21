@@ -1,5 +1,6 @@
 package com.swein.androidkotlintool.framework.util.preferences
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.content.SharedPreferences
@@ -48,7 +49,7 @@ class SharedPreferencesUtil {
             }
         }
 
-        fun getValue(context: Context, key: String, dftValue: String): String
+        fun getValue(context: Context, key: String, dftValue: String): String?
         {
             val pref: SharedPreferences = context.getSharedPreferences(KEY, Activity.MODE_PRIVATE)
             try {
@@ -83,6 +84,7 @@ class SharedPreferencesUtil {
             return pref.all
         }
 
+        @SuppressLint("CommitPrefEdits")
         fun clearSharedPreferencesData(context: Context)
         {
             val pref: SharedPreferences = context.getSharedPreferences(KEY, Activity.MODE_PRIVATE)
@@ -90,6 +92,7 @@ class SharedPreferencesUtil {
             editor.clear()
         }
 
+        @SuppressLint("CommitPrefEdits")
         fun removeValue(context: Context, key: String)
         {
             val pref: SharedPreferences = context.getSharedPreferences(KEY, Activity.MODE_PRIVATE)
