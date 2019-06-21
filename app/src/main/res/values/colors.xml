@@ -10,4 +10,6 @@
     <color name="transparent">#00000000</color>
     
     <color name="progress_bar_bg">#3C000000</color>
+    <color name="toast_custom_background_color">#b4000000</color>
+    
 </resources>

@@ -3,9 +3,11 @@ package com.swein.androidkotlintool.template.list.adapter
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import com.swein.androidkotlintool.R
 import com.swein.androidkotlintool.framework.util.eventsplitshot.eventcenter.EventCenter
 import com.swein.androidkotlintool.framework.util.log.ILog
+import com.swein.androidkotlintool.framework.util.toast.ToastUtil
 import com.swein.androidkotlintool.template.list.adapter.item.model.ItemDataModel
 import com.swein.androidkotlintool.template.list.adapter.item.viewholder.ItemViewHolder
 
@@ -35,14 +37,18 @@ class SHListAdapter: RecyclerView.Adapter<ItemViewHolder> {
 
             itemViewHolder.setItemViewHolderDelegate(object: ItemViewHolder.ItemViewHolderDelegate {
                 override fun onItemViewHolderClicked(itemDataModel: ItemDataModel) {
-                    ILog.debug(TAG, itemDataModel)
+
+                    itemViewHolder.getItemView()?.context?.let {
+                        ILog.debug(TAG, itemDataModel)
+                        ToastUtil.showCustomShortToastNormal(it, itemDataModel.toString())
+                    }
+
                 }
             })
 
             itemViewHolder.setItemDataModel(mutableList[p1])
             itemViewHolder.updateView()
         }
-
     }
 
     fun loadMore() {

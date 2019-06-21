@@ -51,4 +51,8 @@ class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         textViewTitle?.text = itemDataModel?.title
         textViewSubTitle?.text = itemDataModel?.subTitle
     }
+
+    fun getItemView(): View? {
+        return view.get()
+    }
 }
