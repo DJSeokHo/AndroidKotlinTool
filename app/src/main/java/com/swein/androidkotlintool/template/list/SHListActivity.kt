@@ -62,6 +62,7 @@ class SHListActivity : Activity() {
                 recyclerView?.scrollToPosition(0)
                 navigationBarTemplate.hideRightButton()
             }
+
         }).setTitle("List").setRightButton(R.drawable.icon_scroll_up).hideRightButton().hideLeftButton()
 
         frameLayoutNavigationContainer?.addView(navigationBarTemplate?.getView())

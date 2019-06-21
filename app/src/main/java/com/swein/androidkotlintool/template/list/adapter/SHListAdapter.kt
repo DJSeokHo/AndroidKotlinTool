@@ -15,12 +15,9 @@ class SHListAdapter: RecyclerView.Adapter<ItemViewHolder> {
         private const val TAG = "SHListAdapter"
     }
 
-
     private var mutableList: MutableList<ItemDataModel> = mutableListOf()
 
-    constructor() {
-    }
-
+    constructor() {}
 
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): ItemViewHolder {
         val view = LayoutInflater.from(p0.context).inflate(R.layout.view_holder_sh_list_item, p0, false)
