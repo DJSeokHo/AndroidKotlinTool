@@ -3,7 +3,7 @@ package com.swein.androidkotlintool.splash
 import android.app.Activity
 import android.graphics.Color
 import android.os.Bundle
-import com.swein.androidkotlintool.MainActivity
+import com.swein.androidkotlintool.main.MainActivity
 import com.swein.androidkotlintool.R
 import com.swein.androidkotlintool.constants.Constants
 import com.swein.androidkotlintool.framework.util.activity.ActivityUtil

@@ -1,14 +1,15 @@
-package com.swein.androidkotlintool
+package com.swein.androidkotlintool.main
 
 import android.graphics.Color
 import android.os.Bundle
 import android.support.v4.app.FragmentActivity
 import android.widget.Button
+import com.swein.androidkotlintool.R
 import com.swein.androidkotlintool.constants.Constants
 import com.swein.androidkotlintool.framework.util.activity.ActivityUtil
-import com.swein.androidkotlintool.framework.util.eventsplitshot.eventcenter.EventCenter
 import com.swein.androidkotlintool.framework.util.log.ILog
 import com.swein.androidkotlintool.framework.util.screen.ScreenUtil
+import com.swein.androidkotlintool.main.moduledemo.ModuleDemoActivity
 import com.swein.androidkotlintool.template.bottomtab.activity.TabHostActivity
 import com.swein.androidkotlintool.template.list.SHListActivity
 import com.swein.androidkotlintool.template.memeberjoin.MemberJoinTemplateActivity
@@ -21,6 +22,7 @@ class MainActivity : FragmentActivity() {
         private const val TAG = "MainActivity"
     }
 
+    private var buttonModuleDemo: Button? = null
     private var buttonLoginTemplate: Button? = null
     private var buttonListTemplate: Button? = null
     private var buttonTabHost: Button? = null
@@ -37,6 +39,7 @@ class MainActivity : FragmentActivity() {
     }
 
     private fun findView() {
+        buttonModuleDemo = findViewById(R.id.buttonModuleDemo)
         buttonLoginTemplate = findViewById(R.id.buttonLoginTemplate)
         buttonListTemplate = findViewById(R.id.buttonListTemplate)
         buttonTabHost = findViewById(R.id.buttonTabHost)
@@ -45,6 +48,12 @@ class MainActivity : FragmentActivity() {
     }
 
     private fun setListener() {
+
+        buttonModuleDemo?.let {
+            it.setOnClickListener {
+                ActivityUtil.startNewActivityWithoutFinish(this, ModuleDemoActivity::class.java)
+            }
+        }
 
         buttonLoginTemplate?.let {
             it.setOnClickListener {
