@@ -6,9 +6,7 @@ import android.content.Intent
 import android.R
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentActivity
-
-
-
+import android.support.v4.app.FragmentTransaction
 
 
 class ActivityUtil {
@@ -43,6 +41,24 @@ class ActivityUtil {
             transaction.add(containerViewId, fragment).commit()
         }
 
+        fun addFragmentWithTAG(activity: FragmentActivity, containerViewId: Int, fragment: Fragment, tag: String) {
+            if(fragment.isAdded) {
+                return
+            }
+
+            val transaction: FragmentTransaction = activity.supportFragmentManager.beginTransaction()
+            transaction.add(containerViewId, fragment, tag).commit()
+        }
+
+        fun hideFragment(activity: FragmentActivity, fragment: Fragment) {
+            val transaction: FragmentTransaction = activity.supportFragmentManager.beginTransaction()
+            transaction.hide(fragment).commit()
+        }
+
+        fun showFragment(activity: FragmentActivity, fragment: Fragment) {
+            val transaction: FragmentTransaction  = activity.supportFragmentManager.beginTransaction()
+            transaction.show(fragment).commit()
+        }
     }
 
 }

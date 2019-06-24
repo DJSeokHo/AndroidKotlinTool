@@ -26,9 +26,9 @@ class SHListActivity : Activity() {
     private var layoutManager: LinearLayoutManager? = null
     private var shListAdapter: SHListAdapter? = null
 
-    private var frameLayoutNavigationContainer: FrameLayout? = null
     private var frameLayoutProgress: FrameLayout? = null
 
+    private var frameLayoutNavigationContainer: FrameLayout? = null
     private var navigationBarTemplate: NavigationBarTemplate? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {

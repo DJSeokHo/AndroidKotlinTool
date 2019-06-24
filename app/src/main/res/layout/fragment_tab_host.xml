@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             tools:context=".template.bottomtab.fragment.TabHostFragment">
+	
+	<FrameLayout
+			android:id="@+id/fragmentContentContainer"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:layout_marginBottom="50dp"
+	>
+	</FrameLayout>
+	
+	<!-- bottom bar-->
+	<LinearLayout
+			android:background="@color/app_basic_theme_color"
+			android:id="@+id/linearLayoutTabHost"
+			android:layout_gravity="bottom"
+			android:layout_width="match_parent"
+			android:layout_height="50dp"
+			android:orientation="horizontal">
+		
+		<ImageButton
+				android:src="@drawable/tab_home_icon_state"
+				android:background="@color/transparent"
+				android:id="@+id/imageButtonHome"
+				android:scaleType="fitCenter"
+				android:padding="14dp"
+				android:layout_width="0dp"
+				android:layout_weight="1"
+				android:layout_height="match_parent" />
+		
+		<ImageButton
+				android:src="@drawable/tab_friend_icon_state"
+				android:background="@color/transparent"
+				android:id="@+id/imageButtonFriend"
+				android:scaleType="fitCenter"
+				android:padding="14dp"
+				android:layout_width="0dp"
+				android:layout_weight="1"
+				android:layout_height="match_parent" />
+		
+		<ImageButton
+				android:src="@drawable/tab_event_icon_state"
+				android:background="@color/transparent"
+				android:id="@+id/imageButtonEvent"
+				android:scaleType="fitCenter"
+				android:padding="14dp"
+				android:layout_width="0dp"
+				android:layout_weight="1"
+				android:layout_height="match_parent" />
+		
+		<ImageButton
+				android:src="@drawable/tab_profile_icon_state"
+				android:background="@color/transparent"
+				android:id="@+id/imageButtonProfile"
+				android:scaleType="fitCenter"
+				android:padding="14dp"
+				android:layout_width="0dp"
+				android:layout_weight="1"
+				android:layout_height="match_parent" />
+	</LinearLayout>
+
+</FrameLayout>

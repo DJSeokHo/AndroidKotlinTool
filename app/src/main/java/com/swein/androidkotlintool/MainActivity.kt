@@ -9,6 +9,7 @@ import com.swein.androidkotlintool.framework.util.activity.ActivityUtil
 import com.swein.androidkotlintool.framework.util.eventsplitshot.eventcenter.EventCenter
 import com.swein.androidkotlintool.framework.util.log.ILog
 import com.swein.androidkotlintool.framework.util.screen.ScreenUtil
+import com.swein.androidkotlintool.template.bottomtab.activity.TabHostActivity
 import com.swein.androidkotlintool.template.list.SHListActivity
 import com.swein.androidkotlintool.template.memeberjoin.MemberJoinTemplateActivity
 
@@ -20,6 +21,7 @@ class MainActivity : FragmentActivity() {
 
     private var buttonLoginTemplate: Button? = null
     private var buttonListTemplate: Button? = null
+    private var buttonTabHost: Button? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,6 +35,7 @@ class MainActivity : FragmentActivity() {
     private fun findView() {
         buttonLoginTemplate = findViewById(R.id.buttonLoginTemplate)
         buttonListTemplate = findViewById(R.id.buttonListTemplate)
+        buttonTabHost = findViewById(R.id.buttonTabHost)
     }
 
     private fun setListener() {
@@ -46,6 +49,12 @@ class MainActivity : FragmentActivity() {
         buttonListTemplate?.let {
             it.setOnClickListener {
                 ActivityUtil.startNewActivityWithoutFinish(this, SHListActivity::class.java)
+            }
+        }
+
+        buttonTabHost?.let {
+            it.setOnClickListener {
+                ActivityUtil.startNewActivityWithoutFinish(this, TabHostActivity::class.java)
             }
         }
     }

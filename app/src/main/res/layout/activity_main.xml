@@ -36,6 +36,16 @@
                         android:text="List Sample"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"/>
+    
+                <Button
+                        android:textAllCaps="false"
+                        android:background="@color/white"
+                        android:layout_margin="5dp"
+                        android:id="@+id/buttonTabHost"
+                        android:textSize="10pt"
+                        android:text="Tab Host Sample"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
                 
             </LinearLayout>
             
