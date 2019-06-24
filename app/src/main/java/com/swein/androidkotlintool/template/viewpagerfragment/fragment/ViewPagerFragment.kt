@@ -43,6 +43,11 @@ class ViewPagerFragment : Fragment() {
         list = mutableListOf()
 
         list?.let {
+
+            /**
+             * header and end for
+             * infinite scroll view pager
+             */
             var viewPagerItemFragment: ViewPagerItemFragment?
 
             // header
@@ -82,7 +87,6 @@ class ViewPagerFragment : Fragment() {
                 else if (list?.size!! - 1 == currentPosition) {
                     viewPager?.setCurrentItem(1, false)
                 }
-
             }
 
             override fun onPageScrolled(p0: Int, p1: Float, p2: Int) {
