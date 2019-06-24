@@ -12,6 +12,7 @@ import com.swein.androidkotlintool.framework.util.screen.ScreenUtil
 import com.swein.androidkotlintool.template.bottomtab.activity.TabHostActivity
 import com.swein.androidkotlintool.template.list.SHListActivity
 import com.swein.androidkotlintool.template.memeberjoin.MemberJoinTemplateActivity
+import com.swein.androidkotlintool.template.topslidingtabs.activity.TopSlidingTabActivity
 
 class MainActivity : FragmentActivity() {
 
@@ -22,6 +23,7 @@ class MainActivity : FragmentActivity() {
     private var buttonLoginTemplate: Button? = null
     private var buttonListTemplate: Button? = null
     private var buttonTabHost: Button? = null
+    private var buttonTopSlidingTab: Button? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,6 +38,7 @@ class MainActivity : FragmentActivity() {
         buttonLoginTemplate = findViewById(R.id.buttonLoginTemplate)
         buttonListTemplate = findViewById(R.id.buttonListTemplate)
         buttonTabHost = findViewById(R.id.buttonTabHost)
+        buttonTopSlidingTab = findViewById(R.id.buttonTopSlidingTab)
     }
 
     private fun setListener() {
@@ -55,6 +58,12 @@ class MainActivity : FragmentActivity() {
         buttonTabHost?.let {
             it.setOnClickListener {
                 ActivityUtil.startNewActivityWithoutFinish(this, TabHostActivity::class.java)
+            }
+        }
+
+        buttonTopSlidingTab?.let {
+            it.setOnClickListener {
+                ActivityUtil.startNewActivityWithoutFinish(this, TopSlidingTabActivity::class.java)
             }
         }
     }
