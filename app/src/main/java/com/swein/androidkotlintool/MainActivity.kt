@@ -13,6 +13,7 @@ import com.swein.androidkotlintool.template.bottomtab.activity.TabHostActivity
 import com.swein.androidkotlintool.template.list.SHListActivity
 import com.swein.androidkotlintool.template.memeberjoin.MemberJoinTemplateActivity
 import com.swein.androidkotlintool.template.topslidingtabs.activity.TopSlidingTabActivity
+import com.swein.androidkotlintool.template.viewpagerfragment.activity.ViewPagerActivity
 
 class MainActivity : FragmentActivity() {
 
@@ -24,6 +25,7 @@ class MainActivity : FragmentActivity() {
     private var buttonListTemplate: Button? = null
     private var buttonTabHost: Button? = null
     private var buttonTopSlidingTab: Button? = null
+    private var buttonViewPager: Button? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,6 +41,7 @@ class MainActivity : FragmentActivity() {
         buttonListTemplate = findViewById(R.id.buttonListTemplate)
         buttonTabHost = findViewById(R.id.buttonTabHost)
         buttonTopSlidingTab = findViewById(R.id.buttonTopSlidingTab)
+        buttonViewPager = findViewById(R.id.buttonViewPager)
     }
 
     private fun setListener() {
@@ -64,6 +67,12 @@ class MainActivity : FragmentActivity() {
         buttonTopSlidingTab?.let {
             it.setOnClickListener {
                 ActivityUtil.startNewActivityWithoutFinish(this, TopSlidingTabActivity::class.java)
+            }
+        }
+
+        buttonViewPager?.let {
+            it.setOnClickListener {
+                ActivityUtil.startNewActivityWithoutFinish(this, ViewPagerActivity::class.java)
             }
         }
     }
