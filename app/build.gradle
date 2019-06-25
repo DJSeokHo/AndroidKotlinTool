@@ -30,8 +30,20 @@ dependencies {
     implementation 'com.android.support:support-v4:28.0.0'
     testImplementation 'junit:junit:4.12'
 
+    /* recycler view list */
     implementation 'com.android.support:recyclerview-v7:28.0.0'
+
+    /* volley http */
     implementation 'com.mcxiaoke.volley:library:1.0.19'
+
+    /* icon shortcut */
+    implementation 'me.leolin:ShortcutBadger:1.1.21@aar'
+
+    /* sqlite cipher */
+    implementation 'net.zetetic:android-database-sqlcipher:3.5.4'
+
+    /* gson */
+    implementation 'com.google.code.gson:gson:2.8.2'
 
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
