@@ -88,6 +88,12 @@ class SHListActivity : Activity() {
                 super.onScrollStateChanged(recyclerView, newState)
 
                 val lastVisibleItemPosition =  layoutManager!!.findLastVisibleItemPosition()
+                val totalItemCount = recyclerView.layoutManager!!.itemCount
+
+                if (newState == 0 && totalItemCount == lastVisibleItemPosition + 1) {
+                    loadMore()
+                }
+
                 if(lastVisibleItemPosition > 20) {
                     navigationBarTemplate?.showRightButton()
                 }
@@ -99,12 +105,7 @@ class SHListActivity : Activity() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
 
-                val totalItemCount = recyclerView.layoutManager!!.itemCount
-                val lastVisibleItemPosition =  layoutManager!!.findLastVisibleItemPosition()
 
-                if (totalItemCount == lastVisibleItemPosition + 2) {
-                    loadMore()
-                }
             }
         })
     }
