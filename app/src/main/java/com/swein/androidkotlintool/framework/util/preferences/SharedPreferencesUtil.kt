@@ -4,12 +4,12 @@ import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.content.SharedPreferences
-import java.lang.Exception
+import com.swein.androidkotlintool.BuildConfig
 
 class SharedPreferencesUtil {
 
     companion object {
-        private const val KEY = "com.swein.androidkotlintool"
+        private const val KEY = BuildConfig.APPLICATION_ID
 
         /**
          *  MODE_PRIVATE: can only edit by this app
