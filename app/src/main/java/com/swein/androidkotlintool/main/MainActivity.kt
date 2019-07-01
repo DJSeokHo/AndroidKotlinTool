@@ -11,6 +11,7 @@ import com.swein.androidkotlintool.framework.util.log.ILog
 import com.swein.androidkotlintool.framework.util.screen.ScreenUtil
 import com.swein.androidkotlintool.main.moduledemo.ModuleDemoActivity
 import com.swein.androidkotlintool.template.bottomtab.activity.TabHostActivity
+import com.swein.androidkotlintool.template.handlerthread.HandlerThreadTemplateActivity
 import com.swein.androidkotlintool.template.list.SHListActivity
 import com.swein.androidkotlintool.template.memeberjoin.MemberJoinTemplateActivity
 import com.swein.androidkotlintool.template.topslidingtabs.activity.TopSlidingTabActivity
@@ -28,6 +29,7 @@ class MainActivity : FragmentActivity() {
     private var buttonTabHost: Button? = null
     private var buttonTopSlidingTab: Button? = null
     private var buttonViewPager: Button? = null
+    private var buttonHandlerThread: Button? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,6 +47,7 @@ class MainActivity : FragmentActivity() {
         buttonTabHost = findViewById(R.id.buttonTabHost)
         buttonTopSlidingTab = findViewById(R.id.buttonTopSlidingTab)
         buttonViewPager = findViewById(R.id.buttonViewPager)
+        buttonHandlerThread = findViewById(R.id.buttonHandlerThread)
     }
 
     private fun setListener() {
@@ -82,6 +85,12 @@ class MainActivity : FragmentActivity() {
         buttonViewPager?.let {
             it.setOnClickListener {
                 ActivityUtil.startNewActivityWithoutFinish(this, ViewPagerActivity::class.java)
+            }
+        }
+
+        buttonHandlerThread?.let {
+            it.setOnClickListener {
+                ActivityUtil.startNewActivityWithoutFinish(this, HandlerThreadTemplateActivity::class.java)
             }
         }
     }
