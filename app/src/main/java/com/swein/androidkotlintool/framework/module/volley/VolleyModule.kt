@@ -10,16 +10,22 @@ interface VolleyModuleDelegate {
     fun onErrorResponse(error: VolleyError)
 }
 
-class VolleyModule {
+object VolleyModule {
 
-    companion object {
-        private const val TAG = "VolleyModule"
+    private const val TAG = "VolleyModule"
+
+    interface VolleyModuleDelegate {
+        fun onResponse(response: String)
+        fun onErrorResponse(error: VolleyError)
     }
 
-    private var queue: RequestQueue
+    private var queue: RequestQueue? = null
 
-    constructor(context: Context) {
-        queue = Volley.newRequestQueue(context)
+    fun getInstance(context: Context): VolleyModule {
+        if(queue == null) {
+            queue = Volley.newRequestQueue(context)
+        }
+        return this
     }
 
     fun requestUrlGet(url: String, volleyModuleDelegate: VolleyModuleDelegate) {
@@ -32,10 +38,10 @@ class VolleyModule {
                 volleyModuleDelegate.onErrorResponse(it)
             })
 
-        queue.add(stringRequest)
+        queue?.add(stringRequest)
     }
 
-    fun requestUrlPost(url: String, volleyModuleDelegate: VolleyModuleDelegate, hashMap: HashMap<String, String>) {
+    fun requestUrlPost(url: String, volleyModuleDelegate: VolleyModuleDelegate, hashMap: HashMap<String, String>?) {
 
         val stringRequest = object : StringRequest(Request.Method.POST, url,
             Response.Listener<String> {
@@ -60,7 +66,7 @@ class VolleyModule {
             }
         }
 
-        queue.add(stringRequest)
+        queue?.add(stringRequest)
     }
 
 }
