@@ -14,9 +14,18 @@ class ThreadUtil {
 
         }
 
+//        fun startThread(runnable: Runnable) {
+//            try {
+//                runnable.run()
+//            }
+//            catch (e: Exception) {
+//                e.printStackTrace()
+//            }
+//        }
+
         fun startThread(runnable: Runnable) {
             try {
-                runnable.run()
+                Thread(runnable).start()
             }
             catch (e: Exception) {
                 e.printStackTrace()
