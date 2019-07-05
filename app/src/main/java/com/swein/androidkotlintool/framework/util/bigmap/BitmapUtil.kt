@@ -119,84 +119,44 @@ class BitmapUtil {
             return inSampleSize
         }
 
-        fun rotateImage(file: String, angle: Int) {
-
-            val bounds = BitmapFactory.Options()
-            bounds.inJustDecodeBounds = true
-            BitmapFactory.decodeFile(file, bounds)
-
-            val opts = BitmapFactory.Options()
-            val bm = BitmapFactory.decodeFile(file, opts)
-            var exif: ExifInterface? = null
-            try {
-                exif = ExifInterface(file)
-            } catch (e: IOException) {
-                e.printStackTrace()
-            }
-
-            val orientString = exif!!.getAttribute(ExifInterface.TAG_ORIENTATION)
-            val orientation =
-                if (orientString != null) Integer.parseInt(orientString) else ExifInterface.ORIENTATION_NORMAL
-
-
-            // for OOM
-            val ratio = 1.0f
+        fun adjustPhotoRotation(bitmap: Bitmap, orientationDegree: Float): Bitmap {
 
             val matrix = Matrix()
-            matrix.setRotate(angle.toFloat(), bm.width.toFloat() / 2, bm.height.toFloat() / 2)
-            val rotatedBitmap = Bitmap.createBitmap(
-                bm,
-                0,
-                0,
-                (bounds.outWidth * ratio).toInt(),
-                (bounds.outHeight * ratio).toInt(),
-                matrix,
-                true
-            )
-            saveBitmapToJpeg(rotatedBitmap, file)
-        }
-
-
-        fun rotateImage(file: String) {
-
-            val bounds = BitmapFactory.Options()
-            bounds.inJustDecodeBounds = true
-            BitmapFactory.decodeFile(file, bounds)
-
-            val opts = BitmapFactory.Options()
-            val bm = BitmapFactory.decodeFile(file, opts)
-            var exif: ExifInterface? = null
-            try {
-                exif = ExifInterface(file)
-            } catch (e: IOException) {
-                e.printStackTrace()
+            matrix.setRotate(orientationDegree, bitmap.width.toFloat() / 2,
+                bitmap.height.toFloat() / 2)
+            val targetX: Float
+            val targetY: Float
+            if (orientationDegree == 90f) {
+                targetX = bitmap.height.toFloat()
+                targetY = 0f
+            }
+            else {
+                targetX = bitmap.height.toFloat()
+                targetY = bitmap.width.toFloat()
             }
 
-            val orientString = exif!!.getAttribute(ExifInterface.TAG_ORIENTATION)
-            val orientation =
-                if (orientString != null) Integer.parseInt(orientString) else ExifInterface.ORIENTATION_NORMAL
+
+            val values = FloatArray(9)
+            matrix.getValues(values)
 
 
-            var rotationAngle = 0
-            if (orientation == ExifInterface.ORIENTATION_ROTATE_90) rotationAngle = 90
-            if (orientation == ExifInterface.ORIENTATION_ROTATE_180) rotationAngle = 180
-            if (orientation == ExifInterface.ORIENTATION_ROTATE_270) rotationAngle = 270
+            val x1 = values[Matrix.MTRANS_X]
+            val y1 = values[Matrix.MTRANS_Y]
 
-            // for OOM
-            val ratio = 1.0f
 
-            val matrix = Matrix()
-            matrix.setRotate(rotationAngle.toFloat(), bm.width.toFloat() / 2, bm.height.toFloat() / 2)
-            val rotatedBitmap = Bitmap.createBitmap(
-                bm,
-                0,
-                0,
-                (bounds.outWidth * ratio).toInt(),
-                (bounds.outHeight * ratio).toInt(),
-                matrix,
-                true
-            )
-            saveBitmapToJpeg(rotatedBitmap, file)
+            matrix.postTranslate(targetX - x1, targetY - y1)
+
+
+            val canvasBitmap = Bitmap.createBitmap(bitmap.height, bitmap.width,
+                Bitmap.Config.ARGB_8888)
+
+
+            val paint = Paint()
+            val canvas = Canvas(canvasBitmap)
+            canvas.drawBitmap(bitmap, matrix, paint)
+
+
+            return canvasBitmap
         }
 
         fun saveBitmapToJpeg(bitmap: Bitmap, path: String) {
