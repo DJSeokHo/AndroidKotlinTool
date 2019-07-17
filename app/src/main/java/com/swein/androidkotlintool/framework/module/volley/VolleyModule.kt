@@ -5,11 +5,6 @@ import com.android.volley.*
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 
-interface VolleyModuleDelegate {
-    fun onResponse(response: String)
-    fun onErrorResponse(error: VolleyError)
-}
-
 /**
  * After Android 9.0
  * volley can not access http
@@ -31,14 +26,15 @@ object VolleyModule {
 
     private var queue: RequestQueue? = null
 
-    fun getInstance(context: Context): VolleyModule {
-        if(queue == null) {
-            queue = Volley.newRequestQueue(context)
-        }
+    fun getInstance(): VolleyModule {
         return this
     }
 
-    fun requestUrlGet(url: String, volleyModuleDelegate: VolleyModuleDelegate) {
+    fun requestUrlGet(context: Context, url: String, volleyModuleDelegate: VolleyModuleDelegate) {
+
+        if(queue == null) {
+            queue = Volley.newRequestQueue(context)
+        }
 
         val stringRequest: StringRequest = StringRequest(Request.Method.GET, url,
             Response.Listener<String> {
@@ -51,7 +47,11 @@ object VolleyModule {
         queue?.add(stringRequest)
     }
 
-    fun requestUrlPost(url: String, volleyModuleDelegate: VolleyModuleDelegate, hashMap: HashMap<String, String>?) {
+    fun requestUrlPost(context: Context, url: String, volleyModuleDelegate: VolleyModuleDelegate, hashMap: HashMap<String, String>?) {
+
+        if(queue == null) {
+            queue = Volley.newRequestQueue(context)
+        }
 
         val stringRequest = object : StringRequest(Request.Method.POST, url,
             Response.Listener<String> {
