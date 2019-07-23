@@ -44,8 +44,12 @@
 			android:roundIcon="@mipmap/ic_launcher_round"
 			android:supportsRtl="true"
 			android:theme="@style/AppTheme">
-		<activity android:name=".template.handlerthread.HandlerThreadTemplateActivity"
-		          android:launchMode="singleTask">
+		<activity android:name=".template.topcustomslidingtablayout.activity.TopCustomSlidingTabLayoutActivity"
+			android:launchMode="singleTask">
+		</activity>
+		<activity
+				android:name=".template.handlerthread.HandlerThreadTemplateActivity"
+				android:launchMode="singleTask">
 		</activity>
 		<activity
 				android:name=".main.moduledemo.ModuleDemoActivity"

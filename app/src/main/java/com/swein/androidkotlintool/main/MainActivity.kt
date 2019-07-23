@@ -14,6 +14,7 @@ import com.swein.androidkotlintool.template.bottomtab.activity.TabHostActivity
 import com.swein.androidkotlintool.template.handlerthread.HandlerThreadTemplateActivity
 import com.swein.androidkotlintool.template.list.SHListActivity
 import com.swein.androidkotlintool.template.memeberjoin.MemberJoinTemplateActivity
+import com.swein.androidkotlintool.template.topcustomslidingtablayout.activity.TopCustomSlidingTabLayoutActivity
 import com.swein.androidkotlintool.template.topslidingtabs.activity.TopSlidingTabActivity
 import com.swein.androidkotlintool.template.viewpagerfragment.activity.ViewPagerActivity
 
@@ -30,6 +31,7 @@ class MainActivity : FragmentActivity() {
     private var buttonTopSlidingTab: Button? = null
     private var buttonViewPager: Button? = null
     private var buttonHandlerThread: Button? = null
+    private var buttonCustomTabLayout: Button? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,6 +50,7 @@ class MainActivity : FragmentActivity() {
         buttonTopSlidingTab = findViewById(R.id.buttonTopSlidingTab)
         buttonViewPager = findViewById(R.id.buttonViewPager)
         buttonHandlerThread = findViewById(R.id.buttonHandlerThread)
+        buttonCustomTabLayout = findViewById(R.id.buttonCustomTabLayout)
     }
 
     private fun setListener() {
@@ -91,6 +94,12 @@ class MainActivity : FragmentActivity() {
         buttonHandlerThread?.let {
             it.setOnClickListener {
                 ActivityUtil.startNewActivityWithoutFinish(this, HandlerThreadTemplateActivity::class.java)
+            }
+        }
+
+        buttonCustomTabLayout?.let {
+            it.setOnClickListener {
+                ActivityUtil.startNewActivityWithoutFinish(this, TopCustomSlidingTabLayoutActivity::class.java)
             }
         }
     }
