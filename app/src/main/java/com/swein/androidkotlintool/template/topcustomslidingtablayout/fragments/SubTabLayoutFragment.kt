@@ -17,10 +17,19 @@ class SubTabLayoutFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        rootView = inflater.inflate(R.layout.fragment_sub_tab_layout, container, false)
-
+        if (rootView == null) {
+            rootView = inflater.inflate(R.layout.fragment_sub_tab_layout, container, false)
+            // findView()
+        }
         return rootView
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+
+        if (rootView != null) {
+            (rootView.parent as ViewGroup).removeView(rootView)
+        }
+    }
 
 }
