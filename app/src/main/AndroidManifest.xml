@@ -43,7 +43,9 @@
 			android:label="@string/app_name"
 			android:roundIcon="@mipmap/ic_launcher_round"
 			android:supportsRtl="true"
-			android:theme="@style/AppTheme">
+			android:theme="@style/AppTheme"
+			android:usesCleartextTraffic="true">
+
 		<activity android:name=".template.topcustomslidingtablayout.activity.TopCustomSlidingTabLayoutActivity"
 			android:launchMode="singleTask">
 		</activity>
@@ -90,6 +92,8 @@
 		<receiver
 				android:name=".framework.util.shortcut.ShortcutReceiver"
 				android:exported="false"/>
+
+		<uses-library android:name="org.apache.http.legacy" android:required="false"/>
 	</application>
 
 </manifest>

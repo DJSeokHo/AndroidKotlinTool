@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentActivity
 import android.widget.Button
 import com.swein.androidkotlintool.R
 import com.swein.androidkotlintool.constants.Constants
+import com.swein.androidkotlintool.framework.module.volley.VolleyModule
 import com.swein.androidkotlintool.framework.util.activity.ActivityUtil
 import com.swein.androidkotlintool.framework.util.log.ILog
 import com.swein.androidkotlintool.framework.util.screen.ScreenUtil
@@ -105,7 +106,7 @@ class MainActivity : FragmentActivity() {
     }
 
     override fun onBackPressed() {
-
+        VolleyModule.getInstance().close()
         finish()
     }
 

@@ -44,6 +44,7 @@ object VolleyModule {
                 volleyModuleDelegate.onErrorResponse(it)
             })
 
+        stringRequest.tag = TAG
         queue?.add(stringRequest)
     }
 
@@ -76,7 +77,17 @@ object VolleyModule {
             }
         }
 
+        stringRequest.tag = TAG
         queue?.add(stringRequest)
+    }
+
+    /**
+     * add this when MainActivity finish
+     */
+    fun close() {
+        if (queue != null) {
+            queue?.cancelAll(TAG)
+        }
     }
 
 }
