@@ -53,6 +53,10 @@ class TopCustomSlidingTabLayoutActivity : AppCompatActivity() {
             fragmentList!!.add(subTabLayoutFragment)
         }
 
+        /*
+        when you use tab layout in fragment
+        change supportFragmentManager to childFragmentManager
+         */
         viewPager?.adapter = object : FragmentPagerAdapter(supportFragmentManager) {
 
             override fun getPageTitle(position: Int): CharSequence? {

@@ -6,6 +6,7 @@ import android.content.Intent
 import android.R
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentActivity
+import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentTransaction
 
 
@@ -55,8 +56,18 @@ class ActivityUtil {
             transaction.hide(fragment).commit()
         }
 
+        fun hideFragment(fragmentManager: FragmentManager, fragment: Fragment) {
+            val transaction: FragmentTransaction = fragmentManager.beginTransaction()
+            transaction.hide(fragment).commit()
+        }
+
         fun showFragment(activity: FragmentActivity, fragment: Fragment) {
             val transaction: FragmentTransaction  = activity.supportFragmentManager.beginTransaction()
+            transaction.show(fragment).commit()
+        }
+
+        fun showFragment(fragmentManager: FragmentManager, fragment: Fragment) {
+            val transaction: FragmentTransaction  = fragmentManager.beginTransaction()
             transaction.show(fragment).commit()
         }
     }

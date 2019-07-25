@@ -85,10 +85,6 @@ class TabHostFragment : Fragment() {
 
     private fun changeTab(tabId: String) {
 
-        if(fragmentManager == null) {
-            return
-        }
-
         resetTabState()
 
         var currentFragment: Fragment?
@@ -103,9 +99,7 @@ class TabHostFragment : Fragment() {
                 val lastFragment = fragmentManager?.findFragmentByTag(lastTapTag)
 
                 if(lastFragment != null) {
-                    activity?.let {
-                        ActivityUtil.hideFragment(it, lastFragment)
-                    }
+                    ActivityUtil.hideFragment(childFragmentManager, lastFragment)
                 }
 
                 if(currentFragment == null) {
@@ -115,9 +109,7 @@ class TabHostFragment : Fragment() {
                     }
                 }
                 else {
-                    activity?.let {
-                        ActivityUtil.showFragment(it, currentFragment!!)
-                    }
+                    ActivityUtil.showFragment(childFragmentManager, currentFragment!!)
                 }
 
                 lastTapTag = currentTapTag
@@ -133,9 +125,7 @@ class TabHostFragment : Fragment() {
                 val lastFragment = fragmentManager?.findFragmentByTag(lastTapTag)
 
                 if(lastFragment != null) {
-                    activity?.let {
-                        ActivityUtil.hideFragment(it, lastFragment)
-                    }
+                    ActivityUtil.hideFragment(childFragmentManager, lastFragment)
                 }
 
                 if(currentFragment == null) {
@@ -145,9 +135,7 @@ class TabHostFragment : Fragment() {
                     }
                 }
                 else {
-                    activity?.let {
-                        ActivityUtil.showFragment(it, currentFragment!!)
-                    }
+                    ActivityUtil.showFragment(childFragmentManager, currentFragment!!)
                 }
 
                 lastTapTag = currentTapTag
@@ -163,9 +151,7 @@ class TabHostFragment : Fragment() {
                 val lastFragment = fragmentManager?.findFragmentByTag(lastTapTag)
 
                 if(lastFragment != null) {
-                    activity?.let {
-                        ActivityUtil.hideFragment(it, lastFragment)
-                    }
+                    ActivityUtil.hideFragment(childFragmentManager, lastFragment)
                 }
 
                 if(currentFragment == null) {
@@ -175,9 +161,7 @@ class TabHostFragment : Fragment() {
                     }
                 }
                 else {
-                    activity?.let {
-                        ActivityUtil.showFragment(it, currentFragment!!)
-                    }
+                    ActivityUtil.showFragment(childFragmentManager, currentFragment!!)
                 }
 
                 lastTapTag = currentTapTag
@@ -193,9 +177,7 @@ class TabHostFragment : Fragment() {
                 val lastFragment = fragmentManager?.findFragmentByTag(lastTapTag)
 
                 if(lastFragment != null) {
-                    activity?.let {
-                        ActivityUtil.hideFragment(it, lastFragment)
-                    }
+                    ActivityUtil.hideFragment(childFragmentManager, lastFragment)
                 }
 
                 if(currentFragment == null) {
@@ -205,9 +187,7 @@ class TabHostFragment : Fragment() {
                     }
                 }
                 else {
-                    activity?.let {
-                        ActivityUtil.showFragment(it, currentFragment!!)
-                    }
+                    ActivityUtil.showFragment(childFragmentManager, currentFragment!!)
                 }
 
                 lastTapTag = currentTapTag
