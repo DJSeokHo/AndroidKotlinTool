@@ -51,26 +51,18 @@ class SHListAdapter: RecyclerView.Adapter<ItemViewHolder> {
         }
     }
 
-    fun loadMore() {
-        this.mutableList.addAll(createTempData(mutableList.size, 10))
+    fun loadMore(mutableList: MutableList<ItemDataModel>) {
+        this.mutableList.addAll(mutableList)
+        notifyItemRangeChanged(this.mutableList.size - mutableList.size + 1, mutableList.size)
     }
 
-    fun reload() {
+    fun reload(mutableList: MutableList<ItemDataModel>) {
         this.mutableList.clear()
-        this.mutableList.addAll(createTempData(0, 10))
+        this.mutableList.addAll(mutableList)
+        notifyDataSetChanged()
     }
 
 
-    private fun createTempData(offset: Int, limit: Int): MutableList<ItemDataModel> {
-        val list: MutableList<ItemDataModel> = mutableListOf()
 
-        var itemDataModel: ItemDataModel
-        for(i in offset..(offset + limit)) {
-            itemDataModel = ItemDataModel("title $i", "sub title $i")
-            list.add(itemDataModel)
-        }
-
-        return list
-    }
 
 }

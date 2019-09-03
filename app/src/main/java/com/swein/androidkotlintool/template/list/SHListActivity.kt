@@ -13,6 +13,7 @@ import com.swein.androidkotlintool.constants.Constants
 import com.swein.androidkotlintool.framework.util.screen.ScreenUtil
 import com.swein.androidkotlintool.framework.util.thread.ThreadUtil
 import com.swein.androidkotlintool.template.list.adapter.SHListAdapter
+import com.swein.androidkotlintool.template.list.adapter.item.model.ItemDataModel
 import com.swein.androidkotlintool.template.navigationbar.NavigationBarTemplate
 
 class SHListActivity : Activity() {
@@ -127,10 +128,9 @@ class SHListActivity : Activity() {
         showProgress()
 
         ThreadUtil.startThread(Runnable {
-            shListAdapter?.loadMore()
+            shListAdapter?.loadMore(createTempData(shListAdapter!!.itemCount, 10))
 
             ThreadUtil.startUIThread(1000, Runnable {
-                shListAdapter?.notifyDataSetChanged()
                 hideProgress()
             })
         })
@@ -141,12 +141,23 @@ class SHListActivity : Activity() {
         showProgress()
 
         ThreadUtil.startThread(Runnable {
-            shListAdapter?.reload()
+            shListAdapter?.reload(createTempData(0, 10))
 
             ThreadUtil.startUIThread(1500, Runnable {
-                shListAdapter?.notifyDataSetChanged()
                 hideProgress()
             })
         })
+    }
+
+    private fun createTempData(offset: Int, limit: Int): MutableList<ItemDataModel> {
+        val list: MutableList<ItemDataModel> = mutableListOf()
+
+        var itemDataModel: ItemDataModel
+        for(i in offset..(offset + limit)) {
+            itemDataModel = ItemDataModel("title $i", "sub title $i")
+            list.add(itemDataModel)
+        }
+
+        return list
     }
 }
