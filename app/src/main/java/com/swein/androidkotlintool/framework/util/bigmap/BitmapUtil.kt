@@ -119,6 +119,14 @@ class BitmapUtil {
             return inSampleSize
         }
 
+        fun getBitmapWithoutOOM(file: String): Bitmap {
+            val options = BitmapFactory.Options()
+            options.inJustDecodeBounds = false
+            options.inPreferredConfig = Bitmap.Config.RGB_565
+            options.inDither = true
+            return BitmapFactory.decodeFile(file, options)
+        }
+
         fun adjustPhotoRotation(bitmap: Bitmap, orientationDegree: Float): Bitmap {
 
             val matrix = Matrix()
