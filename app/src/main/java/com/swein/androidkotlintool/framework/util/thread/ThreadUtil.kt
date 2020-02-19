@@ -10,26 +10,11 @@ class ThreadUtil {
     companion object {
 
         private val executorService = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors())
-        private val handler = object: Handler(Looper.getMainLooper()) {
+        private val handler = Handler(Looper.getMainLooper())
 
-        }
-
-//        fun startThread(runnable: Runnable) {
-//            try {
-//                runnable.run()
-//            }
-//            catch (e: Exception) {
-//                e.printStackTrace()
-//            }
-//        }
 
         fun startThread(runnable: Runnable) {
-            try {
-                Thread(runnable).start()
-            }
-            catch (e: Exception) {
-                e.printStackTrace()
-            }
+            executorService.submit(runnable)
         }
 
         fun startUIThread(delayMillis: Int, runnable: Runnable) {
