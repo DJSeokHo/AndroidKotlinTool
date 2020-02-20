@@ -51,7 +51,7 @@ object OKHttpWrapper {
         return responseBody.string()
     }
 
-    fun requestPostJSONWithHeader(url: String, header: HashMap<String, String>, jsonObject: JSONObject, okHttpWrapperDelegate: OKHttpWrapperDelegate) {
+    fun requestPostJSONWithHeader(url: String, header: MutableMap<String, String>, jsonObject: JSONObject, okHttpWrapperDelegate: OKHttpWrapperDelegate) {
 
         if(okHttpClient == null) {
             val builder = OkHttpClient.Builder()
