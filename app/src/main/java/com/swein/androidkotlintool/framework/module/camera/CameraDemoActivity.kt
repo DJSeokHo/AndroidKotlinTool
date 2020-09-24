@@ -144,65 +144,6 @@ class CameraDemoActivity : BasicPermissionActivity() {
             }
         }))
 
-
-
-//        cameraPhotoPath =
-//            File(Environment.getExternalStorageDirectory().path + "/" + System.currentTimeMillis() + ".jpg")
-//
-//        val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-//
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-//            uri = FileProvider.getUriForFile(
-//                activity,
-//                kr.gounwoori.ushome.framework.module.cameraandalbum.CameraAndAlbum.PACKAGE_NAME + ".fileprovider",
-//                cameraPhotoPath
-//            )
-//            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
-//        } else {
-//            uri = Uri.fromFile(cameraPhotoPath)
-//        }
-//        intent.putExtra(MediaStore.EXTRA_OUTPUT, uri)
-//        activity.startActivityForResult(
-//            intent,
-//            kr.gounwoori.ushome.framework.module.cameraandalbum.CameraAndAlbum.CAMERA_REQUEST_CODE
-//        )
-
-
-
-//        if (type == 0) {
-//            imageAnalysis.setAnalyzer(cameraExecutor, QrCodeAnalyzer { result ->
-//                previewView.post {
-//                    ILog.debug(TAG, "scanned: " + result.text)
-////                    ToastUtil.showCustomLongToastNormal(this, result.text)
-//                    val mutableMap = mutableMapOf<String, Any>()
-//                    mutableMap["qr"] = result.text
-//                    EventCenter.sendEvent(ESSArrows.SCAN_QR_FINISHED, this, mutableMap)
-//                    finish()
-//                }
-//            })
-//        }
-//        else if (type == 1) {
-//            imageAnalysis.setAnalyzer(cameraExecutor, TextAnalyzer(object :
-//                TextAnalyzer.TextAnalyzerDelegate {
-//                override fun onTextDetected(result: String?) {
-//                    ILog.debug(TAG, "scanned: $result")
-//                    isCardNumberFinished = true
-//                    toggleCardScanFinish(result!!, "", "")
-//                }
-//
-//                override fun getRotation(): Int {
-////                ILog.iLogDebug(TAG, "angle is " + angle)
-//                    return camera.cameraInfo.sensorRotationDegrees
-//                }
-//
-//                override fun onDateDetected(month: String?, year: String?) {
-//                    isCardDateFinished = true
-//                    toggleCardScanFinish("", year!!, month!!)
-//                }
-//            }))
-//        }
-
-
         cameraProvider.unbindAll()
         camera = cameraProvider.bindToLifecycle(this, cameraSelector, preview, imageAnalysis)
         preview.setSurfaceProvider(previewView.createSurfaceProvider())
