@@ -1,9 +1,11 @@
 package com.swein.androidkotlintool.framework.module.camera
 
 import android.Manifest
+import android.content.Context
 import android.graphics.Bitmap
 import android.os.Bundle
 import android.util.Size
+import android.widget.ImageView
 import androidx.camera.core.Camera
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.ImageAnalysis
@@ -16,7 +18,15 @@ import com.swein.androidkotlintool.R
 import com.swein.androidkotlintool.framework.module.basicpermission.BasicPermissionActivity
 import com.swein.androidkotlintool.framework.module.basicpermission.PermissionManager
 import com.swein.androidkotlintool.framework.module.basicpermission.RequestPermission
+import com.swein.androidkotlintool.framework.util.bitmap.BitmapUtil
 import com.swein.androidkotlintool.framework.util.log.ILog
+import com.swein.androidkotlintool.framework.util.thread.ThreadUtil
+import io.everyportable.framework.util.glide.SHGlide
+import java.io.BufferedOutputStream
+import java.io.File
+import java.io.FileOutputStream
+import java.text.SimpleDateFormat
+import java.util.*
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 
@@ -25,6 +35,8 @@ class CameraDemoActivity : BasicPermissionActivity() {
 
     companion object {
         private const val TAG = "CameraDemoActivity"
+        private const val FILENAME = "yyyy-MM-dd-HH-mm-ss-SSS"
+        private const val PHOTO_EXTENSION = ".jpg"
     }
 
     private lateinit var previewView: PreviewView
@@ -32,6 +44,8 @@ class CameraDemoActivity : BasicPermissionActivity() {
     private lateinit var preview: Preview
     private lateinit var camera: Camera
     private lateinit var cameraProvider: ProcessCameraProvider
+
+    private lateinit var imageView: ImageView
 
     /** Blocking camera operations are performed using this executor */
     private val cameraExecutor: ExecutorService = Executors.newSingleThreadExecutor()
@@ -47,6 +61,7 @@ class CameraDemoActivity : BasicPermissionActivity() {
 
     private fun findView() {
         previewView = findViewById(R.id.previewView)
+        imageView = findViewById(R.id.imageView)
     }
 
     @RequestPermission(permissionCode = PermissionManager.PERMISSION_REQUEST_CAMERA_CODE)
@@ -63,8 +78,7 @@ class CameraDemoActivity : BasicPermissionActivity() {
                 try {
                     cameraProvider = cameraProviderFuture.get()
                     startCamera(cameraProvider)
-                }
-                catch (e: Exception) {
+                } catch (e: Exception) {
                     e.printStackTrace()
                 }
             }, ContextCompat.getMainExecutor(this))
@@ -100,12 +114,55 @@ class CameraDemoActivity : BasicPermissionActivity() {
             .setBackpressureStrategy(ImageAnalysis.STRATEGY_KEEP_ONLY_LATEST)
             .build()
 
-        imageAnalysis.setAnalyzer(cameraExecutor, NormalImageRealTimeAnalyzer(object : NormalImageRealTimeAnalyzer.NormalImageRealTimeAnalyzerDelegate {
+        imageAnalysis.setAnalyzer(cameraExecutor, NormalImageRealTimeAnalyzer(object :
+            NormalImageRealTimeAnalyzer.NormalImageRealTimeAnalyzerDelegate {
             override fun onBitmap(bitmap: Bitmap) {
                 ILog.debug(TAG, "${bitmap.width} ${bitmap.height}")
-            }
 
+                val photoFilePath = createFilePath(getOutputDirectory(this@CameraDemoActivity), FILENAME, PHOTO_EXTENSION)
+
+                ILog.debug(TAG, photoFilePath)
+
+                val bufferedOutputStream = BufferedOutputStream(FileOutputStream(File(photoFilePath)))
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bufferedOutputStream)
+
+                BitmapUtil.compressImageWithFilePath(photoFilePath, 1)
+
+                val file = File(photoFilePath)
+
+                ThreadUtil.startUIThread(0) {
+
+                    imageView.setImageBitmap(bitmap)
+//                    SHGlide.setImageBitmap(this@CameraDemoActivity, file, imageView, null, 0, 0, 0f, 0f)
+
+                }
+            }
         }))
+
+
+
+//        cameraPhotoPath =
+//            File(Environment.getExternalStorageDirectory().path + "/" + System.currentTimeMillis() + ".jpg")
+//
+//        val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+//
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+//            uri = FileProvider.getUriForFile(
+//                activity,
+//                kr.gounwoori.ushome.framework.module.cameraandalbum.CameraAndAlbum.PACKAGE_NAME + ".fileprovider",
+//                cameraPhotoPath
+//            )
+//            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+//        } else {
+//            uri = Uri.fromFile(cameraPhotoPath)
+//        }
+//        intent.putExtra(MediaStore.EXTRA_OUTPUT, uri)
+//        activity.startActivityForResult(
+//            intent,
+//            kr.gounwoori.ushome.framework.module.cameraandalbum.CameraAndAlbum.CAMERA_REQUEST_CODE
+//        )
+
+
 
 //        if (type == 0) {
 //            imageAnalysis.setAnalyzer(cameraExecutor, QrCodeAnalyzer { result ->
@@ -146,4 +203,16 @@ class CameraDemoActivity : BasicPermissionActivity() {
         preview.setSurfaceProvider(previewView.createSurfaceProvider())
     }
 
+    fun getOutputDirectory(context: Context): File {
+        val appContext = context.applicationContext
+        val mediaDir = context.externalMediaDirs.firstOrNull()?.let {
+            File(it, appContext.resources.getString(R.string.app_name)).apply { mkdirs() } }
+        return if (mediaDir != null && mediaDir.exists())
+            mediaDir else appContext.filesDir
+    }
+
+    private fun createFilePath(baseFolder: File, format: String, extension: String): String {
+
+        return "$baseFolder${SimpleDateFormat(format, Locale.US).format(System.currentTimeMillis())}$extension"
+    }
 }

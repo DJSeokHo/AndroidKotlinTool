@@ -1,4 +1,4 @@
-package com.swein.androidkotlintool.framework.util.bigmap
+package com.swein.androidkotlintool.framework.util.bitmap
 
 import android.content.Context
 import android.content.res.Resources
@@ -226,6 +226,77 @@ class BitmapUtil {
 
         fun getBitmapFromByte(data: ByteArray): Bitmap {
             return BitmapFactory.decodeByteArray(data, 0, data.size)
+        }
+
+        fun compressImageWithFilePath(filePath: String, targetMB: Int) {
+            var image: Bitmap = BitmapFactory.decodeFile(filePath)
+
+            val exif = ExifInterface(filePath)
+            val exifOrientation: Int = exif.getAttributeInt(
+                ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL
+            )
+            val exifDegree: Int = exifOrientationToDegrees(exifOrientation)
+
+            image = rotate(image, exifDegree)
+
+            try {
+
+                val file = File(filePath)
+                val length = file.length()
+
+                val fileSizeInKB = (length / 1024).toString().toDouble()
+                val fileSizeInMB = (fileSizeInKB / 1024).toString().toDouble()
+
+                var quality = 100
+                if(fileSizeInMB > targetMB) {
+                    quality = ((targetMB / fileSizeInMB) * 100).toInt()
+                }
+
+                val fileOutputStream = FileOutputStream(filePath)
+                image.compress(Bitmap.CompressFormat.JPEG, quality, fileOutputStream)
+            }
+            catch (e: Exception){
+                e.printStackTrace()
+            }
+        }
+
+        private fun exifOrientationToDegrees(exifOrientation: Int): Int {
+            return when (exifOrientation) {
+                ExifInterface.ORIENTATION_ROTATE_90 -> {
+                    90
+                }
+                ExifInterface.ORIENTATION_ROTATE_180 -> {
+                    180
+                }
+                ExifInterface.ORIENTATION_ROTATE_270 -> {
+                    270
+                }
+                else -> 0
+            }
+        }
+
+        private fun rotate(b: Bitmap, degrees: Int): Bitmap {
+            var bitmap = b
+            if (degrees != 0) {
+                val m = Matrix()
+                m.setRotate(
+                    degrees.toFloat(), bitmap.width.toFloat() / 2,
+                    bitmap.height.toFloat() / 2
+                )
+                try {
+                    val converted = Bitmap.createBitmap(
+                        bitmap, 0, 0,
+                        bitmap.width, bitmap.height, m, true
+                    )
+                    if (bitmap != converted) {
+                        bitmap.recycle()
+                        bitmap = converted
+                    }
+                } catch (ex: OutOfMemoryError) {
+                    // 메모리가 부족하여 회전을 시키지 못할 경우 그냥 원본을 반환합니다.
+                }
+            }
+            return bitmap
         }
 
     }

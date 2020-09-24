@@ -55,6 +55,7 @@ class NormalImageRealTimeAnalyzer(private val normalImageRealTimeAnalyzerDelegat
     }
 
     private fun toBitmap(image: ImageProxy): Bitmap {
+
         val yBuffer = image.planes[0].buffer // Y
         val uBuffer = image.planes[1].buffer // U
         val vBuffer = image.planes[2].buffer // V
