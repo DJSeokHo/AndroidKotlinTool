@@ -1,9 +1,9 @@
 package com.swein.androidkotlintool.framework.util.popup
 
 import android.content.Context
-import android.support.v7.widget.PopupMenu
 import android.view.MenuItem
 import android.view.View
+import android.widget.PopupMenu
 
 class PopupMenuUtil {
 

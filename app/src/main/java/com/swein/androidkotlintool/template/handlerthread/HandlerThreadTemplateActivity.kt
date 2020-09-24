@@ -1,14 +1,14 @@
 package com.swein.androidkotlintool.template.handlerthread
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.HandlerThread
 import android.os.Message
 import android.widget.TextView
+import androidx.fragment.app.FragmentActivity
 import com.swein.androidkotlintool.R
 
-class HandlerThreadTemplateActivity : AppCompatActivity() {
+class HandlerThreadTemplateActivity : FragmentActivity() {
 
     companion object {
         private const val TAG = "HandlerThreadTemplateActivity"

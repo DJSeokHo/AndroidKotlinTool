@@ -1,8 +1,8 @@
 package com.swein.androidkotlintool.template.viewpagerfragment.activity
 
 import android.os.Bundle
-import android.support.v4.app.FragmentActivity
 import android.widget.FrameLayout
+import androidx.fragment.app.FragmentActivity
 import com.swein.androidkotlintool.R
 import com.swein.androidkotlintool.constants.Constants
 import com.swein.androidkotlintool.framework.util.activity.ActivityUtil

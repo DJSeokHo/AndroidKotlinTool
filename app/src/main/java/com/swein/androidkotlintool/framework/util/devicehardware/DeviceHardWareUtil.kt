@@ -9,7 +9,7 @@ import android.hardware.Camera
 import android.location.LocationManager
 import android.net.Uri
 import android.provider.Settings
-import android.support.v4.app.ActivityCompat
+import androidx.core.app.ActivityCompat
 
 class DeviceHardWareUtil {
 

@@ -1,7 +1,7 @@
 package com.swein.androidkotlintool.main.moduledemo
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.fragment.app.FragmentActivity
 import com.android.volley.VolleyError
 import com.swein.androidkotlintool.R
 import com.swein.androidkotlintool.constants.Constants
@@ -10,7 +10,7 @@ import com.swein.androidkotlintool.framework.util.log.ILog
 import com.swein.androidkotlintool.framework.util.screen.ScreenUtil
 import com.swein.androidkotlintool.framework.util.thread.ThreadUtil
 
-class ModuleDemoActivity : AppCompatActivity() {
+class ModuleDemoActivity : FragmentActivity() {
 
     companion object {
         private const val TAG = "ModuleDemoActivity"

@@ -1,8 +1,8 @@
 package com.swein.androidkotlintool.template.list.adapter.item.viewholder
 
-import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
 import com.swein.androidkotlintool.R
 import com.swein.androidkotlintool.template.list.adapter.item.model.ItemDataModel
 import java.lang.ref.WeakReference

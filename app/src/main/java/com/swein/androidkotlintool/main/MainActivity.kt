@@ -2,10 +2,11 @@ package com.swein.androidkotlintool.main
 
 import android.graphics.Color
 import android.os.Bundle
-import android.support.v4.app.FragmentActivity
 import android.widget.Button
+import androidx.fragment.app.FragmentActivity
 import com.swein.androidkotlintool.R
 import com.swein.androidkotlintool.constants.Constants
+import com.swein.androidkotlintool.framework.module.camera.CameraDemoActivity
 import com.swein.androidkotlintool.framework.module.volley.VolleyModule
 import com.swein.androidkotlintool.framework.util.activity.ActivityUtil
 import com.swein.androidkotlintool.framework.util.log.ILog
@@ -15,8 +16,6 @@ import com.swein.androidkotlintool.template.bottomtab.activity.TabHostActivity
 import com.swein.androidkotlintool.template.handlerthread.HandlerThreadTemplateActivity
 import com.swein.androidkotlintool.template.list.SHListActivity
 import com.swein.androidkotlintool.template.memeberjoin.MemberJoinTemplateActivity
-import com.swein.androidkotlintool.template.topcustomslidingtablayout.activity.TopCustomSlidingTabLayoutActivity
-import com.swein.androidkotlintool.template.topslidingtabs.activity.TopSlidingTabActivity
 import com.swein.androidkotlintool.template.viewpagerfragment.activity.ViewPagerActivity
 
 class MainActivity : FragmentActivity() {
@@ -29,10 +28,8 @@ class MainActivity : FragmentActivity() {
     private var buttonLoginTemplate: Button? = null
     private var buttonListTemplate: Button? = null
     private var buttonTabHost: Button? = null
-    private var buttonTopSlidingTab: Button? = null
     private var buttonViewPager: Button? = null
     private var buttonHandlerThread: Button? = null
-    private var buttonCustomTabLayout: Button? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,6 +38,8 @@ class MainActivity : FragmentActivity() {
         ScreenUtil.setTitleBarColor(this, Color.parseColor(Constants.APP_BASIC_THEME_COLOR))
         findView()
         setListener()
+
+        ActivityUtil.startNewActivityWithoutFinish(this, CameraDemoActivity::class.java)
     }
 
     private fun findView() {
@@ -48,10 +47,8 @@ class MainActivity : FragmentActivity() {
         buttonLoginTemplate = findViewById(R.id.buttonLoginTemplate)
         buttonListTemplate = findViewById(R.id.buttonListTemplate)
         buttonTabHost = findViewById(R.id.buttonTabHost)
-        buttonTopSlidingTab = findViewById(R.id.buttonTopSlidingTab)
         buttonViewPager = findViewById(R.id.buttonViewPager)
         buttonHandlerThread = findViewById(R.id.buttonHandlerThread)
-        buttonCustomTabLayout = findViewById(R.id.buttonCustomTabLayout)
     }
 
     private fun setListener() {
@@ -80,12 +77,6 @@ class MainActivity : FragmentActivity() {
             }
         }
 
-        buttonTopSlidingTab?.let {
-            it.setOnClickListener {
-                ActivityUtil.startNewActivityWithoutFinish(this, TopSlidingTabActivity::class.java)
-            }
-        }
-
         buttonViewPager?.let {
             it.setOnClickListener {
                 ActivityUtil.startNewActivityWithoutFinish(this, ViewPagerActivity::class.java)
@@ -95,12 +86,6 @@ class MainActivity : FragmentActivity() {
         buttonHandlerThread?.let {
             it.setOnClickListener {
                 ActivityUtil.startNewActivityWithoutFinish(this, HandlerThreadTemplateActivity::class.java)
-            }
-        }
-
-        buttonCustomTabLayout?.let {
-            it.setOnClickListener {
-                ActivityUtil.startNewActivityWithoutFinish(this, TopCustomSlidingTabLayoutActivity::class.java)
             }
         }
     }

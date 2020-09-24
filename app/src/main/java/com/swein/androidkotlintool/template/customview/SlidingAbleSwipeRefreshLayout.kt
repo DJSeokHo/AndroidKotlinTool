@@ -1,10 +1,10 @@
 package com.swein.androidkotlintool.template.customview
 
 import android.content.Context
-import android.support.v4.widget.SwipeRefreshLayout
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.ViewConfiguration
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import kotlin.math.abs
 
 class SlidingAbleSwipeRefreshLayout: SwipeRefreshLayout {

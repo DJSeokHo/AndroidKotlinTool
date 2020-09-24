@@ -2,9 +2,9 @@ package com.swein.androidkotlintool.template.memeberjoin
 
 import android.graphics.Color
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.FrameLayout
+import androidx.fragment.app.FragmentActivity
 import com.swein.androidkotlintool.R
 import com.swein.androidkotlintool.constants.Constants
 import com.swein.androidkotlintool.framework.util.activity.ActivityUtil
@@ -13,7 +13,7 @@ import com.swein.androidkotlintool.framework.util.screen.ScreenUtil
 import com.swein.androidkotlintool.template.memeberjoin.login.LoginTemplateFragment
 import com.swein.androidkotlintool.template.navigationbar.NavigationBarTemplate
 
-class MemberJoinTemplateActivity : AppCompatActivity() {
+class MemberJoinTemplateActivity : FragmentActivity() {
 
     companion object {
         private const val TAG = "MemberJoinTemplateActivity"
