@@ -18,7 +18,7 @@ private fun ByteBuffer.toByteArray(): ByteArray {
 class NormalImageRealTimeAnalyzer(private val normalImageRealTimeAnalyzerDelegate: NormalImageRealTimeAnalyzerDelegate) : ImageAnalysis.Analyzer {
 
     interface NormalImageRealTimeAnalyzerDelegate {
-        fun onBitmap(bitmap: Bitmap)
+        fun onBitmap(bitmap: Bitmap, degree: Int)
     }
 
     companion object {
@@ -49,8 +49,7 @@ class NormalImageRealTimeAnalyzer(private val normalImageRealTimeAnalyzerDelegat
 
         val bitmap = toBitmap(image)
 
-
-        normalImageRealTimeAnalyzerDelegate.onBitmap(bitmap)
+        normalImageRealTimeAnalyzerDelegate.onBitmap(bitmap, image.imageInfo.rotationDegrees)
         image.close()
     }
 

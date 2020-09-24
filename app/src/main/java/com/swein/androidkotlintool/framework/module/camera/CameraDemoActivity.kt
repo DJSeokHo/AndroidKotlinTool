@@ -35,7 +35,6 @@ class CameraDemoActivity : BasicPermissionActivity() {
 
     companion object {
         private const val TAG = "CameraDemoActivity"
-        private const val FILENAME = "yyyy-MM-dd-HH-mm-ss-SSS"
         private const val PHOTO_EXTENSION = ".jpg"
     }
 
@@ -87,6 +86,8 @@ class CameraDemoActivity : BasicPermissionActivity() {
 
     }
 
+    private var isOK = false
+
     private fun startCamera(cameraProvider: ProcessCameraProvider) {
         val cameraSelector = CameraSelector.Builder()
             .requireLensFacing(CameraSelector.LENS_FACING_BACK)
@@ -116,24 +117,28 @@ class CameraDemoActivity : BasicPermissionActivity() {
 
         imageAnalysis.setAnalyzer(cameraExecutor, NormalImageRealTimeAnalyzer(object :
             NormalImageRealTimeAnalyzer.NormalImageRealTimeAnalyzerDelegate {
-            override fun onBitmap(bitmap: Bitmap) {
-                ILog.debug(TAG, "${bitmap.width} ${bitmap.height}")
+            override fun onBitmap(bitmap: Bitmap, degree: Int) {
 
-                val photoFilePath = createFilePath(getOutputDirectory(this@CameraDemoActivity), FILENAME, PHOTO_EXTENSION)
+                val photoFilePath = createFilePath(getOutputDirectory(this@CameraDemoActivity), PHOTO_EXTENSION)
 
-                ILog.debug(TAG, photoFilePath)
+//                ILog.debug(TAG, photoFilePath)
 
                 val bufferedOutputStream = BufferedOutputStream(FileOutputStream(File(photoFilePath)))
                 bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bufferedOutputStream)
 
-                BitmapUtil.compressImageWithFilePath(photoFilePath, 1)
+                BitmapUtil.compressImageWithFilePath(photoFilePath, 1, degree)
 
                 val file = File(photoFilePath)
 
                 ThreadUtil.startUIThread(0) {
 
-                    imageView.setImageBitmap(bitmap)
-//                    SHGlide.setImageBitmap(this@CameraDemoActivity, file, imageView, null, 0, 0, 0f, 0f)
+                    if(!isOK) {
+                        SHGlide.setImageBitmap(this@CameraDemoActivity, file, imageView, null, 0, 0, 0f, 0f)
+                    }
+
+                    imageView.setImageBitmap(BitmapUtil.rotate(bitmap, degree))
+
+                    isOK = true
 
                 }
             }
@@ -211,8 +216,8 @@ class CameraDemoActivity : BasicPermissionActivity() {
             mediaDir else appContext.filesDir
     }
 
-    private fun createFilePath(baseFolder: File, format: String, extension: String): String {
+    private fun createFilePath(baseFolder: File, extension: String): String {
 
-        return "$baseFolder${SimpleDateFormat(format, Locale.US).format(System.currentTimeMillis())}$extension"
+        return "${baseFolder}temp_image$extension"
     }
 }

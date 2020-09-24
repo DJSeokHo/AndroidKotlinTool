@@ -5,6 +5,7 @@ import android.content.res.Resources
 import android.graphics.*
 import android.graphics.drawable.Drawable
 import android.media.ExifInterface
+import com.swein.androidkotlintool.framework.util.log.ILog
 import java.io.*
 import java.net.HttpURLConnection
 import java.net.URL
@@ -228,6 +229,31 @@ class BitmapUtil {
             return BitmapFactory.decodeByteArray(data, 0, data.size)
         }
 
+        fun compressImageWithFilePath(filePath: String, targetMB: Int, degree: Int) {
+            var image: Bitmap = BitmapFactory.decodeFile(filePath)
+            image = rotate(image, degree)
+
+            try {
+
+                val file = File(filePath)
+                val length = file.length()
+
+                val fileSizeInKB = (length / 1024).toString().toDouble()
+                val fileSizeInMB = (fileSizeInKB / 1024).toString().toDouble()
+
+                var quality = 100
+                if(fileSizeInMB > targetMB) {
+                    quality = ((targetMB / fileSizeInMB) * 100).toInt()
+                }
+
+                val fileOutputStream = FileOutputStream(filePath)
+                image.compress(Bitmap.CompressFormat.JPEG, quality, fileOutputStream)
+            }
+            catch (e: Exception){
+                e.printStackTrace()
+            }
+        }
+
         fun compressImageWithFilePath(filePath: String, targetMB: Int) {
             var image: Bitmap = BitmapFactory.decodeFile(filePath)
 
@@ -237,6 +263,7 @@ class BitmapUtil {
             )
             val exifDegree: Int = exifOrientationToDegrees(exifOrientation)
 
+            ILog.debug("???", "$exifDegree")
             image = rotate(image, exifDegree)
 
             try {
@@ -275,7 +302,7 @@ class BitmapUtil {
             }
         }
 
-        private fun rotate(b: Bitmap, degrees: Int): Bitmap {
+        fun rotate(b: Bitmap, degrees: Int): Bitmap {
             var bitmap = b
             if (degrees != 0) {
                 val m = Matrix()
