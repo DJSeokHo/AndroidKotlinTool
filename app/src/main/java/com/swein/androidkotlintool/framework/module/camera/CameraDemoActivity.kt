@@ -154,7 +154,7 @@ class CameraDemoActivity : BasicPermissionActivity() {
                         ILog.debug(TAG, "https://sys.everyportable.co.kr:8086/Naverpay/uploadBankCard")
 
                         OKHttpWrapper.requestPostImageFileWithOpenId(
-                            "https://sys.everyportable.co.kr:8086/Naverpay/uploadBankCard", "", "file", file, "106495ddfb9400ce3f30d4b0125a11fc",
+                            "https://sys.everyportable.co.kr:8086/Naverpay/uploadBankCard", "", "file", file, "you open id",
                             object : OKHttpWrapperDelegate {
                                 override fun onFailure(call: Call, e: IOException) {
                                     OKHttpWrapper.cancelCall(call)
