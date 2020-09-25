@@ -3,6 +3,7 @@ package com.swein.androidkotlintool.framework.util.push
 import android.content.Context
 import com.swein.androidkotlintool.framework.util.log.ILog
 import com.swein.androidkotlintool.framework.util.okhttp.OKHttpWrapper
+import com.swein.androidkotlintool.framework.util.okhttp.OKHttpWrapperDelegate
 import com.swein.androidkotlintool.framework.util.thread.ThreadUtil
 import com.swein.androidkotlintool.framework.util.toast.ToastUtil
 import okhttp3.Call
@@ -33,17 +34,18 @@ class PushUtil {
 
             jsonObject.put("data", data)
 
-            OKHttpWrapper.getInstance().requestPostJSONWithHeader("https://fcm.googleapis.com/fcm/send", mutableMap, jsonObject, object: OKHttpWrapper.OKHttpWrapperDelegate {
+            OKHttpWrapper.requestPostJSONWithHeader("https://fcm.googleapis.com/fcm/send", mutableMap, jsonObject, object:
+                OKHttpWrapperDelegate {
 
                 override fun onFailure(call: Call, e: IOException) {
-                    OKHttpWrapper.getInstance().cancelCall(call)
+                    OKHttpWrapper.cancelCall(call)
                     e.printStackTrace()
                 }
 
                 override fun onResponse(call: Call, response: Response) {
 
                     try {
-                        val responseString = OKHttpWrapper.getInstance().getStringResponse(response)
+                        val responseString = OKHttpWrapper.getStringResponse(response)
                         ILog.debug(TAG, responseString)
 
                         responseString?.let {
@@ -62,7 +64,7 @@ class PushUtil {
                         e.printStackTrace()
                     }
                     finally {
-                        OKHttpWrapper.getInstance().cancelCall(call)
+                        OKHttpWrapper.cancelCall(call)
                     }
                 }
             })

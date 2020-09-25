@@ -5,6 +5,8 @@ import android.content.Context
 import android.graphics.Bitmap
 import android.os.Bundle
 import android.util.Size
+import android.view.View
+import android.widget.FrameLayout
 import android.widget.ImageView
 import androidx.camera.core.Camera
 import androidx.camera.core.CameraSelector
@@ -20,11 +22,16 @@ import com.swein.androidkotlintool.framework.module.basicpermission.PermissionMa
 import com.swein.androidkotlintool.framework.module.basicpermission.RequestPermission
 import com.swein.androidkotlintool.framework.util.bitmap.BitmapUtil
 import com.swein.androidkotlintool.framework.util.log.ILog
+import com.swein.androidkotlintool.framework.util.okhttp.OKHttpWrapper
+import com.swein.androidkotlintool.framework.util.okhttp.OKHttpWrapperDelegate
 import com.swein.androidkotlintool.framework.util.thread.ThreadUtil
 import io.everyportable.framework.util.glide.SHGlide
+import okhttp3.Call
+import okhttp3.Response
 import java.io.BufferedOutputStream
 import java.io.File
 import java.io.FileOutputStream
+import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
 import java.util.concurrent.ExecutorService
@@ -50,6 +57,8 @@ class CameraDemoActivity : BasicPermissionActivity() {
     private val cameraExecutor: ExecutorService = Executors.newSingleThreadExecutor()
     private lateinit var cameraProviderFuture: ListenableFuture<ProcessCameraProvider>
 
+    private lateinit var frameLayoutProgress: FrameLayout
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_camera_demo)
@@ -61,6 +70,7 @@ class CameraDemoActivity : BasicPermissionActivity() {
     private fun findView() {
         previewView = findViewById(R.id.previewView)
         imageView = findViewById(R.id.imageView)
+        frameLayoutProgress = findViewById(R.id.frameLayoutProgress)
     }
 
     @RequestPermission(permissionCode = PermissionManager.PERMISSION_REQUEST_CAMERA_CODE)
@@ -128,19 +138,65 @@ class CameraDemoActivity : BasicPermissionActivity() {
 
                 BitmapUtil.compressImageWithFilePath(photoFilePath, 1, degree)
 
-                val file = File(photoFilePath)
+                if(!isOK) {
 
-                ThreadUtil.startUIThread(0) {
+                    val file = File(photoFilePath)
+                    ILog.debug(TAG, "${file == null} ${file.name} ${file.absolutePath}")
 
-                    if(!isOK) {
-                        SHGlide.setImageBitmap(this@CameraDemoActivity, file, imageView, null, 0, 0, 0f, 0f)
+                    ThreadUtil.startUIThread(0) {
+
+                        isOK = true
+
+                        frameLayoutProgress.visibility = View.VISIBLE
+
+//                        SHGlide.setImageBitmap(this@CameraDemoActivity, file, imageView, null, 0, 0, 0f, 0f)
+
+                        ILog.debug(TAG, "https://sys.everyportable.co.kr:8086/Naverpay/uploadBankCard")
+
+                        OKHttpWrapper.requestPostImageFileWithOpenId(
+                            "https://sys.everyportable.co.kr:8086/Naverpay/uploadBankCard", "", "file", file, "106495ddfb9400ce3f30d4b0125a11fc",
+                            object : OKHttpWrapperDelegate {
+                                override fun onFailure(call: Call, e: IOException) {
+                                    OKHttpWrapper.cancelCall(call)
+                                    e.printStackTrace()
+                                    ThreadUtil.startUIThread(0) {
+                                        frameLayoutProgress.visibility = View.GONE
+                                    }
+                                }
+
+                                override fun onResponse(call: Call, response: Response) {
+                                    try {
+                                        val responseString: String? = OKHttpWrapper.getStringResponse(response)
+                                        ILog.debug(TAG, responseString)
+
+                                        ThreadUtil.startUIThread(2000) {
+                                            isOK = false
+                                            frameLayoutProgress.visibility = View.GONE
+                                        }
+                                    }
+                                    catch (e: IOException) {
+                                        e.printStackTrace()
+
+                                        ThreadUtil.startUIThread(2000) {
+                                            isOK = false
+                                            frameLayoutProgress.visibility = View.GONE
+                                        }
+                                    }
+                                    finally {
+                                        OKHttpWrapper.cancelCall(call)
+
+                                    }
+                                }
+
+                            })
+
+//                    imageView.setImageBitmap(BitmapUtil.rotate(bitmap, degree))
+//                    isOK = true
+
                     }
 
-                    imageView.setImageBitmap(BitmapUtil.rotate(bitmap, degree))
-
-                    isOK = true
-
                 }
+
             }
         }))
 
@@ -148,6 +204,8 @@ class CameraDemoActivity : BasicPermissionActivity() {
         camera = cameraProvider.bindToLifecycle(this, cameraSelector, preview, imageAnalysis)
         preview.setSurfaceProvider(previewView.createSurfaceProvider())
     }
+
+
 
     fun getOutputDirectory(context: Context): File {
         val appContext = context.applicationContext

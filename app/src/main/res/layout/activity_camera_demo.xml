@@ -15,7 +15,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
     
-    
     <ImageView
             android:layout_margin="10dp"
             android:layout_gravity="bottom|end"
@@ -23,5 +22,20 @@
             android:scaleType="fitCenter"
             android:layout_width="100dp"
             android:layout_height="100dp"/>
+    
+    <FrameLayout
+            android:visibility="gone"
+            android:clickable="true"
+            android:id="@+id/frameLayoutProgress"
+            android:background="@color/transparent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:focusable="true">
+        
+        <ProgressBar
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+    </FrameLayout>
     
 </FrameLayout>
