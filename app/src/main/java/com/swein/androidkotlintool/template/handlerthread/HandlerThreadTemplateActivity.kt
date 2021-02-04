@@ -29,7 +29,7 @@ class HandlerThreadTemplateActivity : FragmentActivity() {
 
         // create ui handler
         uiHandler = Handler(object: Handler.Callback {
-            override fun handleMessage(msg: Message?): Boolean {
+            override fun handleMessage(msg: Message): Boolean {
                 when (msg!!.what) {
                     1 -> {
                         textView?.text = "haha " + msg.obj
@@ -47,18 +47,20 @@ class HandlerThreadTemplateActivity : FragmentActivity() {
         // create background handler
         // and set looper of handlerThread
         // into background handler
-        backgroundHandler = Handler(backgroundHandlerThread?.looper, object: Handler.Callback {
+        backgroundHandler = backgroundHandlerThread?.looper?.let {
+            Handler(it, object: Handler.Callback {
 
-            var count: Int = 0
+                var count: Int = 0
 
-            override fun handleMessage(msg: Message?): Boolean {
-                // get the message from background handler
-                // and
-                // send message to uiHandler
-                Message.obtain(uiHandler, 1, ++count).sendToTarget()
-                return true
-            }
-        })
+                override fun handleMessage(msg: Message): Boolean {
+                    // get the message from background handler
+                    // and
+                    // send message to uiHandler
+                    Message.obtain(uiHandler, 1, ++count).sendToTarget()
+                    return true
+                }
+            })
+        }
 
         Thread(Runnable {
            for(i in 0 until 10) {

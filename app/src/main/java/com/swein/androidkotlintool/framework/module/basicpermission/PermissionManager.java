@@ -2,11 +2,9 @@ package com.swein.androidkotlintool.framework.module.basicpermission;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
-import android.os.Build;
 import android.provider.Settings;
 
 import androidx.annotation.NonNull;
@@ -24,17 +22,17 @@ import java.util.List;
 public class PermissionManager {
 
     public final static int PERMISSION_REQUEST_CAMERA_CODE = 11;
-    public final static int PERMISSION_REQUEST_LOCATION = 12;
+//    public final static int PERMISSION_REQUEST_LOCATION = 12;
 
     private final static String ALERT_TITLE = "권한 설정";
     private final static String ALERT_MESSAGE = "권한 설정화면에서 권한 허용 해 주세요";
     private final static String ALERT_CONFIRM = "확인";
 
     @SuppressLint("StaticFieldLeak")
-    private static PermissionManager instance = new PermissionManager();
+    private static final PermissionManager instance = new PermissionManager();
 
     private Activity activity;
-    private List<String> currentPermissionsList = new ArrayList<>();
+    private final List<String> currentPermissionsList = new ArrayList<>();
 
     private boolean shouldAutoExecuteMethodAfterGrantedPermission = true;
 
@@ -49,11 +47,6 @@ public class PermissionManager {
     private boolean hasPermission(@NonNull Activity activity, @NonNull String... permissions) {
 
         this.activity = activity;
-
-        if(Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
-            this.activity = null;
-            return true;
-        }
 
         for(String permission: permissions) {
             if(ContextCompat.checkSelfPermission(activity, permission) != PackageManager.PERMISSION_GRANTED) {
@@ -80,11 +73,6 @@ public class PermissionManager {
     }
 
     private void requestRuntimePermission(Activity activity, String[] permissions, int requestCode) {
-
-        if(Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
-            this.activity = null;
-            return;
-        }
 
         List<String> permissionList = new ArrayList<>();
         for(String permission : permissions) {
@@ -123,15 +111,12 @@ public class PermissionManager {
                         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
                         builder.setTitle(ALERT_TITLE);
                         builder.setMessage(ALERT_MESSAGE);
-                        builder.setPositiveButton(ALERT_CONFIRM, new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
+                        builder.setPositiveButton(ALERT_CONFIRM, (dialog, which) -> {
 
-                                Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
-                                Uri uri = Uri.fromParts("package", activity.getPackageName(), null);
-                                intent.setData(uri);
-                                activity.startActivityForResult(intent, requestCode);
-                            }
+                            Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                            Uri uri = Uri.fromParts("package", activity.getPackageName(), null);
+                            intent.setData(uri);
+                            activity.startActivityForResult(intent, requestCode);
                         });
                         builder.create();
                         builder.show();

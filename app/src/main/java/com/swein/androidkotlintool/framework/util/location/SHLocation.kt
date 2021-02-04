@@ -37,15 +37,15 @@ class SHLocation {
 
     private val networkLocationListener = object : LocationListener {
 
-        override fun onLocationChanged(location: Location?) {
+        override fun onLocationChanged(location: Location) {
             if (bestLocation == null) {
                 bestLocation = location
             }
             else {
-                bestLocation = getBestLocation(bestLocation!!, location!!)
+                bestLocation = getBestLocation(bestLocation!!, location)
             }
 
-            val locationModel = getLocationModel(location!!)
+            val locationModel = getLocationModel(location)
 
             if (requestLocationJustOnce!!) {
                 clear()
@@ -59,24 +59,24 @@ class SHLocation {
 
         }
 
-        override fun onProviderEnabled(provider: String?) {
+        override fun onProviderEnabled(provider: String) {
 
         }
 
-        override fun onProviderDisabled(provider: String?) {
+        override fun onProviderDisabled(provider: String) {
 
         }
     }
 
     private val gpsLocationListener = object: LocationListener {
 
-        override fun onLocationChanged(location: Location?) {
+        override fun onLocationChanged(location: Location) {
 
             if (bestLocation == null) {
                 bestLocation = location
             }
             else {
-                bestLocation = getBestLocation(bestLocation!!, location!!)
+                bestLocation = getBestLocation(bestLocation!!, location)
             }
 
             val locationModel = getLocationModel(bestLocation!!)
@@ -94,11 +94,11 @@ class SHLocation {
 
         }
 
-        override fun onProviderEnabled(provider: String?) {
+        override fun onProviderEnabled(provider: String) {
             requestLocation()
         }
 
-        override fun onProviderDisabled(provider: String?) {
+        override fun onProviderDisabled(provider: String) {
 
         }
     }

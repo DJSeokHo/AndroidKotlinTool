@@ -32,7 +32,6 @@ import java.io.BufferedOutputStream
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
-import java.text.SimpleDateFormat
 import java.util.*
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
@@ -131,78 +130,82 @@ class CameraDemoActivity : BasicPermissionActivity() {
 
                 val photoFilePath = createFilePath(getOutputDirectory(this@CameraDemoActivity), PHOTO_EXTENSION)
 
-//                ILog.debug(TAG, photoFilePath)
+                ILog.debug(TAG, photoFilePath)
 
                 val bufferedOutputStream = BufferedOutputStream(FileOutputStream(File(photoFilePath)))
                 bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bufferedOutputStream)
 
                 BitmapUtil.compressImageWithFilePath(photoFilePath, 1, degree)
 
-                if(!isOK) {
+                ThreadUtil.startUIThread(0) {
 
-                    val file = File(photoFilePath)
-                    ILog.debug(TAG, "${file == null} ${file.name} ${file.absolutePath}")
-
-                    ThreadUtil.startUIThread(0) {
-
-                        isOK = true
-
-                        frameLayoutProgress.visibility = View.VISIBLE
-
-//                        SHGlide.setImageBitmap(this@CameraDemoActivity, file, imageView, null, 0, 0, 0f, 0f)
-
-                        ILog.debug(TAG, "https://sys.everyportable.co.kr:8086/Naverpay/uploadBankCard")
-
-                        OKHttpWrapper.requestPostImageFileWithOpenId(
-                            "https://sys.everyportable.co.kr:8086/Naverpay/uploadBankCard", "", "file", file, "you open id",
-                            object : OKHttpWrapperDelegate {
-                                override fun onFailure(call: Call, e: IOException) {
-                                    OKHttpWrapper.cancelCall(call)
-                                    e.printStackTrace()
-                                    ThreadUtil.startUIThread(0) {
-                                        frameLayoutProgress.visibility = View.GONE
-                                    }
-                                }
-
-                                override fun onResponse(call: Call, response: Response) {
-                                    try {
-                                        val responseString: String? = OKHttpWrapper.getStringResponse(response)
-                                        ILog.debug(TAG, responseString)
-
-                                        ThreadUtil.startUIThread(2000) {
-                                            isOK = false
-                                            frameLayoutProgress.visibility = View.GONE
-                                        }
-                                    }
-                                    catch (e: IOException) {
-                                        e.printStackTrace()
-
-                                        ThreadUtil.startUIThread(2000) {
-                                            isOK = false
-                                            frameLayoutProgress.visibility = View.GONE
-                                        }
-                                    }
-                                    finally {
-                                        OKHttpWrapper.cancelCall(call)
-
-                                    }
-                                }
-
-                            })
-
-//                    imageView.setImageBitmap(BitmapUtil.rotate(bitmap, degree))
-//                    isOK = true
-
-                    }
+                    imageView.setImageBitmap(BitmapUtil.rotate(bitmap, degree))
 
                 }
+
+//                if(!isOK) {
+//
+//                    val file = File(photoFilePath)
+//                    ILog.debug(TAG, photoFilePath)
+//                    ILog.debug(TAG, "${file == null} ${file.name} ${file.absolutePath}")
+//
+//                    ThreadUtil.startUIThread(0) {
+//
+//                        isOK = true
+//
+//                        frameLayoutProgress.visibility = View.VISIBLE
+//
+//                        SHGlide.setImageBitmap(this@CameraDemoActivity, file, imageView, null, 0, 0, 0f, 0f)
+//
+//                        ILog.debug(TAG, "https://sys.everyportable.co.kr:8086/Naverpay/uploadBankCard")
+//
+//                        OKHttpWrapper.requestPostImageFileWithOpenId(
+//                            "https://sys.everyportable.co.kr:8086/Naverpay/uploadBankCard", "", "file", file, "you open id",
+//                            object : OKHttpWrapperDelegate {
+//                                override fun onFailure(call: Call, e: IOException) {
+//                                    OKHttpWrapper.cancelCall(call)
+//                                    e.printStackTrace()
+//                                    ThreadUtil.startUIThread(0) {
+//                                        frameLayoutProgress.visibility = View.GONE
+//                                    }
+//                                }
+//
+//                                override fun onResponse(call: Call, response: Response) {
+//                                    try {
+//                                        val responseString: String? = OKHttpWrapper.getStringResponse(response)
+//                                        ILog.debug(TAG, responseString)
+//
+//                                        ThreadUtil.startUIThread(2000) {
+//                                            isOK = false
+//                                            frameLayoutProgress.visibility = View.GONE
+//                                        }
+//                                    }
+//                                    catch (e: IOException) {
+//                                        e.printStackTrace()
+//
+//                                        ThreadUtil.startUIThread(2000) {
+//                                            isOK = false
+//                                            frameLayoutProgress.visibility = View.GONE
+//                                        }
+//                                    }
+//                                    finally {
+//                                        OKHttpWrapper.cancelCall(call)
+//
+//                                    }
+//                                }
+//
+//                            })
+//
+//                    }
+//
+//                }
 
             }
         }))
 
         cameraProvider.unbindAll()
         camera = cameraProvider.bindToLifecycle(this, cameraSelector, preview, imageAnalysis)
-        preview.setSurfaceProvider(previewView.createSurfaceProvider())
+        preview.setSurfaceProvider(previewView.surfaceProvider)
     }
 
 
