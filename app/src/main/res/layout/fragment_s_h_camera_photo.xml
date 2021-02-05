@@ -98,12 +98,23 @@
                     android:scaleType="fitCenter"
                     android:layout_width="60dp"
                     android:layout_height="60dp"/>
+    
+            <ImageButton
+                    android:background="@color/transparent"
+                    android:src="@drawable/camera_album"
+                    android:layout_marginStart="64dp"
+                    android:translationZ="5dp"
+                    android:id="@+id/imageButtonAlbum"
+                    android:layout_gravity="center"
+                    android:scaleType="fitCenter"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"/>
         
             <TextView
                     android:text="@string/camera_cancel"
-                    android:paddingVertical="2dp"
+                    android:paddingVertical="3dp"
                     android:paddingHorizontal="10dp"
-                    android:textSize="8pt"
+                    android:textSize="7pt"
                     android:id="@+id/textViewAction"
                     android:textColor="@color/white"
                     android:layout_gravity="center_vertical|end"

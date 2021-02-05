@@ -4,7 +4,6 @@ import android.Manifest
 import android.content.Context
 import android.content.res.Configuration
 import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.hardware.display.DisplayManager
 import android.net.Uri
 import android.os.Bundle
@@ -26,7 +25,6 @@ import com.swein.androidkotlintool.framework.module.basicpermission.RequestPermi
 import com.swein.androidkotlintool.framework.module.shcameraphoto.shselectedimageviewholder.SHSelectedImageViewHolder
 import com.swein.androidkotlintool.framework.module.shcameraphoto.shselectedimageviewholder.adapter.item.ImageSelectorItemBean
 import com.swein.androidkotlintool.framework.util.animation.AnimationUtil
-import com.swein.androidkotlintool.framework.util.bitmap.BitmapUtil
 import com.swein.androidkotlintool.framework.util.date.DateUtil
 import com.swein.androidkotlintool.framework.util.log.ILog
 import com.swein.androidkotlintool.framework.util.theme.ThemeUtil
@@ -64,6 +62,7 @@ class SHCameraPhotoFragment : Fragment() {
 
     private lateinit var imageButtonTake: ImageButton
     private lateinit var imageButtonSwitchCamera: ImageButton
+    private lateinit var imageButtonAlbum: ImageButton
     private lateinit var imageButtonFlash: ImageButton
     private lateinit var textViewAction: TextView
     private lateinit var imageView: ImageView
@@ -197,11 +196,16 @@ class SHCameraPhotoFragment : Fragment() {
         imageButtonFlash = rootView.findViewById(R.id.imageButtonFlash)
         textViewImageCount = rootView.findViewById(R.id.textViewImageCount)
         frameLayoutSelectedImageArea = rootView.findViewById(R.id.frameLayoutSelectedImageArea)
+        imageButtonAlbum = rootView.findViewById(R.id.imageButtonAlbum)
 
         frameLayoutProgress = rootView.findViewById(R.id.frameLayoutProgress)
     }
 
     private fun setListener() {
+
+        imageButtonAlbum.setOnClickListener {
+
+        }
 
         imageView.setOnClickListener {
 
@@ -298,6 +302,13 @@ class SHCameraPhotoFragment : Fragment() {
 
                                 ILog.debug(TAG, selectedImageList.size.toString())
                                 textViewImageCount.text = selectedImageList.size.toString()
+
+                                textViewAction.text = if(selectedImageList.isEmpty()) {
+                                    getString(R.string.camera_cancel)
+                                }
+                                else {
+                                    getString(R.string.camera_confirm)
+                                }
 
                                 hideProgress()
                             }
@@ -518,6 +529,13 @@ class SHCameraPhotoFragment : Fragment() {
                 else {
                     textViewImageCount.text = selectedImageList.size.toString()
                     SHGlide.setImageFilePath(context, selectedImageList[0].filePath, imageView, null, imageView.width, imageView.height, 0f, 0f)
+                }
+
+                textViewAction.text = if(selectedImageList.isEmpty()) {
+                    getString(R.string.camera_cancel)
+                }
+                else {
+                    getString(R.string.camera_confirm)
                 }
             }
 
