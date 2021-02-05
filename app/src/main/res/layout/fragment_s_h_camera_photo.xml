@@ -32,24 +32,8 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"/>
         
-        <FrameLayout
-                android:layout_marginStart="10dp"
-                android:paddingStart="8dp"
-                android:background="@drawable/round_corner_bg_gradient_stroke"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-    
-            <Switch
-                    android:id="@+id/switchQuality"
-                    android:text="@string/camera_normal"
-                    android:textSize="6pt"
-                    android:layout_width="wrap_content"
-                    android:layout_height="30dp"/>
-            
-        </FrameLayout>
-        
         <ImageButton
-                android:layout_marginStart="10dp"
+                android:layout_marginStart="16dp"
                 android:translationZ="5dp"
                 android:id="@+id/imageButtonSwitchCamera"
                 android:padding="6dp"

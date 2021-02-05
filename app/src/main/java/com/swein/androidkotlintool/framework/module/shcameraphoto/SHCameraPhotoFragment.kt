@@ -11,10 +11,7 @@ import android.util.DisplayMetrics
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.FrameLayout
-import android.widget.ImageButton
-import android.widget.ImageView
-import android.widget.TextView
+import android.widget.*
 import androidx.camera.core.*
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.camera.view.PreviewView
@@ -29,6 +26,7 @@ import com.swein.androidkotlintool.framework.util.bitmap.BitmapUtil
 import com.swein.androidkotlintool.framework.util.log.ILog
 import com.swein.androidkotlintool.framework.util.theme.ThemeUtil
 import com.swein.androidkotlintool.framework.util.thread.ThreadUtil
+import kotlinx.android.synthetic.main.fragment_s_h_camera_photo.*
 import java.io.File
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
@@ -80,7 +78,6 @@ class SHCameraPhotoFragment : Fragment() {
     private var lensFacing = CameraSelector.LENS_FACING_BACK
     private lateinit var imageCapture: ImageCapture
     private lateinit var imageAnalysis: ImageAnalysis
-    private var quality = ImageCapture.CAPTURE_MODE_MINIMIZE_LATENCY
     private var flash = false
 
     private val displayManager by lazy {
@@ -179,7 +176,9 @@ class SHCameraPhotoFragment : Fragment() {
 
             try {
 
-                bindCameraUseCases()
+                previewView.post {
+                    bindCameraUseCases()
+                }
 
             } catch (e: Exception) {
                 // Do nothing
@@ -191,7 +190,9 @@ class SHCameraPhotoFragment : Fragment() {
 
             context?.let {
 
-                val photoFilePath = createFilePath(getOutputDirectory(it), PHOTO_EXTENSION)
+                showProgress()
+
+                val photoFilePath = createFilePath(getOutputDirectory(it))
                 val photoFile = File(photoFilePath)
                 val metadata = ImageCapture.Metadata().apply {
                     // Mirror image when using the front camera
@@ -208,6 +209,9 @@ class SHCameraPhotoFragment : Fragment() {
                     {
                         ILog.debug(TAG, error.message)
                         error.printStackTrace()
+                        ThreadUtil.startUIThread(0) {
+                            hideProgress()
+                        }
                     }
 
                     override fun onImageSaved(outputFileResults: ImageCapture.OutputFileResults) {
@@ -215,19 +219,14 @@ class SHCameraPhotoFragment : Fragment() {
                         val savedUri = outputFileResults.savedUri ?: Uri.fromFile(photoFile)
                         ILog.debug(TAG, savedUri)
 
-                        ThreadUtil.startUIThread(0) {
+                        ThreadUtil.startThread {
 
-                            showProgress()
+                            BitmapUtil.compressImageWithFilePath(photoFilePath, 1)
+                            val bitmap = BitmapFactory.decodeFile(photoFilePath)
 
-                            ThreadUtil.startThread {
-
-                                BitmapUtil.compressImageWithFilePath(photoFilePath, 1)
-                                val bitmap = BitmapFactory.decodeFile(photoFilePath)
-
-                                ThreadUtil.startUIThread(0) {
-                                    imageView.setImageBitmap(bitmap)
-                                    hideProgress()
-                                }
+                            ThreadUtil.startUIThread(0) {
+                                imageView.setImageBitmap(bitmap)
+                                hideProgress()
                             }
                         }
                     }
@@ -270,7 +269,6 @@ class SHCameraPhotoFragment : Fragment() {
             cameraProviderFuture.addListener({
 
                 initCamera()
-
                 checkBackFrontCamera()
                 bindCameraUseCases()
 
@@ -355,12 +353,11 @@ class SHCameraPhotoFragment : Fragment() {
         }
 
         return ImageCapture.Builder()
-            .setCaptureMode(quality)
+            .setCaptureMode(ImageCapture.CAPTURE_MODE_MAXIMIZE_QUALITY)
             .setFlashMode(flashMode)
             .setTargetAspectRatio(screenAspectRatio)
             .setTargetRotation(rotation)
             .build()
-
     }
 
     private fun initImageAnalysis(screenAspectRatio: Int, rotation: Int): ImageAnalysis {
@@ -405,7 +402,7 @@ class SHCameraPhotoFragment : Fragment() {
         return cameraProvider.hasCamera(CameraSelector.DEFAULT_FRONT_CAMERA)
     }
 
-    fun getOutputDirectory(context: Context): File {
+    private fun getOutputDirectory(context: Context): File {
         val appContext = context.applicationContext
         val mediaDir = context.externalCacheDirs.firstOrNull()?.let {
             File(it, appContext.resources.getString(R.string.app_name)).apply { mkdirs() } }
@@ -413,9 +410,9 @@ class SHCameraPhotoFragment : Fragment() {
             mediaDir else appContext.filesDir
     }
 
-    private fun createFilePath(baseFolder: File, extension: String): String {
+    private fun createFilePath(baseFolder: File): String {
 
-        return "${baseFolder}temp_image$extension"
+        return "${baseFolder}temp_image$PHOTO_EXTENSION"
     }
 
     private fun showProgress() {
