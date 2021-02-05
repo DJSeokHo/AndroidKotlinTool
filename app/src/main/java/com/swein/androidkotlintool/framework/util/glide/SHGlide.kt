@@ -62,6 +62,30 @@ class SHGlide {
             requestBuilder.skipMemoryCache(true).diskCacheStrategy(DiskCacheStrategy.AUTOMATIC).into(imageView!!)
         }
 
+        fun setImageFilePath(context: Context?, filePath: String, imageView: ImageView?, placeHolder: Drawable?, w: Int, h: Int, rate: Float, thumbnailSize: Float) {
+            var width = w
+            var height = h
+            var requestBuilder = Glide.with(context!!).asBitmap().load(File(filePath)).transition(BitmapTransitionOptions.withCrossFade())
+
+            if (placeHolder != null) {
+                requestBuilder = requestBuilder.placeholder(placeHolder)
+            }
+
+            if (width != 0 && height != 0) {
+                if (rate != 0f) {
+                    width = (width.toFloat() * rate).toInt()
+                    height = (height.toFloat() * rate).toInt()
+                }
+                requestBuilder = requestBuilder.override(width, height)
+            }
+
+            if (thumbnailSize != 0f) {
+                requestBuilder = requestBuilder.thumbnail(thumbnailSize)
+            }
+
+            requestBuilder.skipMemoryCache(true).diskCacheStrategy(DiskCacheStrategy.AUTOMATIC).into(imageView!!)
+        }
+
         fun setImageBitmap(context: Context?, file: File, imageView: ImageView?, placeHolder: Drawable?, w: Int, h: Int, rate: Float, thumbnailSize: Float) {
             var width = w
             var height = h

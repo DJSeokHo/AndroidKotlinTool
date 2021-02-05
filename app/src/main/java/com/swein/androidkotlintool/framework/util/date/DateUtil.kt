@@ -24,6 +24,17 @@ class DateUtil {
                     "${calendar.get(Calendar.SECOND)}$connectionString"
         }
 
+        fun getCurrentDateTimeSSSStringWithNoSpace(connectionString: String): String {
+            val calendar: Calendar = Calendar.getInstance()
+            return "${calendar.get(Calendar.YEAR)}$connectionString" +
+                    "${(calendar.get(Calendar.MONTH) + 1)}$connectionString" +
+                    "${calendar.get(Calendar.DAY_OF_MONTH)}$connectionString" +
+                    "${calendar.get(Calendar.HOUR_OF_DAY)}$connectionString" +
+                    "${calendar.get(Calendar.MINUTE)}$connectionString" +
+                    "${calendar.get(Calendar.SECOND)}$connectionString" +
+                    "${calendar.get(Calendar.MILLISECOND)}"
+        }
+
         @SuppressLint("SimpleDateFormat")
         fun getDayOfWeekOfDateTime(date: String): String {
             val weekDays: List<String> = listOf("星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六")

@@ -5,6 +5,7 @@ import android.animation.ObjectAnimator
 import android.animation.PropertyValuesHolder
 import android.content.Context
 import android.view.View
+import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.HorizontalScrollView
 import android.widget.ScrollView
@@ -13,6 +14,14 @@ import com.swein.androidkotlintool.R
 class AnimationUtil {
 
     companion object {
+
+        fun show(context: Context?): Animation? {
+            return AnimationUtils.loadAnimation(context, R.anim.fade_in)
+        }
+
+        fun hide(context: Context?): Animation? {
+            return AnimationUtils.loadAnimation(context, R.anim.fade_out)
+        }
 
         fun scrollViewSmoothScrollToY(
             scrollView: ScrollView,

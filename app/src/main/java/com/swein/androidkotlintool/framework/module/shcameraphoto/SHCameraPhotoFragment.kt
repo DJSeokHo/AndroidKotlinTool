@@ -23,10 +23,15 @@ import com.google.common.util.concurrent.ListenableFuture
 import com.swein.androidkotlintool.R
 import com.swein.androidkotlintool.framework.module.basicpermission.PermissionManager
 import com.swein.androidkotlintool.framework.module.basicpermission.RequestPermission
+import com.swein.androidkotlintool.framework.module.shcameraphoto.shselectedimageviewholder.SHSelectedImageViewHolder
+import com.swein.androidkotlintool.framework.module.shcameraphoto.shselectedimageviewholder.adapter.item.ImageSelectorItemBean
+import com.swein.androidkotlintool.framework.util.animation.AnimationUtil
 import com.swein.androidkotlintool.framework.util.bitmap.BitmapUtil
+import com.swein.androidkotlintool.framework.util.date.DateUtil
 import com.swein.androidkotlintool.framework.util.log.ILog
 import com.swein.androidkotlintool.framework.util.theme.ThemeUtil
 import com.swein.androidkotlintool.framework.util.thread.ThreadUtil
+import io.everyportable.framework.util.glide.SHGlide
 import kotlinx.android.synthetic.main.fragment_s_h_camera_photo.*
 import java.io.File
 import java.util.concurrent.ExecutorService
@@ -43,19 +48,13 @@ class SHCameraPhotoFragment : Fragment() {
         const val TAG = "SHCameraPhotoFragment"
         private const val PHOTO_EXTENSION = ".jpg"
 
-//        @JvmStatic
-//        fun newInstance() =
-//            SHCameraPhotoFragment().apply {
-//                arguments = Bundle().apply {
-//                    putString(ARG_PARAM1, param1)
-//                    putString(ARG_PARAM2, param2)
-//                }
-//            }
-
         @JvmStatic
-        fun newInstance(): Fragment {
-            return SHCameraPhotoFragment()
-        }
+        fun newInstance(limit: Int) =
+            SHCameraPhotoFragment().apply {
+                arguments = Bundle().apply {
+                    putInt("limit", limit)
+                }
+            }
 
         private const val RATIO_4_3_VALUE = 4.0 / 3.0
         private const val RATIO_16_9_VALUE = 16.0 / 9.0
@@ -68,6 +67,7 @@ class SHCameraPhotoFragment : Fragment() {
     private lateinit var imageButtonFlash: ImageButton
     private lateinit var textViewAction: TextView
     private lateinit var imageView: ImageView
+    private lateinit var textViewImageCount: TextView
     private lateinit var frameLayoutProgress: FrameLayout
 
     private lateinit var previewView: PreviewView
@@ -80,7 +80,10 @@ class SHCameraPhotoFragment : Fragment() {
     private lateinit var imageAnalysis: ImageAnalysis
     private var flash = false
 
-    private var selectedImageList = mutableListOf<String>()
+    private var limit = 0
+    private var selectedImageList = mutableListOf<ImageSelectorItemBean>()
+    private var shSelectedImageViewHolder: SHSelectedImageViewHolder? = null
+    private lateinit var frameLayoutSelectedImageArea: FrameLayout
 
     private val displayManager by lazy {
         requireContext().getSystemService(Context.DISPLAY_SERVICE) as DisplayManager
@@ -128,7 +131,19 @@ class SHCameraPhotoFragment : Fragment() {
         activity?.let {
             ThemeUtil.transparencyBar(it)
             ThemeUtil.hideSystemUi(it)
+        }
 
+        checkBundle()
+    }
+
+    private fun checkBundle() {
+        arguments?.let {
+            limit = it.getInt("limit", 0)
+        }
+
+        ILog.debug(TAG, "limit ?? $limit")
+        if(limit == 0) {
+            activity?.finish()
         }
     }
 
@@ -138,15 +153,18 @@ class SHCameraPhotoFragment : Fragment() {
     ): View {
         // Inflate the layout for this fragment
         rootView = inflater.inflate(R.layout.fragment_s_h_camera_photo, container, false)
+
         initData()
         findView()
         setListener()
+
         return rootView
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        initView()
         // Wait for the views to be properly laid out
         previewView.post {
 
@@ -155,7 +173,7 @@ class SHCameraPhotoFragment : Fragment() {
 
             // Set up the camera and its use cases
             activity?.let {
-                updateView()
+                updateFlashImage()
                 initCamera(it)
             }
         }
@@ -166,6 +184,10 @@ class SHCameraPhotoFragment : Fragment() {
         selectedImageList.clear()
     }
 
+    private fun initView() {
+        textViewImageCount.text = "0"
+    }
+
     private fun findView() {
         imageButtonTake = rootView.findViewById(R.id.imageButtonTake)
         imageButtonSwitchCamera = rootView.findViewById(R.id.imageButtonSwitchCamera)
@@ -173,11 +195,22 @@ class SHCameraPhotoFragment : Fragment() {
         imageView = rootView.findViewById(R.id.imageView)
         previewView = rootView.findViewById(R.id.previewView)
         imageButtonFlash = rootView.findViewById(R.id.imageButtonFlash)
+        textViewImageCount = rootView.findViewById(R.id.textViewImageCount)
+        frameLayoutSelectedImageArea = rootView.findViewById(R.id.frameLayoutSelectedImageArea)
 
         frameLayoutProgress = rootView.findViewById(R.id.frameLayoutProgress)
     }
 
     private fun setListener() {
+
+        imageView.setOnClickListener {
+
+            if (selectedImageList.isEmpty()) {
+                return@setOnClickListener
+            }
+
+            showSelectedImageArea()
+        }
 
         imageButtonFlash.setOnClickListener {
 
@@ -190,7 +223,7 @@ class SHCameraPhotoFragment : Fragment() {
                 ImageCapture.FLASH_MODE_OFF
             }
 
-            updateView()
+            updateFlashImage()
         }
 
         imageButtonSwitchCamera.setOnClickListener {
@@ -215,6 +248,11 @@ class SHCameraPhotoFragment : Fragment() {
         }
 
         imageButtonTake.setOnClickListener {
+
+            if(selectedImageList.size >= limit) {
+
+                return@setOnClickListener
+            }
 
             context?.let {
 
@@ -249,11 +287,18 @@ class SHCameraPhotoFragment : Fragment() {
 
                         ThreadUtil.startThread {
 
-                            BitmapUtil.compressImageWithFilePath(photoFilePath, 1)
-                            val bitmap = BitmapFactory.decodeFile(photoFilePath)
+//                            BitmapUtil.compressImageWithFilePath(photoFilePath, 1)
+//                            val bitmap = BitmapFactory.decodeFile(photoFilePath)
 
                             ThreadUtil.startUIThread(0) {
-                                imageView.setImageBitmap(bitmap)
+//                                imageView.setImageBitmap(bitmap)
+
+                                SHGlide.setImageFilePath(context, photoFilePath, imageView, null, imageView.width, imageView.height, 0f, 0f)
+                                addImage(photoFilePath)
+
+                                ILog.debug(TAG, selectedImageList.size.toString())
+                                textViewImageCount.text = selectedImageList.size.toString()
+
                                 hideProgress()
                             }
                         }
@@ -271,7 +316,14 @@ class SHCameraPhotoFragment : Fragment() {
         }
     }
 
-    private fun updateView() {
+    private fun addImage(imageFilePath: String) {
+        val imageSelectorItemBean = ImageSelectorItemBean()
+        imageSelectorItemBean.filePath = imageFilePath
+        imageSelectorItemBean.isSelected = true
+        selectedImageList.add(0, imageSelectorItemBean)
+    }
+
+    private fun updateFlashImage() {
         if (flash) {
             imageButtonFlash.setImageResource(R.drawable.flash_auto)
         }
@@ -434,13 +486,60 @@ class SHCameraPhotoFragment : Fragment() {
         val appContext = context.applicationContext
         val mediaDir = context.externalCacheDirs.firstOrNull()?.let {
             File(it, appContext.resources.getString(R.string.app_name)).apply { mkdirs() } }
-        return if (mediaDir != null && mediaDir.exists())
-            mediaDir else appContext.filesDir
+        return if (mediaDir != null && mediaDir.exists()) {
+            mediaDir
+        }
+        else {
+            appContext.filesDir
+        }
     }
 
     private fun createFilePath(baseFolder: File): String {
 
-        return "${baseFolder}temp_image$PHOTO_EXTENSION"
+        return "${baseFolder}${DateUtil.getCurrentDateTimeSSSStringWithNoSpace("_")}$PHOTO_EXTENSION"
+    }
+
+    private fun showSelectedImageArea() {
+
+        if(shSelectedImageViewHolder != null) {
+            return
+        }
+
+        shSelectedImageViewHolder = SHSelectedImageViewHolder(context, object : SHSelectedImageViewHolder.SHSelectedImageViewHolderDelegate {
+            override fun onDelete(imageSelectorItemBean: ImageSelectorItemBean) {
+
+                selectedImageList.remove(imageSelectorItemBean)
+
+                if(selectedImageList.isEmpty()) {
+                    textViewImageCount.text = "0"
+                    closeSelectedImageArea()
+                    imageView.setImageBitmap(null)
+                }
+                else {
+                    textViewImageCount.text = selectedImageList.size.toString()
+                    SHGlide.setImageFilePath(context, selectedImageList[0].filePath, imageView, null, imageView.width, imageView.height, 0f, 0f)
+                }
+            }
+
+            override fun onClose() {
+                closeSelectedImageArea()
+            }
+
+        }, selectedImageList)
+
+        frameLayoutSelectedImageArea.addView(shSelectedImageViewHolder!!.view)
+        frameLayoutSelectedImageArea.startAnimation(AnimationUtil.show(context))
+        frameLayoutSelectedImageArea.visibility = View.VISIBLE
+    }
+
+    private fun closeSelectedImageArea() {
+        if(shSelectedImageViewHolder == null) {
+            return
+        }
+
+        frameLayoutSelectedImageArea.removeAllViews()
+        shSelectedImageViewHolder = null
+        frameLayoutSelectedImageArea.visibility = View.GONE
     }
 
     private fun showProgress() {

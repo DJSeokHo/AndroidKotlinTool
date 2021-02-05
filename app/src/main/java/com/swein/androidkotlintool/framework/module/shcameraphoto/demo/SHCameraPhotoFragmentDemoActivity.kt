@@ -16,7 +16,7 @@ class SHCameraPhotoFragmentDemoActivity : FragmentActivity() {
             ActivityUtil.addFragmentWithTAG(
                 this,
                 R.id.frameLayoutContainer,
-                SHCameraPhotoFragment.newInstance(),
+                SHCameraPhotoFragment.newInstance(3),
                 SHCameraPhotoFragment.TAG,
                 false,
                 null
