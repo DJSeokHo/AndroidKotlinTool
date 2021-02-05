@@ -2,6 +2,7 @@ package com.swein.androidkotlintool.framework.module.shcameraphoto
 
 import android.Manifest
 import android.content.Context
+import android.content.res.Configuration
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.hardware.display.DisplayManager
@@ -69,7 +70,6 @@ class SHCameraPhotoFragment : Fragment() {
     private lateinit var imageView: ImageView
     private lateinit var frameLayoutProgress: FrameLayout
 
-
     private lateinit var previewView: PreviewView
 
     private lateinit var preview: Preview
@@ -79,6 +79,8 @@ class SHCameraPhotoFragment : Fragment() {
     private lateinit var imageCapture: ImageCapture
     private lateinit var imageAnalysis: ImageAnalysis
     private var flash = false
+
+    private var selectedImageList = mutableListOf<String>()
 
     private val displayManager by lazy {
         requireContext().getSystemService(Context.DISPLAY_SERVICE) as DisplayManager
@@ -101,6 +103,26 @@ class SHCameraPhotoFragment : Fragment() {
     private lateinit var cameraExecutor: ExecutorService
     private lateinit var cameraProviderFuture: ListenableFuture<ProcessCameraProvider>
 
+    /**
+     * add android:configChanges="keyboardHidden|orientation|screenSize"
+     */
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+
+        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+
+            // Nothing need to be done here
+            ILog.debug(TAG, "ORIENTATION_LANDSCAPE")
+
+        }
+        else {
+            ILog.debug(TAG, "ORIENTATION_PORTRAIT")
+            // Nothing need to be done here
+        }
+
+        bindCameraUseCases()
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         activity?.let {
@@ -116,6 +138,7 @@ class SHCameraPhotoFragment : Fragment() {
     ): View {
         // Inflate the layout for this fragment
         rootView = inflater.inflate(R.layout.fragment_s_h_camera_photo, container, false)
+        initData()
         findView()
         setListener()
         return rootView
@@ -136,6 +159,11 @@ class SHCameraPhotoFragment : Fragment() {
                 initCamera(it)
             }
         }
+    }
+
+    private fun initData() {
+
+        selectedImageList.clear()
     }
 
     private fun findView() {
