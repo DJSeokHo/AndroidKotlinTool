@@ -1,4 +1,4 @@
-package com.swein.androidkotlintool.framework.module.camera
+package com.swein.androidkotlintool.framework.module.shcameraphoto
 
 import android.graphics.*
 import android.os.Build

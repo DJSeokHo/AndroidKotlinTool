@@ -5,7 +5,6 @@ import android.content.Context
 import android.graphics.Bitmap
 import android.os.Bundle
 import android.util.Size
-import android.view.View
 import android.widget.FrameLayout
 import android.widget.ImageView
 import androidx.camera.core.Camera
@@ -20,18 +19,13 @@ import com.swein.androidkotlintool.R
 import com.swein.androidkotlintool.framework.module.basicpermission.BasicPermissionActivity
 import com.swein.androidkotlintool.framework.module.basicpermission.PermissionManager
 import com.swein.androidkotlintool.framework.module.basicpermission.RequestPermission
+import com.swein.androidkotlintool.framework.module.shcameraphoto.NormalImageRealTimeAnalyzer
 import com.swein.androidkotlintool.framework.util.bitmap.BitmapUtil
 import com.swein.androidkotlintool.framework.util.log.ILog
-import com.swein.androidkotlintool.framework.util.okhttp.OKHttpWrapper
-import com.swein.androidkotlintool.framework.util.okhttp.OKHttpWrapperDelegate
 import com.swein.androidkotlintool.framework.util.thread.ThreadUtil
-import io.everyportable.framework.util.glide.SHGlide
-import okhttp3.Call
-import okhttp3.Response
 import java.io.BufferedOutputStream
 import java.io.File
 import java.io.FileOutputStream
-import java.io.IOException
 import java.util.*
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors

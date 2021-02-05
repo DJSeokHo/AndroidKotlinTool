@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentActivity
 import com.swein.androidkotlintool.R
 import com.swein.androidkotlintool.constants.Constants
 import com.swein.androidkotlintool.framework.module.camera.CameraDemoActivity
+import com.swein.androidkotlintool.framework.module.shcameraphoto.demo.SHCameraPhotoFragmentDemoActivity
 import com.swein.androidkotlintool.framework.module.volley.VolleyModule
 import com.swein.androidkotlintool.framework.util.activity.ActivityUtil
 import com.swein.androidkotlintool.framework.util.log.ILog
@@ -39,7 +40,8 @@ class MainActivity : FragmentActivity() {
         findView()
         setListener()
 
-        ActivityUtil.startNewActivityWithoutFinish(this, CameraDemoActivity::class.java)
+//        ActivityUtil.startNewActivityWithoutFinish(this, CameraDemoActivity::class.java)
+        ActivityUtil.startNewActivityWithoutFinish(this, SHCameraPhotoFragmentDemoActivity::class.java)
     }
 
     private fun findView() {

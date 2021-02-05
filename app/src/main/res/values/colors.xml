@@ -7,6 +7,8 @@
     <color name="black">#000</color>
     <color name="white">#FFF</color>
     
+    <color name="transparent_20_white">#33FFFFFF</color>
+    
     <color name="transparent">#00000000</color>
     
     <color name="progress_bar_bg">#3C000000</color>
