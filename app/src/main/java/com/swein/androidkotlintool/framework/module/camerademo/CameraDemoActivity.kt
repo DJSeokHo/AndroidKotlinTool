@@ -1,4 +1,4 @@
-package com.swein.androidkotlintool.framework.module.camera
+package com.swein.androidkotlintool.framework.module.camerademo
 
 import android.Manifest
 import android.content.Context
@@ -19,7 +19,7 @@ import com.swein.androidkotlintool.R
 import com.swein.androidkotlintool.framework.module.basicpermission.BasicPermissionActivity
 import com.swein.androidkotlintool.framework.module.basicpermission.PermissionManager
 import com.swein.androidkotlintool.framework.module.basicpermission.RequestPermission
-import com.swein.androidkotlintool.framework.module.shcameraphoto.NormalImageRealTimeAnalyzer
+import com.swein.androidkotlintool.framework.module.shcameraphoto.camera.NormalImageRealTimeAnalyzer
 import com.swein.androidkotlintool.framework.util.bitmap.BitmapUtil
 import com.swein.androidkotlintool.framework.util.log.ILog
 import com.swein.androidkotlintool.framework.util.thread.ThreadUtil

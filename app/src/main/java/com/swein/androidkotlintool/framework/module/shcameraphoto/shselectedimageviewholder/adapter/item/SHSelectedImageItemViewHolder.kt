@@ -5,7 +5,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.swein.androidkotlintool.R
-import io.everyportable.framework.util.glide.SHGlide
+import com.swein.androidkotlintool.framework.util.glide.SHGlide
 import java.lang.ref.WeakReference
 
 class SHSelectedImageItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

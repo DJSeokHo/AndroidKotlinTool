@@ -1,10 +1,9 @@
-package com.swein.androidkotlintool.framework.module.shcameraphoto
+package com.swein.androidkotlintool.framework.module.shcameraphoto.camera
 
 import android.graphics.*
 import android.os.Build
 import androidx.camera.core.ImageAnalysis
 import androidx.camera.core.ImageProxy
-import com.swein.androidkotlintool.framework.util.log.ILog
 import java.io.ByteArrayOutputStream
 import java.nio.ByteBuffer
 

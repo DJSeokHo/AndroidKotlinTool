@@ -50,10 +50,6 @@ class SHSelectedImageViewHolder (
             delegate?.onClose()
         }
 
-
-//        imageViewClose.setOnClickListener {
-//            navigationSimpleViewHolderDelegate?.onClose()
-//        }
     }
 
     private fun initList() {
@@ -81,6 +77,7 @@ class SHSelectedImageViewHolder (
 
     fun insert(imageSelectorItemBean: ImageSelectorItemBean) {
         adapter.insert(imageSelectorItemBean)
+        recyclerView.smoothScrollToPosition(0)
     }
 
 }

@@ -7,7 +7,8 @@ class ESSArrows {
     companion object {
 
         const val YOUR_ESS_ARROWS = "YOUR_ESS_ARROWS"
-
+        const val ENABLE_LIST_ITEM_CLICK = "ENABLE_LIST_ITEM_CLICK"
+        const val DISABLE_LIST_ITEM_CLICK = "DISABLE_LIST_ITEM_CLICK"
     }
 
 }

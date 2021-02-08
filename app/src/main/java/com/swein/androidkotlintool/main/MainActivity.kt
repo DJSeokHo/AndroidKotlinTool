@@ -1,12 +1,18 @@
 package com.swein.androidkotlintool.main
 
+import android.Manifest
 import android.graphics.Color
 import android.os.Bundle
 import android.widget.Button
 import androidx.fragment.app.FragmentActivity
 import com.swein.androidkotlintool.R
 import com.swein.androidkotlintool.constants.Constants
-import com.swein.androidkotlintool.framework.module.camera.CameraDemoActivity
+import com.swein.androidkotlintool.framework.module.basicpermission.BasicPermissionActivity
+import com.swein.androidkotlintool.framework.module.basicpermission.PermissionManager
+import com.swein.androidkotlintool.framework.module.basicpermission.RequestPermission
+import com.swein.androidkotlintool.framework.module.shcameraphoto.album.albumselectorwrapper.AlbumSelectorWrapper
+import com.swein.androidkotlintool.framework.module.shcameraphoto.album.albumselectorwrapper.bean.AlbumFolderItemBean
+import com.swein.androidkotlintool.framework.module.shcameraphoto.album.albumselectorwrapper.bean.AlbumSelectorItemBean
 import com.swein.androidkotlintool.framework.module.shcameraphoto.demo.SHCameraPhotoFragmentDemoActivity
 import com.swein.androidkotlintool.framework.module.volley.VolleyModule
 import com.swein.androidkotlintool.framework.util.activity.ActivityUtil
@@ -19,7 +25,7 @@ import com.swein.androidkotlintool.template.list.SHListActivity
 import com.swein.androidkotlintool.template.memeberjoin.MemberJoinTemplateActivity
 import com.swein.androidkotlintool.template.viewpagerfragment.activity.ViewPagerActivity
 
-class MainActivity : FragmentActivity() {
+class MainActivity : BasicPermissionActivity() {
 
     companion object {
         private const val TAG = "MainActivity"
@@ -41,7 +47,27 @@ class MainActivity : FragmentActivity() {
         setListener()
 
 //        ActivityUtil.startNewActivityWithoutFinish(this, CameraDemoActivity::class.java)
-        ActivityUtil.startNewActivityWithoutFinish(this, SHCameraPhotoFragmentDemoActivity::class.java)
+//        ActivityUtil.startNewActivityWithoutFinish(this, SHCameraPhotoFragmentDemoActivity::class.java)
+
+        test()
+    }
+
+    @RequestPermission(permissionCode = PermissionManager.PERMISSION_REQUEST_CAMERA_CODE)
+    private fun test() {
+
+        if (PermissionManager.getInstance().requestPermission(
+                this,
+                true,
+                PermissionManager.PERMISSION_REQUEST_CAMERA_CODE,
+                Manifest.permission.CAMERA,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                Manifest.permission.READ_EXTERNAL_STORAGE
+            )
+        ) {
+
+            ActivityUtil.startNewActivityWithoutFinish(this, SHCameraPhotoFragmentDemoActivity::class.java)
+
+        }
     }
 
     private fun findView() {

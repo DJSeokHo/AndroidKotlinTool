@@ -90,7 +90,12 @@ class BitmapUtil {
             return byteArrayOutputStream.toByteArray()
         }
 
-        fun decodeSampledBitmapFromResource(res: Resources, resId: Int, reqWidth: Int, reqHeight: Int): Bitmap {
+        fun decodeSampledBitmapFromResource(
+            res: Resources,
+            resId: Int,
+            reqWidth: Int,
+            reqHeight: Int
+        ): Bitmap {
             val options = BitmapFactory.Options()
             options.inJustDecodeBounds = true
             BitmapFactory.decodeResource(res, resId, options)
@@ -108,7 +113,11 @@ class BitmapUtil {
             return BitmapFactory.decodeFile(imagePath, options)
         }
 
-        private fun calculateInSampleSize(options: BitmapFactory.Options, reqWidth: Int, reqHeight: Int): Int {
+        private fun calculateInSampleSize(
+            options: BitmapFactory.Options,
+            reqWidth: Int,
+            reqHeight: Int
+        ): Int {
             val height = options.outHeight
             val width = options.outWidth
             var inSampleSize = 1
@@ -131,8 +140,10 @@ class BitmapUtil {
         fun adjustPhotoRotation(bitmap: Bitmap, orientationDegree: Float): Bitmap {
 
             val matrix = Matrix()
-            matrix.setRotate(orientationDegree, bitmap.width.toFloat() / 2,
-                bitmap.height.toFloat() / 2)
+            matrix.setRotate(
+                orientationDegree, bitmap.width.toFloat() / 2,
+                bitmap.height.toFloat() / 2
+            )
             val targetX: Float
             val targetY: Float
             if (orientationDegree == 90f) {
@@ -156,8 +167,10 @@ class BitmapUtil {
             matrix.postTranslate(targetX - x1, targetY - y1)
 
 
-            val canvasBitmap = Bitmap.createBitmap(bitmap.height, bitmap.width,
-                Bitmap.Config.ARGB_8888)
+            val canvasBitmap = Bitmap.createBitmap(
+                bitmap.height, bitmap.width,
+                Bitmap.Config.ARGB_8888
+            )
 
 
             val paint = Paint()
@@ -285,6 +298,59 @@ class BitmapUtil {
             catch (e: Exception){
                 e.printStackTrace()
             }
+        }
+
+        fun readPictureDegree(path: String): Int {
+            var degree = 0
+            try {
+                val exifInterface = ExifInterface(path)
+                val orientation = exifInterface.getAttributeInt(
+                    ExifInterface.TAG_ORIENTATION,
+                    ExifInterface.ORIENTATION_NORMAL
+                )
+                when (orientation) {
+                    ExifInterface.ORIENTATION_ROTATE_90 -> degree = 90
+                    ExifInterface.ORIENTATION_ROTATE_180 -> degree = 180
+                    ExifInterface.ORIENTATION_ROTATE_270 -> degree = 270
+                }
+            } catch (e: IOException) {
+                e.printStackTrace()
+            }
+            return degree
+        }
+
+        fun rotateImageWithoutStore(file: String, angle: Int, scaleRate: Float): Bitmap {
+            var originalBitmap = getBitmapWithoutOOM(file)
+            if (scaleRate < 1.0f) {
+                originalBitmap = getScaleBitmap(
+                    originalBitmap,
+                    (originalBitmap.width * scaleRate).toInt(),
+                    (originalBitmap.height * scaleRate).toInt()
+                )
+            }
+            var returnBitmap: Bitmap? = null
+            val matrix = Matrix()
+            matrix.postRotate(angle.toFloat())
+            try {
+                returnBitmap = Bitmap.createBitmap(
+                    originalBitmap,
+                    0,
+                    0,
+                    originalBitmap.width,
+                    originalBitmap.height,
+                    matrix,
+                    true
+                )
+            } catch (e: OutOfMemoryError) {
+                e.printStackTrace()
+            }
+            if (returnBitmap == null) {
+                returnBitmap = originalBitmap
+            }
+
+
+//        saveBitmapToJpeg(returnBitmap, tempFileName, 90);
+            return returnBitmap
         }
 
         private fun exifOrientationToDegrees(exifOrientation: Int): Int {

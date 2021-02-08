@@ -3,12 +3,17 @@ package com.swein.androidkotlintool.framework.module.shcameraphoto.demo
 import android.os.Bundle
 import androidx.fragment.app.FragmentActivity
 import com.swein.androidkotlintool.R
-import com.swein.androidkotlintool.framework.module.shcameraphoto.SHCameraPhotoFragment
+import com.swein.androidkotlintool.framework.module.shcameraphoto.album.albumselectorwrapper.AlbumSelectorWrapper
+import com.swein.androidkotlintool.framework.module.shcameraphoto.album.albumselectorwrapper.bean.AlbumFolderItemBean
+import com.swein.androidkotlintool.framework.module.shcameraphoto.album.albumselectorwrapper.bean.AlbumSelectorItemBean
+import com.swein.androidkotlintool.framework.module.shcameraphoto.camera.SHCameraPhotoFragment
 import com.swein.androidkotlintool.framework.util.activity.ActivityUtil
+import com.swein.androidkotlintool.framework.util.log.ILog
 
 class SHCameraPhotoFragmentDemoActivity : FragmentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_s_h_camera_photo_fragment_demo)
 
         if (savedInstanceState == null) {
@@ -23,6 +28,23 @@ class SHCameraPhotoFragmentDemoActivity : FragmentActivity() {
             )
 
         }
+
+//        AlbumSelectorWrapper.scanImageFile(
+//            this,
+//            object : AlbumSelectorWrapper.AlbumSelectorWrapperDelegate {
+//                override fun onSuccess(
+//                    albumFolderItemBeanList: MutableList<AlbumFolderItemBean>,
+//                    albumSelectorItemBeanList: MutableList<AlbumSelectorItemBean>
+//                ) {
+//                    ILog.debug("????", "${albumSelectorItemBeanList?.size}")
+//                }
+//
+//                override fun onError() {
+//                    ILog.debug("????", "onError")
+//                }
+//
+//            })
     }
+
 
 }

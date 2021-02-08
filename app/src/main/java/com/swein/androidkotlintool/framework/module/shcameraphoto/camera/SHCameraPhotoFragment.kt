@@ -1,4 +1,4 @@
-package com.swein.androidkotlintool.framework.module.shcameraphoto
+package com.swein.androidkotlintool.framework.module.shcameraphoto.camera
 
 import android.Manifest
 import android.content.Context
@@ -22,14 +22,15 @@ import com.google.common.util.concurrent.ListenableFuture
 import com.swein.androidkotlintool.R
 import com.swein.androidkotlintool.framework.module.basicpermission.PermissionManager
 import com.swein.androidkotlintool.framework.module.basicpermission.RequestPermission
+import com.swein.androidkotlintool.framework.module.shcameraphoto.album.selector.AlbumSelectorViewHolder
 import com.swein.androidkotlintool.framework.module.shcameraphoto.shselectedimageviewholder.SHSelectedImageViewHolder
 import com.swein.androidkotlintool.framework.module.shcameraphoto.shselectedimageviewholder.adapter.item.ImageSelectorItemBean
 import com.swein.androidkotlintool.framework.util.animation.AnimationUtil
 import com.swein.androidkotlintool.framework.util.date.DateUtil
+import com.swein.androidkotlintool.framework.util.glide.SHGlide
 import com.swein.androidkotlintool.framework.util.log.ILog
 import com.swein.androidkotlintool.framework.util.theme.ThemeUtil
 import com.swein.androidkotlintool.framework.util.thread.ThreadUtil
-import io.everyportable.framework.util.glide.SHGlide
 import kotlinx.android.synthetic.main.fragment_s_h_camera_photo.*
 import java.io.File
 import java.util.concurrent.ExecutorService
@@ -84,6 +85,9 @@ class SHCameraPhotoFragment : Fragment() {
     private var shSelectedImageViewHolder: SHSelectedImageViewHolder? = null
     private lateinit var frameLayoutSelectedImageArea: FrameLayout
 
+    private lateinit var frameLayoutRoot: FrameLayout
+    private var albumSelectorViewHolder: AlbumSelectorViewHolder? = null
+
     private val displayManager by lazy {
         requireContext().getSystemService(Context.DISPLAY_SERVICE) as DisplayManager
     }
@@ -127,13 +131,11 @@ class SHCameraPhotoFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        activity?.let {
-            ThemeUtil.transparencyBar(it)
-            ThemeUtil.hideSystemUi(it)
-        }
 
         checkBundle()
     }
+
+
 
     private fun checkBundle() {
         arguments?.let {
@@ -159,6 +161,7 @@ class SHCameraPhotoFragment : Fragment() {
 
         return rootView
     }
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -188,6 +191,8 @@ class SHCameraPhotoFragment : Fragment() {
     }
 
     private fun findView() {
+        frameLayoutRoot = rootView.findViewById(R.id.frameLayoutRoot)
+
         imageButtonTake = rootView.findViewById(R.id.imageButtonTake)
         imageButtonSwitchCamera = rootView.findViewById(R.id.imageButtonSwitchCamera)
         textViewAction = rootView.findViewById(R.id.textViewAction)
@@ -204,7 +209,7 @@ class SHCameraPhotoFragment : Fragment() {
     private fun setListener() {
 
         imageButtonAlbum.setOnClickListener {
-
+            showAlbumSelector()
         }
 
         imageView.setOnClickListener {
@@ -273,48 +278,50 @@ class SHCameraPhotoFragment : Fragment() {
                 val outputFileOptions = ImageCapture.OutputFileOptions.Builder(photoFile)
                     .setMetadata(metadata).build()
 
-                imageCapture.takePicture(outputFileOptions, cameraExecutor, object : ImageCapture.OnImageSavedCallback {
+                imageCapture.takePicture(
+                    outputFileOptions,
+                    cameraExecutor,
+                    object : ImageCapture.OnImageSavedCallback {
 
-                    override fun onError(error: ImageCaptureException)
-                    {
-                        ILog.debug(TAG, error.message)
-                        error.printStackTrace()
-                        ThreadUtil.startUIThread(0) {
-                            hideProgress()
+                        override fun onError(error: ImageCaptureException) {
+                            ILog.debug(TAG, error.message)
+                            error.printStackTrace()
+                            ThreadUtil.startUIThread(0) {
+                                hideProgress()
+                            }
                         }
-                    }
 
-                    override fun onImageSaved(outputFileResults: ImageCapture.OutputFileResults) {
+                        override fun onImageSaved(outputFileResults: ImageCapture.OutputFileResults) {
 
-                        val savedUri = outputFileResults.savedUri ?: Uri.fromFile(photoFile)
-                        ILog.debug(TAG, savedUri)
+                            val savedUri = outputFileResults.savedUri ?: Uri.fromFile(photoFile)
+                            ILog.debug(TAG, savedUri)
 
-                        ThreadUtil.startThread {
+                            ThreadUtil.startThread {
 
 //                            BitmapUtil.compressImageWithFilePath(photoFilePath, 1)
 //                            val bitmap = BitmapFactory.decodeFile(photoFilePath)
 
-                            ThreadUtil.startUIThread(0) {
+                                ThreadUtil.startUIThread(0) {
 //                                imageView.setImageBitmap(bitmap)
 
-                                SHGlide.setImageFilePath(context, photoFilePath, imageView, null, imageView.width, imageView.height, 0f, 0f)
-                                addImage(photoFilePath)
+                                    SHGlide.setImageFilePath(context,photoFilePath, imageView, null, imageView.width, imageView.height, 0f, 0f)
+                                    addImage(photoFilePath)
 
-                                ILog.debug(TAG, selectedImageList.size.toString())
-                                textViewImageCount.text = selectedImageList.size.toString()
+                                    ILog.debug(TAG, selectedImageList.size.toString())
+                                    textViewImageCount.text = selectedImageList.size.toString()
 
-                                textViewAction.text = if(selectedImageList.isEmpty()) {
-                                    getString(R.string.camera_cancel)
+                                    textViewAction.text = if (selectedImageList.isEmpty()) {
+                                        getString(R.string.camera_cancel)
+                                    }
+                                    else {
+                                        getString(R.string.camera_confirm)
+                                    }
+
+                                    hideProgress()
                                 }
-                                else {
-                                    getString(R.string.camera_confirm)
-                                }
-
-                                hideProgress()
                             }
                         }
-                    }
-                })
+                    })
             }
         }
 
@@ -332,6 +339,8 @@ class SHCameraPhotoFragment : Fragment() {
         imageSelectorItemBean.filePath = imageFilePath
         imageSelectorItemBean.isSelected = true
         selectedImageList.add(0, imageSelectorItemBean)
+
+        shSelectedImageViewHolder?.insert(imageSelectorItemBean)
     }
 
     private fun updateFlashImage() {
@@ -354,7 +363,12 @@ class SHCameraPhotoFragment : Fragment() {
     @RequestPermission(permissionCode = PermissionManager.PERMISSION_REQUEST_CAMERA_CODE)
     private fun initCamera(activity: FragmentActivity) {
 
-        if (PermissionManager.getInstance().requestPermission(activity, true, PermissionManager.PERMISSION_REQUEST_CAMERA_CODE, Manifest.permission.CAMERA)) {
+        if (PermissionManager.getInstance().requestPermission(
+                activity,
+                true,
+                PermissionManager.PERMISSION_REQUEST_CAMERA_CODE,
+                Manifest.permission.CAMERA
+            )) {
 
             cameraProviderFuture = ProcessCameraProvider.getInstance(activity)
             cameraProviderFuture.addListener({
@@ -417,7 +431,8 @@ class SHCameraPhotoFragment : Fragment() {
             // A variable number of use-cases can be passed here -
             // camera provides access to CameraControl & CameraInfo
             camera = cameraProvider.bindToLifecycle(
-                this, cameraSelector, preview, imageCapture, imageAnalysis)
+                this, cameraSelector, preview, imageCapture, imageAnalysis
+            )
 
             // Attach the viewfinder's surface provider to preview use case
             preview.setSurfaceProvider(previewView.surfaceProvider)
@@ -516,38 +531,50 @@ class SHCameraPhotoFragment : Fragment() {
             return
         }
 
-        shSelectedImageViewHolder = SHSelectedImageViewHolder(context, object : SHSelectedImageViewHolder.SHSelectedImageViewHolderDelegate {
-            override fun onDelete(imageSelectorItemBean: ImageSelectorItemBean) {
+        shSelectedImageViewHolder = SHSelectedImageViewHolder(
+            context,
+            object : SHSelectedImageViewHolder.SHSelectedImageViewHolderDelegate {
+                override fun onDelete(imageSelectorItemBean: ImageSelectorItemBean) {
 
-                selectedImageList.remove(imageSelectorItemBean)
+                    selectedImageList.remove(imageSelectorItemBean)
 
-                if(selectedImageList.isEmpty()) {
-                    textViewImageCount.text = "0"
+                    if (selectedImageList.isEmpty()) {
+                        textViewImageCount.text = "0"
+                        closeSelectedImageArea()
+                        imageView.setImageBitmap(null)
+                    } else {
+                        textViewImageCount.text = selectedImageList.size.toString()
+                        SHGlide.setImageFilePath(
+                            context,
+                            selectedImageList[0].filePath,
+                            imageView,
+                            null,
+                            imageView.width,
+                            imageView.height,
+                            0f,
+                            0f
+                        )
+                    }
+
+                    textViewAction.text = if (selectedImageList.isEmpty()) {
+                        getString(R.string.camera_cancel)
+                    } else {
+                        getString(R.string.camera_confirm)
+                    }
+                }
+
+                override fun onClose() {
                     closeSelectedImageArea()
-                    imageView.setImageBitmap(null)
-                }
-                else {
-                    textViewImageCount.text = selectedImageList.size.toString()
-                    SHGlide.setImageFilePath(context, selectedImageList[0].filePath, imageView, null, imageView.width, imageView.height, 0f, 0f)
                 }
 
-                textViewAction.text = if(selectedImageList.isEmpty()) {
-                    getString(R.string.camera_cancel)
-                }
-                else {
-                    getString(R.string.camera_confirm)
-                }
-            }
+            },
+            selectedImageList
+        ).apply {
+            frameLayoutSelectedImageArea.addView(this.view)
+            frameLayoutSelectedImageArea.startAnimation(AnimationUtil.show(context))
+            frameLayoutSelectedImageArea.visibility = View.VISIBLE
+        }
 
-            override fun onClose() {
-                closeSelectedImageArea()
-            }
-
-        }, selectedImageList)
-
-        frameLayoutSelectedImageArea.addView(shSelectedImageViewHolder!!.view)
-        frameLayoutSelectedImageArea.startAnimation(AnimationUtil.show(context))
-        frameLayoutSelectedImageArea.visibility = View.VISIBLE
     }
 
     private fun closeSelectedImageArea() {
@@ -560,12 +587,67 @@ class SHCameraPhotoFragment : Fragment() {
         frameLayoutSelectedImageArea.visibility = View.GONE
     }
 
+    private fun showAlbumSelector() {
+        if (albumSelectorViewHolder != null) {
+            return
+        }
+
+        context?.let {
+
+            albumSelectorViewHolder = AlbumSelectorViewHolder(it, 10, object :
+                AlbumSelectorViewHolder.AlbumSelectorViewHolderDelegate {
+                override fun onInitFinish() {
+                    albumSelectorViewHolder!!.reload()
+                }
+
+                override fun onConfirm() {
+                    closeAlbumSelector()
+                }
+
+                override fun onClose() {
+                    closeAlbumSelector()
+                }
+            }).apply {
+
+                frameLayoutRoot.addView(this.view)
+
+                this.view.startAnimation(AnimationUtil.show(context))
+                this.view.visibility = View.VISIBLE
+            }
+
+        }
+
+    }
+
+    private fun closeAlbumSelector() {
+        if(albumSelectorViewHolder == null) {
+            return
+        }
+
+        frameLayoutRoot.removeView(albumSelectorViewHolder!!.view)
+        albumSelectorViewHolder = null
+    }
+
     private fun showProgress() {
         frameLayoutProgress.visibility = View.VISIBLE
     }
 
     private fun hideProgress() {
         frameLayoutProgress.visibility = View.GONE
+    }
+
+    override fun onResume() {
+        super.onResume()
+        activity?.let {
+            ThemeUtil.hideSystemUI(it)
+        }
+    }
+
+    override fun onPause() {
+        super.onPause()
+        activity?.let {
+            ThemeUtil.showSystemUI(it)
+        }
     }
 
     override fun onDestroyView() {

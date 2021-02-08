@@ -46,13 +46,14 @@
 			android:roundIcon="@mipmap/ic_launcher_round"
 			android:supportsRtl="true"
 			android:theme="@style/AppTheme"
-			android:usesCleartextTraffic="true">
+			android:usesCleartextTraffic="true"
+			android:requestLegacyExternalStorage="true">
         <activity
 		        android:name=".framework.module.shcameraphoto.demo.SHCameraPhotoFragmentDemoActivity"
 		        android:launchMode="singleTask"
 		        android:configChanges="keyboardHidden|orientation|screenSize"/>
         <activity
-		        android:name=".framework.module.camera.CameraDemoActivity"
+		        android:name=".framework.module.camerademo.CameraDemoActivity"
 		        android:launchMode="singleTask"
 		        android:screenOrientation="portrait" />
         <activity

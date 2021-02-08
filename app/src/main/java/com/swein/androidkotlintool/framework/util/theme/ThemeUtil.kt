@@ -5,6 +5,7 @@ import android.app.Activity
 import android.graphics.Color
 import android.os.Build
 import android.view.View
+import android.view.Window
 import android.view.WindowManager
 import androidx.core.content.ContextCompat
 
@@ -13,7 +14,7 @@ class ThemeUtil {
         /**
          * hide system top status bar and bottom navigation button bar
          */
-        fun hideSystemUi(activity: Activity) {
+        fun hideSystemUI(activity: Activity) {
             //隐藏虚拟按键
             val decorView = activity.window.decorView
             val uiOptions = (View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
@@ -25,7 +26,7 @@ class ThemeUtil {
         /**
          * show system top status bar and bottom navigation button bar
          */
-        fun showSystemUi(activity: Activity) {
+        fun showSystemUI(activity: Activity) {
             //显示虚拟键盘
             val decorView = activity.window.decorView
             val uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN
@@ -58,6 +59,7 @@ class ThemeUtil {
             window.decorView.systemUiVisibility = (View.SYSTEM_UI_FLAG_LAYOUT_STABLE
                     or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN)
         }
+
 
         /**
          * must > API 19
