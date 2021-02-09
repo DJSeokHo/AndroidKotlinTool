@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.swein.androidkotlintool.R
-import com.swein.androidkotlintool.framework.module.shcameraphoto.shselectedimageviewholder.adapter.item.ImageSelectorItemBean
+import com.swein.androidkotlintool.framework.module.shcameraphoto.shselectedimageviewholder.adapter.item.ImageSelectedItemBean
 import com.swein.androidkotlintool.framework.module.shcameraphoto.shselectedimageviewholder.adapter.item.SHSelectedImageItemViewHolder
 
 class SHSelectedImageViewHolderAdapter(
@@ -12,10 +12,10 @@ class SHSelectedImageViewHolderAdapter(
 ) : RecyclerView.Adapter<SHSelectedImageItemViewHolder>() {
 
     interface SHSelectedImageViewHolderAdapterDelegate {
-        fun onDelete(imageSelectorItemBean: ImageSelectorItemBean)
+        fun onDelete(imageSelectedItemBean: ImageSelectedItemBean)
     }
 
-    private var imageSelectorItemBeanList: MutableList<ImageSelectorItemBean> = mutableListOf()
+    private var imageSelectedItemBeanList: MutableList<ImageSelectedItemBean> = mutableListOf()
 
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): SHSelectedImageItemViewHolder {
         val view = LayoutInflater.from(p0.context).inflate(
@@ -27,35 +27,35 @@ class SHSelectedImageViewHolderAdapter(
     }
 
     override fun getItemCount(): Int {
-        return imageSelectorItemBeanList.size
+        return imageSelectedItemBeanList.size
     }
 
     override fun onBindViewHolder(selectedImageItemViewHolder: SHSelectedImageItemViewHolder, position: Int) {
 
-        selectedImageItemViewHolder.imageSelectorItemBean = imageSelectorItemBeanList[position]
+        selectedImageItemViewHolder.imageSelectedItemBean = imageSelectedItemBeanList[position]
         selectedImageItemViewHolder.delegate = object: SHSelectedImageItemViewHolder.SHSelectedImageItemViewHolderDelegate {
-            override fun onDelete(imageSelectorItemBean: ImageSelectorItemBean) {
-                delegate.onDelete(imageSelectorItemBean)
+            override fun onDelete(imageSelectedItemBean: ImageSelectedItemBean) {
+                delegate.onDelete(imageSelectedItemBean)
             }
         }
         selectedImageItemViewHolder.updateView()
 
     }
 
-    fun insert(imageSelectorItemBeanList: ImageSelectorItemBean) {
-        this.imageSelectorItemBeanList.add(0, imageSelectorItemBeanList)
+    fun insert(imageSelectedItemBeanList: ImageSelectedItemBean) {
+        this.imageSelectedItemBeanList.add(0, imageSelectedItemBeanList)
         notifyItemInserted(0)
     }
 
-    fun reload(imageSelectorItemBeanList: MutableList<ImageSelectorItemBean>) {
-        this.imageSelectorItemBeanList.clear()
-        this.imageSelectorItemBeanList.addAll(imageSelectorItemBeanList)
+    fun reload(imageSelectedItemBeanList: MutableList<ImageSelectedItemBean>) {
+        this.imageSelectedItemBeanList.clear()
+        this.imageSelectedItemBeanList.addAll(imageSelectedItemBeanList)
         notifyDataSetChanged()
     }
 
-    fun delete(imageSelectorItemBean: ImageSelectorItemBean) {
-        val index = this.imageSelectorItemBeanList.indexOf(imageSelectorItemBean)
-        this.imageSelectorItemBeanList.removeAt(index)
+    fun delete(imageSelectedItemBean: ImageSelectedItemBean) {
+        val index = this.imageSelectedItemBeanList.indexOf(imageSelectedItemBean)
+        this.imageSelectedItemBeanList.removeAt(index)
         notifyItemRemoved(index)
     }
 

@@ -7,13 +7,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.swein.androidkotlintool.R
 import com.swein.androidkotlintool.framework.module.shcameraphoto.shselectedimageviewholder.adapter.SHSelectedImageViewHolderAdapter
-import com.swein.androidkotlintool.framework.module.shcameraphoto.shselectedimageviewholder.adapter.item.ImageSelectorItemBean
+import com.swein.androidkotlintool.framework.module.shcameraphoto.shselectedimageviewholder.adapter.item.ImageSelectedItemBean
 import com.swein.androidkotlintool.framework.util.views.ViewUtil
 
 class SHSelectedImageViewHolder (
     context: Context?,
     private var delegate: SHSelectedImageViewHolderDelegate?,
-    private var imageSelectorItemBeanList: MutableList<ImageSelectorItemBean> = mutableListOf()
+    private var imageSelectedItemBeanList: MutableList<ImageSelectedItemBean> = mutableListOf()
 ) {
 
     companion object {
@@ -21,7 +21,7 @@ class SHSelectedImageViewHolder (
     }
 
     interface SHSelectedImageViewHolderDelegate {
-        fun onDelete(imageSelectorItemBean: ImageSelectorItemBean)
+        fun onDelete(imageSelectedItemBean: ImageSelectedItemBean)
         fun onClose()
     }
 
@@ -57,10 +57,10 @@ class SHSelectedImageViewHolder (
         linearLayoutManager = LinearLayoutManager(view.context, LinearLayoutManager.HORIZONTAL, false)
 
         adapter = SHSelectedImageViewHolderAdapter(object : SHSelectedImageViewHolderAdapter.SHSelectedImageViewHolderAdapterDelegate {
-            override fun onDelete(imageSelectorItemBean: ImageSelectorItemBean) {
+            override fun onDelete(imageSelectedItemBean: ImageSelectedItemBean) {
 
-                adapter.delete(imageSelectorItemBean)
-                delegate?.onDelete(imageSelectorItemBean)
+                adapter.delete(imageSelectedItemBean)
+                delegate?.onDelete(imageSelectedItemBean)
 
             }
         })
@@ -72,11 +72,11 @@ class SHSelectedImageViewHolder (
     }
 
     private fun reload() {
-        adapter.reload(imageSelectorItemBeanList)
+        adapter.reload(imageSelectedItemBeanList)
     }
 
-    fun insert(imageSelectorItemBean: ImageSelectorItemBean) {
-        adapter.insert(imageSelectorItemBean)
+    fun insert(imageSelectedItemBean: ImageSelectedItemBean) {
+        adapter.insert(imageSelectedItemBean)
         recyclerView.smoothScrollToPosition(0)
     }
 

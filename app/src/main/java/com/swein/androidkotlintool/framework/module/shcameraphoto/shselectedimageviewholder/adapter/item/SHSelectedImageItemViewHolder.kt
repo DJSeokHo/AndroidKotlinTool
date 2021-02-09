@@ -11,7 +11,7 @@ import java.lang.ref.WeakReference
 class SHSelectedImageItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     interface SHSelectedImageItemViewHolderDelegate {
-        fun onDelete(imageSelectorItemBean: ImageSelectorItemBean)
+        fun onDelete(imageSelectedItemBean: ImageSelectedItemBean)
     }
 
     var view: WeakReference<View> = WeakReference(itemView)
@@ -19,7 +19,7 @@ class SHSelectedImageItemViewHolder(itemView: View) : RecyclerView.ViewHolder(it
     lateinit var imageView: ImageView
     lateinit var textViewDelete: TextView
 
-    lateinit var imageSelectorItemBean: ImageSelectorItemBean
+    lateinit var imageSelectedItemBean: ImageSelectedItemBean
 
     var delegate: SHSelectedImageItemViewHolderDelegate? = null
 
@@ -46,7 +46,7 @@ class SHSelectedImageItemViewHolder(itemView: View) : RecyclerView.ViewHolder(it
         }
 
         textViewDelete.setOnClickListener {
-            delegate?.onDelete(imageSelectorItemBean)
+            delegate?.onDelete(imageSelectedItemBean)
         }
 
     }
@@ -56,7 +56,7 @@ class SHSelectedImageItemViewHolder(itemView: View) : RecyclerView.ViewHolder(it
         view.get()?.let {
 
             imageView.post {
-                SHGlide.setImageFilePath(it.context, imageSelectorItemBean.filePath, imageView, null, imageView.width, imageView.height, 0f, 0f)
+                SHGlide.setImageFilePath(it.context, imageSelectedItemBean.filePath, imageView, null, imageView.width, imageView.height, 0f, 0f)
             }
         }
     }

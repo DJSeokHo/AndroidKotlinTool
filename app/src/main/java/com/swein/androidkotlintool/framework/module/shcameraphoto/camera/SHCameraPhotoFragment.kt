@@ -24,7 +24,7 @@ import com.swein.androidkotlintool.framework.module.basicpermission.PermissionMa
 import com.swein.androidkotlintool.framework.module.basicpermission.RequestPermission
 import com.swein.androidkotlintool.framework.module.shcameraphoto.album.selector.AlbumSelectorViewHolder
 import com.swein.androidkotlintool.framework.module.shcameraphoto.shselectedimageviewholder.SHSelectedImageViewHolder
-import com.swein.androidkotlintool.framework.module.shcameraphoto.shselectedimageviewholder.adapter.item.ImageSelectorItemBean
+import com.swein.androidkotlintool.framework.module.shcameraphoto.shselectedimageviewholder.adapter.item.ImageSelectedItemBean
 import com.swein.androidkotlintool.framework.util.animation.AnimationUtil
 import com.swein.androidkotlintool.framework.util.date.DateUtil
 import com.swein.androidkotlintool.framework.util.glide.SHGlide
@@ -81,7 +81,7 @@ class SHCameraPhotoFragment : Fragment() {
     private var flash = false
 
     private var limit = 0
-    private var selectedImageList = mutableListOf<ImageSelectorItemBean>()
+    private var selectedImageList = mutableListOf<ImageSelectedItemBean>()
     private var shSelectedImageViewHolder: SHSelectedImageViewHolder? = null
     private lateinit var frameLayoutSelectedImageArea: FrameLayout
 
@@ -326,7 +326,8 @@ class SHCameraPhotoFragment : Fragment() {
     }
 
     private fun addImage(imageFilePath: String) {
-        val imageSelectorItemBean = ImageSelectorItemBean()
+        val imageSelectorItemBean =
+            ImageSelectedItemBean()
         imageSelectorItemBean.filePath = imageFilePath
         imageSelectorItemBean.isSelected = true
         selectedImageList.add(0, imageSelectorItemBean)
@@ -525,9 +526,9 @@ class SHCameraPhotoFragment : Fragment() {
         shSelectedImageViewHolder = SHSelectedImageViewHolder(
             context,
             object : SHSelectedImageViewHolder.SHSelectedImageViewHolderDelegate {
-                override fun onDelete(imageSelectorItemBean: ImageSelectorItemBean) {
+                override fun onDelete(imageSelectedItemBean: ImageSelectedItemBean) {
 
-                    selectedImageList.remove(imageSelectorItemBean)
+                    selectedImageList.remove(imageSelectedItemBean)
 
                     if (selectedImageList.isEmpty()) {
                         textViewImageCount.text = "0"
