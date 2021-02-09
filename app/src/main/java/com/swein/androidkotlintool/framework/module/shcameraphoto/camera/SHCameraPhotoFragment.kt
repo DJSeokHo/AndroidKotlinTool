@@ -304,18 +304,9 @@ class SHCameraPhotoFragment : Fragment() {
                                 ThreadUtil.startUIThread(0) {
 //                                imageView.setImageBitmap(bitmap)
 
-                                    SHGlide.setImageFilePath(context,photoFilePath, imageView, null, imageView.width, imageView.height, 0f, 0f)
                                     addImage(photoFilePath)
 
-                                    ILog.debug(TAG, selectedImageList.size.toString())
-                                    textViewImageCount.text = selectedImageList.size.toString()
-
-                                    textViewAction.text = if (selectedImageList.isEmpty()) {
-                                        getString(R.string.camera_cancel)
-                                    }
-                                    else {
-                                        getString(R.string.camera_confirm)
-                                    }
+                                    togglePreviewThumbnail(photoFilePath)
 
                                     hideProgress()
                                 }
@@ -594,13 +585,25 @@ class SHCameraPhotoFragment : Fragment() {
 
         context?.let {
 
-            albumSelectorViewHolder = AlbumSelectorViewHolder(it, 10, object :
+            albumSelectorViewHolder = AlbumSelectorViewHolder(it, limit - selectedImageList.size, object :
                 AlbumSelectorViewHolder.AlbumSelectorViewHolderDelegate {
                 override fun onInitFinish() {
                     albumSelectorViewHolder!!.reload()
                 }
 
                 override fun onConfirm() {
+
+                    albumSelectorViewHolder?.let {
+                        val list = albumSelectorViewHolder!!.getSelectedImagePath()
+
+                        for (imagePath in list) {
+                            addImage(imagePath)
+                        }
+
+                        togglePreviewThumbnail(list[list.size - 1])
+
+                    }
+
                     closeAlbumSelector()
                 }
 
@@ -615,6 +618,22 @@ class SHCameraPhotoFragment : Fragment() {
                 this.view.visibility = View.VISIBLE
             }
 
+        }
+
+    }
+
+    private fun togglePreviewThumbnail(previewImagePath: String) {
+
+        SHGlide.setImageFilePath(context, previewImagePath, imageView, null, imageView.width, imageView.height, 0f, 0f)
+
+        ILog.debug(TAG, selectedImageList.size.toString())
+        textViewImageCount.text = selectedImageList.size.toString()
+
+        textViewAction.text = if (selectedImageList.isEmpty()) {
+            getString(R.string.camera_cancel)
+        }
+        else {
+            getString(R.string.camera_confirm)
         }
 
     }

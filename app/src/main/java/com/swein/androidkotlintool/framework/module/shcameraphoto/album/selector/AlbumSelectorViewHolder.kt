@@ -47,7 +47,7 @@ class AlbumSelectorViewHolder(
     private val albumFolderItemBeanList: MutableList<AlbumFolderItemBean> = mutableListOf()
     private val albumSelectorItemBeanList: MutableList<AlbumSelectorItemBean> = mutableListOf()
 
-    var selectedList: MutableList<AlbumSelectorItemBean> = mutableListOf()
+    private var selectedList: MutableList<AlbumSelectorItemBean> = mutableListOf()
 
     init {
         initData()
@@ -70,7 +70,7 @@ class AlbumSelectorViewHolder(
 
         textViewAction.setOnClickListener {
 
-            if(getSelectedImagePath().isEmpty()) {
+            if(selectedList.isEmpty()) {
                 delegate.onClose()
             }
             else {
@@ -197,7 +197,8 @@ class AlbumSelectorViewHolder(
 
     fun getSelectedImagePath(): MutableList<String> {
         val list: MutableList<String> = mutableListOf()
-        for (i in selectedList.indices) {
+
+        for (i in 0 until selectedList.size) {
             list.add(selectedList[i].filePath)
         }
         return list
