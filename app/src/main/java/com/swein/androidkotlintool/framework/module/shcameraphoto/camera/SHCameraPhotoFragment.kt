@@ -29,6 +29,8 @@ import com.swein.androidkotlintool.framework.util.animation.AnimationUtil
 import com.swein.androidkotlintool.framework.util.date.DateUtil
 import com.swein.androidkotlintool.framework.util.glide.SHGlide
 import com.swein.androidkotlintool.framework.util.log.ILog
+import com.swein.androidkotlintool.framework.util.sound.audiomanager.AudioManagerUtil
+import com.swein.androidkotlintool.framework.util.sound.mediaplayer.MediaPlayerUtil
 import com.swein.androidkotlintool.framework.util.theme.ThemeUtil
 import com.swein.androidkotlintool.framework.util.thread.ThreadUtil
 import kotlinx.android.synthetic.main.fragment_s_h_camera_photo.*
@@ -135,7 +137,14 @@ class SHCameraPhotoFragment : Fragment() {
         checkBundle()
     }
 
+    private fun initAudio() {
 
+        AudioManagerUtil.init(rootView.context)
+        MediaPlayerUtil.init(rootView.context, R.raw.camera_shutter_click) {
+            AudioManagerUtil.resetAfterPlay((AudioManagerUtil.getMaxVolume() * 0.5).toInt())
+        }
+
+    }
 
     private fun checkBundle() {
         arguments?.let {
@@ -154,7 +163,7 @@ class SHCameraPhotoFragment : Fragment() {
     ): View {
         // Inflate the layout for this fragment
         rootView = inflater.inflate(R.layout.fragment_s_h_camera_photo, container, false)
-
+        initAudio()
         initData()
         findView()
         setListener()
@@ -298,6 +307,8 @@ class SHCameraPhotoFragment : Fragment() {
 
                             ThreadUtil.startThread {
 
+                                AudioManagerUtil.setNoMute((AudioManagerUtil.getMaxVolume() * 0.5).toInt())
+                                MediaPlayerUtil.play()
 //                            BitmapUtil.compressImageWithFilePath(photoFilePath, 1)
 //                            val bitmap = BitmapFactory.decodeFile(photoFilePath)
 

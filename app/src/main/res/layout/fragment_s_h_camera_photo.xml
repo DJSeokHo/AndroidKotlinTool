@@ -100,16 +100,34 @@
                     android:layout_width="60dp"
                     android:layout_height="60dp"/>
     
-            <ImageButton
-                    android:background="@color/transparent"
-                    android:src="@drawable/camera_album"
-                    android:layout_marginStart="64dp"
-                    android:translationZ="5dp"
-                    android:id="@+id/imageButtonAlbum"
+            <LinearLayout
+                    android:gravity="center_horizontal"
+                    android:layout_marginStart="74dp"
                     android:layout_gravity="center"
-                    android:scaleType="fitCenter"
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"/>
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+        
+                <ImageButton
+                        android:layout_gravity="center"
+                        android:background="@color/transparent"
+                        android:src="@drawable/camera_album"
+                        android:translationZ="5dp"
+                        android:id="@+id/imageButtonAlbum"
+                        android:scaleType="fitCenter"
+                        android:layout_width="46dp"
+                        android:layout_height="46dp"/>
+        
+                <TextView
+                        android:layout_gravity="center"
+                        android:text="@string/camera_gallery"
+                        android:textSize="4.5pt"
+                        android:textColor="@color/white"
+                        android:background="@color/transparent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+    
+            </LinearLayout>
         
             <TextView
                     android:text="@string/camera_cancel"
