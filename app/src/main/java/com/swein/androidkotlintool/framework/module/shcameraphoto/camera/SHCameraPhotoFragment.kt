@@ -8,6 +8,7 @@ import android.hardware.display.DisplayManager
 import android.net.Uri
 import android.os.Bundle
 import android.util.DisplayMetrics
+import android.util.Size
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -27,6 +28,7 @@ import com.swein.androidkotlintool.framework.module.shcameraphoto.shselectedimag
 import com.swein.androidkotlintool.framework.module.shcameraphoto.shselectedimageviewholder.adapter.item.ImageSelectedItemBean
 import com.swein.androidkotlintool.framework.util.animation.AnimationUtil
 import com.swein.androidkotlintool.framework.util.date.DateUtil
+import com.swein.androidkotlintool.framework.util.display.DisplayUtil
 import com.swein.androidkotlintool.framework.util.glide.SHGlide
 import com.swein.androidkotlintool.framework.util.log.ILog
 import com.swein.androidkotlintool.framework.util.sound.audiomanager.AudioManagerUtil
@@ -89,6 +91,8 @@ class SHCameraPhotoFragment : Fragment() {
 
     private lateinit var frameLayoutRoot: FrameLayout
     private var albumSelectorViewHolder: AlbumSelectorViewHolder? = null
+
+    private var fullScreenRatio: Float = 0f
 
     private val displayManager by lazy {
         requireContext().getSystemService(Context.DISPLAY_SERVICE) as DisplayManager
@@ -168,6 +172,7 @@ class SHCameraPhotoFragment : Fragment() {
         findView()
         setListener()
 
+        ILog.debug(TAG, "full is ${DisplayUtil.getScreenWidthPx(rootView.context)} ${DisplayUtil.getScreenHeightPx(rootView.context)}")
         return rootView
     }
 

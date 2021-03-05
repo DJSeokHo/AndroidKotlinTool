@@ -1,11 +1,54 @@
 package com.swein.androidkotlintool.framework.util.display
 
+import android.app.Activity
 import android.content.Context
 import android.content.res.Configuration
+import android.util.DisplayMetrics
+import android.view.WindowManager
 
 class DisplayUtil {
 
     companion object {
+
+        fun getScreenWidthPx(context: Context): Int {
+            val wm = context.getSystemService(Context.WINDOW_SERVICE) as WindowManager
+            val dm = DisplayMetrics()
+            wm.defaultDisplay.getMetrics(dm)
+            return dm.widthPixels
+        }
+
+        fun getScreenHeightPx(context: Context): Int {
+            val wm = context.getSystemService(Context.WINDOW_SERVICE) as WindowManager
+            val dm = DisplayMetrics()
+            wm.defaultDisplay.getMetrics(dm)
+            return dm.heightPixels
+        }
+
+        /**
+         * put is in onResume() or onCreate
+         * @param activity
+         */
+        fun keepScreenOn(activity: Activity) {
+            activity.window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
+        }
+
+        /**
+         * put this in onPause() or onDestroy()
+         * @param activity
+         */
+        fun unKeepScreenOn(activity: Activity) {
+            activity.window.clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
+        }
+
+        fun getStatusBarHeight(context: Context): Int {
+            var result = 0
+            val resourceId =
+                context.resources.getIdentifier("status_bar_height", "dimen", "android")
+            if (resourceId > 0) {
+                result = context.resources.getDimensionPixelSize(resourceId)
+            }
+            return result
+        }
 
         fun isLandscape(context: Context): Boolean {
             return context.resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
