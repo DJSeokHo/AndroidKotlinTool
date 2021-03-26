@@ -20,6 +20,7 @@ import com.swein.androidkotlintool.framework.util.activity.ActivityUtil
 import com.swein.androidkotlintool.framework.util.log.ILog
 import com.swein.androidkotlintool.framework.util.screen.ScreenUtil
 import com.swein.androidkotlintool.main.moduledemo.ModuleDemoActivity
+import com.swein.androidkotlintool.template.blurmask.BlurMaskActivity
 import com.swein.androidkotlintool.template.bottomtab.activity.TabHostActivity
 import com.swein.androidkotlintool.template.handlerthread.HandlerThreadTemplateActivity
 import com.swein.androidkotlintool.template.list.SHListActivity
@@ -66,8 +67,9 @@ class MainActivity : BasicPermissionActivity() {
             )
         ) {
 
-            ActivityUtil.startNewActivityWithoutFinish(this, SHCameraPhotoFragmentDemoActivity::class.java)
+//            ActivityUtil.startNewActivityWithoutFinish(this, SHCameraPhotoFragmentDemoActivity::class.java)
 //            ActivityUtil.startNewActivityWithoutFinish(this, CameraDemoActivity::class.java)
+            ActivityUtil.startNewActivityWithoutFinish(this, BlurMaskActivity::class.java)
         }
     }
 
