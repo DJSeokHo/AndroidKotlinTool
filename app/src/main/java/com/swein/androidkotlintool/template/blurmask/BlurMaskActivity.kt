@@ -22,9 +22,8 @@ import com.swein.androidkotlintool.framework.util.thread.ThreadUtil
 
 class BlurMaskActivity : FragmentActivity() {
 
-    private lateinit var imageView: ImageView
+    private lateinit var imageViewBackground: ImageView
     private lateinit var imageViewCrop: ImageView
-    private lateinit var frameLayoutRoot: FrameLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,39 +34,38 @@ class BlurMaskActivity : FragmentActivity() {
     }
 
     private fun findView() {
-        frameLayoutRoot = findViewById(R.id.frameLayoutRoot)
-        imageView = findViewById(R.id.imageView)
+        imageViewBackground = findViewById(R.id.imageViewBackground)
         imageViewCrop = findViewById(R.id.imageViewCrop)
     }
 
     private fun setImage() {
 
-        imageView.post {
+        imageViewBackground.post {
 
             ThreadUtil.startThread {
 
-                val imageUrl = "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F37%2F2019%2F06%2F12170406%2Fmodern-home-exterior-gray-scheme-792ab713.jpg"
+                val imageUrl = "https://cdn.hipwallpaper.com/i/83/84/JVE4pu.jpg"
 
                 val futureTarget: FutureTarget<Bitmap> = Glide.with(this)
                     .asBitmap()
                     .load(imageUrl)
-                    .submit(imageView.width, imageView.height)
+                    .submit(imageViewBackground.width, imageViewBackground.height)
 
                 val bitmap = futureTarget.get()
 
 
                 ThreadUtil.startUIThread(0) {
-                    imageView.setImageBitmap(bitmap)
+                    imageViewBackground.setImageBitmap(bitmap)
 
                     imageViewCrop.post {
 
                         var cropBitmap = Bitmap.createBitmap(
-                            imageView.width,
-                            imageView.height,
+                            imageViewBackground.width,
+                            imageViewBackground.height,
                             Bitmap.Config.ARGB_8888
                         )
                         val canvas = Canvas(cropBitmap)
-                        imageView.draw(canvas)
+                        imageViewBackground.draw(canvas)
 
                         cropBitmap = Bitmap.createBitmap(cropBitmap, imageViewCrop.x.toInt(), imageViewCrop.y.toInt(), imageViewCrop.width, imageViewCrop.height)
                         imageViewCrop.setImageBitmap(rsBlur(this, cropBitmap))

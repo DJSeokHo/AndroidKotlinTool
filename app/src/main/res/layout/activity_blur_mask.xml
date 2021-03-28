@@ -9,13 +9,13 @@
     
     <ImageView
         android:scaleType="centerCrop"
-        android:id="@+id/imageView"
+        android:id="@+id/imageViewBackground"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
     
     <ImageView
         android:layout_marginTop="100dp"
-        android:background="@color/white"
+        android:background="@color/transparent"
         android:scaleType="centerCrop"
         android:id="@+id/imageViewCrop"
         android:layout_gravity="center"
