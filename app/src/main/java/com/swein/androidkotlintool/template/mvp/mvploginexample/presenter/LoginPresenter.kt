@@ -1,37 +1,44 @@
 package com.swein.androidkotlintool.template.mvp.mvploginexample.presenter
 
 import com.swein.androidkotlintool.framework.util.thread.ThreadUtil
-import com.swein.androidkotlintool.template.mvp.mvploginexample.model.IUser
 import com.swein.androidkotlintool.template.mvp.mvploginexample.model.UserModel
+import com.swein.androidkotlintool.template.mvp.mvploginexample.presenter.controller.LoginController
 import com.swein.androidkotlintool.template.mvp.mvploginexample.view.ILoginView
 
 class LoginPresenter(var iLoginView: ILoginView): ILoginPresenter {
-
-    private lateinit var iUser: IUser
-
 
     override fun clear() {
         iLoginView.onClear()
     }
 
     override fun login(id: String, password: String) {
-        ThreadUtil.startThread {
 
-            val iUser = UserModel()
-            iUser.nickname = "I got nickname from server"
-            iUser.age = 34
+        LoginController.requestLogin(id, password, object : LoginController.LoginControllerDelegate {
 
-            Thread.sleep(3000)
+            override fun onSuccess(response: String) {
 
-            ThreadUtil.startUIThread(0) {
+                val iUser = UserModel()
+                iUser.nickname = "I got nickname from server"
+                iUser.age = 34
 
-                iLoginView.onHideProgress()
-                iLoginView.onLoginSuccessUpdateNicknameUI(iUser.nickname)
-                iLoginView.onLoginSuccessUpdateAgeUI(iUser.age)
+                ThreadUtil.startUIThread(0) {
+                    iLoginView.onHideProgress()
+                    iLoginView.onLoginSuccessUpdateNicknameUI(iUser.nickname)
+                    iLoginView.onLoginSuccessUpdateAgeUI(iUser.age)
+                }
+
             }
 
-        }
+            override fun onFailed() {
+                ThreadUtil.startUIThread(0) {
+
+                    iLoginView.onHideProgress()
+
+                }
+            }
+        })
     }
+
 
     override fun showProgress() {
         iLoginView.onShowProgress()
