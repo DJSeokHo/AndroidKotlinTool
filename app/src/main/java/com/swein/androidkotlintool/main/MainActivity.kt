@@ -4,27 +4,21 @@ import android.Manifest
 import android.graphics.Color
 import android.os.Bundle
 import android.widget.Button
-import androidx.fragment.app.FragmentActivity
 import com.swein.androidkotlintool.R
 import com.swein.androidkotlintool.constants.Constants
 import com.swein.androidkotlintool.framework.module.basicpermission.BasicPermissionActivity
 import com.swein.androidkotlintool.framework.module.basicpermission.PermissionManager
 import com.swein.androidkotlintool.framework.module.basicpermission.RequestPermission
-import com.swein.androidkotlintool.framework.module.camerademo.CameraDemoActivity
-import com.swein.androidkotlintool.framework.module.shcameraphoto.album.albumselectorwrapper.AlbumSelectorWrapper
-import com.swein.androidkotlintool.framework.module.shcameraphoto.album.albumselectorwrapper.bean.AlbumFolderItemBean
-import com.swein.androidkotlintool.framework.module.shcameraphoto.album.albumselectorwrapper.bean.AlbumSelectorItemBean
-import com.swein.androidkotlintool.framework.module.shcameraphoto.demo.SHCameraPhotoFragmentDemoActivity
 import com.swein.androidkotlintool.framework.module.volley.VolleyModule
 import com.swein.androidkotlintool.framework.util.activity.ActivityUtil
 import com.swein.androidkotlintool.framework.util.log.ILog
 import com.swein.androidkotlintool.framework.util.screen.ScreenUtil
 import com.swein.androidkotlintool.main.moduledemo.ModuleDemoActivity
-import com.swein.androidkotlintool.template.blurmask.BlurMaskActivity
 import com.swein.androidkotlintool.template.bottomtab.activity.TabHostActivity
 import com.swein.androidkotlintool.template.handlerthread.HandlerThreadTemplateActivity
 import com.swein.androidkotlintool.template.list.SHListActivity
 import com.swein.androidkotlintool.template.memeberjoin.MemberJoinTemplateActivity
+import com.swein.androidkotlintool.template.mvp.mvploginexample.view.MVPLoginActivity
 import com.swein.androidkotlintool.template.viewpagerfragment.activity.ViewPagerActivity
 
 class MainActivity : BasicPermissionActivity() {
@@ -69,7 +63,8 @@ class MainActivity : BasicPermissionActivity() {
 
 //            ActivityUtil.startNewActivityWithoutFinish(this, SHCameraPhotoFragmentDemoActivity::class.java)
 //            ActivityUtil.startNewActivityWithoutFinish(this, CameraDemoActivity::class.java)
-            ActivityUtil.startNewActivityWithoutFinish(this, BlurMaskActivity::class.java)
+//            ActivityUtil.startNewActivityWithoutFinish(this, BlurMaskActivity::class.java)
+            ActivityUtil.startNewActivityWithoutFinish(this, MVPLoginActivity::class.java)
         }
     }
 
