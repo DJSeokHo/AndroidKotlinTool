@@ -31,15 +31,15 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
     <uses-permission android:name="com.android.launcher.permission.UNINSTALL_SHORTCUT" />
-	
-	<uses-feature
+    
+    <uses-feature
         android:name="android.hardware.camera"
         android:required="true" />
     <uses-feature
         android:name="android.hardware.camera.autofocus"
         android:required="false" />
-	
-	<application
+    
+    <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -48,7 +48,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".template.mvp.mvploginexample.view.MVPLoginActivity"
+        <activity android:name=".main.examples.fashionshoppingdetail.FashionShoppingDetailActivity"></activity>
+        <activity
+            android:name=".template.mvp.mvploginexample.view.MVPLoginActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <activity
@@ -86,20 +88,20 @@
             android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-	
-	            <category android:name="android.intent.category.LAUNCHER" />
+    
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".main.MainActivity"
             android:launchMode="singleTask"
             tools:ignore="Instantiatable" />
-		
-		<receiver
+        
+        <receiver
             android:name=".framework.util.shortcut.ShortcutReceiver"
             android:exported="false" />
-		
-		<uses-library
+        
+        <uses-library
             android:name="org.apache.http.legacy"
             android:required="false" /> <!-- FileProvider used to share photos with other apps -->
         <provider
