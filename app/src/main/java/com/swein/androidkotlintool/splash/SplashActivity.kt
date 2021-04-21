@@ -23,12 +23,12 @@ class SplashActivity : Activity() {
 
     private fun countDownToFinish() {
 
-        ThreadUtil.startThread(Runnable {
+        ThreadUtil.startThread {
 
-            ThreadUtil.startUIThread(2000, Runnable {
+            ThreadUtil.startUIThread(0) {
                 ActivityUtil.startNewActivityWithFinish(this, MainActivity::class.java)
-            })
-        })
+            }
+        }
     }
 
     override fun onBackPressed() {

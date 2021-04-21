@@ -48,7 +48,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".main.examples.fashionshoppingdetail.FashionShoppingDetailActivity"></activity>
+        <activity android:name=".main.examples.fashionshoppingdetail.FashionShoppingDetailActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".template.mvp.mvploginexample.view.MVPLoginActivity"
             android:launchMode="singleTask"

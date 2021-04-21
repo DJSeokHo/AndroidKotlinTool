@@ -149,6 +149,7 @@
             </LinearLayout>
     
             <Button
+                android:layout_marginHorizontal="30dp"
                 android:id="@+id/buttonContinue"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
