@@ -22,10 +22,12 @@ import com.swein.androidkotlintool.framework.util.activity.ActivityUtil
 import com.swein.androidkotlintool.framework.util.log.ILog
 import com.swein.androidkotlintool.framework.util.screen.ScreenUtil
 import com.swein.androidkotlintool.framework.util.thread.ThreadUtil
+import com.swein.androidkotlintool.main.examples.customizecolorswitch.CustomizeColorSwitchActivity
 import com.swein.androidkotlintool.main.examples.fashionshoppingdetail.FashionShoppingDetailActivity
 import com.swein.androidkotlintool.main.jetpackexample.datastore.DataStoreManager
 import com.swein.androidkotlintool.main.moduledemo.ModuleDemoActivity
 import com.swein.androidkotlintool.template.bottomtab.activity.TabHostActivity
+import com.swein.androidkotlintool.template.coroutine.CoroutineDemoActivity
 import com.swein.androidkotlintool.template.handlerthread.HandlerThreadTemplateActivity
 import com.swein.androidkotlintool.template.list.SHListActivity
 import com.swein.androidkotlintool.template.memeberjoin.MemberJoinTemplateActivity
@@ -38,6 +40,27 @@ import kotlin.concurrent.thread
 import kotlin.coroutines.CoroutineContext
 
 class MainActivity : BasicPermissionActivity() {
+
+    class CloneableObject: Any(), Cloneable {
+
+        var name = ""
+        var list = mutableListOf<String>()
+        var listTes = mutableListOf<Tes>()
+
+        public override fun clone(): Any {
+            return super.clone()
+        }
+    }
+
+    class Tes {
+
+        var number: Int
+
+        constructor(number: Int) {
+            this.number = number
+        }
+
+    }
 
     companion object {
         private const val TAG = "MainActivity"
@@ -60,80 +83,27 @@ class MainActivity : BasicPermissionActivity() {
         findView()
         setListener()
 
-//        GlobalScope.launch(Dispatchers.IO) {
-//            ILog.debug(TAG, "Hello")
-//
-//            delay(1000)
-//
-//            launch(Dispatchers.Main) {
-//                ILog.debug(TAG, "World")
-//                Toast.makeText(this@MainActivity, "haha", Toast.LENGTH_SHORT).show()
-//                frameLayoutRoot.setBackgroundColor(Color.BLUE)
-//            }
-//        }
+//        ActivityUtil.startNewActivityWithoutFinish(this, CoroutineDemoActivity::class.java)
+        ActivityUtil.startNewActivityWithoutFinish(this, CustomizeColorSwitchActivity::class.java)
 
-//        GlobalScope.launch(Dispatchers.IO) {
-//            ILog.debug(TAG, "Hello")
-//
-//            delay(1000)
-//
-//            launch(Dispatchers.Main) {
-//                ILog.debug(TAG, "World")
-//                Toast.makeText(this@MainActivity, "haha", Toast.LENGTH_SHORT).show()
-//                frameLayoutRoot.setBackgroundColor(Color.BLUE)
-//            }
-//        }
+        // clone test
+        val obj1 = CloneableObject()
+        obj1.name = "123"
+        ILog.debug(TAG, "obj1 $obj1 ${obj1.name}")
+        val obj2 = obj1
+        ILog.debug(TAG, "obj2 $obj2 ${obj2.name}")
 
+        val obj3 = CloneableObject()
+        obj3.name = "hahaha"
+        obj3.list.add("1")
+        obj3.list.add("2")
+        obj3.listTes.add(Tes(3))
+        obj3.listTes.add(Tes(4))
+        ILog.debug(TAG, "obj3 $obj3 ${obj3.name} ${obj3.list} ${obj3.listTes[0].number} ${obj3.listTes[1].number}")
 
+        val obj4 = obj3.clone() as CloneableObject
+        ILog.debug(TAG, "obj4 $obj4 ${obj4.name} ${obj4.list} ${obj4.listTes[0].number} ${obj4.listTes[1].number}")
 
-//        coroutineScope.launch(Dispatchers.Main) {
-//            val data =  withContext(Dispatchers.IO) {
-//                getDataFromServer(dataId)
-//            }
-//            updateView(data)
-//        }
-//
-//        coroutineScope.launch(Dispatchers.Main) {
-//            val dataOne =  withContext(Dispatchers.IO) {
-//                getDataFromServer(dataOneId)
-//            }
-//            val dataTwo =  withContext(Dispatchers.IO) {
-//                getDataFromServer(dataTwoId)
-//            }
-//
-//            val data = mergeDatas(dataOne, dataTwo)
-//            updateView(data)
-//        }
-
-//        GlobalScope.launch(Dispatchers.Main) {
-////            val data = getData(1)
-////            updateView(data)
-//            frameLayoutRoot.setBackgroundColor(Color.BLACK)
-//            ILog.debug(TAG, "go go")
-//
-//            getData(1)
-//            getData(2)
-//            getData(3)
-//
-//            ILog.debug(TAG, "ok ok")
-//            frameLayoutRoot.setBackgroundColor(Color.BLUE)
-//        }
-
-        GlobalScope.launch(Dispatchers.IO) {
-
-            ILog.debug(TAG, "save")
-            DataStoreManager.saveValue(this@MainActivity, "123", "aaa")
-
-            ILog.debug(TAG, "get")
-            val value = DataStoreManager.getStringValue(this@MainActivity, "123", "123")
-
-            ILog.debug(TAG, "value $value")
-        }
-
-    }
-
-    private fun getDataFromServer(dataId: Int) {
-        ILog.debug(TAG, "get data $dataId")
     }
 
     @RequestPermission(permissionCode = PermissionManager.PERMISSION_REQUEST_CAMERA_CODE)

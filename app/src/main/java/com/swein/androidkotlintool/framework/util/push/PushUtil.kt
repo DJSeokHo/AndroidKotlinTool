@@ -34,7 +34,7 @@ class PushUtil {
 
             jsonObject.put("data", data)
 
-            OKHttpWrapper.requestPostJSONWithHeader("https://fcm.googleapis.com/fcm/send", mutableMap, jsonObject, object:
+            OKHttpWrapper.requestPost("https://fcm.googleapis.com/fcm/send", mutableMap, jsonObject = jsonObject, okHttpWrapperDelegate = object:
                 OKHttpWrapperDelegate {
 
                 override fun onFailure(call: Call, e: IOException) {
