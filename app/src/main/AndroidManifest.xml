@@ -48,7 +48,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".main.examples.customizecolorswitch.CustomizeColorSwitchActivity"></activity>
+        <activity android:name=".template.coroutine.BaseCoroutineActivity"></activity>
+        <activity android:name=".main.examples.customizecolorswitch.CustomizeColorSwitchActivity" />
         <activity android:name=".template.coroutine.CoroutineDemoActivity" />
         <activity
             android:name=".main.examples.fashionshoppingdetail.FashionShoppingDetailActivity"

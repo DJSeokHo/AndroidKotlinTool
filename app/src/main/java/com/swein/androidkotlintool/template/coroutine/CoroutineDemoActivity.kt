@@ -18,14 +18,11 @@ import java.lang.Exception
 import kotlin.coroutines.CoroutineContext
 import kotlin.system.measureTimeMillis
 
-class CoroutineDemoActivity : AppCompatActivity(), CoroutineScope {
+class CoroutineDemoActivity : BaseCoroutineActivity() {
 
     companion object {
         private const val TAG = "CoroutineDemoActivity"
     }
-
-    override val coroutineContext: CoroutineContext
-        get() = Dispatchers.Main
 
     private lateinit var constraintLayout: ConstraintLayout
 
@@ -42,49 +39,101 @@ class CoroutineDemoActivity : AppCompatActivity(), CoroutineScope {
 
         findViewById<Button>(R.id.buttonGet).setOnClickListener {
 
-            launch(Dispatchers.Main) {
+//            launch(Dispatchers.Main) {
+//
+//                val time = measureTimeMillis {
+//
+//                    val a1 = async {
+//                        getData("test1")
+//                    }
+//
+//                    val a2 = async {
+//                        getData("test2")
+//                    }
+//
+//                    val a3 = async {
+//                        getData("test3")
+//                    }
+//
+//                    ILog.debug(TAG, "a1 ${a1.await()}")
+//                    ILog.debug(TAG, "===========================================")
+//                    ILog.debug(TAG, "a2 ${a2.await()}")
+//                    ILog.debug(TAG, "===========================================")
+//                    ILog.debug(TAG, "a3 ${a3.await()}")
+//
+//                    constraintLayout.setBackgroundColor(Color.CYAN)
+//                }
+//
+//                ILog.debug(TAG, "time ${time}ms")
+//            }
+
+//            GlobalScope.launch {
+//
+//                val time = measureTimeMillis {
+//
+//                    val data1 = getData1()
+//                    val data2 = getData2()
+//
+//                    ILog.debug(TAG, "$data1 $data2")
+//                }
+//
+//                ILog.debug(TAG, "time ${time}ms")
+//            }
+
+//            GlobalScope.launch(Dispatchers.IO) {
+//
+//                val time = measureTimeMillis {
+//
+//                    val data1 = async {
+//                        getData1()
+//                    }
+//                    val data2 = async {
+//                        getData2()
+//                    }
+//
+//                    ILog.debug(TAG, "${data1.await()} ${data2.await()}")
+//                }
+//
+//                ILog.debug(TAG, "time ${time}ms")
+//            }
+
+            GlobalScope.launch(Dispatchers.Main) {
 
                 val time = measureTimeMillis {
 
-                    val a1 = async {
-                        getData("test1")
+                    val data1 = async {
+                        getData1()
+                    }
+                    val data2 = async {
+                        getData2()
                     }
 
-                    val a2 = async {
-                        getData("test2")
-                    }
-
-                    val a3 = async {
-                        getData("test3")
-                    }
-
-                    val a4 = async {
-                        getData("test4")
-                    }
-
-                    val a5 = async {
-                        getData("test5")
-                    }
-
-                    ILog.debug(TAG, "a1 ${a1.await()}")
-                    ILog.debug(TAG, "===========================================")
-                    ILog.debug(TAG, "a2 ${a2.await()}")
-                    ILog.debug(TAG, "===========================================")
-                    ILog.debug(TAG, "a3 ${a3.await()}")
-                    ILog.debug(TAG, "===========================================")
-                    ILog.debug(TAG, "a4 ${a4.await()}")
-                    ILog.debug(TAG, "===========================================")
-                    ILog.debug(TAG, "a5 ${a5.await()}")
-
-                    constraintLayout.setBackgroundColor(Color.CYAN)
+                    ILog.debug(TAG, "${data1.await()} ${data2.await()}")
                 }
 
-                ILog.debug(TAG, "time $time")
+                constraintLayout.setBackgroundColor(Color.CYAN)
+                ILog.debug(TAG, "time ${time}ms")
             }
-
         }
-
     }
 
+//    private suspend fun getData1(): String {
+//        delay(1000)
+//        return "data1"
+//    }
+//
+//    private suspend fun getData2(): String {
+//        delay(600)
+//        return "data2"
+//    }
 
+    private suspend fun getData1() = withContext(Dispatchers.IO) {
+        delay(1000)
+        return@withContext "data1"
+    }
+
+    private suspend fun getData2() = withContext(Dispatchers.IO) {
+        delay(600)
+        return@withContext "data2"
+    }
 }

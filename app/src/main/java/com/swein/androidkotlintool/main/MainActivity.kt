@@ -83,8 +83,8 @@ class MainActivity : BasicPermissionActivity() {
         findView()
         setListener()
 
-//        ActivityUtil.startNewActivityWithoutFinish(this, CoroutineDemoActivity::class.java)
-        ActivityUtil.startNewActivityWithoutFinish(this, CustomizeColorSwitchActivity::class.java)
+        ActivityUtil.startNewActivityWithoutFinish(this, CoroutineDemoActivity::class.java)
+//        ActivityUtil.startNewActivityWithoutFinish(this, CustomizeColorSwitchActivity::class.java)
 
         // clone test
         val obj1 = CloneableObject()
