@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable name="exampleData" type="com.swein.androidkotlintool.main.examples.databinding.ExampleDataBean"/>
+    </data>
+    
+    <LinearLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".main.examples.databinding.DataBindingExampleActivity"
+        android:orientation="vertical"
+        android:background="@color/white"
+        android:gravity="center">
+        
+        <TextView
+            android:text="@{String.valueOf(exampleData.id)}"
+            android:textColor="@color/black"
+            android:textSize="9pt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    
+        <TextView
+            android:layout_marginTop="20dp"
+            android:text="@{exampleData.title}"
+            android:textColor="@color/black"
+            android:textSize="9pt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    
+        <TextView
+            android:layout_marginTop="20dp"
+            android:text="@{exampleData.content}"
+            android:textColor="@color/black"
+            android:textSize="9pt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        
+        <Button
+            android:layout_marginTop="20dp"
+            android:text="click"
+            android:textColor="@color/black"
+            android:background="@color/white"
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+    
+</layout>
+
+

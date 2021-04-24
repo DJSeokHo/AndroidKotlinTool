@@ -23,7 +23,9 @@ import com.swein.androidkotlintool.framework.util.log.ILog
 import com.swein.androidkotlintool.framework.util.screen.ScreenUtil
 import com.swein.androidkotlintool.framework.util.thread.ThreadUtil
 import com.swein.androidkotlintool.main.examples.customizecolorswitch.CustomizeColorSwitchActivity
+import com.swein.androidkotlintool.main.examples.databinding.DataBindingExampleActivity
 import com.swein.androidkotlintool.main.examples.fashionshoppingdetail.FashionShoppingDetailActivity
+import com.swein.androidkotlintool.main.examples.viewbinding.ViewBindingExampleActivity
 import com.swein.androidkotlintool.main.jetpackexample.datastore.DataStoreManager
 import com.swein.androidkotlintool.main.moduledemo.ModuleDemoActivity
 import com.swein.androidkotlintool.template.bottomtab.activity.TabHostActivity
@@ -32,7 +34,6 @@ import com.swein.androidkotlintool.template.handlerthread.HandlerThreadTemplateA
 import com.swein.androidkotlintool.template.list.SHListActivity
 import com.swein.androidkotlintool.template.memeberjoin.MemberJoinTemplateActivity
 import com.swein.androidkotlintool.template.mvp.mvploginexample.view.MVPLoginActivity
-import com.swein.androidkotlintool.template.viewpagerfragment.activity.ViewPagerActivity
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
@@ -83,7 +84,9 @@ class MainActivity : BasicPermissionActivity() {
         findView()
         setListener()
 
-        ActivityUtil.startNewActivityWithoutFinish(this, CoroutineDemoActivity::class.java)
+//        ActivityUtil.startNewActivityWithoutFinish(this, CoroutineDemoActivity::class.java)
+//        ActivityUtil.startNewActivityWithoutFinish(this, ViewBindingExampleActivity::class.java)
+        ActivityUtil.startNewActivityWithoutFinish(this, DataBindingExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, CustomizeColorSwitchActivity::class.java)
 
         // clone test
@@ -164,7 +167,6 @@ class MainActivity : BasicPermissionActivity() {
 
         buttonViewPager?.let {
             it.setOnClickListener {
-                ActivityUtil.startNewActivityWithoutFinish(this, ViewPagerActivity::class.java)
             }
         }
 

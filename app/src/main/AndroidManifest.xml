@@ -48,7 +48,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".template.coroutine.BaseCoroutineActivity"></activity>
+        <activity android:name=".main.examples.databinding.DataBindingExampleActivity"></activity>
+        <activity android:name=".main.examples.viewbinding.ViewBindingExampleActivity" />
+        <activity android:name=".template.coroutine.BaseCoroutineActivity" />
         <activity android:name=".main.examples.customizecolorswitch.CustomizeColorSwitchActivity" />
         <activity android:name=".template.coroutine.CoroutineDemoActivity" />
         <activity
@@ -118,6 +120,23 @@
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
+        </provider>
+        <provider
+            android:name="androidx.startup.InitializationProvider"
+            android:authorities="${applicationId}.androidx-startup"
+            android:exported="false"
+            tools:node="merge">
+    
+            <!-- This entry makes ExampleLoggerInitializer discoverable. -->
+            <meta-data
+                android:name="com.swein.androidkotlintool.main.examples.appstartup.AppStartUpExample"
+                android:value="androidx.startup" />
+    
+            <!-- if you don't need -->
+            <!-- <meta-data -->
+            <!-- android:name="com.swein.androidkotlintool.main.examples.appstartup.AppStartUpExample" -->
+            <!-- tools:node="remove" -->
+            <!-- /> -->
         </provider>
     </application>
 

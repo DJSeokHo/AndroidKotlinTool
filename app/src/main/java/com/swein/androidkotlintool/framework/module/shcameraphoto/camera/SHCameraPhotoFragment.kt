@@ -35,7 +35,6 @@ import com.swein.androidkotlintool.framework.util.sound.audiomanager.AudioManage
 import com.swein.androidkotlintool.framework.util.sound.mediaplayer.MediaPlayerUtil
 import com.swein.androidkotlintool.framework.util.theme.ThemeUtil
 import com.swein.androidkotlintool.framework.util.thread.ThreadUtil
-import kotlinx.android.synthetic.main.fragment_s_h_camera_photo.*
 import java.io.File
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
