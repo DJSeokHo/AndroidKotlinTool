@@ -1,4 +1,4 @@
-package com.swein.androidkotlintool.main.examples.viewbinding
+package com.swein.androidkotlintool.main.jetpackexample.viewbinding
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -22,7 +22,8 @@ class ViewBindingExampleActivity : FragmentActivity() {
         binding = ActivityViewBindingExampleBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        ActivityUtil.addFragmentWithTAG(this, binding.frameLayoutContainer.id, ViewBindingExampleFragment.newInstance(), "", false, null)
+        ActivityUtil.addFragmentWithTAG(this, binding.frameLayoutContainer.id,
+            ViewBindingExampleFragment.newInstance(), "", false, null)
 
         binding.textView.text = "123"
         binding.button.text = "haha"

@@ -171,7 +171,6 @@ class SHCameraPhotoFragment : Fragment() {
         findView()
         setListener()
 
-        ILog.debug(TAG, "full is ${DisplayUtil.getScreenWidthPx(rootView.context)} ${DisplayUtil.getScreenHeightPx(rootView.context)}")
         return rootView
     }
 

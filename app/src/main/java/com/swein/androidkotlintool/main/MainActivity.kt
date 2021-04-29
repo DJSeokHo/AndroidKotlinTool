@@ -3,7 +3,10 @@ package com.swein.androidkotlintool.main
 import android.Manifest
 import android.content.Context
 import android.graphics.Color
+import android.graphics.Insets
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.WindowInsets
 import android.widget.Button
 import android.widget.FrameLayout
 import android.widget.Toast
@@ -19,13 +22,16 @@ import com.swein.androidkotlintool.framework.module.basicpermission.PermissionMa
 import com.swein.androidkotlintool.framework.module.basicpermission.RequestPermission
 import com.swein.androidkotlintool.framework.module.volley.VolleyModule
 import com.swein.androidkotlintool.framework.util.activity.ActivityUtil
+import com.swein.androidkotlintool.framework.util.display.DisplayUtil
 import com.swein.androidkotlintool.framework.util.log.ILog
 import com.swein.androidkotlintool.framework.util.screen.ScreenUtil
 import com.swein.androidkotlintool.framework.util.thread.ThreadUtil
 import com.swein.androidkotlintool.main.examples.customizecolorswitch.CustomizeColorSwitchActivity
-import com.swein.androidkotlintool.main.examples.databinding.DataBindingExampleActivity
+import com.swein.androidkotlintool.main.jetpackexample.databinding.DataBindingExampleActivity
 import com.swein.androidkotlintool.main.examples.fashionshoppingdetail.FashionShoppingDetailActivity
-import com.swein.androidkotlintool.main.examples.viewbinding.ViewBindingExampleActivity
+import com.swein.androidkotlintool.main.examples.permissionexample.PermissionExampleActivity
+import com.swein.androidkotlintool.main.jetpackexample.lifecycle.LifecycleExampleActivity
+import com.swein.androidkotlintool.main.jetpackexample.viewbinding.ViewBindingExampleActivity
 import com.swein.androidkotlintool.main.jetpackexample.datastore.DataStoreManager
 import com.swein.androidkotlintool.main.moduledemo.ModuleDemoActivity
 import com.swein.androidkotlintool.template.bottomtab.activity.TabHostActivity
@@ -78,7 +84,8 @@ class MainActivity : BasicPermissionActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        val view = LayoutInflater.from(this).inflate(R.layout.activity_main, null)
+        setContentView(view)
 
         ScreenUtil.setTitleBarColor(this, Color.parseColor(Constants.APP_BASIC_THEME_COLOR))
         findView()
@@ -86,8 +93,10 @@ class MainActivity : BasicPermissionActivity() {
 
 //        ActivityUtil.startNewActivityWithoutFinish(this, CoroutineDemoActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, ViewBindingExampleActivity::class.java)
-        ActivityUtil.startNewActivityWithoutFinish(this, DataBindingExampleActivity::class.java)
+//        ActivityUtil.startNewActivityWithoutFinish(this, DataBindingExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, CustomizeColorSwitchActivity::class.java)
+//        ActivityUtil.startNewActivityWithoutFinish(this, LifecycleExampleActivity::class.java)
+        ActivityUtil.startNewActivityWithoutFinish(this, PermissionExampleActivity::class.java)
 
         // clone test
         val obj1 = CloneableObject()
@@ -107,6 +116,30 @@ class MainActivity : BasicPermissionActivity() {
         val obj4 = obj3.clone() as CloneableObject
         ILog.debug(TAG, "obj4 $obj4 ${obj4.name} ${obj4.list} ${obj4.listTes[0].number} ${obj4.listTes[1].number}")
 
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.R) {
+
+            val windowMetrics = windowManager.currentWindowMetrics
+            val insets: Insets = windowMetrics.windowInsets.getInsetsIgnoringVisibility(WindowInsets.Type.systemBars())
+            val width = windowMetrics.bounds.width() - insets.left - insets.right
+            ILog.debug(TAG, "${windowMetrics.bounds.width()} - ${insets.left} - ${insets.right} $width")
+            ILog.debug(TAG, "${DisplayUtil.getScreenWidthPx(this)}")
+
+
+            DisplayUtil.getRootViewInfo(view, object : DisplayUtil.DisplayRootViewInfoDelegate {
+                override fun onInfo(
+                    screenWidth: Int,
+                    screenHeight: Int,
+                    statusHeight: Int,
+                    bottomHeight: Int,
+                    keypadHeight: Int
+                ) {
+                    ILog.debug(TAG, "screenWidth $screenWidth ${DisplayUtil.getScreenWidthPx(this@MainActivity)} ${DisplayUtil.getScreenWidth(this@MainActivity)}")
+                    ILog.debug(TAG, "screenHeight $screenHeight ${DisplayUtil.getScreenHeightPx(this@MainActivity)} ${DisplayUtil.getScreenHeight(this@MainActivity)}")
+                    ILog.debug(TAG, "statusHeight $statusHeight ${windowMetrics.windowInsets.getInsetsIgnoringVisibility(WindowInsets.Type.statusBars())}")
+                    ILog.debug(TAG, "bottomHeight $bottomHeight ${windowMetrics.windowInsets.getInsetsIgnoringVisibility(WindowInsets.Type.systemBars())}")
+                }
+            })
+        }
     }
 
     @RequestPermission(permissionCode = PermissionManager.PERMISSION_REQUEST_CAMERA_CODE)
@@ -183,12 +216,12 @@ class MainActivity : BasicPermissionActivity() {
     }
 
     override fun onDestroy() {
-        ILog.debug(TAG, "onDestroy")
+//        ILog.debug(TAG, "onDestroy")
         super.onDestroy()
     }
 
     protected fun finalize() {
         // finalization logic
-        ILog.debug(TAG, "finalize")
+//        ILog.debug(TAG, "finalize")
     }
 }

@@ -1,4 +1,4 @@
-package com.swein.androidkotlintool.main.examples.appstartup
+package com.swein.androidkotlintool.main.jetpackexample.appstartup
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -12,6 +12,6 @@ object AnyToolNeedContextWhenInit {
 
     fun init(context: Context) {
         ILog.debug(TAG, "init???")
-        this.context = context
+        AnyToolNeedContextWhenInit.context = context
     }
 }

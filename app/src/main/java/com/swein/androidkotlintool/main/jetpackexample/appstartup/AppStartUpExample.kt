@@ -1,4 +1,4 @@
-package com.swein.androidkotlintool.main.examples.appstartup
+package com.swein.androidkotlintool.main.jetpackexample.appstartup
 
 import android.content.Context
 import androidx.startup.Initializer

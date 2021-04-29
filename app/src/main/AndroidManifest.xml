@@ -25,6 +25,7 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.VIBRATE" />
@@ -48,8 +49,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".main.examples.databinding.DataBindingExampleActivity"></activity>
-        <activity android:name=".main.examples.viewbinding.ViewBindingExampleActivity" />
+        <activity android:name=".main.examples.permissionexample.PermissionExampleActivity"></activity>
+        <activity android:name=".main.jetpackexample.lifecycle.LifecycleExampleActivity" />
+        <activity android:name=".main.jetpackexample.databinding.DataBindingExampleActivity" />
+        <activity android:name=".main.jetpackexample.viewbinding.ViewBindingExampleActivity" />
         <activity android:name=".template.coroutine.BaseCoroutineActivity" />
         <activity android:name=".main.examples.customizecolorswitch.CustomizeColorSwitchActivity" />
         <activity android:name=".template.coroutine.CoroutineDemoActivity" />
@@ -78,9 +81,6 @@
             android:launchMode="singleTask" />
         <activity
             android:name=".main.moduledemo.ModuleDemoActivity"
-            android:launchMode="singleTask" />
-        <activity
-            android:name=".template.viewpagerfragment.activity.ViewPagerActivity"
             android:launchMode="singleTask" />
         <activity
             android:name=".template.bottomtab.activity.TabHostActivity"
@@ -129,7 +129,7 @@
     
             <!-- This entry makes ExampleLoggerInitializer discoverable. -->
             <meta-data
-                android:name="com.swein.androidkotlintool.main.examples.appstartup.AppStartUpExample"
+                android:name="com.swein.androidkotlintool.main.jetpackexample.appstartup.AppStartUpExample"
                 android:value="androidx.startup" />
     
             <!-- if you don't need -->

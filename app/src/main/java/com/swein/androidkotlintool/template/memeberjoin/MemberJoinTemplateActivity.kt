@@ -101,6 +101,6 @@ class MemberJoinTemplateActivity : FragmentActivity() {
     }
 
     protected fun finalize() {
-        ILog.debug(TAG, "finalize")
+//        ILog.debug(TAG, "finalize")
     }
 }

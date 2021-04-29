@@ -1,4 +1,4 @@
-package com.swein.androidkotlintool.main.examples.viewbinding
+package com.swein.androidkotlintool.main.jetpackexample.viewbinding
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,10 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.swein.androidkotlintool.databinding.FragmentViewBindingExampleBinding
+import com.swein.androidkotlintool.framework.util.log.ILog
 
 class ViewBindingExampleFragment : Fragment() {
 
     companion object {
+
+        private const val TAG = "ViewBindingExampleFragment"
 
         @JvmStatic
 //        fun newInstance() =
@@ -43,13 +46,31 @@ class ViewBindingExampleFragment : Fragment() {
 
         binding.textView.text = "123"
 
+        createViewHolder()
         return binding.root
         // Inflate the layout for this fragment
 //        return inflater.inflate(R.layout.fragment_view_binding_example, container, false)
     }
 
+    private fun createViewHolder() {
+
+        context?.let {
+            val viewBindingExampleViewHolder = ViewBindingExampleViewHolder(it)
+            viewBindingExampleViewHolder.delegate = object:
+                ViewBindingExampleViewHolder.ViewBindingExampleViewHolderDelegate {
+                override fun onClick() {
+                    ILog.debug(TAG, "view holder click")
+                }
+            }
+
+            binding.frameLayout.addView(viewBindingExampleViewHolder.getView())
+        }
+
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+        ILog.debug(TAG, "onDestroyView ${_binding == null}")
     }
 }
