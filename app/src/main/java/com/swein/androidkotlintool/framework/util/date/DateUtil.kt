@@ -8,10 +8,11 @@ import java.util.*
 class DateUtil {
     companion object {
 
+        @SuppressLint("SimpleDateFormat")
         fun getCurrentDateTimeString(): String {
             val calendar: Calendar = Calendar.getInstance()
-            return "${calendar.get(Calendar.YEAR)}-${(calendar.get(Calendar.MONTH) + 1)}-${calendar.get(Calendar.DAY_OF_MONTH)} " +
-                    "${calendar.get(Calendar.HOUR_OF_DAY)}:${calendar.get(Calendar.MINUTE)}:${calendar.get(Calendar.SECOND)}"
+            val date = calendar.time
+            return SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date)
         }
 
         fun getCurrentDateTimeStringWithNoSpace(connectionString: String): String {

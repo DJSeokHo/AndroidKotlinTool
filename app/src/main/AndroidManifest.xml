@@ -49,7 +49,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".main.examples.permissionexample.PermissionExampleActivity"></activity>
+        <activity android:name=".framework.module.firebase.demo.FirebaseDemoActivity"></activity>
+        <activity android:name=".main.examples.permissionexample.PermissionExampleActivity" />
         <activity android:name=".main.jetpackexample.lifecycle.LifecycleExampleActivity" />
         <activity android:name=".main.jetpackexample.databinding.DataBindingExampleActivity" />
         <activity android:name=".main.jetpackexample.viewbinding.ViewBindingExampleActivity" />
