@@ -23,9 +23,16 @@
         android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"
         tools:ignore="ProtectedPermissions" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    
+    
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+    
+    
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.VIBRATE" />
@@ -49,7 +56,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".framework.module.firebase.demo.FirebaseDemoActivity"></activity>
+        <activity android:name=".framework.module.location.demo.LocationDemoActivity" />
+        <activity android:name=".framework.module.firebase.demo.FirebaseDemoActivity" />
         <activity android:name=".main.examples.permissionexample.PermissionExampleActivity" />
         <activity android:name=".main.jetpackexample.lifecycle.LifecycleExampleActivity" />
         <activity android:name=".main.jetpackexample.databinding.DataBindingExampleActivity" />
@@ -139,6 +147,10 @@
             <!-- tools:node="remove" -->
             <!-- /> -->
         </provider>
+        
+        <service android:name=".framework.module.location.service.LocationService"
+            android:enabled="true"
+            android:exported="false" />
     </application>
 
 </manifest>

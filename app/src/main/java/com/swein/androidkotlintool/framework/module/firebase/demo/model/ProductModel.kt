@@ -8,6 +8,7 @@ class ProductModel {
 
         const val UUID_KEY = "UUID"
         const val SHOP_UUID_KEY = "SHOP_UUID"
+        const val AREA_KEY = "AREA"
         const val NAME_KEY = "NAME"
         const val IMAGE_URL_KEY = "IMAGE_URL"
         const val INFO_KEY = "INFO"
@@ -23,6 +24,7 @@ class ProductModel {
 
     var uuId = ""
     var shopUuId = ""
+    var area = ""
     var name = ""
     var imageUrl = ""
     var info = ""
@@ -41,6 +43,7 @@ class ProductModel {
 
         map[UUID_KEY] = uuId
         map[SHOP_UUID_KEY] = shopUuId
+        map[AREA_KEY] = area
         map[NAME_KEY] = name
         map[IMAGE_URL_KEY] = imageUrl
         map[INFO_KEY] = info
@@ -59,6 +62,7 @@ class ProductModel {
     fun parsing(map: MutableMap<String, Any>) {
         uuId = map[UUID_KEY] as String
         shopUuId = map[SHOP_UUID_KEY] as String
+        area = map[AREA_KEY] as String
         name = map[NAME_KEY] as String
         imageUrl = map[IMAGE_URL_KEY] as String
         info = map[INFO_KEY] as String
