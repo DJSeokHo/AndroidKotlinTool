@@ -22,6 +22,7 @@ import com.swein.androidkotlintool.framework.module.basicpermission.PermissionMa
 import com.swein.androidkotlintool.framework.module.basicpermission.RequestPermission
 import com.swein.androidkotlintool.framework.module.firebase.demo.FirebaseDemoActivity
 import com.swein.androidkotlintool.framework.module.location.demo.LocationDemoActivity
+import com.swein.androidkotlintool.framework.module.location.demo.LocationWithLifecycleDemoActivity
 import com.swein.androidkotlintool.framework.module.volley.VolleyModule
 import com.swein.androidkotlintool.framework.util.activity.ActivityUtil
 import com.swein.androidkotlintool.framework.util.display.DisplayUtil
@@ -100,7 +101,8 @@ class MainActivity : BasicPermissionActivity() {
 //        ActivityUtil.startNewActivityWithoutFinish(this, LifecycleExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, PermissionExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, FirebaseDemoActivity::class.java)
-        ActivityUtil.startNewActivityWithoutFinish(this, LocationDemoActivity::class.java)
+//        ActivityUtil.startNewActivityWithoutFinish(this, LocationDemoActivity::class.java)
+        ActivityUtil.startNewActivityWithoutFinish(this, LocationWithLifecycleDemoActivity::class.java)
 
         // clone test
         val obj1 = CloneableObject()

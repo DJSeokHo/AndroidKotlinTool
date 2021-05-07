@@ -2,52 +2,69 @@ package com.swein.androidkotlintool.framework.module.firebase.demo
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import autoLoginWhenAppStartExample
+import com.google.firebase.firestore.DocumentReference
 import com.swein.androidkotlintool.R
 import com.swein.androidkotlintool.framework.module.firebase.cloudstorage.CloudStorageManager
+import com.swein.androidkotlintool.framework.module.firebase.demo.model.MemberSelfModel
+import com.swein.androidkotlintool.framework.module.firebase.demo.model.ShopModel
+import com.swein.androidkotlintool.framework.module.firebase.demo.service.MemberModelService
 import com.swein.androidkotlintool.framework.util.log.ILog
+import com.swein.androidkotlintool.framework.util.preferences.SharedPreferencesUtil
 import com.swein.androidkotlintool.framework.util.thread.ThreadUtil
+import getProductListExample
+import loginByKakaoExample
+import loginBySecretTokenKeyExample
+import modifyBusinessExample
+import registerBusinessExample
+import registerExample
+import requestShopInfoExample
+import updateMemberProfileExample
+import uploadProductExample
 
 class FirebaseDemoActivity : AppCompatActivity() {
 
+    companion object {
+        private const val TAG = "FirebaseDemoActivity"
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_firebase_demo)
+        SharedPreferencesUtil.init(this)
+        MemberSelfModel.initWhenAppStart()
 
-        ThreadUtil.startThread {
+//        registerExample()
+//        autoLoginWhenAppStartExample()
+//        loginByKakaoExample()
+//        loginBySecretTokenKeyExample()
+//        updateMemberProfileExample()
 
-            CloudStorageManager.uploadImage("gs://androidkotlintool.appspot.com", "/storage/emulated/0/DCIM/Screenshots/Screenshot_20210413-191931_RecyclerViewExample.jpg",
-                "Member/Profile/test.jpg")
-//            selectProductList()
-//            selectProduct("d718e7ec525343ecadebdd56987f407d")
 
-//            val mutableMap = mutableMapOf<String, Any>()
-//            mutableMap[ProductModel.AREA_KEY] 6= "분당구"
-//            mutableMap[ProductModel.AREA_KEY] = "수정구"
-//            mutableMap[ProductModel.AREA_KEY] = "중원구"
+//        registerBusinessExample()
+//        requestShopInfoExample()
 
-//            val likeMutableMap = mutableMapOf<String, Any>()
-//            likeMutableMap[ProductModel.INFO_KEY] = "고고고"
+//        ThreadUtil.startUIThread(3000) {
+//            modifyBusinessExample()
+//        }
 
-//            selectProductList(mutableMap)
 
-//            selectProductList()
-//            createMemberTest()
-//            createShopTest()
-//            for (i in 0 until 30) {
-//                createProductTest(i)
-//                if (i % 3 == 0) {
-//                    Thread.sleep(1700)
-//                }
-//                else {
-//                    Thread.sleep(1200)
+
+
+        autoLoginWhenAppStartExample()
 //
-//                }
+//        ThreadUtil.startUIThread(1000) {
+//            requestShopInfoExample()
+//
+//            ThreadUtil.startUIThread(1000) {
+//                uploadProductExample()
 //            }
+//        }
 
-//            updateProductTest()
-//            deleteProductTest()
+        ThreadUtil.startUIThread(1000) {
+            getProductListExample()
+
         }
     }
 }

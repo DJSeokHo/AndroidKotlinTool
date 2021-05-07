@@ -11,93 +11,69 @@ class SharedPreferencesUtil {
     companion object {
         private const val KEY = BuildConfig.APPLICATION_ID
 
+        private lateinit var sharedPreferences: SharedPreferences
+
         /**
-         *  MODE_PRIVATE: can only edit by this app
+         * put this before main activity start
          */
-        fun putValue(context: Context, key: String, value: String)
-        {
-            val pref: SharedPreferences = context.getSharedPreferences(KEY, Activity.MODE_PRIVATE)
-            val editor: SharedPreferences.Editor  = pref.edit()
-            editor.putString(key, value)
-            editor.apply()
+        fun init(context: Context) {
+            sharedPreferences = context.getSharedPreferences(KEY, Activity.MODE_PRIVATE)
         }
 
-        fun putValue(context: Context, key: String, value: Int)
-        {
-            val pref: SharedPreferences = context.getSharedPreferences(KEY, Activity.MODE_PRIVATE)
-            val editor: SharedPreferences.Editor  = pref.edit()
-            editor.putInt(key, value)
-            editor.apply()
+        fun putValue(key: String, value: String) {
+            sharedPreferences.edit().putString(key, value).apply()
         }
 
-        fun putValue(context: Context, key: String, value: Boolean)
-        {
-            val pref: SharedPreferences = context.getSharedPreferences(KEY, Activity.MODE_PRIVATE)
-            val editor: SharedPreferences.Editor  = pref.edit()
-            editor.putBoolean(key, value)
-            editor.apply()
+        fun putValue(key: String, value: Int) {
+            sharedPreferences.edit().putInt(key, value).apply()
         }
 
-        fun getValue(context: Context, key: String, dftValue: Boolean): Boolean
-        {
-            val pref: SharedPreferences = context.getSharedPreferences(KEY, Activity.MODE_PRIVATE)
-            try {
-                return pref.getBoolean(key, dftValue)
-            }
-            catch (e: Exception) {
-                return dftValue
-            }
+        fun putValue(key: String, value: Long) {
+            sharedPreferences.edit().putLong(key, value).apply()
         }
 
-        fun getValue(context: Context, key: String, dftValue: String): String?
-        {
-            val pref: SharedPreferences = context.getSharedPreferences(KEY, Activity.MODE_PRIVATE)
-            try {
-                return pref.getString(key, dftValue)
-            }
-            catch (e: Exception) {
-                return dftValue
-            }
+        fun putValue(key: String, value: Float) {
+            sharedPreferences.edit().putFloat(key, value).apply()
         }
 
-        fun getValue(context: Context, key: String, dftValue: Int): Int
-        {
-            val pref: SharedPreferences = context.getSharedPreferences(KEY, Activity.MODE_PRIVATE)
-            try {
-                return pref.getInt(key, dftValue)
-            }
-            catch (e: Exception) {
-                return dftValue
-            }
+        fun putValue(key: String, value: Boolean) {
+            sharedPreferences.edit().putBoolean(key, value).apply()
         }
 
-        fun isContainValue(context: Context, key: String): Boolean
-        {
-            val pref: SharedPreferences = context.getSharedPreferences(KEY, Activity.MODE_PRIVATE)
-
-            return pref.contains(key)
+        fun getValue(key: String, dftValue: Boolean): Boolean {
+            return sharedPreferences.getBoolean(key, dftValue)
         }
 
-        fun getAllKeyValue(context: Context): MutableMap<String, *>?
-        {
-            val pref: SharedPreferences = context.getSharedPreferences(KEY, Activity.MODE_PRIVATE)
-            return pref.all
+        fun getValue(key: String, dftValue: String): String {
+            return sharedPreferences.getString(key, dftValue)!!
         }
 
-        @SuppressLint("CommitPrefEdits")
-        fun clearSharedPreferencesData(context: Context)
-        {
-            val pref: SharedPreferences = context.getSharedPreferences(KEY, Activity.MODE_PRIVATE)
-            val editor: SharedPreferences.Editor  = pref.edit()
-            editor.clear()
+        fun getValue(key: String, dftValue: Int): Int {
+            return sharedPreferences.getInt(key, dftValue)
         }
 
-        @SuppressLint("CommitPrefEdits")
-        fun removeValue(context: Context, key: String)
-        {
-            val pref: SharedPreferences = context.getSharedPreferences(KEY, Activity.MODE_PRIVATE)
-            val editor: SharedPreferences.Editor  = pref.edit()
-            editor.remove(key)
+        fun getValue(key: String, dftValue: Long): Long {
+            return sharedPreferences.getLong(key, dftValue)
+        }
+
+        fun getValue(key: String, dftValue: Float): Float {
+            return sharedPreferences.getFloat(key, dftValue)
+        }
+
+        fun isContainValue(key: String): Boolean {
+            return sharedPreferences.contains(key)
+        }
+
+        fun getAllKeyValue(): Map<*, *> {
+            return sharedPreferences.all
+        }
+
+        fun clearSharedPreferencesData() {
+            sharedPreferences.edit().clear().apply()
+        }
+
+        fun removeValue(key: String) {
+            sharedPreferences.edit().remove(key).apply()
         }
     }
     

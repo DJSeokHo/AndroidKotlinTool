@@ -18,12 +18,16 @@ class MemberModel {
         const val GENDER_KEY = "GENDER"
         const val NICKNAME_KEY = "NICKNAME"
         const val PROFILE_IMAGE_URL_KEY = "PROFILE_IMAGE_URL"
+        const val PROFILE_IMAGE_FILE_CLOUD_PATH_KEY = "PROFILE_IMAGE_FILE_CLOUD_PATH"
         const val PUSH_TOKEN_KEY = "PUSH_TOKEN_KEY"
         const val CREATE_DATE_KEY = "CREATE_DATE"
         const val MODIFY_DATE_KEY = "MODIFY_DATE"
         const val CREATE_BY_KEY = "CREATE_BY"
         const val MODIFY_BY_KEY = "MODIFY_BY"
+
     }
+
+    var documentId = ""
 
     var uuId = ""
     var loginSecretToken = ""
@@ -34,9 +38,10 @@ class MemberModel {
     var phone = ""
     var name = ""
     var birth = ""
-    var gender = -1 // 1: male, 0: female
+    var gender = -1L // 1: male, 0: female
     var nickname = ""
     var profileImageUrl = ""
+    var profileImageFileCloudPath = ""
     var pushToken = ""
     var createDate = ""
     var modifyDate = ""
@@ -59,6 +64,7 @@ class MemberModel {
         map[GENDER_KEY] = gender
         map[NICKNAME_KEY] = nickname
         map[PROFILE_IMAGE_URL_KEY] = profileImageUrl
+        map[PROFILE_IMAGE_FILE_CLOUD_PATH_KEY] = profileImageFileCloudPath
         map[PUSH_TOKEN_KEY] = pushToken
         map[CREATE_DATE_KEY] = createDate
         map[MODIFY_DATE_KEY] = modifyDate
@@ -78,9 +84,10 @@ class MemberModel {
         phone = map[PHONE_KEY] as String
         name = map[NAME_KEY] as String
         birth = map[BIRTH_KEY] as String
-        gender = map[GENDER_KEY] as Int
+        gender = map[GENDER_KEY] as Long
         nickname = map[NAME_KEY] as String
         profileImageUrl = map[PROFILE_IMAGE_URL_KEY] as String
+        profileImageFileCloudPath = map[PROFILE_IMAGE_FILE_CLOUD_PATH_KEY] as String
         pushToken = map[PUSH_TOKEN_KEY] as String
         createDate = map[CREATE_DATE_KEY] as String
         modifyDate = map[MODIFY_DATE_KEY] as String

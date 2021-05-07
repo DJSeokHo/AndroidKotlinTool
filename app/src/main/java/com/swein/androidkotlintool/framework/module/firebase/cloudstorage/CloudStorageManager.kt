@@ -1,5 +1,7 @@
 package com.swein.androidkotlintool.framework.module.firebase.cloudstorage
 
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.net.Uri
 import com.google.android.gms.tasks.Continuation
 import com.google.android.gms.tasks.Task
@@ -7,101 +9,84 @@ import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.UploadTask
 import com.swein.androidkotlintool.framework.util.log.ILog
+import com.swein.androidkotlintool.framework.util.thread.ThreadUtil
+import java.io.ByteArrayOutputStream
 import java.io.File
+import java.io.FileInputStream
+
 
 object CloudStorageManager {
 
+    enum class CloudStorageFileType {
+        FILE, BYTE, STREAM
+    }
+
     private const val TAG = "CloudStorageManager"
+    const val FILE_STORAGE_DOMAIN = "gs://androidkotlintool.appspot.com"
+    const val MEMBER_PROFILE_IMAGE_FOLDER = "Member/Profile/"
+    const val SHOP_PROFILE_IMAGE_FOLDER = "Shop/Profile/"
+    const val SHOP_BUSINESS_IMAGE_FOLDER = "Shop/Business/"
+    const val PRODUCT_IMAGE_FOLDER = "Product/"
 
-    fun uploadImage(uploadPath: String, filePath: String, fileName: String) {
+    fun uploadImage(uploadPath: String, filePath: String, fileName: String, type: CloudStorageFileType, onSuccess: (imageUrl: String) -> Unit, onFailure: () -> Unit) {
 
+        ThreadUtil.startThread {
 
-        val storageRef: StorageReference =  FirebaseStorage.getInstance(uploadPath).reference
+            val storageRef: StorageReference =  FirebaseStorage.getInstance(uploadPath).reference
+            val storageReference: StorageReference = storageRef.child(fileName)
 
-        val file = Uri.fromFile(File(filePath))
-        val storageReference: StorageReference = storageRef.child(fileName)
-        val uploadTask: UploadTask = storageReference.putFile(file)
+            val uploadTask: UploadTask = when (type) {
 
-        uploadTask.addOnFailureListener {
-            ILog.debug(TAG, "${it.message}")
-        }.addOnSuccessListener {
-            ILog.debug(TAG, "success ${storageReference.downloadUrl}")
-            it.task.continueWithTask(Continuation<UploadTask.TaskSnapshot, Task<Uri>> { task ->
-                if (!task.isSuccessful) {
-                    ILog.debug(TAG, "error")
+                CloudStorageFileType.FILE -> {
+                    storageReference.putFile(Uri.fromFile(File(filePath)))
                 }
 
-                return@Continuation storageReference.downloadUrl
-            }).addOnCompleteListener { uriTask ->
-                if (uriTask.isSuccessful) {
-                    ILog.debug(TAG, "task success")
-                    val downloadUri = uriTask.result
-                    ILog.debug(TAG, downloadUri.toString())
+                CloudStorageFileType.STREAM -> {
+                    storageReference.putStream(FileInputStream(File(filePath)))
                 }
-                else {
-                    ILog.debug(TAG, "error")
+
+                CloudStorageFileType.BYTE -> {
+                    val byteArrayOutputStream = ByteArrayOutputStream()
+                    BitmapFactory.decodeFile(filePath).compress(Bitmap.CompressFormat.JPEG, 90, byteArrayOutputStream)
+                    storageReference.putBytes(byteArrayOutputStream.toByteArray())
                 }
             }
+
+            uploadTask.addOnFailureListener {
+                ILog.debug(TAG, "${it.message}")
+            }.addOnSuccessListener {
+                ILog.debug(TAG, "success ${storageReference.downloadUrl}")
+                it.task.continueWithTask(Continuation<UploadTask.TaskSnapshot, Task<Uri>> { task ->
+                    if (!task.isSuccessful) {
+                        onFailure()
+                    }
+
+                    return@Continuation storageReference.downloadUrl
+                }).addOnCompleteListener { uriTask ->
+                    if (uriTask.isSuccessful) {
+                        val downloadUri = uriTask.result
+                        onSuccess(downloadUri.toString())
+                    }
+                    else {
+                        onFailure()
+                    }
+                }
+            }.addOnFailureListener {
+                onFailure()
+            }
+
         }
+    }
 
-//        uploadTask.continueWithTask(Continuation<UploadTask.TaskSnapshot, Task<Uri>> {
-//            if (!it.isSuccessful) {
-//                ILog.debug(TAG, "error")
-//            }
-//
-//            return@Continuation storageReference.downloadUrl
-//        }).addOnCompleteListener {
-//            if (it.isSuccessful) {
-//                ILog.debug(TAG, "task success")
-//                val downloadUri = it.result
-//                ILog.debug(TAG, downloadUri.toString())
-//            }
-//            else {
-//                ILog.debug(TAG, "error")
-//            }
-//        }
+    fun deleteImage(uploadPath: String, fileCloudPath: String, onSuccess: () -> Unit) {
+        val storageRef: StorageReference =  FirebaseStorage.getInstance(uploadPath).reference
+        val storageReference: StorageReference = storageRef.child(fileCloudPath)
 
-//        uploadTask.continueWith {
-//            if (!it.isSuccessful) {
-//
-//            }
-//
-//            storageReference.downloadUrl
-//            ILog.debug(TAG, "??? ${storageReference.downloadUrl}")
-//        }.addOnCompleteListener {
-//            if (it.isSuccessful) {
-//                ILog.debug(TAG, "success")
-//                val downloadUri = it.result
-//                ILog.debug(TAG, "downloadUri is ${downloadUri.toString()}")
-//            }
-//            else {
-//                ILog.debug(TAG, "error")
-//            }
-//        }
-
-//        uploadTask.addOnFailureListener(OnFailureListener { exception -> exception.printStackTrace() })
-//            .addOnSuccessListener(
-//                OnSuccessListener<Any?> {
-//                    ILog.debug(TAG, "success")
-////                    fcsManagerDelegate.onUploadSuccess()
-//                })
-//        uploadTask.continueWithTask(Continuation<Any?, Task<Uri?>?> { task ->
-//            if (!task.isSuccessful) {
-////                fcsManagerDelegate.onError()
-//            }
-//
-//            // Continue with the task to get the download URL
-//            storageReference.getDownloadUrl()
-//        }).addOnCompleteListener(OnCompleteListener<Uri> { task ->
-//            if (task.isSuccessful) {
-//                ILog.debug(TAG, "task success")
-//                val downloadUri = task.result
-//                ILog.debug(TAG, downloadUri)
-////                fcsManagerDelegate.onSuccess(downloadUri.toString())
-//            } else {
-//                //  failures
-////                fcsManagerDelegate.onError()
-//            }
-//        })
+        storageReference.delete().addOnSuccessListener {
+            onSuccess()
+        }.addOnFailureListener {
+            it.printStackTrace()
+            ILog.debug(TAG, "${it.message}")
+        }
     }
 }

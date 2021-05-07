@@ -24,10 +24,7 @@ object CloudDBManager {
     }
 
     interface SelectDelegate {
-        fun onSuccess(
-            list: MutableList<MutableMap<String, Any>>,
-            documentSnapshot: DocumentSnapshot?
-        )
+        fun onSuccess(list: MutableList<MutableMap<String, Any>>, documentSnapshot: DocumentSnapshot?)
         fun onFailure(e: Exception?)
         fun onEmpty()
     }
