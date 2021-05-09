@@ -38,7 +38,7 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'org.jetbrains.kotlin:kotlin-stdlib:1.4.32'
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib:1.5.0'
     implementation 'androidx.core:core-ktx:1.3.2'
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
@@ -61,7 +61,7 @@ dependencies {
     /* gson */
     implementation 'com.google.code.gson:gson:2.8.6'
 
-    implementation('com.squareup.okhttp3:okhttp:4.9.1')
+    implementation('com.squareup.okhttp3:okhttp:5.0.0-alpha.2')
 
     // CameraX core library using the camera2 implementation
     def camerax_version = "1.0.0-rc02"
@@ -96,7 +96,7 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1"
 
     // coroutines
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.1"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.3"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.1"
 
     implementation 'com.google.android.gms:play-services-location:18.0.0'
@@ -112,6 +112,13 @@ dependencies {
     // When using the BoM, you don't specify versions in Firebase library dependencies
     implementation 'com.google.firebase:firebase-firestore-ktx:22.1.2'
 
+    // room ----------------------------------->
+    implementation "androidx.room:room-runtime:2.3.0"
+    kapt "androidx.room:room-compiler:2.3.0"
+
+    // optional - Kotlin Extensions and Coroutines support for Room
+    implementation "androidx.room:room-ktx:2.3.0"
+    // <----------------------------------- room
 }
 
 apply plugin: 'com.google.gms.google-services'

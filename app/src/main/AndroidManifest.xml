@@ -50,7 +50,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".framework.module.location.demo.LocationWithLifecycleDemoActivity"/>
+        <activity android:name=".framework.module.room.example.RoomWithCoroutineAndStartUPExampleActivity"></activity>
+        <activity android:name=".framework.module.room.demo.RoomDemoActivity" />
+        <activity android:name=".framework.module.location.demo.LocationWithLifecycleDemoActivity" />
         <activity android:name=".framework.module.location.demo.LocationDemoActivity" />
         <activity android:name=".framework.module.firebase.demo.FirebaseDemoActivity" />
         <activity android:name=".main.examples.permissionexample.PermissionExampleActivity" />
