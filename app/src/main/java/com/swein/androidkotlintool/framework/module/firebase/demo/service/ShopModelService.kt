@@ -15,7 +15,8 @@ object ShopModelService {
 
     private const val TAG = "ShopModelService"
 
-    fun checkIsShopExist(uuid: String, onSuccessResponse: (list: MutableList<MutableMap<String, Any>>, documentSnapshot: DocumentSnapshot?) -> Unit,
+    fun checkIsShopExist(uuid: String,
+                         onSuccessResponse: (list: MutableList<MutableMap<String, Any>>, documentIdList: MutableList<String>, documentSnapshot: DocumentSnapshot?) -> Unit,
                          onErrorResponse: (e: Exception?) -> Unit, onEmptyResponse: () -> Unit) {
         ThreadUtil.startThread {
 
@@ -26,9 +27,10 @@ object ShopModelService {
             CloudDBManager.select(ShopModel.CLOUD_DB_PATH, limit = 1, conditionMap = conditionMap, delegate = object : CloudDBManager.SelectDelegate {
                 override fun onSuccess(
                     list: MutableList<MutableMap<String, Any>>,
+                    documentIdList: MutableList<String>,
                     documentSnapshot: DocumentSnapshot?
                 ) {
-                    onSuccessResponse(list, documentSnapshot)
+                    onSuccessResponse(list, documentIdList, documentSnapshot)
                 }
 
                 override fun onFailure(e: Exception?) {
@@ -139,7 +141,8 @@ object ShopModelService {
         })
     }
 
-    fun requestShopInfo(ownerUuId: String, onSuccessResponse: (list: MutableList<MutableMap<String, Any>>, documentSnapshot: DocumentSnapshot?) -> Unit,
+    fun requestShopInfo(ownerUuId: String,
+                        onSuccessResponse: (list: MutableList<MutableMap<String, Any>>, documentIdList: MutableList<String>, documentSnapshot: DocumentSnapshot?) -> Unit,
                         onErrorResponse: (e: Exception?) -> Unit, onEmptyResponse: () -> Unit) {
 
         ThreadUtil.startThread {
@@ -151,9 +154,10 @@ object ShopModelService {
             CloudDBManager.select(ShopModel.CLOUD_DB_PATH, limit = 1, conditionMap = conditionMap, delegate = object : CloudDBManager.SelectDelegate {
                 override fun onSuccess(
                     list: MutableList<MutableMap<String, Any>>,
+                    documentIdList: MutableList<String>,
                     documentSnapshot: DocumentSnapshot?
                 ) {
-                    onSuccessResponse(list, documentSnapshot)
+                    onSuccessResponse(list, documentIdList, documentSnapshot)
                 }
 
                 override fun onFailure(e: Exception?) {

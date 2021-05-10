@@ -6,7 +6,6 @@ import com.swein.androidkotlintool.framework.module.firebase.clouddatabase.Cloud
 import com.swein.androidkotlintool.framework.module.firebase.cloudstorage.CloudStorageManager
 import com.swein.androidkotlintool.framework.module.firebase.demo.model.MemberModel
 import com.swein.androidkotlintool.framework.module.firebase.demo.model.MemberSelfModel
-import com.swein.androidkotlintool.framework.module.firebase.demo.model.ShopModel
 import com.swein.androidkotlintool.framework.util.date.DateUtil
 import com.swein.androidkotlintool.framework.util.log.ILog
 import com.swein.androidkotlintool.framework.util.thread.ThreadUtil
@@ -16,7 +15,8 @@ object MemberModelService {
 
     private const val TAG = "MemberModelService"
 
-    fun checkIsMemberExist(provider: String, providerId: String, onSuccessResponse: (list: MutableList<MutableMap<String, Any>>, documentSnapshot: DocumentSnapshot?) -> Unit,
+    fun checkIsMemberExist(provider: String, providerId: String,
+                           onSuccessResponse: (list: MutableList<MutableMap<String, Any>>, documentIdList: MutableList<String>, documentSnapshot: DocumentSnapshot?) -> Unit,
                            onErrorResponse: (e: Exception?) -> Unit, onEmptyResponse: () -> Unit) {
         ThreadUtil.startThread {
 
@@ -28,9 +28,10 @@ object MemberModelService {
             CloudDBManager.select(MemberModel.CLOUD_DB_PATH, limit = 1, conditionMap = conditionMap, delegate = object : CloudDBManager.SelectDelegate {
                 override fun onSuccess(
                     list: MutableList<MutableMap<String, Any>>,
+                    documentIdList: MutableList<String>,
                     documentSnapshot: DocumentSnapshot?
                 ) {
-                    onSuccessResponse(list, documentSnapshot)
+                    onSuccessResponse(list, documentIdList, documentSnapshot)
                 }
 
                 override fun onFailure(e: Exception?) {
@@ -110,7 +111,8 @@ object MemberModelService {
     }
 
 
-    fun loginSNS(provider: String, providerId: String, onSuccessResponse: (list: MutableList<MutableMap<String, Any>>, documentSnapshot: DocumentSnapshot?) -> Unit,
+    fun loginSNS(provider: String, providerId: String,
+                 onSuccessResponse: (list: MutableList<MutableMap<String, Any>>, documentIdList: MutableList<String>, documentSnapshot: DocumentSnapshot?) -> Unit,
               onErrorResponse: (e: Exception?) -> Unit, onEmptyResponse: () -> Unit) {
         ThreadUtil.startThread {
 
@@ -122,9 +124,10 @@ object MemberModelService {
             CloudDBManager.select(MemberModel.CLOUD_DB_PATH, limit = 1, conditionMap = conditionMap, delegate = object : CloudDBManager.SelectDelegate {
                 override fun onSuccess(
                     list: MutableList<MutableMap<String, Any>>,
+                    documentIdList: MutableList<String>,
                     documentSnapshot: DocumentSnapshot?
                 ) {
-                    onSuccessResponse(list, documentSnapshot)
+                    onSuccessResponse(list, documentIdList, documentSnapshot)
                 }
 
                 override fun onFailure(e: Exception?) {
@@ -138,7 +141,8 @@ object MemberModelService {
         }
     }
 
-    fun loginSecretToken(secretTokenKey: String, nickname: String, onSuccessResponse: (list: MutableList<MutableMap<String, Any>>, documentSnapshot: DocumentSnapshot?) -> Unit,
+    fun loginSecretToken(secretTokenKey: String, nickname: String,
+                         onSuccessResponse: (list: MutableList<MutableMap<String, Any>>, documentIdList: MutableList<String>, documentSnapshot: DocumentSnapshot?) -> Unit,
               onErrorResponse: (e: Exception?) -> Unit, onEmptyResponse: () -> Unit) {
         ThreadUtil.startThread {
 
@@ -150,9 +154,10 @@ object MemberModelService {
             CloudDBManager.select(MemberModel.CLOUD_DB_PATH, limit = 1, conditionMap = conditionMap, delegate = object : CloudDBManager.SelectDelegate {
                 override fun onSuccess(
                     list: MutableList<MutableMap<String, Any>>,
+                    documentIdList: MutableList<String>,
                     documentSnapshot: DocumentSnapshot?
                 ) {
-                    onSuccessResponse(list, documentSnapshot)
+                    onSuccessResponse(list, documentIdList, documentSnapshot)
                 }
 
                 override fun onFailure(e: Exception?) {
@@ -168,7 +173,8 @@ object MemberModelService {
         }
     }
 
-    fun requestMemberInfo(uuId: String, onSuccessResponse: (list: MutableList<MutableMap<String, Any>>, documentSnapshot: DocumentSnapshot?) -> Unit,
+    fun requestMemberInfo(uuId: String,
+                          onSuccessResponse: (list: MutableList<MutableMap<String, Any>>, documentIdList: MutableList<String>, documentSnapshot: DocumentSnapshot?) -> Unit,
                           onErrorResponse: (e: Exception?) -> Unit, onEmptyResponse: () -> Unit) {
 
         ThreadUtil.startThread {
@@ -180,9 +186,10 @@ object MemberModelService {
             CloudDBManager.select(MemberModel.CLOUD_DB_PATH, limit = 1, conditionMap = conditionMap, delegate = object : CloudDBManager.SelectDelegate {
                 override fun onSuccess(
                     list: MutableList<MutableMap<String, Any>>,
+                    documentIdList: MutableList<String>,
                     documentSnapshot: DocumentSnapshot?
                 ) {
-                    onSuccessResponse(list, documentSnapshot)
+                    onSuccessResponse(list, documentIdList, documentSnapshot)
                 }
 
                 override fun onFailure(e: Exception?) {

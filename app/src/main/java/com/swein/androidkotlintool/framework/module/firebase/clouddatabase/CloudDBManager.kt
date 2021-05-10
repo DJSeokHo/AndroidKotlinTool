@@ -24,7 +24,7 @@ object CloudDBManager {
     }
 
     interface SelectDelegate {
-        fun onSuccess(list: MutableList<MutableMap<String, Any>>, documentSnapshot: DocumentSnapshot?)
+        fun onSuccess(list: MutableList<MutableMap<String, Any>>, documentIdList: MutableList<String>, documentSnapshot: DocumentSnapshot?)
         fun onFailure(e: Exception?)
         fun onEmpty()
     }
@@ -75,11 +75,13 @@ object CloudDBManager {
                 val lastVisibleItem = documents[it.size() - 1]
 
                 val list = mutableListOf<MutableMap<String, Any>>()
+                val documentIdList = mutableListOf<String>()
                 for (document in documents) {
                     list.add(document.data as MutableMap<String, Any>)
+                    documentIdList.add(document.id)
                 }
 
-                delegate.onSuccess(list, lastVisibleItem)
+                delegate.onSuccess(list, documentIdList, lastVisibleItem)
             }
             .addOnFailureListener {
                 delegate.onFailure(it)

@@ -12,6 +12,8 @@ import com.swein.androidkotlintool.framework.module.firebase.demo.service.Member
 import com.swein.androidkotlintool.framework.util.log.ILog
 import com.swein.androidkotlintool.framework.util.preferences.SharedPreferencesUtil
 import com.swein.androidkotlintool.framework.util.thread.ThreadUtil
+import deleteProductExample
+import getProductDetailExample
 import getProductListExample
 import loginByKakaoExample
 import loginBySecretTokenKeyExample
@@ -20,6 +22,7 @@ import registerBusinessExample
 import registerExample
 import requestShopInfoExample
 import updateMemberProfileExample
+import updateProductExample
 import uploadProductExample
 
 class FirebaseDemoActivity : AppCompatActivity() {
@@ -50,10 +53,8 @@ class FirebaseDemoActivity : AppCompatActivity() {
 //        }
 
 
-
-
         autoLoginWhenAppStartExample()
-//
+
 //        ThreadUtil.startUIThread(1000) {
 //            requestShopInfoExample()
 //
@@ -63,8 +64,9 @@ class FirebaseDemoActivity : AppCompatActivity() {
 //        }
 
         ThreadUtil.startUIThread(1000) {
-            getProductListExample()
-
+//            getProductListExample()
+            getProductDetailExample()
+//            deleteProductExample("ddNd9a4SkEly5BVFNJQ9")
         }
     }
 }
