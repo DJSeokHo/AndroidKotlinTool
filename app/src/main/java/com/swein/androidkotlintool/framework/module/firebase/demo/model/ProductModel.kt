@@ -35,7 +35,7 @@ class ProductModel {
     var price = 0.0
     var saleTime = ""
     var inventory = 0L
-    var pickerList = mutableListOf<String>()
+    var pickerList = mutableListOf<MutableMap<String, Any>>()
     var createDate = ""
     var modifyDate = ""
     var createBy = ""
@@ -74,7 +74,7 @@ class ProductModel {
         price = map[PRICE_KEY] as Double
         saleTime = map[SALE_TIME_KEY] as String
         inventory = map[INVENTORY_KEY] as Long
-        pickerList = map[PICKER_LIST_KEY] as MutableList<String>
+        pickerList = map[PICKER_LIST_KEY] as MutableList<MutableMap<String, Any>>
         createDate = map[CREATE_DATE_KEY] as String
         modifyDate = map[MODIFY_DATE_KEY] as String
         createBy = map[CREATE_BY_KEY] as String

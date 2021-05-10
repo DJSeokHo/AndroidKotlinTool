@@ -4,6 +4,8 @@ import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.DocumentSnapshot
 import com.swein.androidkotlintool.framework.module.firebase.clouddatabase.CloudDBManager
 import com.swein.androidkotlintool.framework.module.firebase.cloudstorage.CloudStorageManager
+import com.swein.androidkotlintool.framework.module.firebase.demo.model.MemberModel
+import com.swein.androidkotlintool.framework.module.firebase.demo.model.MemberSelfModel
 import com.swein.androidkotlintool.framework.module.firebase.demo.model.ProductModel
 import com.swein.androidkotlintool.framework.module.firebase.demo.model.ShopModel
 import com.swein.androidkotlintool.framework.util.date.DateUtil
@@ -208,47 +210,53 @@ object ProductModelService {
      * uuId: 본인의 uuid
      * productModel: 픽업할 제품 object
      */
-    fun requestPickup(uuId: String, productModel: ProductModel, onSuccessResponse: (map: MutableMap<String, Any>) -> Unit,
+    fun requestPickup(productModel: ProductModel, onSuccessResponse: (map: MutableMap<String, Any>) -> Unit,
                       onErrorResponse: (e: Exception?) -> Unit) {
 
-        ThreadUtil.startThread {
+        MemberSelfModel.memberModel?.let {
 
-            ILog.debug(TAG, "$uuId requestPickup ${productModel.name}")
+            ThreadUtil.startThread {
 
-            val date = DateUtil.getCurrentDateTimeString()
-            productModel.modifyDate = date
+                ILog.debug(TAG, "${it.uuId} requestPickup ${productModel.name}")
 
-            var found = false
+                val date = DateUtil.getCurrentDateTimeString()
+                productModel.modifyDate = date
 
-            for (picker in productModel.pickerList) {
-                if (picker == uuId) {
-                    found = true
-                    break
-                }
-            }
+                var found = false
 
-            if (!found) {
-                productModel.pickerList.add(uuId)
-            }
-            else {
-                // already request pick up, just return
-                onSuccessResponse(productModel.to())
-                return@startThread
-            }
-
-            CloudDBManager.update(ProductModel.CLOUD_DB_PATH, productModel.documentId, productModel.to(), object : CloudDBManager.UpdateDelegate {
-
-                override fun onSuccess(map: MutableMap<String, Any>) {
-                    onSuccessResponse(map)
+                for (picker in productModel.pickerList) {
+                    if (picker[MemberModel.UUID_KEY] == it.uuId) {
+                        found = true
+                        break
+                    }
                 }
 
-                override fun onFailure(e: Exception?) {
-                    onErrorResponse(e)
+                if (!found) {
+                    productModel.pickerList.add(it.to())
+                }
+                else {
+                    // already request pick up, just return
+                    ILog.debug(TAG, "already request pick up, just return")
+                    onSuccessResponse(productModel.to())
+                    return@startThread
                 }
 
-            })
+                CloudDBManager.update(ProductModel.CLOUD_DB_PATH, productModel.documentId, productModel.to(), object : CloudDBManager.UpdateDelegate {
+
+                    override fun onSuccess(map: MutableMap<String, Any>) {
+                        onSuccessResponse(map)
+                    }
+
+                    override fun onFailure(e: Exception?) {
+                        onErrorResponse(e)
+                    }
+
+                })
+
+            }
 
         }
+
     }
 
     fun saleFinished(productModel: ProductModel, onSuccessResponse: (map: MutableMap<String, Any>) -> Unit,

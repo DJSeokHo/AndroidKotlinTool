@@ -332,8 +332,8 @@ fun getProductDetailExample() {
             ILog.debug(TAG, productModel.to().toString() + " " + productModel.documentId)
 
 //            updateProductExample(productModel)
-//            requestPickupExample(MemberSelfModel.uuId, productModel)
-            saleFinishedExample(productModel)
+            requestPickupExample(productModel)
+//            saleFinishedExample(productModel)
         }
 
     }, {
@@ -389,7 +389,7 @@ fun deleteProductExample(documentId: String) {
 }
 
 
-fun requestPickupExample(uuId: String, productModel: ProductModel) {
+fun requestPickupExample(productModel: ProductModel) {
 
     ILog.debug(TAG, "requestPickupExample")
 
@@ -400,7 +400,7 @@ fun requestPickupExample(uuId: String, productModel: ProductModel) {
 
     ILog.debug(TAG, productModel.documentId)
 
-    ProductModelService.requestPickup(uuId, productModel, {
+    ProductModelService.requestPickup(productModel, {
 
         productModel.parsing(it)
         ILog.debug(TAG, productModel.to().toString() + " " + productModel.documentId)
