@@ -22,26 +22,6 @@ class ModuleDemoActivity : FragmentActivity() {
 
         ScreenUtil.setTitleBarColor(this, Constants.APP_BASIC_THEME_COLOR)
 
-        volleyModuleDemo()
-    }
-
-    private fun volleyModuleDemo() {
-
-        ThreadUtil.startThread(Runnable {
-
-            VolleyModule.getInstance().requestUrlGet(this@ModuleDemoActivity, "https://m.baidu.com/", object: VolleyModule.VolleyModuleDelegate {
-
-                override fun onResponse(response: String) {
-                    ILog.debug(TAG, response)
-                }
-
-                override fun onErrorResponse(error: VolleyError) {
-                    ILog.debug(TAG, error.message)
-                }
-
-            })
-        })
-
     }
 
 }

@@ -16,7 +16,7 @@ class AlbumSelectorAdapter(
         fun onSelected()
     }
 
-    private var albumSelectorItemBeanList: MutableList<AlbumSelectorItemBean> = mutableListOf()
+    var albumSelectorItemBeanList: MutableList<AlbumSelectorItemBean> = mutableListOf()
 
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): AlbumSelectorItemViewHolder {
         val view = LayoutInflater.from(p0.context).inflate(R.layout.view_holder_album_selector_item, p0, false)

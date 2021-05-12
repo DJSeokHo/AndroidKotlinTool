@@ -56,7 +56,7 @@ class SHSelectedImageItemViewHolder(itemView: View) : RecyclerView.ViewHolder(it
         view.get()?.let {
 
             imageView.post {
-                SHGlide.setImageFilePath(it.context, imageSelectedItemBean.filePath, imageView, null, imageView.width, imageView.height, 0f, 0f)
+                SHGlide.setImageBitmap(it.context, imageSelectedItemBean.imageUri, imageView, null, imageView.width, imageView.height, 0f, 0f)
             }
         }
     }

@@ -1,122 +1,69 @@
 package com.swein.androidkotlintool.framework.module.shcameraphoto.album.albumselectorwrapper
 
+import android.content.ContentResolver
+import android.content.ContentUris
 import android.content.Context
+import android.os.Build
+import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
-import com.swein.androidkotlintool.framework.module.shcameraphoto.album.albumselectorwrapper.bean.AlbumFolderItemBean
+import androidx.annotation.RequiresApi
 import com.swein.androidkotlintool.framework.module.shcameraphoto.album.albumselectorwrapper.bean.AlbumSelectorItemBean
-import com.swein.androidkotlintool.framework.util.thread.ThreadUtil.Companion.startThread
-import com.swein.androidkotlintool.framework.util.thread.ThreadUtil.Companion.startUIThread
-import java.io.File
-import java.util.*
 
 object AlbumSelectorWrapper {
 
-    interface AlbumSelectorWrapperDelegate {
-        fun onSuccess(albumFolderItemBeanList: MutableList<AlbumFolderItemBean>, albumSelectorItemBeanList: MutableList<AlbumSelectorItemBean>)
-        fun onError()
-    }
-
-    fun scanImageFile(context: Context, albumSelectorWrapperDelegate: AlbumSelectorWrapperDelegate) {
-        val albumFolderItemBeanList: MutableList<AlbumFolderItemBean> = mutableListOf()
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun scanImageFile(context: Context, offset: Int, limit: Int,
+                      onSuccess: (albumSelectorItemBeanList: MutableList<AlbumSelectorItemBean>) -> Unit, onError: () -> Unit) {
         val albumSelectorItemBeanList: MutableList<AlbumSelectorItemBean> = mutableListOf()
 
         if (Environment.getExternalStorageState() != Environment.MEDIA_MOUNTED) {
             // storage error
-            albumSelectorWrapperDelegate.onError()
+            onError()
             return
         }
 
-        startThread {
-            val uri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI
-            val contentResolver = context.contentResolver
-            contentResolver.query(
-                uri,
-                null,
-                MediaStore.Images.Media.MIME_TYPE + " = ? or " +
-                        MediaStore.Images.Media.MIME_TYPE + " = ? or " +
-                        MediaStore.Images.Media.MIME_TYPE + " = ? ",
-                arrayOf("image/jpeg", "image/jpg", "image/png"),
-                MediaStore.Images.Media.DATE_MODIFIED
-            )?.use {
+        val uri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI
+        val contentResolver = context.contentResolver
 
-                val dirPaths: MutableSet<String> =
-                    HashSet()
-                val count = it.count
-                var parentFile: File
-                for (i in count - 1 downTo 0) {
-                    it.moveToPosition(i)
-                    val path = it.getString(it.getColumnIndex(MediaStore.Images.Media.DATA))
-                    var dirPath: String
-                    var dirName: String?
+        val projection = arrayOf(
+            MediaStore.Files.FileColumns._ID
+        )
+//            val projection = null
+        val selection = "${MediaStore.Images.Media.MIME_TYPE} = ? or ${MediaStore.Images.Media.MIME_TYPE} = ? or ${MediaStore.Images.Media.MIME_TYPE} = ?"
+        val selectionArgs = arrayOf("image/jpeg", "image/jpg", "image/png")
 
-                    parentFile = File(path).parentFile
+        contentResolver.query(
 
-                    if (parentFile == null) {
-                        // if path is top, than have no parent folder
-                        dirPath = ""
-                        dirName = ""
-                    }
-                    else {
-                        dirPath = parentFile.absolutePath
-                        dirName = parentFile.name
-                    }
+            uri, projection,
+            Bundle().apply {
+                // Limit & Offset
+                putInt(ContentResolver.QUERY_ARG_LIMIT, limit)
+                putInt(ContentResolver.QUERY_ARG_OFFSET, offset)
+                // Sort function
+                putString(ContentResolver.QUERY_ARG_SORT_COLUMNS, MediaStore.Files.FileColumns.DATE_ADDED)
+                putInt(ContentResolver.QUERY_ARG_SORT_DIRECTION, ContentResolver.QUERY_SORT_DIRECTION_DESCENDING)
 
-                    if (i == count - 1) {
-                        val albumFolderItemBean = AlbumFolderItemBean()
-                        albumFolderItemBean.dirName = ""
-                        albumFolderItemBean.dirPath = ""
-                        albumFolderItemBean.isAll = true
-                        albumFolderItemBean.isSelected = true
-                        albumFolderItemBeanList.add(albumFolderItemBean)
-                    }
+                // Selection
+                putString(ContentResolver.QUERY_ARG_SQL_SELECTION, selection)
+                putStringArray(ContentResolver.QUERY_ARG_SQL_SELECTION_ARGS, selectionArgs)
+            }, null
 
-                    val albumSelectorItemBean = AlbumSelectorItemBean()
-                    albumSelectorItemBean.dirPath = dirPath
-                    albumSelectorItemBean.filePath = path
-                    albumSelectorItemBean.isSelected = false
-                    albumSelectorItemBeanList.add(albumSelectorItemBean)
+        )?.use { cursor ->
 
-                    if (dirPath == "") {
-                        continue
-                    }
+            while (cursor.moveToNext()) {
 
-                    var albumFolderItemBean: AlbumFolderItemBean
+                val id = cursor.getLong(cursor.getColumnIndex(MediaStore.Images.Media._ID))
+                val imageUrl = ContentUris.withAppendedId(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, id)
+                val albumSelectorItemBean  = AlbumSelectorItemBean()
 
-                    if (dirPaths.contains(dirPath)) {
-                        continue
-                    }
-                    else {
-                        dirPaths.add(dirPath)
-                        albumFolderItemBean = AlbumFolderItemBean()
-                        albumFolderItemBean.dirPath = dirPath
-                        albumFolderItemBean.dirName = dirName!!
-                        albumFolderItemBean.isAll = false
-                        albumFolderItemBean.isSelected = false
-                        albumFolderItemBeanList.add(albumFolderItemBean)
-                    }
+                albumSelectorItemBean.imageUri = imageUrl
+                albumSelectorItemBeanList.add(albumSelectorItemBean)
+            }
 
-                    if (parentFile.list() == null) {
-                        continue
-                    }
+            cursor.close()
 
-                    albumFolderItemBean.size =
-                        parentFile.list { file: File?, s: String ->
-                            s.endsWith(
-                                ".jpg"
-                            ) || s.endsWith(".jpeg") || s.endsWith(".png")
-                        }.size
-                }
-
-                it.close()
-                startUIThread(0) {
-                    albumSelectorWrapperDelegate.onSuccess(
-                        albumFolderItemBeanList,
-                        albumSelectorItemBeanList
-                    )
-                }
-
-            } ?: return@startThread
+            onSuccess(albumSelectorItemBeanList)
 
         }
     }

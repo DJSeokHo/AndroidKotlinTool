@@ -1,7 +1,8 @@
 package com.swein.androidkotlintool.framework.module.shcameraphoto.shselectedimageviewholder.adapter.item
 
+import android.net.Uri
+
 class ImageSelectedItemBean {
-    var dirPath: String = ""
-    var filePath: String = ""
+    lateinit var imageUri: Uri
     var isSelected = false
 }

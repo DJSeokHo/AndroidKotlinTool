@@ -1,23 +1,16 @@
 package com.swein.androidkotlintool.framework.module.shcameraphoto.album.selector.adapter.item
 
-import android.graphics.Bitmap
 import android.view.View
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.swein.androidkotlintool.R
 import com.swein.androidkotlintool.framework.module.shcameraphoto.album.albumselectorwrapper.bean.AlbumSelectorItemBean
-import com.swein.androidkotlintool.framework.util.bitmap.BitmapUtil
 import com.swein.androidkotlintool.framework.util.eventsplitshot.eventcenter.EventCenter
 import com.swein.androidkotlintool.framework.util.eventsplitshot.subject.ESSArrows
-import com.swein.androidkotlintool.framework.util.thread.ThreadUtil
 import com.swein.androidkotlintool.framework.util.glide.SHGlide
 import java.lang.ref.WeakReference
 
 class AlbumSelectorItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
-    companion object {
-        private const val TAG = "AlbumSelectorItemViewHolder"
-    }
 
     interface AlbumSelectorItemViewHolderDelegate {
         fun onSelected()
@@ -29,8 +22,6 @@ class AlbumSelectorItemViewHolder(itemView: View) : RecyclerView.ViewHolder(item
 
     private lateinit var imageView: ImageView
     private lateinit var imageViewCheck: ImageView
-
-    private var bitmap: Bitmap? = null
 
     var albumSelectorItemViewHolderDelegate: AlbumSelectorItemViewHolderDelegate? = null
 
@@ -99,22 +90,11 @@ class AlbumSelectorItemViewHolder(itemView: View) : RecyclerView.ViewHolder(item
             imageView.setImageBitmap(null)
             initESS()
             toggleCheck()
-            ThreadUtil.startThread {
 
-                val degree: Int = BitmapUtil.readPictureDegree(albumSelectorItemBean.filePath)
-                bitmap = BitmapUtil.rotateImageWithoutStore(albumSelectorItemBean.filePath, degree, 1f)
-
-                ThreadUtil.startUIThread(0) {
-                    try {
-                        SHGlide.setImageBitmapNoAnimation(
-                            it.context, bitmap, imageView, null,
-                            imageView.width, imageView.height, 0.7f, 0f
-                        )
-                    } catch (e: Exception) {
-                        e.printStackTrace()
-                    }
-                }
-            }
+            SHGlide.setImageBitmapNoAnimation(
+                it.context, albumSelectorItemBean.imageUri, imageView, null,
+                imageView.width, imageView.height, 0.7f, 0f
+            )
         }
 
     }

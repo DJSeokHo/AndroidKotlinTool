@@ -45,6 +45,36 @@ class SHGlide {
                 .into(imageView!!)
         }
 
+        fun setImageBitmapNoAnimation(
+            context: Context?,
+            uri: Uri?,
+            imageView: ImageView?,
+            placeHolder: Drawable?,
+            width: Int,
+            height: Int,
+            rate: Float,
+            thumbnailSize: Float
+        ) {
+            var w = width
+            var h = height
+            var requestBuilder = Glide.with(context!!).asBitmap().load(uri)
+            if (placeHolder != null) {
+                requestBuilder = requestBuilder.placeholder(placeHolder)
+            }
+            if (width != 0 && height != 0) {
+                if (rate != 0f) {
+                    w = (width.toFloat() * rate).toInt()
+                    h = (height.toFloat() * rate).toInt()
+                }
+                requestBuilder = requestBuilder.override(w, h)
+            }
+            if (thumbnailSize != 0f) {
+                requestBuilder = requestBuilder.thumbnail(thumbnailSize)
+            }
+            requestBuilder.skipMemoryCache(true).diskCacheStrategy(DiskCacheStrategy.NONE)
+                .into(imageView!!)
+        }
+
         fun setImageBitmap(
             context: Context?,
             url: String?,
@@ -151,7 +181,7 @@ class SHGlide {
                 requestBuilder = requestBuilder.thumbnail(thumbnailSize)
             }
 
-            requestBuilder.skipMemoryCache(true).diskCacheStrategy(DiskCacheStrategy.AUTOMATIC).into(
+            requestBuilder.skipMemoryCache(true).diskCacheStrategy(DiskCacheStrategy.NONE).into(
                 imageView!!
             )
         }

@@ -8,7 +8,6 @@ import android.hardware.display.DisplayManager
 import android.net.Uri
 import android.os.Bundle
 import android.util.DisplayMetrics
-import android.util.Size
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -24,11 +23,13 @@ import com.swein.androidkotlintool.R
 import com.swein.androidkotlintool.framework.module.basicpermission.PermissionManager
 import com.swein.androidkotlintool.framework.module.basicpermission.RequestPermission
 import com.swein.androidkotlintool.framework.module.shcameraphoto.album.selector.AlbumSelectorViewHolder
+import com.swein.androidkotlintool.framework.module.shcameraphoto.resultprocessor.SHCameraPhotoResultProcessor
 import com.swein.androidkotlintool.framework.module.shcameraphoto.shselectedimageviewholder.SHSelectedImageViewHolder
 import com.swein.androidkotlintool.framework.module.shcameraphoto.shselectedimageviewholder.adapter.item.ImageSelectedItemBean
 import com.swein.androidkotlintool.framework.util.animation.AnimationUtil
 import com.swein.androidkotlintool.framework.util.date.DateUtil
-import com.swein.androidkotlintool.framework.util.display.DisplayUtil
+import com.swein.androidkotlintool.framework.util.eventsplitshot.eventcenter.EventCenter
+import com.swein.androidkotlintool.framework.util.eventsplitshot.subject.ESSArrows
 import com.swein.androidkotlintool.framework.util.glide.SHGlide
 import com.swein.androidkotlintool.framework.util.log.ILog
 import com.swein.androidkotlintool.framework.util.sound.audiomanager.AudioManagerUtil
@@ -36,6 +37,7 @@ import com.swein.androidkotlintool.framework.util.sound.mediaplayer.MediaPlayerU
 import com.swein.androidkotlintool.framework.util.theme.ThemeUtil
 import com.swein.androidkotlintool.framework.util.thread.ThreadUtil
 import java.io.File
+import java.util.HashMap
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 import kotlin.math.abs
@@ -84,6 +86,8 @@ class SHCameraPhotoFragment : Fragment() {
     private var flash = false
 
     private var limit = 0
+    private var fromWhere = ""
+
     private var selectedImageList = mutableListOf<ImageSelectedItemBean>()
     private var shSelectedImageViewHolder: SHSelectedImageViewHolder? = null
     private lateinit var frameLayoutSelectedImageArea: FrameLayout
@@ -144,7 +148,7 @@ class SHCameraPhotoFragment : Fragment() {
 
         AudioManagerUtil.init(rootView.context)
         MediaPlayerUtil.init(rootView.context, R.raw.camera_shutter_click) {
-            AudioManagerUtil.resetAfterPlay((AudioManagerUtil.getMaxVolume() * 0.5).toInt())
+            AudioManagerUtil.resetAfterPlay()
         }
 
     }
@@ -152,6 +156,7 @@ class SHCameraPhotoFragment : Fragment() {
     private fun checkBundle() {
         arguments?.let {
             limit = it.getInt("limit", 0)
+            fromWhere = it.getString("fromWhere", "")
         }
 
         ILog.debug(TAG, "limit ?? $limit")
@@ -310,17 +315,14 @@ class SHCameraPhotoFragment : Fragment() {
 
                             ThreadUtil.startThread {
 
-                                AudioManagerUtil.setNoMute((AudioManagerUtil.getMaxVolume() * 0.5).toInt())
+                                AudioManagerUtil.setNoMute()
                                 MediaPlayerUtil.play()
-//                            BitmapUtil.compressImageWithFilePath(photoFilePath, 1)
-//                            val bitmap = BitmapFactory.decodeFile(photoFilePath)
 
                                 ThreadUtil.startUIThread(0) {
-//                                imageView.setImageBitmap(bitmap)
 
-                                    addImage(photoFilePath)
+                                    addImage(savedUri)
 
-                                    togglePreviewThumbnail(photoFilePath)
+                                    togglePreviewThumbnail(savedUri)
 
                                     hideProgress()
                                 }
@@ -332,17 +334,43 @@ class SHCameraPhotoFragment : Fragment() {
 
         textViewAction.setOnClickListener {
 
-            if(textViewAction.text == getString(R.string.camera_cancel)) {
+            context?.let { context ->
+
+                if(textViewAction.text == getString(R.string.camera_cancel)) {
+                    activity?.finish()
+                    return@setOnClickListener
+                }
+
+                if (selectedImageList.isNotEmpty()) {
+
+                    val list = mutableListOf<Uri>()
+                    for (item in selectedImageList) {
+                        list.add(0, item.imageUri)
+                    }
+
+                    val pathList = SHCameraPhotoResultProcessor.uriListToCacheFilePathList(context, list)
+
+                    // ok
+                    HashMap<String, Any>().apply {
+                        this["list"] = pathList
+                        this["fromWhere"] = fromWhere
+                    }.also { hashMap ->
+                        ILog.debug(TAG, "send image $pathList size")
+
+                        EventCenter.sendEvent(ESSArrows.SET_SELECTED_IMAGE_LIST, this, hashMap)
+                    }
+                }
+
                 activity?.finish()
+
             }
 
         }
     }
 
-    private fun addImage(imageFilePath: String) {
-        val imageSelectorItemBean =
-            ImageSelectedItemBean()
-        imageSelectorItemBean.filePath = imageFilePath
+    private fun addImage(imageUri: Uri) {
+        val imageSelectorItemBean = ImageSelectedItemBean()
+        imageSelectorItemBean.imageUri = imageUri
         imageSelectorItemBean.isSelected = true
         selectedImageList.add(0, imageSelectorItemBean)
 
@@ -550,9 +578,9 @@ class SHCameraPhotoFragment : Fragment() {
                         imageView.setImageBitmap(null)
                     } else {
                         textViewImageCount.text = selectedImageList.size.toString()
-                        SHGlide.setImageFilePath(
+                        SHGlide.setImageBitmap(
                             context,
-                            selectedImageList[0].filePath,
+                            selectedImageList[0].imageUri,
                             imageView,
                             null,
                             imageView.width,
@@ -594,6 +622,7 @@ class SHCameraPhotoFragment : Fragment() {
     }
 
     private fun showAlbumSelector() {
+
         if (albumSelectorViewHolder != null) {
             return
         }
@@ -602,9 +631,6 @@ class SHCameraPhotoFragment : Fragment() {
 
             albumSelectorViewHolder = AlbumSelectorViewHolder(it, limit - selectedImageList.size, object :
                 AlbumSelectorViewHolder.AlbumSelectorViewHolderDelegate {
-                override fun onInitFinish() {
-                    albumSelectorViewHolder!!.reload()
-                }
 
                 override fun onConfirm() {
 
@@ -637,9 +663,9 @@ class SHCameraPhotoFragment : Fragment() {
 
     }
 
-    private fun togglePreviewThumbnail(previewImagePath: String) {
+    private fun togglePreviewThumbnail(imageUri: Uri) {
 
-        SHGlide.setImageFilePath(context, previewImagePath, imageView, null, imageView.width, imageView.height, 0f, 0f)
+        SHGlide.setImageBitmap(context, imageUri, imageView, null, imageView.width, imageView.height, 0f, 0f)
 
         ILog.debug(TAG, selectedImageList.size.toString())
         textViewImageCount.text = selectedImageList.size.toString()

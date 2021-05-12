@@ -1,55 +1,39 @@
 package com.swein.androidkotlintool.main
 
 import android.Manifest
-import android.content.Context
+import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.graphics.Insets
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.WindowInsets
 import android.widget.Button
 import android.widget.FrameLayout
-import android.widget.Toast
-import androidx.datastore.core.DataStore
-import androidx.datastore.preferences.core.Preferences
-import androidx.datastore.preferences.core.edit
-import androidx.datastore.preferences.core.intPreferencesKey
-import androidx.datastore.preferences.preferencesDataStore
+import android.widget.ImageView
 import com.swein.androidkotlintool.R
 import com.swein.androidkotlintool.constants.Constants
 import com.swein.androidkotlintool.framework.module.basicpermission.BasicPermissionActivity
 import com.swein.androidkotlintool.framework.module.basicpermission.PermissionManager
 import com.swein.androidkotlintool.framework.module.basicpermission.RequestPermission
-import com.swein.androidkotlintool.framework.module.firebase.demo.FirebaseDemoActivity
-import com.swein.androidkotlintool.framework.module.location.demo.LocationDemoActivity
-import com.swein.androidkotlintool.framework.module.location.demo.LocationWithLifecycleDemoActivity
-import com.swein.androidkotlintool.framework.module.room.demo.RoomDemoActivity
-import com.swein.androidkotlintool.framework.module.room.example.RoomWithCoroutineAndStartUPExampleActivity
+import com.swein.androidkotlintool.framework.module.shcameraphoto.album.albumselectorwrapper.AlbumSelectorWrapper
+import com.swein.androidkotlintool.framework.module.shcameraphoto.demo.SHCameraPhotoFragmentDemoActivity
 import com.swein.androidkotlintool.framework.module.volley.VolleyModule
 import com.swein.androidkotlintool.framework.util.activity.ActivityUtil
 import com.swein.androidkotlintool.framework.util.display.DisplayUtil
+import com.swein.androidkotlintool.framework.util.eventsplitshot.eventcenter.EventCenter
+import com.swein.androidkotlintool.framework.util.eventsplitshot.subject.ESSArrows
+import com.swein.androidkotlintool.framework.util.glide.SHGlide
 import com.swein.androidkotlintool.framework.util.log.ILog
 import com.swein.androidkotlintool.framework.util.screen.ScreenUtil
 import com.swein.androidkotlintool.framework.util.thread.ThreadUtil
-import com.swein.androidkotlintool.main.examples.customizecolorswitch.CustomizeColorSwitchActivity
-import com.swein.androidkotlintool.main.jetpackexample.databinding.DataBindingExampleActivity
-import com.swein.androidkotlintool.main.examples.fashionshoppingdetail.FashionShoppingDetailActivity
-import com.swein.androidkotlintool.main.examples.permissionexample.PermissionExampleActivity
-import com.swein.androidkotlintool.main.jetpackexample.lifecycle.LifecycleExampleActivity
-import com.swein.androidkotlintool.main.jetpackexample.viewbinding.ViewBindingExampleActivity
-import com.swein.androidkotlintool.main.jetpackexample.datastore.DataStoreManager
 import com.swein.androidkotlintool.main.moduledemo.ModuleDemoActivity
 import com.swein.androidkotlintool.template.bottomtab.activity.TabHostActivity
-import com.swein.androidkotlintool.template.coroutine.CoroutineDemoActivity
 import com.swein.androidkotlintool.template.handlerthread.HandlerThreadTemplateActivity
 import com.swein.androidkotlintool.template.list.SHListActivity
 import com.swein.androidkotlintool.template.memeberjoin.MemberJoinTemplateActivity
-import com.swein.androidkotlintool.template.mvp.mvploginexample.view.MVPLoginActivity
 import kotlinx.coroutines.*
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.map
-import kotlin.concurrent.thread
-import kotlin.coroutines.CoroutineContext
+import java.io.File
 
 class MainActivity : BasicPermissionActivity() {
 
@@ -87,6 +71,11 @@ class MainActivity : BasicPermissionActivity() {
 
     private lateinit var frameLayoutRoot: FrameLayout
 
+    private lateinit var imageView1: ImageView
+    private lateinit var imageView2: ImageView
+    private lateinit var imageView3: ImageView
+    private lateinit var imageView4: ImageView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val view = LayoutInflater.from(this).inflate(R.layout.activity_main, null)
@@ -96,6 +85,13 @@ class MainActivity : BasicPermissionActivity() {
         findView()
         setListener()
 
+        EventCenter.addEventObserver(ESSArrows.SET_SELECTED_IMAGE_LIST, this, object : EventCenter.EventRunnable {
+            override fun run(arrow: String, poster: Any, data: MutableMap<String, Any>?) {
+                val list = data!!["list"]
+                showImage(list as MutableList<String>)
+            }
+        })
+        
 //        ActivityUtil.startNewActivityWithoutFinish(this, CoroutineDemoActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, ViewBindingExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, DataBindingExampleActivity::class.java)
@@ -106,7 +102,28 @@ class MainActivity : BasicPermissionActivity() {
 //        ActivityUtil.startNewActivityWithoutFinish(this, LocationDemoActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, LocationWithLifecycleDemoActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, RoomDemoActivity::class.java)
-        ActivityUtil.startNewActivityWithoutFinish(this, RoomWithCoroutineAndStartUPExampleActivity::class.java)
+//        ActivityUtil.startNewActivityWithoutFinish(this, RoomWithCoroutineAndStartUPExampleActivity::class.java)
+//        ActivityUtil.startNewActivityWithoutFinish(this, RoomWithCoroutineAndStartUPExampleActivity::class.java)
+        ActivityUtil.startNewActivityWithoutFinish(this, SHCameraPhotoFragmentDemoActivity::class.java)
+
+//        val list = mutableListOf<String>()
+//        list.add("/data/user/0/com.swein.androidkotlintool/cache/cache_com_swein_androidkotlintool_0.jpg")
+//        list.add("/data/user/0/com.swein.androidkotlintool/cache/cache_com_swein_androidkotlintool_1.jpg")
+//        list.add("/data/user/0/com.swein.androidkotlintool/cache/cache_com_swein_androidkotlintool_2.jpg")
+//
+//        val file = File("/data/user/0/com.swein.androidkotlintool/cache/cache_com_swein_androidkotlintool_3.jpg")
+//        ILog.debug(TAG, "?? ${file.exists()}")
+//        file.delete()
+//        ILog.debug(TAG, "?? ${file.exists()}")
+//
+//        val f = File("/data/user/0/com.swein.androidkotlintool/cache/cache_com_swein_androidkotlintool_3.jpg")
+//        ILog.debug(TAG, "!!!!?? ${f.exists()}")
+//        list.add("/data/user/0/com.swein.androidkotlintool/cache/cache_com_swein_androidkotlintool_3.jpg")
+//        showImage(list)
+
+        findViewById<Button>(R.id.buttonTest).setOnClickListener {
+            ActivityUtil.startNewActivityWithoutFinish(this, SHCameraPhotoFragmentDemoActivity::class.java)
+        }
 
         // clone test
         val obj1 = CloneableObject()
@@ -126,7 +143,7 @@ class MainActivity : BasicPermissionActivity() {
         val obj4 = obj3.clone() as CloneableObject
         ILog.debug(TAG, "obj4 $obj4 ${obj4.name} ${obj4.list} ${obj4.listTes[0].number} ${obj4.listTes[1].number}")
 
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.R) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
 
             val windowMetrics = windowManager.currentWindowMetrics
             val insets: Insets = windowMetrics.windowInsets.getInsetsIgnoringVisibility(WindowInsets.Type.systemBars())
@@ -149,6 +166,36 @@ class MainActivity : BasicPermissionActivity() {
                     ILog.debug(TAG, "bottomHeight $bottomHeight ${windowMetrics.windowInsets.getInsetsIgnoringVisibility(WindowInsets.Type.systemBars())}")
                 }
             })
+        }
+
+    }
+
+    private fun showImage(list: MutableList<String>) {
+
+        imageView1.setImageBitmap(null)
+        imageView2.setImageBitmap(null)
+        imageView3.setImageBitmap(null)
+        imageView4.setImageBitmap(null)
+
+        for (i in 0 until list.size) {
+            when (i) {
+                0 -> {
+                    SHGlide.setImageFilePath(this, list[i], imageView1, null, 0, 0, 0f, 0f)
+//                    imageView1.setImageBitmap(BitmapFactory.decodeFile(list[i]))
+                }
+                1 -> {
+                    SHGlide.setImageFilePath(this, list[i], imageView2, null, 0, 0, 0f, 0f)
+//                    imageView2.setImageBitmap(BitmapFactory.decodeFile(list[i]))
+                }
+                2 -> {
+                    SHGlide.setImageFilePath(this, list[i], imageView3, null, 0, 0, 0f, 0f)
+//                    imageView3.setImageBitmap(BitmapFactory.decodeFile(list[i]))
+                }
+                3 -> {
+                    SHGlide.setImageFilePath(this, list[i], imageView4, null, 0, 0, 0f, 0f)
+//                    imageView4.setImageBitmap(BitmapFactory.decodeFile(list[i]))
+                }
+            }
         }
     }
 
@@ -180,6 +227,11 @@ class MainActivity : BasicPermissionActivity() {
         buttonTabHost = findViewById(R.id.buttonTabHost)
         buttonViewPager = findViewById(R.id.buttonViewPager)
         buttonHandlerThread = findViewById(R.id.buttonHandlerThread)
+
+        imageView1 = findViewById(R.id.imageView1)
+        imageView2 = findViewById(R.id.imageView2)
+        imageView3 = findViewById(R.id.imageView3)
+        imageView4 = findViewById(R.id.imageView4)
     }
 
     private fun setListener() {

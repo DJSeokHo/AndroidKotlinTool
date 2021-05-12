@@ -1,6 +1,8 @@
 package com.swein.androidkotlintool.framework.module.shcameraphoto.album.selector
 
 import android.content.Context
+import android.net.Uri
+import android.os.Build
 import android.view.View
 import android.widget.TextView
 import androidx.recyclerview.widget.GridLayoutManager
@@ -8,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.swein.androidkotlintool.R
 import com.swein.androidkotlintool.framework.module.shcameraphoto.album.albumselectorwrapper.AlbumSelectorWrapper
-import com.swein.androidkotlintool.framework.module.shcameraphoto.album.albumselectorwrapper.bean.AlbumFolderItemBean
 import com.swein.androidkotlintool.framework.module.shcameraphoto.album.albumselectorwrapper.bean.AlbumSelectorItemBean
 import com.swein.androidkotlintool.framework.module.shcameraphoto.album.selector.adapter.AlbumSelectorAdapter
 import com.swein.androidkotlintool.framework.util.eventsplitshot.eventcenter.EventCenter
@@ -16,7 +17,6 @@ import com.swein.androidkotlintool.framework.util.eventsplitshot.subject.ESSArro
 import com.swein.androidkotlintool.framework.util.log.ILog
 import com.swein.androidkotlintool.framework.util.thread.ThreadUtil
 import com.swein.androidkotlintool.framework.util.views.ViewUtil
-import java.util.*
 
 class AlbumSelectorViewHolder(
     context: Context,
@@ -30,7 +30,6 @@ class AlbumSelectorViewHolder(
     }
 
     interface AlbumSelectorViewHolderDelegate {
-        fun onInitFinish()
         fun onConfirm()
         fun onClose()
     }
@@ -44,15 +43,14 @@ class AlbumSelectorViewHolder(
     private lateinit var textViewAction: TextView
     private lateinit var textViewSelected: TextView
 
-    private val albumFolderItemBeanList: MutableList<AlbumFolderItemBean> = mutableListOf()
-    private val albumSelectorItemBeanList: MutableList<AlbumSelectorItemBean> = mutableListOf()
-
     private var selectedList: MutableList<AlbumSelectorItemBean> = mutableListOf()
 
     init {
-        initData()
         findView()
         setListener()
+        initList()
+
+        reload()
     }
 
     private fun findView() {
@@ -79,36 +77,6 @@ class AlbumSelectorViewHolder(
         }
     }
 
-    private fun initData() {
-        AlbumSelectorWrapper.scanImageFile(
-            view.context,
-            object : AlbumSelectorWrapper.AlbumSelectorWrapperDelegate {
-
-                override fun onSuccess(
-                    albumFolderItemBeanList: MutableList<AlbumFolderItemBean>,
-                    albumSelectorItemBeanList: MutableList<AlbumSelectorItemBean>
-                ) {
-
-                    this@AlbumSelectorViewHolder.albumFolderItemBeanList.clear()
-                    this@AlbumSelectorViewHolder.albumFolderItemBeanList.addAll(
-                        albumFolderItemBeanList
-                    )
-                    this@AlbumSelectorViewHolder.albumSelectorItemBeanList.clear()
-                    this@AlbumSelectorViewHolder.albumSelectorItemBeanList.addAll(
-                        albumSelectorItemBeanList
-                    )
-
-                    initList()
-                    delegate.onInitFinish()
-                }
-
-                override fun onError() {
-                    ILog.debug(TAG, "error")
-                }
-
-            })
-    }
-
     private fun initList() {
         layoutManager = GridLayoutManager(view.context, 3)
         albumSelectorAdapter = AlbumSelectorAdapter(object :
@@ -120,17 +88,14 @@ class AlbumSelectorViewHolder(
             override fun onSelected() {
                 selectedList.clear()
 
-                for (i in albumSelectorItemBeanList.indices) {
-                    if (albumSelectorItemBeanList[i].isSelected) {
-                        selectedList.add(albumSelectorItemBeanList[i])
+                for (i in albumSelectorAdapter.albumSelectorItemBeanList.indices) {
+                    if (albumSelectorAdapter.albumSelectorItemBeanList[i].isSelected) {
+                        selectedList.add(albumSelectorAdapter.albumSelectorItemBeanList[i])
                     }
                 }
 
                 for (i in selectedList.indices) {
-                    ILog.debug(
-                        TAG,
-                        "${selectedList[i].filePath} ${selectedList[i].isSelected}"
-                    )
+                    ILog.debug(TAG, "${selectedList[i].imageUri.path} ${selectedList[i].isSelected}")
                 }
 
                 if (selectedList.size >= maxSelect) {
@@ -159,47 +124,55 @@ class AlbumSelectorViewHolder(
         recyclerView.adapter = albumSelectorAdapter
     }
 
-    fun reload() {
-        ThreadUtil.startThread {
-            ThreadUtil.startUIThread(0) {
-                albumSelectorAdapter.reload(getImageSelectorItemBeanList(0))
+    private fun reload() {
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+
+            ThreadUtil.startThread {
+
+                AlbumSelectorWrapper.scanImageFile(view.context, 0, 30, { albumSelectorItemBeanList ->
+
+                    ThreadUtil.startUIThread(0) {
+
+                        albumSelectorAdapter.reload(albumSelectorItemBeanList)
+                    }
+
+                }, {
+                    ThreadUtil.startUIThread(0) {
+                        ILog.debug(TAG, "error")
+                    }
+                })
             }
         }
     }
-
 
     private fun loadMore() {
-        ThreadUtil.startThread {
-            ThreadUtil.startUIThread(0) {
-                albumSelectorAdapter.loadMore(
-                    getImageSelectorItemBeanList(
-                        albumSelectorAdapter.itemCount,
-                    )
-                )
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+
+            ThreadUtil.startThread {
+
+                AlbumSelectorWrapper.scanImageFile(view.context, albumSelectorAdapter.itemCount, 30, { albumSelectorItemBeanList ->
+
+                    ThreadUtil.startUIThread(0) {
+
+                        albumSelectorAdapter.loadMore(albumSelectorItemBeanList)
+                    }
+
+                }, {
+                    ThreadUtil.startUIThread(0) {
+                        ILog.debug(TAG, "error")
+                    }
+                })
             }
         }
     }
 
-    private fun getImageSelectorItemBeanList(offset: Int): MutableList<AlbumSelectorItemBean> {
-        val imageSelectorItemBeanList: MutableList<AlbumSelectorItemBean> = mutableListOf()
-
-        for (i in offset until offset + 30) {
-
-            if (i > this@AlbumSelectorViewHolder.albumSelectorItemBeanList.size - 1) {
-                return imageSelectorItemBeanList
-            }
-
-            imageSelectorItemBeanList.add(this@AlbumSelectorViewHolder.albumSelectorItemBeanList[i])
-        }
-        return imageSelectorItemBeanList
-    }
-
-    fun getSelectedImagePath(): MutableList<String> {
-        val list: MutableList<String> = mutableListOf()
+    fun getSelectedImagePath(): MutableList<Uri> {
+        val list = mutableListOf<Uri>()
 
         for (i in 0 until selectedList.size) {
-            list.add(selectedList[i].filePath)
+            list.add(selectedList[i].imageUri)
         }
         return list
     }
