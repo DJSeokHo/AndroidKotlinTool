@@ -11,7 +11,6 @@ object AnyToolNeedContextWhenInit {
     private var context: Context? = null
 
     fun init(context: Context) {
-        ILog.debug(TAG, "init???")
         AnyToolNeedContextWhenInit.context = context
     }
 }

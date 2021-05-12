@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.swein.androidkotlintool">
     <!-- 允许程序监视、修改或放弃拨打电话 -->
-    <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS" /> <!-- 录音权限 -->
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission
@@ -43,14 +42,15 @@
     
     <application
         android:allowBackup="true"
+        android:fullBackupContent="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".framework.module.room.example.RoomWithCoroutineAndStartUPExampleActivity"></activity>
+        <activity android:name=".main.examples.androiddatastorage.AndroidDataStorageExampleActivity"></activity>
+        <activity android:name=".framework.module.room.example.RoomWithCoroutineAndStartUPExampleActivity" />
         <activity android:name=".framework.module.room.demo.RoomDemoActivity" />
         <activity android:name=".framework.module.location.demo.LocationWithLifecycleDemoActivity" />
         <activity android:name=".framework.module.location.demo.LocationDemoActivity" />
@@ -65,15 +65,18 @@
         <activity
             android:name=".main.examples.fashionshoppingdetail.FashionShoppingDetailActivity"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".template.mvp.mvploginexample.view.MVPLoginActivity"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".template.blurmask.BlurMaskActivity"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".framework.module.shcameraphoto.demo.SHCameraPhotoFragmentDemoActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
@@ -81,7 +84,8 @@
         <activity
             android:name=".framework.module.camerademo.CameraDemoActivity"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".template.handlerthread.HandlerThreadTemplateActivity"
             android:launchMode="singleTask" />

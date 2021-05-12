@@ -82,7 +82,24 @@
                 android:text="Handler Thread Sample"
                 android:textAllCaps="false"
                 android:textSize="10pt" />
-
+           
+            <Button
+                android:textColor="@color/black"
+                android:id="@+id/buttonTest"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@color/white"
+                android:text="Test"
+                android:textAllCaps="false"
+                android:textSize="10pt" />
+            
+            <ImageView
+                android:layout_gravity="center"
+                android:id="@+id/imageView"
+                android:scaleType="fitCenter"
+                android:layout_width="300dp"
+                android:layout_height="300dp"/>
         </LinearLayout>
 
     </ScrollView>
