@@ -1,4 +1,4 @@
-package com.swein.androidkotlintool.framework.util.location.model
+package com.swein.androidkotlintool.framework.module.location.model
 
 import android.os.Build
 import org.json.JSONObject

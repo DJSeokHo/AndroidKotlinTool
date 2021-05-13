@@ -16,6 +16,8 @@ import com.swein.androidkotlintool.constants.Constants
 import com.swein.androidkotlintool.framework.module.basicpermission.BasicPermissionActivity
 import com.swein.androidkotlintool.framework.module.basicpermission.PermissionManager
 import com.swein.androidkotlintool.framework.module.basicpermission.RequestPermission
+import com.swein.androidkotlintool.framework.module.location.demo.LocationDemoActivity
+import com.swein.androidkotlintool.framework.module.location.demo.LocationWithLifecycleDemoActivity
 import com.swein.androidkotlintool.framework.module.shcameraphoto.album.albumselectorwrapper.AlbumSelectorWrapper
 import com.swein.androidkotlintool.framework.module.shcameraphoto.demo.SHCameraPhotoFragmentDemoActivity
 import com.swein.androidkotlintool.framework.module.volley.VolleyModule
@@ -75,6 +77,7 @@ class MainActivity : BasicPermissionActivity() {
     private lateinit var imageView2: ImageView
     private lateinit var imageView3: ImageView
     private lateinit var imageView4: ImageView
+    private lateinit var imageView5: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -91,7 +94,7 @@ class MainActivity : BasicPermissionActivity() {
                 showImage(list as MutableList<String>)
             }
         })
-        
+
 //        ActivityUtil.startNewActivityWithoutFinish(this, CoroutineDemoActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, ViewBindingExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, DataBindingExampleActivity::class.java)
@@ -99,12 +102,12 @@ class MainActivity : BasicPermissionActivity() {
 //        ActivityUtil.startNewActivityWithoutFinish(this, LifecycleExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, PermissionExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, FirebaseDemoActivity::class.java)
-//        ActivityUtil.startNewActivityWithoutFinish(this, LocationDemoActivity::class.java)
+        ActivityUtil.startNewActivityWithoutFinish(this, LocationDemoActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, LocationWithLifecycleDemoActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, RoomDemoActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, RoomWithCoroutineAndStartUPExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, RoomWithCoroutineAndStartUPExampleActivity::class.java)
-        ActivityUtil.startNewActivityWithoutFinish(this, SHCameraPhotoFragmentDemoActivity::class.java)
+//        ActivityUtil.startNewActivityWithoutFinish(this, SHCameraPhotoFragmentDemoActivity::class.java)
 
 //        val list = mutableListOf<String>()
 //        list.add("/data/user/0/com.swein.androidkotlintool/cache/cache_com_swein_androidkotlintool_0.jpg")
@@ -176,6 +179,7 @@ class MainActivity : BasicPermissionActivity() {
         imageView2.setImageBitmap(null)
         imageView3.setImageBitmap(null)
         imageView4.setImageBitmap(null)
+        imageView5.setImageBitmap(null)
 
         for (i in 0 until list.size) {
             when (i) {
@@ -193,6 +197,10 @@ class MainActivity : BasicPermissionActivity() {
                 }
                 3 -> {
                     SHGlide.setImageFilePath(this, list[i], imageView4, null, 0, 0, 0f, 0f)
+//                    imageView4.setImageBitmap(BitmapFactory.decodeFile(list[i]))
+                }
+                4 -> {
+                    SHGlide.setImageFilePath(this, list[i], imageView5, null, 0, 0, 0f, 0f)
 //                    imageView4.setImageBitmap(BitmapFactory.decodeFile(list[i]))
                 }
             }
@@ -232,6 +240,7 @@ class MainActivity : BasicPermissionActivity() {
         imageView2 = findViewById(R.id.imageView2)
         imageView3 = findViewById(R.id.imageView3)
         imageView4 = findViewById(R.id.imageView4)
+        imageView5 = findViewById(R.id.imageView5)
     }
 
     private fun setListener() {

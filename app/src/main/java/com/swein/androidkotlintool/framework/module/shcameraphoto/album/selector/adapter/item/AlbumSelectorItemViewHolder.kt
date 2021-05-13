@@ -96,7 +96,6 @@ class AlbumSelectorItemViewHolder(itemView: View) : RecyclerView.ViewHolder(item
                 imageView.width, imageView.height, 0.7f, 0f
             )
         }
-
     }
 
     private fun toggleCheck() {
@@ -112,10 +111,9 @@ class AlbumSelectorItemViewHolder(itemView: View) : RecyclerView.ViewHolder(item
         EventCenter.removeAllObserver(this)
     }
 
-    fun clear() {
-        imageView.setImageBitmap(null)
-    }
-
+//    fun clear() {
+//        imageView.setImageBitmap(null)
+//    }
 
     protected fun finalize() {
         removeESS()

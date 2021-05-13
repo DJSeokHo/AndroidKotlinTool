@@ -59,9 +59,9 @@ class AlbumSelectorAdapter(
         notifyItemRangeChanged(albumSelectorItemBeanList.size - albumSelectorItemBeanList.size + 1,albumSelectorItemBeanList.size)
     }
 
-    override fun onViewRecycled(holder: AlbumSelectorItemViewHolder) {
-        holder.clear()
-        super.onViewRecycled(holder)
-    }
+//    override fun onViewRecycled(holder: AlbumSelectorItemViewHolder) {
+//        holder.clear()
+//        super.onViewRecycled(holder)
+//    }
 
 }

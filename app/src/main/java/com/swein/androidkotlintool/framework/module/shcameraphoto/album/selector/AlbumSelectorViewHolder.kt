@@ -130,7 +130,8 @@ class AlbumSelectorViewHolder(
 
             ThreadUtil.startThread {
 
-                AlbumSelectorWrapper.scanImageFile(view.context, 0, 30, { albumSelectorItemBeanList ->
+//                AlbumSelectorWrapper.scanMediaFile(view.context, 0, 50, { albumSelectorItemBeanList ->
+                AlbumSelectorWrapper.scanFile(view.context, { albumSelectorItemBeanList ->
 
                     ThreadUtil.startUIThread(0) {
 
@@ -148,11 +149,15 @@ class AlbumSelectorViewHolder(
 
     private fun loadMore() {
 
+        if (true) {
+            return
+        }
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
 
             ThreadUtil.startThread {
 
-                AlbumSelectorWrapper.scanImageFile(view.context, albumSelectorAdapter.itemCount, 30, { albumSelectorItemBeanList ->
+                AlbumSelectorWrapper.scanMediaFile(view.context, albumSelectorAdapter.itemCount, 50, { albumSelectorItemBeanList ->
 
                     ThreadUtil.startUIThread(0) {
 

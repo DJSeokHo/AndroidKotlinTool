@@ -1,19 +1,12 @@
 package com.swein.androidkotlintool.main.examples.androiddatastorage
 
-import android.content.Context
 import android.graphics.Bitmap
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Environment
-import android.os.storage.StorageManager
 import android.text.format.DateFormat
-import androidx.core.content.ContextCompat
 import androidx.core.view.drawToBitmap
 import com.swein.androidkotlintool.R
-import com.swein.androidkotlintool.framework.util.datastorage.AppCacheDataStorageUtil
-import com.swein.androidkotlintool.framework.util.datastorage.AppInnerDataStorageUtil
-import com.swein.androidkotlintool.framework.util.datastorage.ExternalDataStorageUtil
-import com.swein.androidkotlintool.framework.util.datastorage.MediaDataStorageUtil
+//import com.swein.androidkotlintool.framework.util.datastorage.mediadata.MediaDataStorageUtil
 import com.swein.androidkotlintool.framework.util.log.ILog
 import com.swein.androidkotlintool.framework.util.thread.ThreadUtil
 import java.io.File
@@ -76,29 +69,29 @@ class AndroidDataStorageExampleActivity : AppCompatActivity() {
 //            ILog.debug(TAG, file.isDirectory)
 //        }
 
-        ThreadUtil.startThread {
-
-            ThreadUtil.startUIThread(3000) {
-                val fileName = "test_${DateFormat.format("yyyyMMddHHmmss", Date())}.jpg"
-                val bitmap = window.decorView.rootView.drawToBitmap(Bitmap.Config.ARGB_8888)
-                MediaDataStorageUtil.saveBitmapToPicturesDirectory(this, bitmap, fileName)
-            }
-        }
-
-        ILog.debug(TAG, "log file name list ===========")
-        val fileNameList = MediaDataStorageUtil.getFileNameListFromFolderInPicturesDirectory(this)
-        for (fileName in fileNameList) {
-            ILog.debug(TAG, fileName)
-        }
-
-        ILog.debug(TAG, "log file path list ===========")
-        val filePathList = MediaDataStorageUtil.getFilePathListFromFolderInPicturesDirectory(this)
-        for (filePath in filePathList) {
-            val file = File(filePath)
-            ILog.debug(TAG, file.absolutePath)
-            ILog.debug(TAG, file.isFile)
-            ILog.debug(TAG, file.isDirectory)
-        }
+//        ThreadUtil.startThread {
+//
+//            ThreadUtil.startUIThread(3000) {
+//                val fileName = "test_${DateFormat.format("yyyyMMddHHmmss", Date())}.jpg"
+//                val bitmap = window.decorView.rootView.drawToBitmap(Bitmap.Config.ARGB_8888)
+//                MediaDataStorageUtil.saveBitmapToPicturesDirectory(this, bitmap, fileName)
+//            }
+//        }
+//
+//        ILog.debug(TAG, "log file name list ===========")
+//        val fileNameList = MediaDataStorageUtil.getFileNameListFromFolderInPicturesDirectory(this)
+//        for (fileName in fileNameList) {
+//            ILog.debug(TAG, fileName)
+//        }
+//
+//        ILog.debug(TAG, "log file path list ===========")
+//        val filePathList = MediaDataStorageUtil.getFilePathListFromFolderInPicturesDirectory(this)
+//        for (filePath in filePathList) {
+//            val file = File(filePath)
+//            ILog.debug(TAG, file.absolutePath)
+//            ILog.debug(TAG, file.isFile)
+//            ILog.debug(TAG, file.isDirectory)
+//        }
 
 
 

@@ -1,4 +1,4 @@
-package com.swein.androidkotlintool.framework.util.location.geo
+package com.swein.androidkotlintool.framework.module.location.geo
 
 import android.content.Context
 import android.location.Address
@@ -7,7 +7,7 @@ import java.util.*
 
 class SHGeoCoder {
 
-    private var geocoder: Geocoder? = null
+    private var geocoder: Geocoder
 
     constructor(context: Context, locale: Locale) {
         geocoder = Geocoder(context, locale)
@@ -17,7 +17,7 @@ class SHGeoCoder {
         geocoder = Geocoder(context)
     }
 
-    fun getFromLocation(latitude: Double, longitude: Double, maxResult: Int): MutableList<Address>? {
-        return geocoder?.getFromLocation(latitude, longitude, maxResult)
+    fun getFromLocation(latitude: Double, longitude: Double, maxResult: Int): MutableList<Address> {
+        return geocoder.getFromLocation(latitude, longitude, maxResult)
     }
 }

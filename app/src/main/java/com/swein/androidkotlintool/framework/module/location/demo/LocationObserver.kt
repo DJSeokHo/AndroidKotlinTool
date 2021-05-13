@@ -6,6 +6,7 @@ import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
 import com.google.android.gms.location.LocationRequest
 import com.swein.androidkotlintool.framework.module.location.LocationManager
+import com.swein.androidkotlintool.framework.module.location.geo.SHGeoCoder
 import com.swein.androidkotlintool.framework.util.log.ILog
 import java.lang.ref.WeakReference
 
@@ -50,9 +51,15 @@ class LocationObserver(private val activity: WeakReference<Activity>, private va
                 .setFastestInterval(2000)
                 .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
                 .create(it)
-                .request(false) { latitude, longitude ->
-                    ILog.debug(TAG, "location update $latitude, and longitude is secret :)")
-                }
+                .request(false, onUpdateLocation = { latitude, longitude ->
+//                    ILog.debug(TAG, "location update $latitude, and longitude is secret :)")
+
+                    val shGeoCoder = SHGeoCoder(it)
+                    val addressList = shGeoCoder.getFromLocation(latitude, longitude, 10)
+                    for (address in addressList) {
+                        ILog.debug(TAG, address)
+                    }
+                })
         }
 
     }

@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.location.LocationRequest
 import com.swein.androidkotlintool.R
 import com.swein.androidkotlintool.framework.module.location.LocationManager
+import com.swein.androidkotlintool.framework.module.location.geo.SHGeoCoder
 import com.swein.androidkotlintool.framework.module.location.service.LocationService
 import com.swein.androidkotlintool.framework.util.log.ILog
 import com.swein.androidkotlintool.main.examples.permissionexample.PermissionManager
@@ -57,17 +58,34 @@ class LocationDemoActivity : AppCompatActivity() {
     }
 
     private fun requestLocation() {
+//        LocationManager.Builder
+//            .setInterval(4000)
+//            .setFastestInterval(2000)
+//            .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
+//            .create(this)
+//            .request(true, onUpdateLocation = { latitude, longitude ->
+//                ILog.debug(TAG, "location update $latitude, $longitude")
+//
+//
+//                // if you want to request location just once, then
+////                LocationManager.stop(this)
+//            })
+
         LocationManager.Builder
             .setInterval(4000)
             .setFastestInterval(2000)
             .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
             .create(this)
-            .request(true) { latitude, longitude ->
-                ILog.debug(TAG, "location update $latitude, $longitude")
+            .request(false, onUpdateLocation = { latitude, longitude ->
+//                    ILog.debug(TAG, "location update $latitude, and longitude is secret :)")
 
-                // if you want to request location just once, then
-//                LocationManager.stop(this)
-            }
+                val shGeoCoder = SHGeoCoder(this)
+                val addressList = shGeoCoder.getFromLocation(latitude, longitude, 10)
+                for (address in addressList) {
+                    ILog.debug(TAG, "============================")
+                    ILog.debug(TAG, address.toString())
+                }
+            })
     }
 
     override fun onRequestPermissionsResult(

@@ -9,7 +9,6 @@ import android.provider.Settings
 import androidx.core.app.ActivityCompat
 import com.google.android.gms.location.*
 import com.swein.androidkotlintool.framework.module.location.service.LocationService
-import com.swein.androidkotlintool.framework.util.log.ILog
 import java.lang.ref.WeakReference
 
 object LocationManager {
@@ -18,7 +17,9 @@ object LocationManager {
 
     private lateinit var activity: WeakReference<Activity>
     private lateinit var locationRequest: LocationRequest
-    private lateinit var onUpdateLocation: WeakReference<(latitude: Double, longitude: Double) -> Unit>
+
+    private var onUpdateLocation: WeakReference<(latitude: Double, longitude: Double) -> Unit>? = null
+    private var onUpdateLocationDetail: WeakReference<(locationResult: LocationResult) -> Unit>? = null
 
     private var interval: Long = 10000 // 10000 is recommend
     private var fastestInterval: Long = 1000 // 5000 is recommend
@@ -44,7 +45,8 @@ object LocationManager {
         override fun onLocationResult(locationResult: LocationResult) {
             super.onLocationResult(locationResult)
 
-            onUpdateLocation.get()?.invoke(locationResult.lastLocation.latitude, locationResult.lastLocation.longitude)
+            onUpdateLocation?.get()?.invoke(locationResult.lastLocation.latitude, locationResult.lastLocation.longitude)
+            onUpdateLocationDetail?.get()?.invoke(locationResult)
 
         }
     }
@@ -88,8 +90,13 @@ object LocationManager {
 
     }
 
-    fun request(withForegroundService: Boolean, onUpdateLocation: ((latitude: Double, longitude: Double) -> Unit)) {
+    fun request(withForegroundService: Boolean,
+                onUpdateLocation: ((latitude: Double, longitude: Double) -> Unit)? = null,
+                onUpdateLocationDetail: ((locationResult: LocationResult) -> Unit)? = null
+    ) {
         this.onUpdateLocation = WeakReference(onUpdateLocation)
+        this.onUpdateLocationDetail = WeakReference(onUpdateLocationDetail)
+
         if (!withForegroundService) {
             requestWithoutService()
         }
