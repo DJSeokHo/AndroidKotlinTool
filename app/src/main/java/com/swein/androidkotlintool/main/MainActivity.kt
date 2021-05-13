@@ -102,7 +102,7 @@ class MainActivity : BasicPermissionActivity() {
 //        ActivityUtil.startNewActivityWithoutFinish(this, LifecycleExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, PermissionExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, FirebaseDemoActivity::class.java)
-        ActivityUtil.startNewActivityWithoutFinish(this, LocationDemoActivity::class.java)
+//        ActivityUtil.startNewActivityWithoutFinish(this, LocationDemoActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, LocationWithLifecycleDemoActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, RoomDemoActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, RoomWithCoroutineAndStartUPExampleActivity::class.java)

@@ -76,7 +76,7 @@ fun autoLoginWhenAppStartExample() {
 
 fun registerExample() {
 
-    MemberModelService.checkIsMemberExist("KAKAO", "kakao123", { list, documentIdList, documentSnapshot ->
+    MemberModelService.checkIsMemberExist("KAKAO", "kakao12345", { list, documentIdList, documentSnapshot ->
 
         ILog.debug(TAG, "${list.size}")
         ILog.debug(TAG, "${list[0]}")

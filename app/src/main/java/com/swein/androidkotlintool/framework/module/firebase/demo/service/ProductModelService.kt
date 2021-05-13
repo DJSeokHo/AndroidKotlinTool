@@ -104,7 +104,7 @@ object ProductModelService {
 
             CloudDBManager.update(ProductModel.CLOUD_DB_PATH, productModel.documentId, productModel.to(), object : CloudDBManager.UpdateDelegate {
 
-                override fun onSuccess(map: MutableMap<String, Any>) {
+                override fun onSuccess(documentId: String, map: MutableMap<String, Any>) {
                     onSuccessResponse(map)
                 }
 
@@ -243,7 +243,7 @@ object ProductModelService {
 
                 CloudDBManager.update(ProductModel.CLOUD_DB_PATH, productModel.documentId, productModel.to(), object : CloudDBManager.UpdateDelegate {
 
-                    override fun onSuccess(map: MutableMap<String, Any>) {
+                    override fun onSuccess(documentId: String, map: MutableMap<String, Any>) {
                         onSuccessResponse(map)
                     }
 
@@ -273,7 +273,7 @@ object ProductModelService {
 
             CloudDBManager.update(ProductModel.CLOUD_DB_PATH, productModel.documentId, productModel.to(), object : CloudDBManager.UpdateDelegate {
 
-                override fun onSuccess(map: MutableMap<String, Any>) {
+                override fun onSuccess(documentId: String, map: MutableMap<String, Any>) {
                     onSuccessResponse(map)
                 }
 

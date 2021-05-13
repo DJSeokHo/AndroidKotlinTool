@@ -14,7 +14,7 @@ object CloudDBManager {
     }
 
     interface UpdateDelegate {
-        fun onSuccess(map: MutableMap<String, Any>)
+        fun onSuccess(documentId: String, map: MutableMap<String, Any>)
         fun onFailure(e: Exception?)
     }
 
@@ -28,8 +28,6 @@ object CloudDBManager {
         fun onFailure(e: Exception?)
         fun onEmpty()
     }
-
-    private const val TAG = "CloudDBManager"
 
     fun select(
         collectionPath: String,
@@ -107,7 +105,7 @@ object CloudDBManager {
     ) {
         Firebase.firestore.collection(collectionPath).document(documentId).update(map)
             .addOnSuccessListener {
-                delegate.onSuccess(map)
+                delegate.onSuccess(documentId, map)
             }
             .addOnFailureListener {
                 delegate.onFailure(it)
