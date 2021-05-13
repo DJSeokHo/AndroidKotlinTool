@@ -194,7 +194,7 @@ fun updateMemberProfileExample() {
     MemberSelfModel.memberModel!!.pushToken = "ccccccc"
 
     MemberModelService.updateMemberProfile(MemberSelfModel, { map ->
-        MemberSelfModel.parsingMemberModel(map)
+        MemberSelfModel.parsingMemberModel(map = map)
         ILog.debug(TAG, MemberSelfModel.memberModel!!.to().toString())
     }, { e ->
         ILog.debug(TAG, e?.message)
@@ -225,7 +225,7 @@ fun modifyBusinessExample() {
             "/storage/emulated/0/DCIM/Screenshots/Screenshot_20210413-191931_RecyclerViewExample.jpg",
             { map ->
 
-                MemberSelfModel.parsingShopModel(map)
+                MemberSelfModel.parsingShopModel(map = map)
                 ILog.debug(TAG, map)
                 ILog.debug(TAG, "modify shop success and wait to review")
 

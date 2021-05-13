@@ -15,38 +15,35 @@ object MemberSelfModel {
         uuId = SharedPreferencesUtil.getValue("uuId", "")
     }
 
-    fun parsingMemberModel(documentId: String, map: MutableMap<String, Any>) {
+    fun parsingMemberModel(documentId: String = "", map: MutableMap<String, Any>) {
 
-        if (memberModel == null) {
-            memberModel = MemberModel()
+        if (documentId != "") {
+
+            if (memberModel == null) {
+                memberModel = MemberModel()
+            }
+
+            memberModel?.documentId = documentId
         }
 
-        memberModel!!.parsing(map)
-        memberModel!!.documentId = documentId
+        memberModel?.parsing(map)
+
         SharedPreferencesUtil.putValue("uuId", memberModel!!.uuId)
     }
 
-    fun parsingMemberModel(map: MutableMap<String, Any>) {
+    fun parsingShopModel(documentId: String = "", map: MutableMap<String, Any>) {
 
-        memberModel?.let {
-            it.parsing(map)
-            SharedPreferencesUtil.putValue("uuId", it.uuId)
+        if (documentId != "") {
+
+            if (shopModel == null) {
+                shopModel = ShopModel()
+            }
+
+            shopModel?.documentId = documentId
         }
-    }
-
-    fun parsingShopModel(documentId: String, map: MutableMap<String, Any>) {
-
-        if (shopModel == null) {
-            shopModel = ShopModel()
-        }
-
-        shopModel!!.parsing(map)
-        shopModel!!.documentId = documentId
-    }
-
-    fun parsingShopModel(map: MutableMap<String, Any>) {
 
         shopModel?.parsing(map)
+
     }
 
     fun clear() {
