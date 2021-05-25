@@ -39,6 +39,7 @@ class CoroutineDemoActivity : BaseCoroutineActivity() {
 
         findViewById<Button>(R.id.buttonGet).setOnClickListener {
 
+            
 //            launch(Dispatchers.Main) {
 //
 //                val time = measureTimeMillis {

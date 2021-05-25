@@ -95,7 +95,7 @@ class ShopModel {
     fun parsing(map: MutableMap<String, Any>) {
         uuId = map[UUID_KEY] as String
         ownerUuId = map[OWNER_UUID_KEY] as String
-        businessNumber = map[BUSINESS_HOUR_KEY] as String
+        businessHour = map[BUSINESS_HOUR_KEY] as String
         name = map[NAME_KEY] as String
         shopName = map[SHOP_NAME_KEY] as String
         businessName = map[BUSINESS_NAME_KEY] as String
