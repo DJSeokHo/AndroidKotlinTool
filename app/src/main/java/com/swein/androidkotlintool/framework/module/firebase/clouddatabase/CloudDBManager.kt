@@ -45,20 +45,20 @@ object CloudDBManager {
             query = query.startAfter(offset)
         }
 
-        orderByCol?.let {
-            query = query.orderBy(orderByCol, if (isDesc) {
-                    Query.Direction.DESCENDING
-                }
-                else {
-                    Query.Direction.ASCENDING
-                }
-            )
-        }
-
         conditionMap?.let {
             it.forEach { map ->
                 query = query.whereEqualTo(map.key, map.value)
             }
+        }
+
+        orderByCol?.let {
+            query = query.orderBy(orderByCol, if (isDesc) {
+                Query.Direction.DESCENDING
+            }
+            else {
+                Query.Direction.ASCENDING
+            }
+            )
         }
 
         query.get()
