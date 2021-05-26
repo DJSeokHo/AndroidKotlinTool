@@ -49,12 +49,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".main.examples.workmanager.WorkManagerDemoActivity"></activity>
-        <activity
-            android:name=".main.examples.pip.PictureInPictureActivity"
-            android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation"
-            android:supportsPictureInPicture="true"
-            tools:targetApi="n" />
+        <activity android:name=".main.examples.viewmodel.ViewModelNewTestActivity"></activity>
+        <activity android:name=".main.examples.viewmodel.ViewModelDemoActivity" />
+        <activity android:name=".main.examples.livedata.LiveDataDemoActivity" />
+        <activity android:name=".main.examples.workmanager.WorkManagerDemoActivity" />
         <activity android:name=".main.examples.androiddatastorage.AndroidDataStorageExampleActivity" />
         <activity android:name=".framework.module.room.example.RoomWithCoroutineAndStartUPExampleActivity" />
         <activity android:name=".framework.module.room.demo.RoomDemoActivity" />

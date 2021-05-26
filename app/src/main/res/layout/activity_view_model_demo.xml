@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".main.examples.viewmodel.ViewModelDemoActivity"
+    android:background="@color/white"
+    android:id="@+id/container">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+    
+        <LinearLayout
+            android:background="#333"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal">
+        
+            <Button
+                android:background="#0000"
+                android:textColor="@color/white"
+                android:text="A"
+                android:id="@+id/buttonA"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"/>
+        
+            <Button
+                android:background="#0000"
+                android:textColor="@color/white"
+                android:text="B"
+                android:id="@+id/buttonB"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"/>
+    
+        </LinearLayout>
+    
+    
+        <LinearLayout
+            android:background="#999"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal">
+        
+            <TextView
+                android:gravity="center"
+                android:background="#0000"
+                android:textColor="@color/black"
+                android:text="0"
+                android:id="@+id/textViewA"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"/>
+        
+            <TextView
+                android:gravity="center"
+                android:background="#0000"
+                android:textColor="@color/black"
+                android:text="0"
+                android:id="@+id/textViewB"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"/>
+    
+        </LinearLayout>
+        
+    </LinearLayout>
+    
+    <Button
+        android:stateListAnimator="@null"
+        android:textColor="@color/black"
+        android:background="#0000"
+        android:id="@+id/buttonNew"
+        android:layout_gravity="center"
+        android:text="new activity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    
+</FrameLayout>
