@@ -17,6 +17,7 @@ class ScoreLiveDataViewModel: ViewModel() {
         // 您必须调用 setValue(T) 方法以从主线程更新 LiveData 对象。
         // 如果在工作器线程中执行代码，您可以改用 postValue(T) 方法来更新 LiveData 对象。
         currentScore.value = value
+//        currentScore.postValue(value)
     }
 
     fun getValue(): Int {

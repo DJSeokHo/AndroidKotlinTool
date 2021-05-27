@@ -6,11 +6,16 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.lifecycle.ViewModelProvider
 import com.swein.androidkotlintool.R
 
 class ViewModelNewTestActivity : AppCompatActivity() {
 
-    private val viewModel: ScoreViewModel by viewModels()
+//    private val viewModel: ScoreViewModel by viewModels()
+    private val viewModel: ScoreAndroidViewModel by lazy {
+        ViewModelProvider.AndroidViewModelFactory(this.application)
+            .create(ScoreAndroidViewModel::class.java)
+    }
 
     private val textView: TextView by lazy {
         findViewById(R.id.textView)

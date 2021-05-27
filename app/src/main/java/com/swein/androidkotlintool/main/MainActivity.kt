@@ -112,8 +112,8 @@ class MainActivity : BasicPermissionActivity() {
 //        ActivityUtil.startNewActivityWithoutFinish(this, RoomWithCoroutineAndStartUPExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, SHCameraPhotoFragmentDemoActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, WorkManagerDemoActivity::class.java)
-        ActivityUtil.startNewActivityWithoutFinish(this, LiveDataDemoActivity::class.java)
-//        ActivityUtil.startNewActivityWithoutFinish(this, ViewModelDemoActivity::class.java)
+//        ActivityUtil.startNewActivityWithoutFinish(this, LiveDataDemoActivity::class.java)
+        ActivityUtil.startNewActivityWithoutFinish(this, ViewModelDemoActivity::class.java)
 
 //        val list = mutableListOf<String>()
 //        list.add("/data/user/0/com.swein.androidkotlintool/cache/cache_com_swein_androidkotlintool_0.jpg")

@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import com.swein.androidkotlintool.R
 
 class TeamAFragment : Fragment() {
@@ -22,7 +24,8 @@ class TeamAFragment : Fragment() {
             }
     }
 
-    private val viewModel: ScoreViewModel by activityViewModels()
+//    private val viewModel: ScoreViewModel by activityViewModels()
+    private val viewModel: ScoreAndroidViewModel by activityViewModels()
 
     private lateinit var rootView: View
     private val textView: TextView by lazy {

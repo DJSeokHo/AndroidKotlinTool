@@ -25,7 +25,7 @@ class LiveDataDemoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_live_data_demo)
 
-        lifecycle.addObserver(LiveDataDemoLCObserver())
+//        lifecycle.addObserver(LiveDataDemoLCObserver())
 
         val scoreObserver = Observer<Int> {  score ->
             textView.text = score.toString()
@@ -38,6 +38,5 @@ class LiveDataDemoActivity : AppCompatActivity() {
             viewModel.setValue(viewModel.getValue() + 1)
         }
 
-        viewModel.setValue(0)
     }
 }

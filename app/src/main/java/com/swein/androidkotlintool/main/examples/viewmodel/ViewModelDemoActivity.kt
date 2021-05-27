@@ -6,7 +6,11 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.fragment.app.FragmentActivity
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory
 import com.swein.androidkotlintool.R
+import com.swein.androidkotlintool.framework.util.log.ILog
+
 
 class ViewModelDemoActivity : FragmentActivity() {
 
@@ -30,7 +34,10 @@ class ViewModelDemoActivity : FragmentActivity() {
         findViewById(R.id.buttonNew)
     }
 
-    private val viewModel: ScoreViewModel by viewModels()
+    private val viewModel: ScoreAndroidViewModel by viewModels()
+//    private val viewModel: ScoreAndroidViewModel by lazy {
+//        ViewModelProvider(this).get(ScoreAndroidViewModel::class.java)
+//    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
