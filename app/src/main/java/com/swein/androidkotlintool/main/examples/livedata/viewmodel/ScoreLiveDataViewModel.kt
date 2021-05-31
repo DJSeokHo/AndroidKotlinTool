@@ -2,6 +2,7 @@ package com.swein.androidkotlintool.main.examples.livedata.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.swein.androidkotlintool.framework.util.log.ILog
 
 class ScoreLiveDataViewModel: ViewModel() {
 
@@ -9,8 +10,17 @@ class ScoreLiveDataViewModel: ViewModel() {
         MutableLiveData<Int>()
     }
 
+    val currentUser: MutableLiveData<UserScoreInfo> by lazy {
+        MutableLiveData<UserScoreInfo>()
+    }
+
+    val currentUserList: MutableLiveData<MutableList<UserScoreInfo>> by lazy {
+        MutableLiveData<MutableList<UserScoreInfo>>()
+    }
+
     init {
         currentScore.value = 0
+        currentUserList.value = mutableListOf()
     }
 
     fun setValue(value: Int) {
@@ -25,4 +35,22 @@ class ScoreLiveDataViewModel: ViewModel() {
             0
         }
     }
+
+    fun setUser(name: String, info: String) {
+
+        val item = UserScoreInfo().apply {
+            this.name = name
+            this.info = info
+        }
+
+        currentUser.value = item
+
+        currentUserList.value?.add(item)
+        currentUserList.value = currentUserList.value
+    }
+}
+
+class UserScoreInfo {
+    var name = ""
+    var info = ""
 }
