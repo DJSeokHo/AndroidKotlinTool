@@ -2,14 +2,16 @@ package com.swein.androidkotlintool.main.examples.mvvmrecyclerviewexample.adapte
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.swein.androidkotlintool.R
+import com.swein.androidkotlintool.framework.util.log.ILog
 import com.swein.androidkotlintool.framework.util.toast.ToastUtil
 import com.swein.androidkotlintool.main.examples.mvvmrecyclerviewexample.MVVMRecyclerViewExampleActivity
 import com.swein.androidkotlintool.main.examples.mvvmrecyclerviewexample.adapter.item.MVVMExampleItemModel
 import com.swein.androidkotlintool.main.examples.mvvmrecyclerviewexample.adapter.item.MVVMExampleItemViewHolder
 
-class MVVMExampleAdapter(private var list: MutableList<MVVMExampleItemModel>?): RecyclerView.Adapter<MVVMExampleItemViewHolder>() {
+class MVVMExampleAdapter(private var liveData: MutableLiveData<MutableList<MVVMExampleItemModel>>): RecyclerView.Adapter<MVVMExampleItemViewHolder>() {
 
     var onLoadMore: (() -> Unit)? = null
 
@@ -19,12 +21,12 @@ class MVVMExampleAdapter(private var list: MutableList<MVVMExampleItemModel>?): 
     }
 
     override fun getItemCount(): Int {
-        return list?.size ?: 0
+        return liveData.value?.size ?: 0
     }
 
     override fun onBindViewHolder(viewHolder: MVVMExampleItemViewHolder, index: Int) {
 
-        list?.let { list ->
+        liveData.value?.let { list ->
 
             viewHolder.mvvmExampleItemModel = list[index]
             viewHolder.onItemClick = { model ->
@@ -42,11 +44,13 @@ class MVVMExampleAdapter(private var list: MutableList<MVVMExampleItemModel>?): 
     }
 
     fun reload() {
+        ILog.debug("Adapter", "reload")
         notifyDataSetChanged()
     }
 
     fun loadMore() {
-        this.list?.let {
+        ILog.debug("Adapter", "loadMore")
+        this.liveData.value?.let {
             notifyItemRangeChanged(it.size - MVVMRecyclerViewExampleActivity.LIST_LIMIT + 1, MVVMRecyclerViewExampleActivity.LIST_LIMIT)
         }
     }

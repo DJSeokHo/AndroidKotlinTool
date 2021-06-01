@@ -59,7 +59,7 @@ class MVVMRecyclerViewExampleActivity : AppCompatActivity() {
 
         recyclerView.layoutManager = layoutManager
 
-        adapter = MVVMExampleAdapter(viewModel.list.value)
+        adapter = MVVMExampleAdapter(viewModel.list)
         adapter.onLoadMore = {
             // load more
             loadMore()
