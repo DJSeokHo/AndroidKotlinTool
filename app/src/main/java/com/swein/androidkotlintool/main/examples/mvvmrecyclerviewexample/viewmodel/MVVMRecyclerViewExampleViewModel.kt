@@ -2,8 +2,11 @@ package com.swein.androidkotlintool.main.examples.mvvmrecyclerviewexample.viewmo
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.swein.androidkotlintool.framework.util.thread.ThreadUtil
 import com.swein.androidkotlintool.main.examples.mvvmrecyclerviewexample.adapter.item.MVVMExampleItemModel
+import kotlinx.coroutines.*
+import java.lang.Runnable
 
 class MVVMRecyclerViewExampleViewModel: ViewModel() {
 
@@ -17,41 +20,47 @@ class MVVMRecyclerViewExampleViewModel: ViewModel() {
 
     fun reload(limit: Int, start: Runnable, finish: Runnable) {
 
-        start.run()
+        viewModelScope.launch(Dispatchers.Main) {
 
-        ThreadUtil.startThread {
-            list.value?.clear()
+            start.run()
 
-            Thread.sleep(1500)
-            val listFromServer = getTempDataFromDummyServer(0, limit)
-            list.value?.addAll(listFromServer)
+            val result = async {
 
-            ThreadUtil.startUIThread(0) {
-                finish.run()
-                list.value = list.value
+                delay(1500)
+                getTempDataFromDummyServer(0, limit)
             }
+
+            list.value?.clear()
+            list.value?.addAll(result.await())
+            finish.run()
+            list.value = list.value
+
         }
 
     }
 
     fun loadMore(offset: Int, limit: Int, start: Runnable, finish: Runnable) {
 
-        start.run()
+        viewModelScope.launch(Dispatchers.Main) {
 
-        ThreadUtil.startThread {
+            start.run()
 
-            Thread.sleep(1000)
-            val listFromServer = getTempDataFromDummyServer(offset, limit)
-            list.value?.addAll(listFromServer)
+            val result = async {
 
-            ThreadUtil.startUIThread(0) {
-                finish.run()
-                list.value = list.value
+                delay(1000)
+                getTempDataFromDummyServer(offset, limit)
             }
+
+            list.value?.addAll(result.await())
+            finish.run()
+            list.value = list.value
+
         }
+
     }
 
-    private fun getTempDataFromDummyServer(offset: Int, limit: Int): MutableList<MVVMExampleItemModel> {
+    private suspend fun getTempDataFromDummyServer(offset: Int, limit: Int): MutableList<MVVMExampleItemModel> = withContext(Dispatchers.IO) {
+
         val list: MutableList<MVVMExampleItemModel> = mutableListOf()
 
         var mvvmExampleItemModel: MVVMExampleItemModel
@@ -69,7 +78,7 @@ class MVVMRecyclerViewExampleViewModel: ViewModel() {
             list.add(mvvmExampleItemModel)
         }
 
-        return list
+        return@withContext list
     }
 
 }
