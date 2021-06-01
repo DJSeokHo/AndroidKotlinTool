@@ -107,7 +107,7 @@ class SHGlide {
                 requestBuilder = requestBuilder.thumbnail(thumbnailSize)
             }
 
-            requestBuilder.skipMemoryCache(true).diskCacheStrategy(DiskCacheStrategy.AUTOMATIC).into(
+            requestBuilder.skipMemoryCache(true).diskCacheStrategy(DiskCacheStrategy.NONE).into(
                 imageView!!
             )
         }

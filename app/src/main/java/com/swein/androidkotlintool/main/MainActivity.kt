@@ -31,6 +31,7 @@ import com.swein.androidkotlintool.framework.util.glide.SHGlide
 import com.swein.androidkotlintool.framework.util.log.ILog
 import com.swein.androidkotlintool.framework.util.screen.ScreenUtil
 import com.swein.androidkotlintool.main.examples.livedata.LiveDataDemoActivity
+import com.swein.androidkotlintool.main.examples.mvvmrecyclerviewexample.MVVMRecyclerViewExampleActivity
 import com.swein.androidkotlintool.main.examples.viewmodel.ViewModelDemoActivity
 import com.swein.androidkotlintool.main.examples.workmanager.WorkManagerDemoActivity
 import com.swein.androidkotlintool.main.moduledemo.ModuleDemoActivity
@@ -112,8 +113,9 @@ class MainActivity : BasicPermissionActivity() {
 //        ActivityUtil.startNewActivityWithoutFinish(this, RoomWithCoroutineAndStartUPExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, SHCameraPhotoFragmentDemoActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, WorkManagerDemoActivity::class.java)
-        ActivityUtil.startNewActivityWithoutFinish(this, LiveDataDemoActivity::class.java)
+//        ActivityUtil.startNewActivityWithoutFinish(this, LiveDataDemoActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, ViewModelDemoActivity::class.java)
+        ActivityUtil.startNewActivityWithoutFinish(this, MVVMRecyclerViewExampleActivity::class.java)
 
 //        val list = mutableListOf<String>()
 //        list.add("/data/user/0/com.swein.androidkotlintool/cache/cache_com_swein_androidkotlintool_0.jpg")
