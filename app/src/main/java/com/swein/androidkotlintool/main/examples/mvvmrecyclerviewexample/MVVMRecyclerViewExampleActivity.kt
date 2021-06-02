@@ -1,5 +1,6 @@
 package com.swein.androidkotlintool.main.examples.mvvmrecyclerviewexample
 
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.View
 import android.widget.FrameLayout
@@ -48,6 +49,16 @@ class MVVMRecyclerViewExampleActivity : AppCompatActivity() {
         reload()
     }
 
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+
+        if(newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            ILog.debug("Activity", "orientation landscape")
+        }
+        else {
+            ILog.debug("Activity", "orientation portrait")
+        }
+    }
     private fun initList() {
 
         swipeRefreshLayout.setOnRefreshListener {

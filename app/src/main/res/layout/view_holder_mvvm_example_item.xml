@@ -1,24 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/white">
+    android:background="@color/white"
+    android:orientation="vertical">
     
     <ImageView
         android:id="@+id/imageView"
-        android:scaleType="centerCrop"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_margin="20dp"
-        android:layout_width="80dp"
-        android:layout_height="80dp"/>
+        android:scaleType="fitXY"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:minHeight="100dp"/>
     
     <TextView
-        app:layout_constraintStart_toEndOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="20dp"
         android:textSize="10pt"
         android:textColor="@color/black"
         android:id="@+id/textViewIndex"
@@ -27,21 +24,18 @@
         android:layout_height="wrap_content"/>
    
     <TextView
-        app:layout_constraintStart_toEndOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@id/textViewIndex"
         android:textSize="10pt"
         android:textColor="@color/black"
         android:id="@+id/textViewContent"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:layout_marginHorizontal="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
     <View
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:layout_marginHorizontal="15dp"
         android:background="@color/black"
         android:layout_width="match_parent"
         android:layout_height="0.8dp"/>
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

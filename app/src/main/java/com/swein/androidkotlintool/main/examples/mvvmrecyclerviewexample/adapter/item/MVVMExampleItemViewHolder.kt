@@ -65,4 +65,10 @@ class MVVMExampleItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemVi
         textViewIndex?.text = index
         textViewContent?.text = mvvmExampleItemModel?.content
     }
+
+    fun clear() {
+        imageView?.setImageBitmap(null)
+        textViewIndex?.text = ""
+        textViewContent?.text = ""
+    }
 }

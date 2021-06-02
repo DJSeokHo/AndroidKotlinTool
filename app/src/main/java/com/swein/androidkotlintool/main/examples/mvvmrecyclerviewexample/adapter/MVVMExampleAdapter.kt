@@ -43,6 +43,11 @@ class MVVMExampleAdapter(private var liveData: MutableLiveData<MutableList<MVVME
         }
     }
 
+    override fun onViewRecycled(holder: MVVMExampleItemViewHolder) {
+        super.onViewRecycled(holder)
+        holder.clear()
+    }
+
     fun reload() {
         ILog.debug("Adapter", "reload")
         notifyDataSetChanged()

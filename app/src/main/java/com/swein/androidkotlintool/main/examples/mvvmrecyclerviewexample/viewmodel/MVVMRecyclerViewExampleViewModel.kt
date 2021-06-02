@@ -16,6 +16,7 @@ class MVVMRecyclerViewExampleViewModel: ViewModel() {
 
     init {
         list.value = mutableListOf()
+
     }
 
     fun reload(limit: Int, start: Runnable, finish: Runnable) {
@@ -68,7 +69,7 @@ class MVVMRecyclerViewExampleViewModel: ViewModel() {
             mvvmExampleItemModel = MVVMExampleItemModel()
 
             if (i % 2 == 0) {
-                mvvmExampleItemModel.imageUrl = "https://lh3.googleusercontent.com/proxy/YxXW71Gq927UQyQe6WAVZyUhJGK7X83dWguZw2WXfHOIRAjLTltJuRBz2d5d3SlnXVtBRH-z1fk7DJr1Di-hwQSEiAJvXmyFPt-LJYCtceWZ29vxnQ"
+                mvvmExampleItemModel.imageUrl = "https://ipetgroup.com/photo/180012_0_620.jpeg"
             }
             else {
                 mvvmExampleItemModel.imageUrl = "https://cdn.pixabay.com/photo/2018/05/19/16/52/persian-cat-3413792_960_720.jpg"
