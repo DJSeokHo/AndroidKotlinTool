@@ -30,6 +30,8 @@ import com.swein.androidkotlintool.framework.util.eventsplitshot.subject.ESSArro
 import com.swein.androidkotlintool.framework.util.glide.SHGlide
 import com.swein.androidkotlintool.framework.util.log.ILog
 import com.swein.androidkotlintool.framework.util.screen.ScreenUtil
+import com.swein.androidkotlintool.main.examples.customanimation.CustomAnimationExampleActivity
+import com.swein.androidkotlintool.main.examples.customview.CustomViewExampleActivity
 import com.swein.androidkotlintool.main.examples.livedata.LiveDataDemoActivity
 import com.swein.androidkotlintool.main.examples.mvvmrecyclerviewexample.MVVMRecyclerViewExampleActivity
 import com.swein.androidkotlintool.main.examples.viewmodel.ViewModelDemoActivity
@@ -115,7 +117,9 @@ class MainActivity : BasicPermissionActivity() {
 //        ActivityUtil.startNewActivityWithoutFinish(this, WorkManagerDemoActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, LiveDataDemoActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, ViewModelDemoActivity::class.java)
-        ActivityUtil.startNewActivityWithoutFinish(this, MVVMRecyclerViewExampleActivity::class.java)
+//        ActivityUtil.startNewActivityWithoutFinish(this, MVVMRecyclerViewExampleActivity::class.java)
+        ActivityUtil.startNewActivityWithoutFinish(this, CustomViewExampleActivity::class.java)
+//        ActivityUtil.startNewActivityWithoutFinish(this, CustomAnimationExampleActivity::class.java)
 
 //        val list = mutableListOf<String>()
 //        list.add("/data/user/0/com.swein.androidkotlintool/cache/cache_com_swein_androidkotlintool_0.jpg")

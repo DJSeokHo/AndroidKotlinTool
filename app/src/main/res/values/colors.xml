@@ -2,7 +2,8 @@
 <resources>
     
     <color name="app_basic_theme_color">#ee6e61</color>
-    
+    <color name="red">#ff0000</color>
+    <color name="green">#00ff00</color>
     <color name="gray">#7A7676</color>
     <color name="black">#000</color>
     <color name="white">#FFF</color>

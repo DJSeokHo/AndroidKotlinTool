@@ -49,8 +49,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".main.examples.mvvmrecyclerviewexample.MVVMRecyclerViewExampleActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize"/>
+        <activity android:name=".main.examples.customanimation.CustomAnimationExampleActivity"></activity>
+        <activity android:name=".main.examples.customview.CustomViewExampleActivity" />
+        <activity
+            android:name=".main.examples.mvvmrecyclerviewexample.MVVMRecyclerViewExampleActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize" />
         <activity android:name=".main.examples.viewmodel.ViewModelNewTestActivity" />
         <activity android:name=".main.examples.viewmodel.ViewModelDemoActivity" />
         <activity android:name=".main.examples.livedata.LiveDataDemoActivity" />
