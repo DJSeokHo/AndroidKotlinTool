@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".main.examples.materialdesignbottombar.MaterialDesignBottomBarExampleActivity"
+    android:background="@color/white">
+    
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    
+        <FrameLayout
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+        
+        <com.google.android.material.bottomappbar.BottomAppBar
+            android:id="@+id/bottomAppBar"
+            android:layout_gravity="bottom"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            app:fabAlignmentMode="center"
+            app:fabAnimationMode="slide"
+            app:backgroundTint="#dddddd"
+            app:hideOnScroll="true"
+            app:fabCradleMargin="10dp"
+            app:fabCradleVerticalOffset="10dp"
+            app:contentInsetEnd="0dp"
+            app:contentInsetStart="0dp"
+            app:fabCradleRoundedCornerRadius="16dp">
+    
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:orientation="horizontal">
+                
+                <LinearLayout
+                    android:paddingVertical="4dp"
+                    android:layout_gravity="center"
+                    android:id="@+id/linearLayoutHome"
+                    android:background="@drawable/bottom_app_bar_item_ripple"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center">
+                    
+                    <ImageView
+                        android:id="@+id/imageViewHome"
+                        android:scaleType="fitCenter"
+                        android:src="@mipmap/ti_home_selected"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"/>
+                    
+                    <TextView
+                        android:text="home"
+                        android:textColor="#111111"
+                        android:textSize="5pt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    
+                </LinearLayout>
+             
+                <LinearLayout
+                    android:paddingVertical="4dp"
+                    android:layout_gravity="center"
+                    android:id="@+id/linearLayoutDiscover"
+                    android:background="@drawable/bottom_app_bar_item_ripple"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center">
+                   
+                    <ImageView
+                        android:id="@+id/imageViewDiscover"
+                        android:scaleType="fitCenter"
+                        android:src="@mipmap/ti_discover_un_selected"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"/>
+        
+                    <TextView
+                        android:text="discover"
+                        android:textColor="#111111"
+                        android:textSize="5pt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+    
+                </LinearLayout>
+                
+                <View
+                    android:layout_width="70dp"
+                    android:layout_height="match_parent"/>
+               
+                <LinearLayout
+                    android:paddingVertical="4dp"
+                    android:layout_gravity="center"
+                    android:id="@+id/linearLayoutNotification"
+                    android:background="@drawable/bottom_app_bar_item_ripple"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center">
+                   
+                    <ImageView
+                        android:id="@+id/imageViewNotification"
+                        android:scaleType="fitCenter"
+                        android:src="@mipmap/ti_notification_un_selected"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"/>
+        
+                    <TextView
+                        android:text="notification"
+                        android:textColor="#111111"
+                        android:textSize="5pt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+    
+                </LinearLayout>
+    
+                <LinearLayout
+                    android:paddingVertical="4dp"
+                    android:layout_gravity="center"
+                    android:id="@+id/linearLayoutProfile"
+                    android:background="@drawable/bottom_app_bar_item_ripple"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center">
+                    
+                    <ImageView
+                        android:id="@+id/imageViewProfile"
+                        android:scaleType="fitCenter"
+                        android:src="@mipmap/ti_profile_un_selected"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"/>
+        
+                    <TextView
+                        android:text="profile"
+                        android:textColor="#111111"
+                        android:textSize="5pt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+    
+                </LinearLayout>
+               
+            </LinearLayout>
+            
+        </com.google.android.material.bottomappbar.BottomAppBar>
+      
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:scaleType="centerInside"
+            android:id="@+id/floatingActionButton"
+            app:maxImageSize="34dp"
+            app:fabSize="normal"
+            app:fabCustomSize="56dp"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:src="@drawable/menu"
+            app:tint="@null"
+            app:backgroundTint="#00BCD4"
+            app:layout_anchor="@id/bottomAppBar" />
+       
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
