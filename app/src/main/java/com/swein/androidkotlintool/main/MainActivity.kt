@@ -36,6 +36,7 @@ import com.swein.androidkotlintool.main.examples.customview.CustomViewExampleAct
 import com.swein.androidkotlintool.main.examples.livedata.LiveDataDemoActivity
 import com.swein.androidkotlintool.main.examples.materialdesignbottombar.MaterialDesignBottomBarExampleActivity
 import com.swein.androidkotlintool.main.examples.materialdesigntutorial.dayone.MDDayOneActivity
+import com.swein.androidkotlintool.main.examples.materialdesigntutorial.daytwo.MDDayTwoActivity
 import com.swein.androidkotlintool.main.examples.mvvmrecyclerviewexample.MVVMRecyclerViewExampleActivity
 import com.swein.androidkotlintool.main.examples.viewmodel.ViewModelDemoActivity
 import com.swein.androidkotlintool.main.examples.workmanager.WorkManagerDemoActivity
@@ -125,7 +126,8 @@ class MainActivity : BasicPermissionActivity() {
 //        ActivityUtil.startNewActivityWithoutFinish(this, CustomAnimationExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, MaterialDesignBottomBarExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, CoordinatorLayoutExampleActivity::class.java)
-        ActivityUtil.startNewActivityWithoutFinish(this, MDDayOneActivity::class.java)
+//        ActivityUtil.startNewActivityWithoutFinish(this, MDDayOneActivity::class.java)
+        ActivityUtil.startNewActivityWithoutFinish(this, MDDayTwoActivity::class.java)
 
 //        val list = mutableListOf<String>()
 //        list.add("/data/user/0/com.swein.androidkotlintool/cache/cache_com_swein_androidkotlintool_0.jpg")

@@ -3,7 +3,21 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.MaterialComponents.NoActionBar">
         <!-- Customize your theme here. -->
-       
+        
+        <item name="toolbarNavigationButtonStyle">@style/ToolBarNavigationIconStyle</item>
+        <item name="actionOverflowButtonStyle">@style/ToolBarOverlayIcon</item>
+    </style>
+    
+    <style name="ToolBarNavigationIconStyle" parent="@style/Widget.AppCompat.Toolbar.Button.Navigation">
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:scaleType">centerInside</item>
+    </style>
+    <style name="ToolBarOverlayIcon" parent="Widget.AppCompat.ActionButton.Overflow">
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:scaleType">centerInside</item>
+        <item name="android:tint">#333333</item>
     </style>
 
 </resources>
