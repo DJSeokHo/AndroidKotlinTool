@@ -30,6 +30,8 @@ import com.swein.androidkotlintool.framework.util.eventsplitshot.subject.ESSArro
 import com.swein.androidkotlintool.framework.util.glide.SHGlide
 import com.swein.androidkotlintool.framework.util.log.ILog
 import com.swein.androidkotlintool.framework.util.screen.ScreenUtil
+import com.swein.androidkotlintool.framework.util.snackbar.SnackBarUtility
+import com.swein.androidkotlintool.main.examples.chartexample.ChartExampleActivity
 import com.swein.androidkotlintool.main.examples.coordinatorlayoutexample.CoordinatorLayoutExampleActivity
 import com.swein.androidkotlintool.main.examples.customanimation.CustomAnimationExampleActivity
 import com.swein.androidkotlintool.main.examples.customview.CustomViewExampleActivity
@@ -129,8 +131,16 @@ class MainActivity : BasicPermissionActivity() {
 //        ActivityUtil.startNewActivityWithoutFinish(this, CoordinatorLayoutExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, MDDayOneActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, MDDayTwoActivity::class.java)
-        ActivityUtil.startNewActivityWithoutFinish(this, MDDayThreeActivity::class.java)
+//        ActivityUtil.startNewActivityWithoutFinish(this, MDDayThreeActivity::class.java)
+//        ActivityUtil.startNewActivityWithoutFinish(this, ChartExampleActivity::class.java)
 
+//        SnackBarUtility.showSnackBar(frameLayoutRoot, "test")
+//        SnackBarUtility.showSnackBar(frameLayoutRoot, "test", "click me") {
+//            ILog.debug(TAG, "????")
+//        }
+//        SnackBarUtility.showSnackBar(frameLayoutRoot, "test", "click me", Color.BLACK, Color.YELLOW) {
+//            ILog.debug(TAG, "????")
+//        }
 //        val list = mutableListOf<String>()
 //        list.add("/data/user/0/com.swein.androidkotlintool/cache/cache_com_swein_androidkotlintool_0.jpg")
 //        list.add("/data/user/0/com.swein.androidkotlintool/cache/cache_com_swein_androidkotlintool_1.jpg")
