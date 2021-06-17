@@ -8,7 +8,7 @@ import com.swein.androidkotlintool.framework.module.firebase.demo.model.MemberSe
 import com.swein.androidkotlintool.framework.module.firebase.demo.model.ShopModel
 import com.swein.androidkotlintool.framework.util.date.DateUtil
 import com.swein.androidkotlintool.framework.util.log.ILog
-import com.swein.androidkotlintool.framework.util.thread.ThreadUtil
+import com.swein.androidkotlintool.framework.util.thread.ThreadUtility
 import com.swein.androidkotlintool.framework.util.uuid.UUIDUtil
 
 object ShopModelService {
@@ -18,7 +18,7 @@ object ShopModelService {
     fun checkIsShopExist(uuid: String,
                          onSuccessResponse: (list: MutableList<MutableMap<String, Any>>, documentIdList: MutableList<String>, documentSnapshot: DocumentSnapshot?) -> Unit,
                          onErrorResponse: (e: Exception?) -> Unit, onEmptyResponse: () -> Unit) {
-        ThreadUtil.startThread {
+        ThreadUtility.startThread {
 
             ILog.debug(TAG, "checkIsShopExist")
             val conditionMap = mutableMapOf<String, Any>()
@@ -50,7 +50,7 @@ object ShopModelService {
                          onSuccessResponse: (documentReference: DocumentReference?, map: MutableMap<String, Any>) -> Unit,
                          onErrorResponse: (e: Exception?) -> Unit) {
 
-        ThreadUtil.startThread {
+        ThreadUtility.startThread {
 
             ILog.debug(TAG, "registerBusiness")
 
@@ -145,7 +145,7 @@ object ShopModelService {
                         onSuccessResponse: (list: MutableList<MutableMap<String, Any>>, documentIdList: MutableList<String>, documentSnapshot: DocumentSnapshot?) -> Unit,
                         onErrorResponse: (e: Exception?) -> Unit, onEmptyResponse: () -> Unit) {
 
-        ThreadUtil.startThread {
+        ThreadUtility.startThread {
 
             ILog.debug(TAG, "requestShopInfo")
 
@@ -179,7 +179,7 @@ object ShopModelService {
 
         memberSelfModel.shopModel?.let {
 
-            ThreadUtil.startThread {
+            ThreadUtility.startThread {
 
                 if (shopImagePath == "" && businessImagePath == "") {
 

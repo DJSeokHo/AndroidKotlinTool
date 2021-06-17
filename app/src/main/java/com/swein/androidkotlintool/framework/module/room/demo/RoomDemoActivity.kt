@@ -1,19 +1,12 @@
 package com.swein.androidkotlintool.framework.module.room.demo
 
 import android.os.Bundle
-import android.os.Environment
 import androidx.appcompat.app.AppCompatActivity
 import androidx.room.Room
 import com.swein.androidkotlintool.R
 import com.swein.androidkotlintool.framework.module.room.demo.database.AppDatabase
-import com.swein.androidkotlintool.framework.module.room.demo.entity.AddressInfo
-import com.swein.androidkotlintool.framework.module.room.demo.entity.UserInfo
 import com.swein.androidkotlintool.framework.util.log.ILog
-import com.swein.androidkotlintool.framework.util.thread.ThreadUtil
-import java.io.File
-import java.io.FileInputStream
-import java.io.FileOutputStream
-import java.nio.channels.FileChannel
+import com.swein.androidkotlintool.framework.util.thread.ThreadUtility
 
 
 /**
@@ -45,7 +38,7 @@ class RoomDemoActivity : AppCompatActivity() {
         val currentDBPath = getDatabasePath("DEMO_DB").absolutePath
         ILog.debug("???", currentDBPath)
 
-        ThreadUtil.startThread {
+        ThreadUtility.startThread {
 
 //            db.userDao().insertUserInfo(UserInfo("asd234", "name bbb", 20, "aaddrrreeessss bbb",
 //                AddressInfo("street bbb", "city bbb", "post code 654321")))

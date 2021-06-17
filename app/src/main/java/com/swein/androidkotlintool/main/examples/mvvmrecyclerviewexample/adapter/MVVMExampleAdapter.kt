@@ -6,7 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.swein.androidkotlintool.R
 import com.swein.androidkotlintool.framework.util.log.ILog
-import com.swein.androidkotlintool.framework.util.toast.ToastUtil
+import com.swein.androidkotlintool.framework.util.toast.ToastUtility
 import com.swein.androidkotlintool.main.examples.mvvmrecyclerviewexample.MVVMRecyclerViewExampleActivity
 import com.swein.androidkotlintool.main.examples.mvvmrecyclerviewexample.adapter.item.MVVMExampleItemModel
 import com.swein.androidkotlintool.main.examples.mvvmrecyclerviewexample.adapter.item.MVVMExampleItemViewHolder
@@ -30,7 +30,7 @@ class MVVMExampleAdapter(private var liveData: MutableLiveData<MutableList<MVVME
 
             viewHolder.mvvmExampleItemModel = list[index]
             viewHolder.onItemClick = { model ->
-                ToastUtil.showCustomShortToastNormal(viewHolder.itemView.context, "${model.index} ${model.content}")
+                ToastUtility.showCustomShortToastNormal(viewHolder.itemView.context, "${model.index} ${model.content}")
             }
 
             viewHolder.updateView()

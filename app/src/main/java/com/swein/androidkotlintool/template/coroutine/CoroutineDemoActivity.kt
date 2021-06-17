@@ -1,21 +1,13 @@
 package com.swein.androidkotlintool.template.coroutine
 
 import android.graphics.Color
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.swein.androidkotlintool.R
 import com.swein.androidkotlintool.framework.util.log.ILog
 import com.swein.androidkotlintool.framework.util.okhttp.OKHttpWrapper
-import com.swein.androidkotlintool.framework.util.okhttp.OKHttpWrapperDelegate
-import com.swein.androidkotlintool.framework.util.thread.ThreadUtil
 import kotlinx.coroutines.*
-import okhttp3.Call
-import okhttp3.Response
-import java.io.IOException
-import java.lang.Exception
-import kotlin.coroutines.CoroutineContext
 import kotlin.system.measureTimeMillis
 
 class CoroutineDemoActivity : BaseCoroutineActivity() {

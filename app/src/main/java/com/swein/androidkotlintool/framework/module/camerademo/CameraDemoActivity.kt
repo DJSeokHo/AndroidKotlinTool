@@ -22,7 +22,7 @@ import com.swein.androidkotlintool.framework.module.basicpermission.RequestPermi
 import com.swein.androidkotlintool.framework.module.shcameraphoto.camera.NormalImageRealTimeAnalyzer
 import com.swein.androidkotlintool.framework.util.bitmap.BitmapUtil
 import com.swein.androidkotlintool.framework.util.log.ILog
-import com.swein.androidkotlintool.framework.util.thread.ThreadUtil
+import com.swein.androidkotlintool.framework.util.thread.ThreadUtility
 import java.io.BufferedOutputStream
 import java.io.File
 import java.io.FileOutputStream
@@ -131,7 +131,7 @@ class CameraDemoActivity : BasicPermissionActivity() {
 
                 BitmapUtil.compressImageWithFilePath(photoFilePath, 1, degree)
 
-                ThreadUtil.startUIThread(0) {
+                ThreadUtility.startUIThread(0) {
 
                     imageView.setImageBitmap(BitmapUtil.rotate(bitmap, degree))
 

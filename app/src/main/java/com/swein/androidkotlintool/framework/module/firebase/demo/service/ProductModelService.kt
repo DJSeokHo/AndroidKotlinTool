@@ -10,7 +10,7 @@ import com.swein.androidkotlintool.framework.module.firebase.demo.model.ProductM
 import com.swein.androidkotlintool.framework.module.firebase.demo.model.ShopModel
 import com.swein.androidkotlintool.framework.util.date.DateUtil
 import com.swein.androidkotlintool.framework.util.log.ILog
-import com.swein.androidkotlintool.framework.util.thread.ThreadUtil
+import com.swein.androidkotlintool.framework.util.thread.ThreadUtility
 import com.swein.androidkotlintool.framework.util.uuid.UUIDUtil
 
 object ProductModelService {
@@ -23,7 +23,7 @@ object ProductModelService {
                       onSuccessResponse: (documentReference: DocumentReference?, map: MutableMap<String, Any>) -> Unit,
                       onErrorResponse: (e: Exception?) -> Unit) {
 
-        ThreadUtil.startThread {
+        ThreadUtility.startThread {
 
             ILog.debug(TAG, "uploadProduct")
 
@@ -95,7 +95,7 @@ object ProductModelService {
             return
         }
 
-        ThreadUtil.startThread {
+        ThreadUtility.startThread {
 
             ILog.debug(TAG, "updateProductModel ${productModel.documentId}")
 
@@ -120,7 +120,7 @@ object ProductModelService {
     fun deleteProduct(documentId: String, onSuccessResponse: (documentId: String) -> Unit,
                       onErrorResponse: (e: Exception?) -> Unit) {
 
-        ThreadUtil.startThread {
+        ThreadUtility.startThread {
 
             ILog.debug(TAG, "deleteProduct")
 
@@ -143,7 +143,7 @@ object ProductModelService {
                            onErrorResponse: (e: Exception?) -> Unit,
                            onEmptyResponse: () -> Unit) {
 
-        ThreadUtil.startThread {
+        ThreadUtility.startThread {
 
             ILog.debug(TAG, "requestProductList")
 
@@ -177,7 +177,7 @@ object ProductModelService {
                              onErrorResponse: (e: Exception?) -> Unit,
                              onEmptyResponse: () -> Unit) {
 
-        ThreadUtil.startThread {
+        ThreadUtility.startThread {
 
             ILog.debug(TAG, "requestProductDetail")
 
@@ -215,7 +215,7 @@ object ProductModelService {
 
         MemberSelfModel.memberModel?.let {
 
-            ThreadUtil.startThread {
+            ThreadUtility.startThread {
 
                 ILog.debug(TAG, "${it.uuId} requestPickup ${productModel.name}")
 
@@ -262,7 +262,7 @@ object ProductModelService {
     fun saleFinished(productModel: ProductModel, onSuccessResponse: (map: MutableMap<String, Any>) -> Unit,
                      onErrorResponse: (e: Exception?) -> Unit) {
 
-        ThreadUtil.startThread {
+        ThreadUtility.startThread {
 
             ILog.debug(TAG, "saleFinished ${productModel.name}")
 

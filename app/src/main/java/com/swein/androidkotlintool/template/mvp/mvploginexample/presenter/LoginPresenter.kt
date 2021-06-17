@@ -1,6 +1,6 @@
 package com.swein.androidkotlintool.template.mvp.mvploginexample.presenter
 
-import com.swein.androidkotlintool.framework.util.thread.ThreadUtil
+import com.swein.androidkotlintool.framework.util.thread.ThreadUtility
 import com.swein.androidkotlintool.template.mvp.mvploginexample.model.UserModel
 import com.swein.androidkotlintool.template.mvp.mvploginexample.presenter.controller.LoginController
 import com.swein.androidkotlintool.template.mvp.mvploginexample.view.ILoginView
@@ -21,7 +21,7 @@ class LoginPresenter(var iLoginView: ILoginView): ILoginPresenter {
                 iUser.nickname = "I got nickname from server"
                 iUser.age = 34
 
-                ThreadUtil.startUIThread(0) {
+                ThreadUtility.startUIThread(0) {
                     iLoginView.onHideProgress()
                     iLoginView.onLoginSuccessUpdateNicknameUI(iUser.nickname)
                     iLoginView.onLoginSuccessUpdateAgeUI(iUser.age)
@@ -30,7 +30,7 @@ class LoginPresenter(var iLoginView: ILoginView): ILoginPresenter {
             }
 
             override fun onFailed() {
-                ThreadUtil.startUIThread(0) {
+                ThreadUtility.startUIThread(0) {
 
                     iLoginView.onHideProgress()
 

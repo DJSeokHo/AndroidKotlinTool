@@ -5,14 +5,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.AnticipateOvershootInterpolator
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.swein.androidkotlintool.R
-import com.swein.androidkotlintool.framework.util.log.ILog
-import com.swein.androidkotlintool.framework.util.thread.ThreadUtil
+import com.swein.androidkotlintool.framework.util.thread.ThreadUtility
 import com.swein.androidkotlintool.main.examples.coordinatorlayoutexample.adapter.CoordinatorLayoutExampleAdapter
 
 class MaterialDesignBottomBarExampleFragment : Fragment() {
@@ -87,7 +85,7 @@ class MaterialDesignBottomBarExampleFragment : Fragment() {
 
         adapter.onLoadMore = {
 
-            ThreadUtil.startUIThread(0) {
+            ThreadUtility.startUIThread(0) {
                 loadMore()
             }
         }

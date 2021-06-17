@@ -9,7 +9,7 @@ import android.widget.TextView
 import android.widget.Toast
 import com.swein.androidkotlintool.R
 
-class ToastUtil {
+class ToastUtility {
     companion object {
 
         fun showShortToastNormal(context: Context, string: String) {

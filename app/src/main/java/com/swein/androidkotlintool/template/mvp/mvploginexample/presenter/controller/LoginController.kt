@@ -1,7 +1,6 @@
 package com.swein.androidkotlintool.template.mvp.mvploginexample.presenter.controller
 
-import com.swein.androidkotlintool.framework.util.json.JSONUtil
-import com.swein.androidkotlintool.framework.util.thread.ThreadUtil
+import com.swein.androidkotlintool.framework.util.thread.ThreadUtility
 
 object LoginController {
 
@@ -14,7 +13,7 @@ object LoginController {
         // send id and password to your server
         // and waiting response
 
-        ThreadUtil.startThread {
+        ThreadUtility.startThread {
 
             // start your post or get
             Thread.sleep(3000)

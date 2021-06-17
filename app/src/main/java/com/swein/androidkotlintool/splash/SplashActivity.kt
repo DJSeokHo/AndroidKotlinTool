@@ -8,7 +8,7 @@ import com.swein.androidkotlintool.R
 import com.swein.androidkotlintool.constants.Constants
 import com.swein.androidkotlintool.framework.util.activity.ActivityUtil
 import com.swein.androidkotlintool.framework.util.screen.ScreenUtil
-import com.swein.androidkotlintool.framework.util.thread.ThreadUtil
+import com.swein.androidkotlintool.framework.util.thread.ThreadUtility
 
 class SplashActivity : Activity() {
 
@@ -23,9 +23,9 @@ class SplashActivity : Activity() {
 
     private fun countDownToFinish() {
 
-        ThreadUtil.startThread {
+        ThreadUtility.startThread {
 
-            ThreadUtil.startUIThread(0) {
+            ThreadUtility.startUIThread(0) {
                 ActivityUtil.startNewActivityWithFinish(this, MainActivity::class.java)
             }
         }

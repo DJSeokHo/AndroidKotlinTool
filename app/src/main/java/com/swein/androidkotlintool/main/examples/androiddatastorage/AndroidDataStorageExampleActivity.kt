@@ -1,16 +1,9 @@
 package com.swein.androidkotlintool.main.examples.androiddatastorage
 
-import android.graphics.Bitmap
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.format.DateFormat
-import androidx.core.view.drawToBitmap
 import com.swein.androidkotlintool.R
 //import com.swein.androidkotlintool.framework.util.datastorage.mediadata.MediaDataStorageUtil
-import com.swein.androidkotlintool.framework.util.log.ILog
-import com.swein.androidkotlintool.framework.util.thread.ThreadUtil
-import java.io.File
-import java.util.*
 
 class AndroidDataStorageExampleActivity : AppCompatActivity() {
 

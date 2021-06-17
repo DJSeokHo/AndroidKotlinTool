@@ -3,7 +3,6 @@ package com.swein.androidkotlintool.main.examples.mvvmrecyclerviewexample.viewmo
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.swein.androidkotlintool.framework.util.thread.ThreadUtil
 import com.swein.androidkotlintool.main.examples.mvvmrecyclerviewexample.adapter.item.MVVMExampleItemModel
 import kotlinx.coroutines.*
 import java.lang.Runnable

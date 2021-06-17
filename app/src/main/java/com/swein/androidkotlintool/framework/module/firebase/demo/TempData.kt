@@ -1,4 +1,3 @@
-import com.swein.androidkotlintool.framework.module.firebase.demo.FirebaseDemoActivity
 import com.swein.androidkotlintool.framework.module.firebase.demo.model.MemberSelfModel
 import com.swein.androidkotlintool.framework.module.firebase.demo.model.ProductModel
 import com.swein.androidkotlintool.framework.module.firebase.demo.model.ShopModel
@@ -6,7 +5,6 @@ import com.swein.androidkotlintool.framework.module.firebase.demo.service.Member
 import com.swein.androidkotlintool.framework.module.firebase.demo.service.ProductModelService
 import com.swein.androidkotlintool.framework.module.firebase.demo.service.ShopModelService
 import com.swein.androidkotlintool.framework.util.log.ILog
-import com.swein.androidkotlintool.framework.util.thread.ThreadUtil
 
 
 private const val TAG = "TempData"

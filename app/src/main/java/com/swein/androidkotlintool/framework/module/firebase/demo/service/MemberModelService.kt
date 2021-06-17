@@ -8,7 +8,7 @@ import com.swein.androidkotlintool.framework.module.firebase.demo.model.MemberMo
 import com.swein.androidkotlintool.framework.module.firebase.demo.model.MemberSelfModel
 import com.swein.androidkotlintool.framework.util.date.DateUtil
 import com.swein.androidkotlintool.framework.util.log.ILog
-import com.swein.androidkotlintool.framework.util.thread.ThreadUtil
+import com.swein.androidkotlintool.framework.util.thread.ThreadUtility
 import com.swein.androidkotlintool.framework.util.uuid.UUIDUtil
 
 object MemberModelService {
@@ -18,7 +18,7 @@ object MemberModelService {
     fun checkIsMemberExist(provider: String, providerId: String,
                            onSuccessResponse: (list: MutableList<MutableMap<String, Any>>, documentIdList: MutableList<String>, documentSnapshot: DocumentSnapshot?) -> Unit,
                            onErrorResponse: (e: Exception?) -> Unit, onEmptyResponse: () -> Unit) {
-        ThreadUtil.startThread {
+        ThreadUtility.startThread {
 
             ILog.debug(TAG, "checkIsMemberExist")
             val conditionMap = mutableMapOf<String, Any>()
@@ -50,7 +50,7 @@ object MemberModelService {
                        onSuccessResponse: (documentReference: DocumentReference?, map: MutableMap<String, Any>) -> Unit,
                        onErrorResponse: (e: Exception?) -> Unit) {
 
-        ThreadUtil.startThread {
+        ThreadUtility.startThread {
 
             ILog.debug(TAG, "registerMember")
 
@@ -114,7 +114,7 @@ object MemberModelService {
     fun loginSNS(provider: String, providerId: String,
                  onSuccessResponse: (list: MutableList<MutableMap<String, Any>>, documentIdList: MutableList<String>, documentSnapshot: DocumentSnapshot?) -> Unit,
               onErrorResponse: (e: Exception?) -> Unit, onEmptyResponse: () -> Unit) {
-        ThreadUtil.startThread {
+        ThreadUtility.startThread {
 
             ILog.debug(TAG, "login")
             val conditionMap = mutableMapOf<String, Any>()
@@ -144,7 +144,7 @@ object MemberModelService {
     fun loginSecretToken(secretTokenKey: String, nickname: String,
                          onSuccessResponse: (list: MutableList<MutableMap<String, Any>>, documentIdList: MutableList<String>, documentSnapshot: DocumentSnapshot?) -> Unit,
               onErrorResponse: (e: Exception?) -> Unit, onEmptyResponse: () -> Unit) {
-        ThreadUtil.startThread {
+        ThreadUtility.startThread {
 
             ILog.debug(TAG, "login")
             val conditionMap = mutableMapOf<String, Any>()
@@ -177,7 +177,7 @@ object MemberModelService {
                           onSuccessResponse: (list: MutableList<MutableMap<String, Any>>, documentIdList: MutableList<String>, documentSnapshot: DocumentSnapshot?) -> Unit,
                           onErrorResponse: (e: Exception?) -> Unit, onEmptyResponse: () -> Unit) {
 
-        ThreadUtil.startThread {
+        ThreadUtility.startThread {
 
             ILog.debug(TAG, "requestMemberInfo")
 
@@ -210,7 +210,7 @@ object MemberModelService {
 
         memberSelfModel.memberModel?.let {
 
-            ThreadUtil.startThread {
+            ThreadUtility.startThread {
 
                 ILog.debug(TAG, "updateMemberProfile")
 

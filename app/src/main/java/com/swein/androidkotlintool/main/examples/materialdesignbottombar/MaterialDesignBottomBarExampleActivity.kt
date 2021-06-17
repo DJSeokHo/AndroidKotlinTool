@@ -1,19 +1,16 @@
 package com.swein.androidkotlintool.main.examples.materialdesignbottombar
 
 import android.os.Bundle
-import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentTransaction
-import com.google.android.material.behavior.HideBottomViewOnScrollBehavior
 import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.swein.androidkotlintool.R
 import com.swein.androidkotlintool.framework.util.log.ILog
-import com.swein.androidkotlintool.framework.util.thread.ThreadUtil
-import com.swein.androidkotlintool.framework.util.toast.ToastUtil
+import com.swein.androidkotlintool.framework.util.toast.ToastUtility
 
 class MaterialDesignBottomBarExampleActivity : FragmentActivity() {
 
@@ -89,7 +86,7 @@ class MaterialDesignBottomBarExampleActivity : FragmentActivity() {
             ILog.debug("???", "center menu ?? $bottomAppBarState")
 
             if (bottomAppBarState == 0 || bottomAppBarState == 1) {
-                ToastUtil.showCustomShortToastNormal(this, "center menu")
+                ToastUtility.showCustomShortToastNormal(this, "center menu")
             }
             else {
 

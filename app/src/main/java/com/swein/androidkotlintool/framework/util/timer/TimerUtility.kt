@@ -1,11 +1,10 @@
 package com.swein.androidkotlintool.framework.util.timer
 
 import android.os.CountDownTimer
-import com.swein.androidkotlintool.framework.util.log.ILog
-import com.swein.androidkotlintool.framework.util.thread.ThreadUtil
+import com.swein.androidkotlintool.framework.util.thread.ThreadUtility
 import java.util.*
 
-class TimerUtil {
+class TimerUtility {
 
     companion object {
 
@@ -46,7 +45,7 @@ class TimerUtil {
             val task: TimerTask  = object: TimerTask() {
                 override fun run() {
 
-                    ThreadUtil.startUIThread(0, Runnable {
+                    ThreadUtility.startUIThread(0, Runnable {
                         runnable.run()
                     })
                 }

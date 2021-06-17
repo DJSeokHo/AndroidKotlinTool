@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    
+    <item
+        android:id="@+id/home"
+        android:icon="@mipmap/ti_home_un_selected"
+        android:title="Home"/>
+   
+    <item
+        android:id="@+id/discovery"
+        android:icon="@mipmap/ti_discover_un_selected"
+        android:title="Discovery"/>
+    
+    <!-- spacer of center floating action button -->
+    <item
+        android:enabled="false"
+        android:title=""
+        />
+    
+    <item
+        android:id="@+id/notification"
+        android:icon="@mipmap/ti_notification_un_selected"
+        android:title="Notification"/>
+    
+    <item
+        android:id="@+id/profile"
+        android:icon="@mipmap/ti_profile_un_selected"
+        android:title="Profile"/>
+    
+</menu>

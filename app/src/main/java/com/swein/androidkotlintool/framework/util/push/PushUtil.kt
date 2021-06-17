@@ -4,8 +4,8 @@ import android.content.Context
 import com.swein.androidkotlintool.framework.util.log.ILog
 import com.swein.androidkotlintool.framework.util.okhttp.OKHttpWrapper
 import com.swein.androidkotlintool.framework.util.okhttp.OKHttpWrapperDelegate
-import com.swein.androidkotlintool.framework.util.thread.ThreadUtil
-import com.swein.androidkotlintool.framework.util.toast.ToastUtil
+import com.swein.androidkotlintool.framework.util.thread.ThreadUtility
+import com.swein.androidkotlintool.framework.util.toast.ToastUtility
 import okhttp3.Call
 import okhttp3.Response
 import org.json.JSONObject
@@ -54,8 +54,8 @@ class PushUtil {
                             val success = responseJSONObject.getInt("success")
 
                             (success > 0).let {
-                                ThreadUtil.startUIThread(0, Runnable {
-                                    ToastUtil.showShortToastNormal(context, successMessage)
+                                ThreadUtility.startUIThread(0, Runnable {
+                                    ToastUtility.showShortToastNormal(context, successMessage)
                                 })
                             }
                         }

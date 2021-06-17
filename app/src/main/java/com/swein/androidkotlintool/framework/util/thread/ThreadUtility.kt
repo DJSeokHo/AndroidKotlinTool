@@ -5,7 +5,7 @@ import android.os.Looper
 import java.lang.Exception
 import java.util.concurrent.Executors
 
-class ThreadUtil {
+class ThreadUtility {
 
     companion object {
 

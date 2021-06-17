@@ -11,7 +11,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.swein.androidkotlintool.R
 import com.swein.androidkotlintool.constants.Constants
 import com.swein.androidkotlintool.framework.util.screen.ScreenUtil
-import com.swein.androidkotlintool.framework.util.thread.ThreadUtil
+import com.swein.androidkotlintool.framework.util.thread.ThreadUtility
 import com.swein.androidkotlintool.template.list.adapter.SHListAdapter
 import com.swein.androidkotlintool.template.list.adapter.item.model.ItemDataModel
 import com.swein.androidkotlintool.template.navigationbar.NavigationBarTemplate
@@ -127,10 +127,10 @@ class SHListActivity : Activity() {
 
         showProgress()
 
-        ThreadUtil.startThread(Runnable {
+        ThreadUtility.startThread(Runnable {
             shListAdapter?.loadMore(createTempData(shListAdapter!!.itemCount, 10))
 
-            ThreadUtil.startUIThread(1000, Runnable {
+            ThreadUtility.startUIThread(1000, Runnable {
                 hideProgress()
             })
         })
@@ -140,10 +140,10 @@ class SHListActivity : Activity() {
 
         showProgress()
 
-        ThreadUtil.startThread(Runnable {
+        ThreadUtility.startThread(Runnable {
             shListAdapter?.reload(createTempData(0, 10))
 
-            ThreadUtil.startUIThread(1500, Runnable {
+            ThreadUtility.startUIThread(1500, Runnable {
                 hideProgress()
             })
         })

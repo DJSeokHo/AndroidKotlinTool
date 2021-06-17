@@ -15,7 +15,7 @@ import com.swein.androidkotlintool.framework.module.shcameraphoto.album.selector
 import com.swein.androidkotlintool.framework.util.eventsplitshot.eventcenter.EventCenter
 import com.swein.androidkotlintool.framework.util.eventsplitshot.subject.ESSArrows
 import com.swein.androidkotlintool.framework.util.log.ILog
-import com.swein.androidkotlintool.framework.util.thread.ThreadUtil
+import com.swein.androidkotlintool.framework.util.thread.ThreadUtility
 import com.swein.androidkotlintool.framework.util.views.ViewUtil
 
 class AlbumSelectorViewHolder(
@@ -128,18 +128,18 @@ class AlbumSelectorViewHolder(
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
 
-            ThreadUtil.startThread {
+            ThreadUtility.startThread {
 
 //                AlbumSelectorWrapper.scanMediaFile(view.context, 0, 50, { albumSelectorItemBeanList ->
                 AlbumSelectorWrapper.scanFile(view.context, { albumSelectorItemBeanList ->
 
-                    ThreadUtil.startUIThread(0) {
+                    ThreadUtility.startUIThread(0) {
 
                         albumSelectorAdapter.reload(albumSelectorItemBeanList)
                     }
 
                 }, {
-                    ThreadUtil.startUIThread(0) {
+                    ThreadUtility.startUIThread(0) {
                         ILog.debug(TAG, "error")
                     }
                 })
@@ -155,17 +155,17 @@ class AlbumSelectorViewHolder(
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
 
-            ThreadUtil.startThread {
+            ThreadUtility.startThread {
 
                 AlbumSelectorWrapper.scanMediaFile(view.context, albumSelectorAdapter.itemCount, 50, { albumSelectorItemBeanList ->
 
-                    ThreadUtil.startUIThread(0) {
+                    ThreadUtility.startUIThread(0) {
 
                         albumSelectorAdapter.loadMore(albumSelectorItemBeanList)
                     }
 
                 }, {
-                    ThreadUtil.startUIThread(0) {
+                    ThreadUtility.startUIThread(0) {
                         ILog.debug(TAG, "error")
                     }
                 })

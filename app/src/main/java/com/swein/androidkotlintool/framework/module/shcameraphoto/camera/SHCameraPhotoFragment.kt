@@ -35,7 +35,7 @@ import com.swein.androidkotlintool.framework.util.log.ILog
 import com.swein.androidkotlintool.framework.util.sound.audiomanager.AudioManagerUtil
 import com.swein.androidkotlintool.framework.util.sound.mediaplayer.MediaPlayerUtil
 import com.swein.androidkotlintool.framework.util.theme.ThemeUtil
-import com.swein.androidkotlintool.framework.util.thread.ThreadUtil
+import com.swein.androidkotlintool.framework.util.thread.ThreadUtility
 import java.io.File
 import java.util.HashMap
 import java.util.concurrent.ExecutorService
@@ -303,7 +303,7 @@ class SHCameraPhotoFragment : Fragment() {
                         override fun onError(error: ImageCaptureException) {
                             ILog.debug(TAG, error.message)
                             error.printStackTrace()
-                            ThreadUtil.startUIThread(0) {
+                            ThreadUtility.startUIThread(0) {
                                 hideProgress()
                             }
                         }
@@ -313,12 +313,12 @@ class SHCameraPhotoFragment : Fragment() {
                             val savedUri = outputFileResults.savedUri ?: Uri.fromFile(photoFile)
                             ILog.debug(TAG, savedUri)
 
-                            ThreadUtil.startThread {
+                            ThreadUtility.startThread {
 
                                 AudioManagerUtil.setNoMute()
                                 MediaPlayerUtil.play()
 
-                                ThreadUtil.startUIThread(0) {
+                                ThreadUtility.startUIThread(0) {
 
                                     addImage(savedUri)
 

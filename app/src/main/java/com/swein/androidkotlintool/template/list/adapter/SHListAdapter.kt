@@ -2,12 +2,10 @@ package com.swein.androidkotlintool.template.list.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.swein.androidkotlintool.R
-import com.swein.androidkotlintool.framework.util.eventsplitshot.eventcenter.EventCenter
 import com.swein.androidkotlintool.framework.util.log.ILog
-import com.swein.androidkotlintool.framework.util.toast.ToastUtil
+import com.swein.androidkotlintool.framework.util.toast.ToastUtility
 import com.swein.androidkotlintool.template.list.adapter.item.model.ItemDataModel
 import com.swein.androidkotlintool.template.list.adapter.item.viewholder.ItemViewHolder
 
@@ -40,7 +38,7 @@ class SHListAdapter: RecyclerView.Adapter<ItemViewHolder> {
 
                     itemViewHolder.getItemView()?.context?.let {
                         ILog.debug(TAG, itemDataModel)
-                        ToastUtil.showCustomShortToastNormal(it, itemDataModel.toString())
+                        ToastUtility.showCustomShortToastNormal(it, itemDataModel.toString())
                     }
 
                 }

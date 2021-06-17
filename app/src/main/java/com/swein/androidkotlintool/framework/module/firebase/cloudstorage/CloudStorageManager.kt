@@ -9,7 +9,7 @@ import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.UploadTask
 import com.swein.androidkotlintool.framework.util.log.ILog
-import com.swein.androidkotlintool.framework.util.thread.ThreadUtil
+import com.swein.androidkotlintool.framework.util.thread.ThreadUtility
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileInputStream
@@ -30,7 +30,7 @@ object CloudStorageManager {
 
     fun uploadImage(uploadPath: String, filePath: String, fileName: String, type: CloudStorageFileType, onSuccess: (imageUrl: String) -> Unit, onFailure: () -> Unit) {
 
-        ThreadUtil.startThread {
+        ThreadUtility.startThread {
 
             val storageRef: StorageReference =  FirebaseStorage.getInstance(uploadPath).reference
             val storageReference: StorageReference = storageRef.child(fileName)

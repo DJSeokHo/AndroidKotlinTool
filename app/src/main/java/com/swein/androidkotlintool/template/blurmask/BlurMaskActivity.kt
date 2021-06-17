@@ -8,16 +8,12 @@ import android.renderscript.Allocation
 import android.renderscript.Element
 import android.renderscript.RenderScript
 import android.renderscript.ScriptIntrinsicBlur
-import android.view.View
-import android.widget.FrameLayout
 import android.widget.ImageView
 import androidx.fragment.app.FragmentActivity
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.FutureTarget
 import com.swein.androidkotlintool.R
-import com.swein.androidkotlintool.framework.util.display.DisplayUtil
-import com.swein.androidkotlintool.framework.util.log.ILog
-import com.swein.androidkotlintool.framework.util.thread.ThreadUtil
+import com.swein.androidkotlintool.framework.util.thread.ThreadUtility
 
 
 class BlurMaskActivity : FragmentActivity() {
@@ -42,7 +38,7 @@ class BlurMaskActivity : FragmentActivity() {
 
         imageViewBackground.post {
 
-            ThreadUtil.startThread {
+            ThreadUtility.startThread {
 
                 val imageUrl = "https://cdn.hipwallpaper.com/i/83/84/JVE4pu.jpg"
 
@@ -54,7 +50,7 @@ class BlurMaskActivity : FragmentActivity() {
                 val bitmap = futureTarget.get()
 
 
-                ThreadUtil.startUIThread(0) {
+                ThreadUtility.startUIThread(0) {
                     imageViewBackground.setImageBitmap(bitmap)
 
                     imageViewCrop.post {
