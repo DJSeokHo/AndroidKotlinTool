@@ -49,7 +49,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".main.examples.materialdesigntutorial.dayfive.MDDayFiveActivity"></activity>
+        <activity android:name=".main.examples.materialdesigntutorial.daysix.MDDaySixActivity" />
+        <activity android:name=".main.examples.materialdesigntutorial.dayfive.MDDayFiveActivity" />
         <activity android:name=".main.examples.materialdesigntutorial.dayfour.MDDayFourActivity" />
         <activity android:name=".main.examples.chartexample.ChartExampleActivity" />
         <activity android:name=".main.examples.materialdesigntutorial.daythree.MDDayThreeActivity" />
