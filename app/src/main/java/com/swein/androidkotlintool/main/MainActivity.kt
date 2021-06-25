@@ -40,6 +40,7 @@ import com.swein.androidkotlintool.main.examples.materialdesignbottombar.Materia
 import com.swein.androidkotlintool.main.examples.materialdesigntutorial.dayfive.MDDayFiveActivity
 import com.swein.androidkotlintool.main.examples.materialdesigntutorial.dayfour.MDDayFourActivity
 import com.swein.androidkotlintool.main.examples.materialdesigntutorial.dayone.MDDayOneActivity
+import com.swein.androidkotlintool.main.examples.materialdesigntutorial.dayseven.MDDaySevenActivity
 import com.swein.androidkotlintool.main.examples.materialdesigntutorial.daysix.MDDaySixActivity
 import com.swein.androidkotlintool.main.examples.materialdesigntutorial.daythree.MDDayThreeActivity
 import com.swein.androidkotlintool.main.examples.materialdesigntutorial.daytwo.MDDayTwoActivity
@@ -138,7 +139,8 @@ class MainActivity : BasicPermissionActivity() {
 //        ActivityUtil.startNewActivityWithoutFinish(this, ChartExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, MDDayFourActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, MDDayFiveActivity::class.java)
-        ActivityUtil.startNewActivityWithoutFinish(this, MDDaySixActivity::class.java)
+//        ActivityUtil.startNewActivityWithoutFinish(this, MDDaySixActivity::class.java)
+        ActivityUtil.startNewActivityWithoutFinish(this, MDDaySevenActivity::class.java)
 
 //        SnackBarUtility.showSnackBar(frameLayoutRoot, "test")
 //        SnackBarUtility.showSnackBar(frameLayoutRoot, "test", "click me") {
