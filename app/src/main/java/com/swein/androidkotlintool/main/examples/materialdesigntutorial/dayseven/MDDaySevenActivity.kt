@@ -1,17 +1,26 @@
 package com.swein.androidkotlintool.main.examples.materialdesigntutorial.dayseven
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.appcompat.widget.Toolbar
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
+import com.google.android.material.appbar.AppBarLayout
+import com.google.android.material.appbar.CollapsingToolbarLayout
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.swein.androidkotlintool.R
+import com.swein.androidkotlintool.framework.util.display.DisplayUtil
 import com.swein.androidkotlintool.framework.util.log.ILog
+import kotlin.math.abs
 
 
 class MDDaySevenActivity : FragmentActivity() {
@@ -29,6 +38,26 @@ class MDDaySevenActivity : FragmentActivity() {
 
     private val viewPager2: ViewPager2 by lazy {
         findViewById(R.id.viewPager2)
+    }
+
+    private val appBarLayout: AppBarLayout  by lazy {
+        findViewById(R.id.appBarLayout)
+    }
+
+    private val toolbar: Toolbar by lazy {
+        findViewById(R.id.toolbar)
+    }
+
+    private val viewCover: View by lazy {
+        findViewById(R.id.viewCover)
+    }
+
+    private val floatingActionButton: FloatingActionButton by lazy {
+        findViewById(R.id.floatingActionButton)
+    }
+
+    private val collapsingToolbarLayout: CollapsingToolbarLayout by lazy {
+        findViewById(R.id.collapsingToolbarLayout)
     }
 
     private val viewPager2OnPageChangeCallback = object: ViewPager2.OnPageChangeCallback() {
@@ -65,6 +94,63 @@ class MDDaySevenActivity : FragmentActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mdday_seven)
 
+        appBarLayout.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener {
+                appBarLayout, verticalOffset ->
+
+            val offset = abs(verticalOffset)
+            val scrollRange = appBarLayout.totalScrollRange
+
+            var alpha = offset.toFloat() / scrollRange.toFloat()
+
+            if (alpha < 0.3) {
+                alpha = 0.3f
+            }
+
+            viewCover.alpha = alpha
+            ILog.debug("???", "$offset $scrollRange $alpha")
+        })
+
+        floatingActionButton.setOnClickListener {
+            Toast.makeText(this@MDDaySevenActivity, "floating action button click", Toast.LENGTH_SHORT).show()
+        }
+
+        collapsingToolbarLayout.setCollapsedTitleTextColor(Color.parseColor("#00000000"))
+        toolbar.title = "title"
+        collapsingToolbarLayout.setExpandedTitleColor(Color.WHITE)
+        collapsingToolbarLayout.setExpandedTitleMargin(
+            DisplayUtil.dipToPx(this, 30f),
+            0,
+            0,
+            DisplayUtil.dipToPx(this, 100f),
+        )
+
+        toolbar.navigationIcon = ContextCompat.getDrawable(this, R.mipmap.ic_launcher)
+        toolbar.inflateMenu(R.menu.toolbar_menu)
+
+        toolbar.setNavigationOnClickListener {
+            Toast.makeText(this@MDDaySevenActivity, "navigation click", Toast.LENGTH_SHORT).show()
+        }
+
+        toolbar.setOnMenuItemClickListener {
+
+            when (it.itemId) {
+
+                R.id.menuOne -> {
+                    Toast.makeText(this@MDDaySevenActivity, "menu one", Toast.LENGTH_SHORT).show()
+                }
+
+                R.id.menuTwo -> {
+                    Toast.makeText(this@MDDaySevenActivity, "menu two", Toast.LENGTH_SHORT).show()
+                }
+
+                R.id.menuThree -> {
+                    Toast.makeText(this@MDDaySevenActivity, "menu three", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            true
+        }
+
         initData()
         initView()
     }
@@ -73,7 +159,7 @@ class MDDaySevenActivity : FragmentActivity() {
         for (i in 0 until 10) {
             tabTitleList.add("title $i")
             tabSubTitleList.add("sub title $i")
-            fragmentList.add(TempFragment())
+            fragmentList.add(MDDaySevenFragment.newInstance())
         }
     }
 

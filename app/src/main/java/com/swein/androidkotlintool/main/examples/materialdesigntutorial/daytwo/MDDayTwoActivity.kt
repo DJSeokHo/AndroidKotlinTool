@@ -3,7 +3,6 @@ package com.swein.androidkotlintool.main.examples.materialdesigntutorial.daytwo
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
