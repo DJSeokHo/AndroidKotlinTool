@@ -31,6 +31,7 @@ import com.swein.androidkotlintool.framework.util.glide.SHGlide
 import com.swein.androidkotlintool.framework.util.log.ILog
 import com.swein.androidkotlintool.framework.util.screen.ScreenUtil
 import com.swein.androidkotlintool.framework.util.snackbar.SnackBarUtility
+import com.swein.androidkotlintool.main.examples.arcslidingmenu.ArcSlidingMenuActivity
 import com.swein.androidkotlintool.main.examples.chartexample.ChartExampleActivity
 import com.swein.androidkotlintool.main.examples.coordinatorlayoutexample.CoordinatorLayoutExampleActivity
 import com.swein.androidkotlintool.main.examples.customanimation.CustomAnimationExampleActivity
@@ -140,7 +141,8 @@ class MainActivity : BasicPermissionActivity() {
 //        ActivityUtil.startNewActivityWithoutFinish(this, MDDayFourActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, MDDayFiveActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, MDDaySixActivity::class.java)
-        ActivityUtil.startNewActivityWithoutFinish(this, MDDaySevenActivity::class.java)
+//        ActivityUtil.startNewActivityWithoutFinish(this, MDDaySevenActivity::class.java)
+        ActivityUtil.startNewActivityWithoutFinish(this, ArcSlidingMenuActivity::class.java)
 
 //        SnackBarUtility.showSnackBar(frameLayoutRoot, "test")
 //        SnackBarUtility.showSnackBar(frameLayoutRoot, "test", "click me") {
