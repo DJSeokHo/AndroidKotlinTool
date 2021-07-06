@@ -7,7 +7,6 @@ import android.os.Looper
 import android.view.View
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.swein.androidkotlintool.framework.util.display.DisplayUtil
-import com.swein.androidkotlintool.framework.util.log.ILog
 
 
 class MenuAnimationInfoData {
@@ -36,7 +35,6 @@ object MenuAnimatorController {
         for (view in views) {
             viewList.add(view)
         }
-
 
         // 0 65 90 270 295
         positionList.clear()
@@ -77,7 +75,7 @@ object MenuAnimatorController {
         positionList.add(position295)
     }
 
-    fun rotate(rotateDirection: RotateDirection, step: Int, duration: Long, onRepeat: (() -> Unit)? = null) {
+    fun rotate(rotateDirection: RotateDirection, step: Int, duration: Long, onRepeat: (() -> Unit)? = null, onFinish: (() -> Unit)? = null) {
 
         if (rotateDirection == RotateDirection.NONE) {
             return
@@ -127,6 +125,11 @@ object MenuAnimatorController {
 
             if (step > 1) {
                 onRepeat?.let {
+                    it()
+                }
+            }
+            else if (step == 1) {
+                onFinish?.let {
                     it()
                 }
             }

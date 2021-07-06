@@ -8,6 +8,9 @@
     <color name="black">#000</color>
     <color name="white">#FFF</color>
     
+    <color name="light_gray">#dddddd</color>
+    <color name="dark_gray">#aaaaaa</color>
+    
     <color name="transparent_20_white">#33FFFFFF</color>
     <color name="transparent_20_black">#33000000</color>
     <color name="black_30_transparent">#4C000000</color>

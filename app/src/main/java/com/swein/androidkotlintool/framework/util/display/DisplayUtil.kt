@@ -104,8 +104,7 @@ class DisplayUtil {
          * @return
          */
         fun dipToPx(context: Context, dipValue: Float): Int {
-            val scale = context.resources.displayMetrics.density
-            return (dipValue * scale + 0.5f).toInt()
+            return (dipValue * (context.resources.displayMetrics.density) + 0.5f).toInt()
         }
 
         /**

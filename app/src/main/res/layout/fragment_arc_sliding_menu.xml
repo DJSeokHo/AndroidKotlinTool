@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".main.examples.arcslidingmenu.ArcSlidingMenuFragment"
+    android:background="@color/black"
+    android:clickable="true"
+    android:focusable="true"
+    android:id="@+id/frameLayoutRoot">
+    
+    <LinearLayout
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center">
+    
+        <ImageView
+            android:scaleType="fitCenter"
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+      
+        <TextView
+            android:layout_marginTop="10dp"
+            android:textStyle="bold"
+            android:textSize="10pt"
+            android:textColor="@color/white"
+            android:id="@+id/textViewTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    
+        <TextView
+            android:layout_marginTop="20dp"
+            android:textSize="8pt"
+            android:textColor="@color/white"
+            android:id="@+id/textViewSubTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        
+    </LinearLayout>
+    
+    
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:paddingVertical="10dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:id="@+id/constraintLayout"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="80dp"
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        android:background="@color/black">
+        
+        <View
+            android:layout_marginBottom="20dp"
+            android:scaleType="fitCenter"
+            android:background="#0000"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:id="@+id/viewCenterPlaceHolder"
+            android:layout_width="40dp"
+            android:layout_height="40dp"/>
+        
+        <ImageButton
+            android:gravity="center"
+            android:id="@+id/imageButtonSupportCenter"
+            android:background="@drawable/arc_menu_button_bg"
+            android:scaleType="fitCenter"
+            app:layout_constraintCircle="@+id/viewCenterPlaceHolder"
+            app:layout_constraintCircleRadius="70dp"
+            app:layout_constraintCircleAngle="0"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            tools:ignore="ContentDescription,MissingConstraints" />
+        
+        <ImageButton
+            android:gravity="center"
+            android:id="@+id/imageButtonClientCenter"
+            android:background="@drawable/arc_menu_button_bg"
+            android:scaleType="fitCenter"
+            app:layout_constraintCircle="@+id/viewCenterPlaceHolder"
+            app:layout_constraintCircleRadius="80dp"
+            app:layout_constraintCircleAngle="65"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            tools:ignore="ContentDescription,MissingConstraints" />
+        
+        <ImageButton
+            android:gravity="center"
+            android:id="@+id/imageButtonEvent"
+            android:background="@drawable/arc_menu_button_bg"
+            android:scaleType="fitCenter"
+            app:layout_constraintCircle="@+id/viewCenterPlaceHolder"
+            app:layout_constraintCircleRadius="130dp"
+            app:layout_constraintCircleAngle="90"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            tools:ignore="ContentDescription,MissingConstraints" />
+        
+        <ImageButton
+            android:gravity="center"
+            android:id="@+id/imageButtonBJCollection"
+            android:background="@drawable/arc_menu_button_bg"
+            android:scaleType="fitCenter"
+            app:layout_constraintCircle="@+id/viewCenterPlaceHolder"
+            app:layout_constraintCircleRadius="80dp"
+            app:layout_constraintCircleAngle="295"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            tools:ignore="ContentDescription,MissingConstraints" />
+        
+        <ImageButton
+            android:gravity="center"
+            android:id="@+id/imageButtonCommunity"
+            android:background="@drawable/arc_menu_button_bg"
+            android:scaleType="fitCenter"
+            app:layout_constraintCircle="@+id/viewCenterPlaceHolder"
+            app:layout_constraintCircleRadius="130dp"
+            app:layout_constraintCircleAngle="270"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            tools:ignore="ContentDescription,MissingConstraints" />
+    
+    
+        <TextView
+            app:layout_constraintStart_toStartOf="@+id/imageButtonSupportCenter"
+            app:layout_constraintEnd_toEndOf="@+id/imageButtonSupportCenter"
+            app:layout_constraintTop_toBottomOf="@+id/imageButtonSupportCenter"
+            android:textSize="4.5pt"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:text="@string/arc_menu_support_center_title"
+            android:id="@+id/textViewSupportCenter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    
+        <TextView
+            app:layout_constraintStart_toStartOf="@+id/imageButtonClientCenter"
+            app:layout_constraintEnd_toEndOf="@+id/imageButtonClientCenter"
+            app:layout_constraintTop_toBottomOf="@+id/imageButtonClientCenter"
+            android:textSize="4.5pt"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:text="@string/arc_menu_client_center_title"
+            android:id="@+id/textViewClientCenter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:ignore="ContentDescription,MissingConstraints" />
+    
+        <TextView
+            app:layout_constraintStart_toStartOf="@+id/imageButtonEvent"
+            app:layout_constraintEnd_toEndOf="@+id/imageButtonEvent"
+            app:layout_constraintTop_toBottomOf="@+id/imageButtonEvent"
+            android:textSize="4.5pt"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:text="@string/arc_menu_event_title"
+            android:id="@+id/textViewEvent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:ignore="ContentDescription,MissingConstraints" />
+    
+        <TextView
+            app:layout_constraintStart_toStartOf="@+id/imageButtonBJCollection"
+            app:layout_constraintEnd_toEndOf="@+id/imageButtonBJCollection"
+            app:layout_constraintTop_toBottomOf="@+id/imageButtonBJCollection"
+            android:textSize="4.5pt"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:text="@string/arc_menu_bj_collection_title"
+            android:id="@+id/textViewBJCollection"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:ignore="ContentDescription,MissingConstraints" />
+    
+        <TextView
+            app:layout_constraintStart_toStartOf="@+id/imageButtonCommunity"
+            app:layout_constraintEnd_toEndOf="@+id/imageButtonCommunity"
+            app:layout_constraintTop_toBottomOf="@+id/imageButtonCommunity"
+            android:textSize="4.5pt"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:text="@string/arc_menu_community_title"
+            android:id="@+id/textViewCommunity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:ignore="ContentDescription,MissingConstraints" />
+        
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>
