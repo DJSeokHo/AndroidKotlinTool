@@ -128,10 +128,11 @@
     
     
         <TextView
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@+id/imageButtonSupportCenter"
             app:layout_constraintEnd_toEndOf="@+id/imageButtonSupportCenter"
             app:layout_constraintTop_toBottomOf="@+id/imageButtonSupportCenter"
-            android:textSize="4.5pt"
+            android:textSize="6pt"
             android:layout_marginTop="5dp"
             android:textColor="@color/white"
             android:gravity="center"

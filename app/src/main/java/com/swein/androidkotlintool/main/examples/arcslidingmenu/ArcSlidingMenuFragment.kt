@@ -1,16 +1,19 @@
 package com.swein.androidkotlintool.main.examples.arcslidingmenu
 
+import android.animation.ValueAnimator
+import android.graphics.Typeface
 import android.os.Bundle
+import android.util.TypedValue
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnticipateOvershootInterpolator
 import android.widget.*
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.swein.androidkotlintool.R
 import com.swein.androidkotlintool.framework.util.log.ILog
-import com.swein.androidkotlintool.main.examples.livedata.LiveDataDemoFragment
 
 
 class ArcSlidingMenuFragment : Fragment() {
@@ -65,27 +68,29 @@ class ArcSlidingMenuFragment : Fragment() {
         rootView.findViewById(R.id.imageButtonCommunity)
     }
 
-    private val textViewSupportCenter: ImageButton by lazy {
+    private val textViewList = mutableListOf<TextView>()
+
+    private val textViewSupportCenter: TextView by lazy {
         rootView.findViewById(R.id.textViewSupportCenter)
     }
-    private val textViewClientCenter: ImageButton by lazy {
+    private val textViewClientCenter: TextView by lazy {
         rootView.findViewById(R.id.textViewClientCenter)
     }
-    private val textViewEvent: ImageButton by lazy {
+    private val textViewEvent: TextView by lazy {
         rootView.findViewById(R.id.textViewEvent)
     }
-    private val textViewBJCollection: ImageButton by lazy {
+    private val textViewBJCollection: TextView by lazy {
         rootView.findViewById(R.id.textViewBJCollection)
     }
-    private val textViewCommunity: ImageButton by lazy {
+    private val textViewCommunity: TextView by lazy {
         rootView.findViewById(R.id.textViewCommunity)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-        }
 
+        }
     }
 
     override fun onCreateView(
@@ -95,8 +100,20 @@ class ArcSlidingMenuFragment : Fragment() {
         // Inflate the layout for this fragment
         rootView = inflater.inflate(R.layout.fragment_arc_sliding_menu, container, false)
         MenuAnimatorController.initData(rootView.context, imageButtonSupportCenter, imageButtonClientCenter, imageButtonEvent, imageButtonCommunity, imageButtonBJCollection)
+
+        initView()
         setListener()
         return rootView
+    }
+
+    private fun initView() {
+        textViewList.clear()
+
+        textViewList.add(textViewSupportCenter)
+        textViewList.add(textViewClientCenter)
+        textViewList.add(textViewEvent)
+        textViewList.add(textViewCommunity)
+        textViewList.add(textViewBJCollection)
     }
 
     private fun setListener() {
@@ -200,15 +217,32 @@ class ArcSlidingMenuFragment : Fragment() {
         if (step == 2) {
             MenuAnimatorController.rotate(rotateDirection, step, duration, onRepeat = {
                 MenuAnimatorController.rotate(rotateDirection, step - 1, duration, onFinish = {
-
+                    setTextViewStyle()
                 })
             })
         }
         else if (step == 1) {
             MenuAnimatorController.rotate(rotateDirection, step, duration, onFinish = {
-
+                setTextViewStyle()
             })
         }
 
+    }
+
+    private fun setTextViewStyle() {
+        val index = MenuAnimatorController.getCenterViewIndex()
+        for (textView in textViewList) {
+            textView.setTypeface(null, Typeface.NORMAL)
+            textView.setTextSize(TypedValue.COMPLEX_UNIT_PT,4.5f)
+        }
+
+        val sizeAnimator = ValueAnimator.ofFloat(4.5f, 6f)
+        sizeAnimator.addUpdateListener {
+            textViewList[index].setTextSize(TypedValue.COMPLEX_UNIT_PT,it.animatedValue as Float)
+        }
+        sizeAnimator.duration = 300
+        sizeAnimator.interpolator = AnticipateOvershootInterpolator()
+        sizeAnimator.start()
+        textViewList[index].setTypeface(null, Typeface.BOLD)
     }
 }

@@ -165,6 +165,18 @@ object MenuAnimatorController {
         }
     }
 
+    fun getCenterViewIndex(): Int {
+        for (i in 0 until viewList.size) {
+            val layoutParams = viewList[i].layoutParams as ConstraintLayout.LayoutParams
+            if (layoutParams.width == DisplayUtil.dipToPx(viewList[i].context, 60f)
+                && layoutParams.height == DisplayUtil.dipToPx(viewList[i].context, 60f)) {
+                return i
+            }
+        }
+
+        return -1
+    }
+
     private fun getPositionIndexOfView(view: View): Int {
         val layoutParams = view.layoutParams as ConstraintLayout.LayoutParams
         for (i in 0 until positionList.size) {
