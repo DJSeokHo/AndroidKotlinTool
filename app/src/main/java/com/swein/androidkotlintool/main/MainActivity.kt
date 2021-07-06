@@ -37,6 +37,7 @@ import com.swein.androidkotlintool.main.examples.coordinatorlayoutexample.Coordi
 import com.swein.androidkotlintool.main.examples.customanimation.CustomAnimationExampleActivity
 import com.swein.androidkotlintool.main.examples.customview.CustomViewExampleActivity
 import com.swein.androidkotlintool.main.examples.livedata.LiveDataDemoActivity
+import com.swein.androidkotlintool.main.examples.livedata.networkstatemonitor.NetworkStateMonitorActivity
 import com.swein.androidkotlintool.main.examples.materialdesignbottombar.MaterialDesignBottomBarExampleActivity
 import com.swein.androidkotlintool.main.examples.materialdesigntutorial.dayfive.MDDayFiveActivity
 import com.swein.androidkotlintool.main.examples.materialdesigntutorial.dayfour.MDDayFourActivity
@@ -143,6 +144,7 @@ class MainActivity : BasicPermissionActivity() {
 //        ActivityUtil.startNewActivityWithoutFinish(this, MDDaySixActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, MDDaySevenActivity::class.java)
         ActivityUtil.startNewActivityWithoutFinish(this, ArcSlidingMenuActivity::class.java)
+//        ActivityUtil.startNewActivityWithoutFinish(this, NetworkStateMonitorActivity::class.java)
 
 //        SnackBarUtility.showSnackBar(frameLayoutRoot, "test")
 //        SnackBarUtility.showSnackBar(frameLayoutRoot, "test", "click me") {

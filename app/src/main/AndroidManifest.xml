@@ -49,7 +49,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".main.examples.arcslidingmenu.ArcSlidingMenuActivity"></activity>
+        <activity android:name=".main.examples.livedata.networkstatemonitor.NetworkStateMonitorActivity" />
+        <activity android:name=".main.examples.arcslidingmenu.ArcSlidingMenuActivity" />
         <activity android:name=".main.examples.materialdesigntutorial.dayseven.MDDaySevenActivity" />
         <activity android:name=".main.examples.materialdesigntutorial.daysix.MDDaySixActivity" />
         <activity android:name=".main.examples.materialdesigntutorial.dayfive.MDDayFiveActivity" />
@@ -168,11 +169,12 @@
             <!-- tools:node="remove" -->
             <!-- /> -->
         </provider>
-        
+    
         <service
             android:name=".framework.module.location.service.LocationService"
             android:enabled="true"
             android:exported="false" />
+    
     </application>
-
+    
 </manifest>
