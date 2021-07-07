@@ -3,6 +3,7 @@ package com.swein.androidkotlintool.main.examples.livedata.networkstatemonitor
 import android.content.IntentFilter
 import android.os.Bundle
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.swein.androidkotlintool.R
 
@@ -25,7 +26,16 @@ class NetworkStateMonitorActivity : AppCompatActivity() {
         }
 
         NetworkStateManager.networkState.observe(this) { isConnected ->
+
             textViewState.text = "Network connected?? $isConnected"
+
+            val hint = if (isConnected) {
+                "Thumb-up"
+            } else {
+                "Subscribe"
+            }
+
+            Toast.makeText(this, hint, Toast.LENGTH_SHORT).show()
         }
     }
 

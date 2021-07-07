@@ -143,8 +143,8 @@ class MainActivity : BasicPermissionActivity() {
 //        ActivityUtil.startNewActivityWithoutFinish(this, MDDayFiveActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, MDDaySixActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, MDDaySevenActivity::class.java)
-        ActivityUtil.startNewActivityWithoutFinish(this, ArcSlidingMenuActivity::class.java)
-//        ActivityUtil.startNewActivityWithoutFinish(this, NetworkStateMonitorActivity::class.java)
+//        ActivityUtil.startNewActivityWithoutFinish(this, ArcSlidingMenuActivity::class.java)
+        ActivityUtil.startNewActivityWithoutFinish(this, NetworkStateMonitorActivity::class.java)
 
 //        SnackBarUtility.showSnackBar(frameLayoutRoot, "test")
 //        SnackBarUtility.showSnackBar(frameLayoutRoot, "test", "click me") {
