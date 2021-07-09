@@ -47,6 +47,7 @@ import com.swein.androidkotlintool.main.examples.materialdesigntutorial.daysix.M
 import com.swein.androidkotlintool.main.examples.materialdesigntutorial.daythree.MDDayThreeActivity
 import com.swein.androidkotlintool.main.examples.materialdesigntutorial.daytwo.MDDayTwoActivity
 import com.swein.androidkotlintool.main.examples.mvvmrecyclerviewexample.MVVMRecyclerViewExampleActivity
+import com.swein.androidkotlintool.main.examples.rxkotlinlite.demo.RxKotlinLiteDemoActivity
 import com.swein.androidkotlintool.main.examples.viewmodel.ViewModelDemoActivity
 import com.swein.androidkotlintool.main.examples.workmanager.WorkManagerDemoActivity
 import com.swein.androidkotlintool.main.moduledemo.ModuleDemoActivity
@@ -144,7 +145,8 @@ class MainActivity : BasicPermissionActivity() {
 //        ActivityUtil.startNewActivityWithoutFinish(this, MDDaySixActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, MDDaySevenActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, ArcSlidingMenuActivity::class.java)
-        ActivityUtil.startNewActivityWithoutFinish(this, NetworkStateMonitorActivity::class.java)
+//        ActivityUtil.startNewActivityWithoutFinish(this, NetworkStateMonitorActivity::class.java)
+        ActivityUtil.startNewActivityWithoutFinish(this, RxKotlinLiteDemoActivity::class.java)
 
 //        SnackBarUtility.showSnackBar(frameLayoutRoot, "test")
 //        SnackBarUtility.showSnackBar(frameLayoutRoot, "test", "click me") {

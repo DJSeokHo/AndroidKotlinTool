@@ -35,6 +35,7 @@ class DisplayUtil {
                 windowMetrics.bounds.width() - insets.left - insets.right
             } else {
                 val displayMetrics = DisplayMetrics()
+                @Suppress("DEPRECATION")
                 activity.windowManager.defaultDisplay.getMetrics(displayMetrics)
                 displayMetrics.widthPixels
             }
@@ -47,23 +48,44 @@ class DisplayUtil {
                 windowMetrics.bounds.height() - insets.bottom - insets.top
             } else {
                 val displayMetrics = DisplayMetrics()
+                @Suppress("DEPRECATION")
                 activity.windowManager.defaultDisplay.getMetrics(displayMetrics)
                 displayMetrics.widthPixels
             }
         }
 
         fun getScreenWidthPx(context: Context): Int {
-            val wm = context.getSystemService(Context.WINDOW_SERVICE) as WindowManager
-            val dm = DisplayMetrics()
-            wm.defaultDisplay.getMetrics(dm)
-            return dm.widthPixels
+            val outMetrics = DisplayMetrics()
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                val display = context.display
+                display?.getRealMetrics(outMetrics)
+            }
+            else {
+                @Suppress("DEPRECATION")
+                val display = (context.getSystemService(Context.WINDOW_SERVICE) as WindowManager).defaultDisplay
+                @Suppress("DEPRECATION")
+                display.getMetrics(outMetrics)
+            }
+
+            return outMetrics.widthPixels
         }
 
         fun getScreenHeightPx(context: Context): Int {
-            val wm = context.getSystemService(Context.WINDOW_SERVICE) as WindowManager
-            val dm = DisplayMetrics()
-            wm.defaultDisplay.getMetrics(dm)
-            return dm.heightPixels
+            val outMetrics = DisplayMetrics()
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                val display = context.display
+                display?.getRealMetrics(outMetrics)
+            }
+            else {
+                @Suppress("DEPRECATION")
+                val display = (context.getSystemService(Context.WINDOW_SERVICE) as WindowManager).defaultDisplay
+                @Suppress("DEPRECATION")
+                display.getMetrics(outMetrics)
+            }
+
+            return outMetrics.heightPixels
         }
 
         /**

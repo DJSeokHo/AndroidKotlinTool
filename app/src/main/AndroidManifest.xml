@@ -49,6 +49,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity android:name=".main.examples.rxkotlinlite.demo.RxKotlinLiteDemoActivity"></activity>
         <activity android:name=".main.examples.livedata.networkstatemonitor.NetworkStateMonitorActivity" />
         <activity android:name=".main.examples.arcslidingmenu.ArcSlidingMenuActivity" />
         <activity android:name=".main.examples.materialdesigntutorial.dayseven.MDDaySevenActivity" />
@@ -169,12 +170,11 @@
             <!-- tools:node="remove" -->
             <!-- /> -->
         </provider>
-    
+        
         <service
             android:name=".framework.module.location.service.LocationService"
             android:enabled="true"
             android:exported="false" />
-    
     </application>
-    
+
 </manifest>
