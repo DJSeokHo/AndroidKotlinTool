@@ -2,7 +2,6 @@ package com.swein.androidkotlintool.framework.util.sound.audiomanager
 
 import android.content.Context
 import android.media.AudioManager
-import com.swein.androidkotlintool.framework.util.log.ILog
 import kotlin.math.roundToInt
 
 object AudioManagerUtil {

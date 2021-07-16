@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".main.examples.circlemenu.CircleMenuExampleActivity"
+    android:background="@color/white">
+    
+    <FrameLayout
+        android:layout_marginBottom="-70dp"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_width="270dp"
+        android:layout_height="270dp">
+    
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:visibility="gone"
+            android:layout_gravity="center"
+            android:elevation="5dp"
+            android:background="@drawable/ti_circle_menu_bg"
+            android:clickable="true"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:id="@+id/constraintLayoutMenu"
+            android:layout_width="260dp"
+            android:layout_height="260dp">
+        
+            <View
+                android:layout_marginBottom="0dp"
+                android:scaleType="fitCenter"
+                android:background="#0000"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:id="@+id/viewCenterPlaceHolder"
+                android:layout_width="40dp"
+                android:layout_height="40dp"/>
+        
+            <LinearLayout
+                android:id="@+id/menu1"
+                app:layout_constraintCircle="@+id/viewCenterPlaceHolder"
+                app:layout_constraintCircleRadius="90dp"
+                app:layout_constraintCircleAngle="0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:ignore="MissingConstraints"
+                android:orientation="vertical"
+                android:gravity="center">
+            
+                <ImageView
+                    android:src="@mipmap/ti_cm_post"
+                    android:gravity="center"
+                    android:scaleType="fitCenter"
+                    android:layout_width="34dp"
+                    android:layout_height="34dp"
+                    />
+            
+                <TextView
+                    android:textStyle="bold"
+                    android:textSize="5pt"
+                    android:textColor="#3AE6CC"
+                    android:gravity="center"
+                    android:text="Post"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+        
+            </LinearLayout>
+        
+            <LinearLayout
+                android:id="@+id/menu2"
+                app:layout_constraintCircle="@+id/viewCenterPlaceHolder"
+                app:layout_constraintCircleRadius="90dp"
+                app:layout_constraintCircleAngle="45"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:ignore="MissingConstraints"
+                android:orientation="vertical"
+                android:gravity="center">
+            
+                <ImageView
+                    android:src="@mipmap/ti_cm_camera"
+                    android:gravity="center"
+                    android:scaleType="fitCenter"
+                    android:layout_width="34dp"
+                    android:layout_height="34dp"
+                    />
+            
+                <TextView
+                    android:textStyle="bold"
+                    android:textSize="5pt"
+                    android:textColor="#3AE6CC"
+                    android:gravity="center"
+                    android:text="Camera"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                
+            </LinearLayout>
+        
+            <LinearLayout
+                android:id="@+id/menu3"
+                app:layout_constraintCircle="@+id/viewCenterPlaceHolder"
+                app:layout_constraintCircleRadius="90dp"
+                app:layout_constraintCircleAngle="90"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:ignore="MissingConstraints"
+                android:orientation="vertical"
+                android:gravity="center">
+            
+                <ImageView
+                    android:src="@mipmap/ti_cm_chatting"
+                    android:gravity="center"
+                    android:scaleType="fitCenter"
+                    android:layout_width="34dp"
+                    android:layout_height="34dp"
+                    />
+            
+                <TextView
+                    android:textStyle="bold"
+                    android:textSize="5pt"
+                    android:textColor="#3AE6CC"
+                    android:gravity="center"
+                    android:text="Chatting"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+               
+            </LinearLayout>
+        
+            <LinearLayout
+                android:id="@+id/menu4"
+                app:layout_constraintCircle="@+id/viewCenterPlaceHolder"
+                app:layout_constraintCircleRadius="90dp"
+                app:layout_constraintCircleAngle="135"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:ignore="MissingConstraints"
+                android:orientation="vertical"
+                android:gravity="center">
+            
+                <ImageView
+                    android:src="@mipmap/ti_cm_map"
+                    android:gravity="center"
+                    android:scaleType="fitCenter"
+                    android:layout_width="34dp"
+                    android:layout_height="34dp"
+                    />
+            
+                <TextView
+                    android:textStyle="bold"
+                    android:textSize="5pt"
+                    android:textColor="#3AE6CC"
+                    android:gravity="center"
+                    android:text="Map"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+               
+            </LinearLayout>
+        
+            <LinearLayout
+                android:id="@+id/menu5"
+                app:layout_constraintCircle="@+id/viewCenterPlaceHolder"
+                app:layout_constraintCircleRadius="90dp"
+                app:layout_constraintCircleAngle="180"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:ignore="MissingConstraints"
+                android:orientation="vertical"
+                android:gravity="center">
+            
+                <ImageView
+                    android:src="@mipmap/ti_cm_profile"
+                    android:gravity="center"
+                    android:scaleType="fitCenter"
+                    android:layout_width="34dp"
+                    android:layout_height="34dp"
+                    />
+            
+                <TextView
+                    android:textStyle="bold"
+                    android:textSize="5pt"
+                    android:textColor="#3AE6CC"
+                    android:gravity="center"
+                    android:text="Profile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+             
+            </LinearLayout>
+        
+            <LinearLayout
+                android:id="@+id/menu6"
+                app:layout_constraintCircle="@+id/viewCenterPlaceHolder"
+                app:layout_constraintCircleRadius="90dp"
+                app:layout_constraintCircleAngle="225"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:ignore="MissingConstraints"
+                android:orientation="vertical"
+                android:gravity="center">
+            
+                <ImageView
+                    android:src="@mipmap/ti_cm_search"
+                    android:gravity="center"
+                    android:scaleType="fitCenter"
+                    android:layout_width="34dp"
+                    android:layout_height="34dp"
+                    />
+            
+                <TextView
+                    android:textStyle="bold"
+                    android:textSize="5pt"
+                    android:textColor="#3AE6CC"
+                    android:gravity="center"
+                    android:text="Search"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+             
+            </LinearLayout>
+        
+            <LinearLayout
+                android:id="@+id/menu7"
+                app:layout_constraintCircle="@+id/viewCenterPlaceHolder"
+                app:layout_constraintCircleRadius="90dp"
+                app:layout_constraintCircleAngle="270"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:ignore="MissingConstraints"
+                android:orientation="vertical"
+                android:gravity="center">
+            
+                <ImageView
+                    android:src="@mipmap/ti_cm_setting"
+                    android:gravity="center"
+                    android:scaleType="fitCenter"
+                    android:layout_width="34dp"
+                    android:layout_height="34dp"
+                    />
+            
+                <TextView
+                    android:textStyle="bold"
+                    android:textSize="5pt"
+                    android:textColor="#3AE6CC"
+                    android:gravity="center"
+                    android:text="Setting"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                
+            </LinearLayout>
+        
+            <LinearLayout
+                android:id="@+id/menu8"
+                app:layout_constraintCircle="@+id/viewCenterPlaceHolder"
+                app:layout_constraintCircleRadius="90dp"
+                app:layout_constraintCircleAngle="315"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:ignore="MissingConstraints"
+                android:orientation="vertical"
+                android:gravity="center">
+            
+                <ImageView
+                    android:src="@mipmap/ti_cm_support"
+                    android:gravity="center"
+                    android:scaleType="fitCenter"
+                    android:layout_width="34dp"
+                    android:layout_height="34dp"
+                    />
+            
+                <TextView
+                    android:textStyle="bold"
+                    android:textSize="5pt"
+                    android:textColor="#3AE6CC"
+                    android:gravity="center"
+                    android:text="Support"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            
+            </LinearLayout>
+    
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    
+        <ImageButton
+            android:id="@+id/imageButtonCenter"
+            android:translationZ="10dp"
+            android:elevation="5dp"
+            android:padding="4dp"
+            android:src="@mipmap/ti_cm_center"
+            android:scaleType="fitCenter"
+            android:layout_gravity="center"
+            android:background="@drawable/ti_cm_center_bg"
+            android:layout_width="50dp"
+            android:layout_height="50dp"/>
+        
+    </FrameLayout>
+    
+</FrameLayout>

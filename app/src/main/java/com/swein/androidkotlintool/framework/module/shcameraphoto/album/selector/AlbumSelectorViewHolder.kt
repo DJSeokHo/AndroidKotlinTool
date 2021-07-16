@@ -149,10 +149,6 @@ class AlbumSelectorViewHolder(
 
     private fun loadMore() {
 
-        if (true) {
-            return
-        }
-
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
 
             ThreadUtility.startThread {
