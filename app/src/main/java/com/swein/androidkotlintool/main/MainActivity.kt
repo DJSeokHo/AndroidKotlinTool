@@ -1,12 +1,8 @@
 package com.swein.androidkotlintool.main
 
 import android.Manifest
-import android.app.Notification
-import android.app.PendingIntent
-import android.content.Intent
 import android.graphics.Color
 import android.graphics.Insets
-import android.graphics.drawable.Icon
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -14,14 +10,11 @@ import android.view.WindowInsets
 import android.widget.Button
 import android.widget.FrameLayout
 import android.widget.ImageView
-import androidx.annotation.RequiresApi
-import androidx.core.app.Person
 import com.swein.androidkotlintool.R
 import com.swein.androidkotlintool.constants.Constants
 import com.swein.androidkotlintool.framework.module.basicpermission.BasicPermissionActivity
 import com.swein.androidkotlintool.framework.module.basicpermission.PermissionManager
 import com.swein.androidkotlintool.framework.module.basicpermission.RequestPermission
-import com.swein.androidkotlintool.framework.module.shcameraphoto.demo.SHCameraPhotoFragmentDemoActivity
 import com.swein.androidkotlintool.framework.module.volley.VolleyModule
 import com.swein.androidkotlintool.framework.util.activity.ActivityUtil
 import com.swein.androidkotlintool.framework.util.display.DisplayUtil
@@ -30,28 +23,7 @@ import com.swein.androidkotlintool.framework.util.eventsplitshot.subject.ESSArro
 import com.swein.androidkotlintool.framework.util.glide.SHGlide
 import com.swein.androidkotlintool.framework.util.log.ILog
 import com.swein.androidkotlintool.framework.util.screen.ScreenUtil
-import com.swein.androidkotlintool.framework.util.snackbar.SnackBarUtility
-import com.swein.androidkotlintool.main.examples.arcslidingmenu.ArcSlidingMenuActivity
-import com.swein.androidkotlintool.main.examples.chartexample.ChartExampleActivity
-import com.swein.androidkotlintool.main.examples.circlemenu.CircleMenuExampleActivity
-import com.swein.androidkotlintool.main.examples.coordinatorlayoutexample.CoordinatorLayoutExampleActivity
-import com.swein.androidkotlintool.main.examples.customanimation.CustomAnimationExampleActivity
-import com.swein.androidkotlintool.main.examples.customview.CustomViewExampleActivity
-import com.swein.androidkotlintool.main.examples.infinityautoscrollpaddingbanner.InfinityAutoScrollPaddingBannerExampleActivity
-import com.swein.androidkotlintool.main.examples.livedata.LiveDataDemoActivity
-import com.swein.androidkotlintool.main.examples.livedata.networkstatemonitor.NetworkStateMonitorActivity
-import com.swein.androidkotlintool.main.examples.materialdesignbottombar.MaterialDesignBottomBarExampleActivity
-import com.swein.androidkotlintool.main.examples.materialdesigntutorial.dayfive.MDDayFiveActivity
-import com.swein.androidkotlintool.main.examples.materialdesigntutorial.dayfour.MDDayFourActivity
-import com.swein.androidkotlintool.main.examples.materialdesigntutorial.dayone.MDDayOneActivity
-import com.swein.androidkotlintool.main.examples.materialdesigntutorial.dayseven.MDDaySevenActivity
-import com.swein.androidkotlintool.main.examples.materialdesigntutorial.daysix.MDDaySixActivity
-import com.swein.androidkotlintool.main.examples.materialdesigntutorial.daythree.MDDayThreeActivity
-import com.swein.androidkotlintool.main.examples.materialdesigntutorial.daytwo.MDDayTwoActivity
-import com.swein.androidkotlintool.main.examples.mvvmrecyclerviewexample.MVVMRecyclerViewExampleActivity
-import com.swein.androidkotlintool.main.examples.rxkotlinlite.demo.RxKotlinLiteDemoActivity
-import com.swein.androidkotlintool.main.examples.viewmodel.ViewModelDemoActivity
-import com.swein.androidkotlintool.main.examples.workmanager.WorkManagerDemoActivity
+import com.swein.androidkotlintool.main.examples.multipleviewtypesrecyclerview.MultipleViewTypesRecyclerViewExampleActivity
 import com.swein.androidkotlintool.main.moduledemo.ModuleDemoActivity
 import com.swein.androidkotlintool.template.bottomtab.activity.TabHostActivity
 import com.swein.androidkotlintool.template.handlerthread.HandlerThreadTemplateActivity
@@ -150,7 +122,8 @@ class MainActivity : BasicPermissionActivity() {
 //        ActivityUtil.startNewActivityWithoutFinish(this, NetworkStateMonitorActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, RxKotlinLiteDemoActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, InfinityAutoScrollPaddingBannerExampleActivity::class.java)
-        ActivityUtil.startNewActivityWithoutFinish(this, CircleMenuExampleActivity::class.java)
+//        ActivityUtil.startNewActivityWithoutFinish(this, CircleMenuExampleActivity::class.java)
+        ActivityUtil.startNewActivityWithoutFinish(this, MultipleViewTypesRecyclerViewExampleActivity::class.java)
 
 //        SnackBarUtility.showSnackBar(frameLayoutRoot, "test")
 //        SnackBarUtility.showSnackBar(frameLayoutRoot, "test", "click me") {

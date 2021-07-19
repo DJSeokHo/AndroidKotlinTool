@@ -49,7 +49,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".main.examples.circlemenu.CircleMenuExampleActivity"></activity>
+        <activity android:name=".main.examples.multipleviewtypesrecyclerview.MultipleViewTypesRecyclerViewExampleActivity"></activity>
+        <activity android:name=".main.examples.circlemenu.CircleMenuExampleActivity" />
         <activity android:name=".main.examples.infinityautoscrollpaddingbanner.InfinityAutoScrollPaddingBannerExampleActivity" />
         <activity android:name=".main.examples.rxkotlinlite.demo.RxKotlinLiteDemoActivity" />
         <activity android:name=".main.examples.livedata.networkstatemonitor.NetworkStateMonitorActivity" />
