@@ -6,6 +6,9 @@ apply plugin: 'kotlin-parcelize'
 
 apply plugin: 'kotlin-kapt'
 
+// Safe Args
+apply plugin: "androidx.navigation.safeargs.kotlin"
+
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
@@ -137,6 +140,18 @@ dependencies {
 
     // chart
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+
+    // navigation ----------------------------------->
+    // Kotlin
+    implementation "androidx.navigation:navigation-fragment-ktx:2.3.5"
+    implementation "androidx.navigation:navigation-ui-ktx:2.3.5"
+
+    // Feature module Support
+    implementation "androidx.navigation:navigation-dynamic-features-fragment:2.3.5"
+
+    // Testing Navigation
+    androidTestImplementation "androidx.navigation:navigation-testing:2.3.5"
+    // <----------------------------------- navigation
 }
 
 apply plugin: 'com.google.gms.google-services'

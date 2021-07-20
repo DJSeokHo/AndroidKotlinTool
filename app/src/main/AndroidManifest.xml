@@ -49,7 +49,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".main.examples.multipleviewtypesrecyclerview.MultipleViewTypesRecyclerViewExampleActivity"></activity>
+        <activity android:name=".main.jetpackexample.navigation.post.PostActivity"></activity>
+        <activity android:name=".main.jetpackexample.navigation.sign.SignActivity" />
+        <activity android:name=".main.jetpackexample.navigation.JetpackNavigationExampleActivity" />
+        <activity android:name=".main.examples.multipleviewtypesrecyclerview.MultipleViewTypesRecyclerViewExampleActivity" />
         <activity android:name=".main.examples.circlemenu.CircleMenuExampleActivity" />
         <activity android:name=".main.examples.infinityautoscrollpaddingbanner.InfinityAutoScrollPaddingBannerExampleActivity" />
         <activity android:name=".main.examples.rxkotlinlite.demo.RxKotlinLiteDemoActivity" />

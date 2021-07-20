@@ -24,6 +24,7 @@ import com.swein.androidkotlintool.framework.util.glide.SHGlide
 import com.swein.androidkotlintool.framework.util.log.ILog
 import com.swein.androidkotlintool.framework.util.screen.ScreenUtil
 import com.swein.androidkotlintool.main.examples.multipleviewtypesrecyclerview.MultipleViewTypesRecyclerViewExampleActivity
+import com.swein.androidkotlintool.main.jetpackexample.navigation.JetpackNavigationExampleActivity
 import com.swein.androidkotlintool.main.moduledemo.ModuleDemoActivity
 import com.swein.androidkotlintool.template.bottomtab.activity.TabHostActivity
 import com.swein.androidkotlintool.template.handlerthread.HandlerThreadTemplateActivity
@@ -123,7 +124,8 @@ class MainActivity : BasicPermissionActivity() {
 //        ActivityUtil.startNewActivityWithoutFinish(this, RxKotlinLiteDemoActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, InfinityAutoScrollPaddingBannerExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, CircleMenuExampleActivity::class.java)
-        ActivityUtil.startNewActivityWithoutFinish(this, MultipleViewTypesRecyclerViewExampleActivity::class.java)
+//        ActivityUtil.startNewActivityWithoutFinish(this, MultipleViewTypesRecyclerViewExampleActivity::class.java)
+        ActivityUtil.startNewActivityWithoutFinish(this, JetpackNavigationExampleActivity::class.java)
 
 //        SnackBarUtility.showSnackBar(frameLayoutRoot, "test")
 //        SnackBarUtility.showSnackBar(frameLayoutRoot, "test", "click me") {
