@@ -3,25 +3,56 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".main.jetpackexample.navigation.home.HomeFragment"
-    android:background="@color/white">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".main.jetpackexample.navigation.home.HomeFragment">
     
-    <TextView
-        android:layout_gravity="center"
-        android:textColor="@color/black"
-        android:textSize="10pt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Home" />
+    <FrameLayout
+        android:background="@color/white"
+        android:layout_marginTop="60dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     
+        <Button
+            android:layout_gravity="center"
+            android:id="@+id/buttonSign"
+            android:text="Sign"
+            android:textColor="@color/black"
+            android:textSize="10pt"
+            android:backgroundTint="@color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
     
-    <Button
-        android:id="@+id/buttonSign"
-        android:text="Sign"
-        android:textColor="@color/black"
-        android:textSize="10pt"
-        android:backgroundTint="@color/white"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
+        <LinearLayout
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+        
+            <TextView
+                android:id="@+id/textViewNumber"
+                android:layout_gravity="center"
+                android:textColor="@color/black"
+                android:textSize="10pt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        
+            <Button
+                android:layout_marginTop="20dp"
+                android:id="@+id/buttonCount"
+                android:text="Plus"
+                android:textColor="@color/black"
+                android:textSize="10pt"
+                android:backgroundTint="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+    
+        </LinearLayout>
+        
+    </FrameLayout>
+    
+    <FrameLayout
+        android:id="@+id/frameLayoutTopNavigationBarContainer"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"/>
+    
 </FrameLayout>

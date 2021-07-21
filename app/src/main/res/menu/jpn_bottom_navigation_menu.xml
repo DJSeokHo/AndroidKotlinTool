@@ -2,17 +2,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     
     <item
-        android:id="@+id/home"
+        android:id="@+id/homeFragment"
         android:icon="@mipmap/ti_home_un_selected"
         android:title="Home"/>
-   
+  
     <item
-        android:id="@+id/favorite"
+        android:id="@+id/favoriteFragment"
         android:icon="@mipmap/ti_discover_un_selected"
         android:title="Favorite"/>
     
     <item
-        android:id="@+id/profile"
+        android:id="@+id/profileFragment"
         android:icon="@mipmap/ti_profile_un_selected"
         android:title="Profile"/>
     

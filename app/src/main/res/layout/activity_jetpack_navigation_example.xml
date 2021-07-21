@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".main.jetpackexample.navigation.JetpackNavigationExampleActivity">
+    tools:context=".main.jetpackexample.navigation.JetpackNavigationExampleActivity"
+    android:background="@color/white">
     
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
@@ -15,6 +16,7 @@
             android:name="androidx.navigation.fragment.NavHostFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginBottom="60dp"
             app:defaultNavHost="true"
             app:navGraph="@navigation/main_navigation_graph" />
         
@@ -62,10 +64,11 @@
             android:layout_height="56dp"
             android:src="@mipmap/ti_cm_post"
             app:tint="@null"
-            app:backgroundTint="#333"
+            app:backgroundTint="#333333"
             app:layout_anchor="@id/bottomAppBar"
             android:contentDescription="@null" />
     
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
+    
     
 </androidx.constraintlayout.widget.ConstraintLayout>

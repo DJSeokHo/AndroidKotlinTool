@@ -1,33 +1,34 @@
 package com.swein.androidkotlintool.main.jetpackexample.navigation.sign.auth
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import androidx.core.os.bundleOf
+import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.swein.androidkotlintool.R
+import com.swein.androidkotlintool.framework.util.log.ILog
+import com.swein.androidkotlintool.main.jetpackexample.navigation.sign.signin.SignInFragment
+import com.swein.androidkotlintool.main.jetpackexample.navigation.sign.signin.SignInFragmentDirections
+import com.swein.androidkotlintool.main.jetpackexample.navigation.topnavigationbar.CustomTopNavigationBarViewHolder
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [AuthFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class AuthFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+
+    companion object {
+        private const val TAG = "AuthFragment"
+    }
+
+    private lateinit var buttonRegister: Button
+
+    val args: AuthFragmentArgs by navArgs()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+        ILog.debug(TAG, "onCreate")
     }
 
     override fun onCreateView(
@@ -35,26 +36,56 @@ class AuthFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_auth, container, false)
+        ILog.debug(TAG, args.test)
+        ILog.debug(TAG, "onCreateView")
+        inflater.inflate(R.layout.fragment_auth, container, false).apply {
+            initTopNavigationBar(this)
+            findView(this)
+            setListener()
+            return this
+        }
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment AuthFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            AuthFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    private fun initTopNavigationBar(view: View) {
+        CustomTopNavigationBarViewHolder(view.context, view.findViewById(R.id.frameLayoutTopNavigationBarContainer),
+            onImageButtonStartClick = {
+
+                if (!findNavController().popBackStack()) {
+                    activity?.finish()
+                }
+            },
+            onImageButtonEndClick = {
+
+                if (!findNavController().popBackStack()) {
+                    activity?.finish()
                 }
             }
+        ).apply {
+            this.toggleEndClick(null, false)
+            this.toggleStartClick()
+            this.setTitle("Auth")
+        }
     }
+
+    private fun findView(view: View) {
+        buttonRegister = view.findViewById(R.id.buttonRegister)
+    }
+
+    private fun setListener() {
+        buttonRegister.setOnClickListener {
+            val bundle = bundleOf("test" to args.test)
+            findNavController().navigate(R.id.action_authFragment_to_signUpFragment, bundle)
+        }
+    }
+
+    override fun onDestroyView() {
+        ILog.debug(TAG, "onDestroyView")
+        super.onDestroyView()
+    }
+
+    override fun onDestroy() {
+        ILog.debug(TAG, "onDestroy")
+        super.onDestroy()
+    }
+
 }

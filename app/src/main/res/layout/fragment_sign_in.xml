@@ -3,15 +3,41 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".main.jetpackexample.navigation.sign.signin.SignInFragment"
     android:background="@color/white">
     
-    <TextView
-        android:textSize="10pt"
+    <LinearLayout
         android:layout_gravity="center"
-        android:textColor="@color/black"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sign In" />
-
+        android:orientation="vertical"
+        android:gravity="center">
+        
+    
+        <Button
+            android:id="@+id/buttonAuth"
+            android:text="Auth"
+            android:textColor="@color/black"
+            android:textSize="10pt"
+            android:backgroundTint="@color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    
+        <Button
+            android:id="@+id/buttonRegister"
+            android:text="Register"
+            android:textColor="@color/black"
+            android:textSize="10pt"
+            android:backgroundTint="@color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        
+    </LinearLayout>
+    
+    <FrameLayout
+        android:id="@+id/frameLayoutTopNavigationBarContainer"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"/>
+    
 </FrameLayout>
