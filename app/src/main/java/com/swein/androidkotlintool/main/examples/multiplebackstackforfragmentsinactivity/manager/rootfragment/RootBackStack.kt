@@ -12,10 +12,10 @@ open class RootBackStack {
         var string = "\ntop\n"
         for (fragment in list.reversed()) {
             string +=
-                "${fragment.getFragmentInfo().actionTag} " +
-                        "${fragment.getFragmentInfo().fragmentTag}\n"
+                "${fragment.getRootFragmentInfo().rootActionTag} " +
+                        "${fragment.getRootFragmentInfo().rootFragmentTag}\n"
 
-            string += "${fragment.getFragmentInfo().stack}"
+            string += "${fragment.getRootFragmentInfo().stack}"
         }
         string += "bottom"
         return string
@@ -23,7 +23,7 @@ open class RootBackStack {
 
     fun clear() {
         for (rootFragment in list) {
-            rootFragment.getFragmentInfo().stack.clear()
+            rootFragment.getRootFragmentInfo().stack.clear()
         }
         list.clear()
     }
@@ -57,8 +57,8 @@ open class RootBackStack {
         }
 
         for (item in list) {
-            if (item.getFragmentInfo().fragmentTag == fragmentTag
-                && item.getFragmentInfo().actionTag == actionTag
+            if (item.getRootFragmentInfo().rootFragmentTag == fragmentTag
+                && item.getRootFragmentInfo().rootActionTag == actionTag
             ) {
                 return item
             }

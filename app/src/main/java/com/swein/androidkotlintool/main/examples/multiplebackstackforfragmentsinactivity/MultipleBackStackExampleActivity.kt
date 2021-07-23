@@ -6,7 +6,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.swein.androidkotlintool.R
 import com.swein.androidkotlintool.main.examples.multiplebackstackforfragmentsinactivity.manager.rootfragment.RootFragmentInfo
-import com.swein.androidkotlintool.main.examples.multiplebackstackforfragmentsinactivity.manager.rootfragment.RootFragmentBuilder
 import com.swein.androidkotlintool.main.examples.multiplebackstackforfragmentsinactivity.manager.MultipleBackStackManager
 import com.swein.androidkotlintool.main.examples.multiplebackstackforfragmentsinactivity.rootfragments.ScrollViewRootFragment
 import com.swein.androidkotlintool.main.examples.multiplebackstackforfragmentsinactivity.rootfragments.TextViewRootFragment
@@ -28,7 +27,6 @@ class MultipleBackStackExampleActivity : FragmentActivity() {
         setListener()
 
         bottomNavigationView.selectedItemId = R.id.menuOne
-
     }
 
     private fun setListener() {
@@ -36,62 +34,26 @@ class MultipleBackStackExampleActivity : FragmentActivity() {
             when (it.itemId) {
                 R.id.menuOne -> {
 
-                    MultipleBackStackManager.createRootFragment(
-                        RootFragmentBuilder.Builder()
-                            .setActionTag("menuOne")
-                            .setFragmentTag(ScrollViewRootFragment.TAG)
-                            .setContextCallback {
-                                this
-                            }
-                            .setContainerIdCallback {
-                                R.id.frameLayoutContainer
-                            }
-                            .setFragmentCallback { fragmentTag, actionTag ->
-                                ScrollViewRootFragment.newInstance(
-                                    RootFragmentInfo(fragmentTag, actionTag)
-                                )
-                            }.build()
-                    )
+                    MultipleBackStackManager.createRootFragment(this, ScrollViewRootFragment.newInstance(
+                        RootFragmentInfo(ScrollViewRootFragment.TAG, "menuOne")
+                    ), R.id.frameLayoutContainer)
+
 
                     return@setOnItemSelectedListener true
                 }
                 R.id.menuTwo -> {
 
-                    MultipleBackStackManager.createRootFragment(
-                        RootFragmentBuilder.Builder()
-                            .setActionTag("menuTwo")
-                            .setFragmentTag(TextViewRootFragment.TAG)
-                            .setContextCallback {
-                                this
-                            }
-                            .setContainerIdCallback {
-                                R.id.frameLayoutContainer
-                            }
-                            .setFragmentCallback { fragmentTag, actionTag ->
-                                TextViewRootFragment.newInstance(RootFragmentInfo(fragmentTag, actionTag), "menuTwo")
-                            }
-                            .build()
-                    )
+                    MultipleBackStackManager.createRootFragment(this, TextViewRootFragment.newInstance(
+                        RootFragmentInfo(TextViewRootFragment.TAG, "menuTwo"), "menuTwo"
+                    ), R.id.frameLayoutContainer)
 
                     return@setOnItemSelectedListener true
                 }
                 R.id.menuThree -> {
 
-                    MultipleBackStackManager.createRootFragment(
-                        RootFragmentBuilder.Builder()
-                            .setActionTag("menuThree")
-                            .setFragmentTag(TextViewRootFragment.TAG)
-                            .setContextCallback {
-                                this
-                            }
-                            .setContainerIdCallback {
-                                R.id.frameLayoutContainer
-                            }
-                            .setFragmentCallback { fragmentTag, actionTag ->
-                                TextViewRootFragment.newInstance(RootFragmentInfo(fragmentTag, actionTag), "menuThree")
-                            }
-                            .build()
-                    )
+                    MultipleBackStackManager.createRootFragment(this, TextViewRootFragment.newInstance(
+                        RootFragmentInfo(TextViewRootFragment.TAG, "menuThree"), "menuThree"
+                    ), R.id.frameLayoutContainer)
 
                     return@setOnItemSelectedListener true
                 }

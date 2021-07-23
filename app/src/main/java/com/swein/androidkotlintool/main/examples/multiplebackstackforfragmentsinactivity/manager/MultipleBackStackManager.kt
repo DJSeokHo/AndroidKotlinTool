@@ -3,9 +3,13 @@ package com.swein.androidkotlintool.main.examples.multiplebackstackforfragmentsi
 import android.util.Log
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentTransaction
-import com.swein.androidkotlintool.main.examples.multiplebackstackforfragmentsinactivity.manager.childfragment.ChildFragmentBuilder
+import com.swein.androidkotlintool.framework.util.log.ILog
+import com.swein.androidkotlintool.main.examples.multiplebackstackforfragmentsinactivity.manager.childfragment.ChildBackStackAbleFragment
+import com.swein.androidkotlintool.main.examples.multiplebackstackforfragmentsinactivity.manager.childfragment.ChildFragmentInfo
 import com.swein.androidkotlintool.main.examples.multiplebackstackforfragmentsinactivity.manager.rootfragment.RootBackStack
-import com.swein.androidkotlintool.main.examples.multiplebackstackforfragmentsinactivity.manager.rootfragment.RootFragmentBuilder
+import com.swein.androidkotlintool.main.examples.multiplebackstackforfragmentsinactivity.manager.rootfragment.RootBackStackAbleFragment
+import com.swein.androidkotlintool.main.examples.multiplebackstackforfragmentsinactivity.manager.rootfragment.RootFragmentInfo
+
 
 object MultipleBackStackManager {
 
@@ -13,108 +17,99 @@ object MultipleBackStackManager {
 
     private var multipleBackStack = RootBackStack()
 
-    fun createChildFragment(childFragmentBuilder: ChildFragmentBuilder, parentFragmentTag: String, parentActionTag: String) {
+    fun createChildFragmentOnCurrentRootFragment(childBackStackAbleFragment: ChildBackStackAbleFragment, containerId: Int) {
 
         // find parent fragment first
-        multipleBackStack.findByFragmentTagAndActionTag(parentFragmentTag, parentActionTag)?.let { parentFragment ->
+        multipleBackStack.peek()?.let { rootFragment ->
 
-            // process prev fragment
-            multipleBackStack.peek()?.let { topItem ->
-                // detach prev fragment
-                parentFragment.activity?.supportFragmentManager?.beginTransaction()?.let {
-                    it.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-                    it.detach(topItem)
-                }
+            ILog.debug("???", "${rootFragment.getRootFragmentInfo().rootActionTag} ${rootFragment.getRootFragmentInfo().rootFragmentTag} ${rootFragment.getRootFragmentInfo().stack.count()}")
+
+            if (rootFragment.getRootFragmentInfo().stack.isEmpty()) {
+                // empty stack in root, just replace an new child fragment in container id in root fragment
+
+                // add new fragment to parent
+                val rootTransaction = rootFragment.childFragmentManager.beginTransaction()
+                rootTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+
+                rootTransaction.replace(containerId, childBackStackAbleFragment, childBackStackAbleFragment.getChildFragmentInfo().childFragmentTag)
+                rootTransaction.commitAllowingStateLoss()
+                rootFragment.getRootFragmentInfo().stack.push(childBackStackAbleFragment)
+
+                Log.d(TAG, multipleBackStack.toString())
+
+                return
             }
 
-            // add new fragment to parent
-            childFragmentBuilder.onFragment?.get()?.let {
+            rootFragment.getRootFragmentInfo().stack.peek()?.let { childTopItem ->
+                // detach prev child fragment and replace new child fragment
 
-                childFragmentBuilder.onContainerId?.get()?.let { containerId ->
+                val rootTransaction = rootFragment.childFragmentManager.beginTransaction()
+                rootTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+                rootTransaction.detach(childTopItem)
 
-                    val fragment = it(childFragmentBuilder.fragmentTag, childFragmentBuilder.actionTag)
+                rootTransaction.replace(containerId, childBackStackAbleFragment, childBackStackAbleFragment.getChildFragmentInfo().childFragmentTag)
+                rootTransaction.commitAllowingStateLoss()
+                rootFragment.getRootFragmentInfo().stack.push(childBackStackAbleFragment)
 
-                    val childTransaction = parentFragment.childFragmentManager.beginTransaction()
-                    childTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-                    childTransaction.replace(containerId(), fragment, fragment.getFragmentInfo().fragmentTag)
-                    childTransaction.commitAllowingStateLoss()
-                    parentFragment.getFragmentInfo().stack.push(fragment)
-
-                    Log.d(TAG, multipleBackStack.toString())
-
-                }
+                Log.d(TAG, multipleBackStack.toString())
 
             }
 
         } ?: run {
-            Log.d(TAG, "parent fragment is null")
+            Log.d(TAG, "root fragment is null")
             return
         }
     }
 
-    fun createRootFragment(rootFragmentBuilder: RootFragmentBuilder) {
+    fun createRootFragment(activity: FragmentActivity, rootBackStackAbleFragment: RootBackStackAbleFragment, containerId: Int) {
 
         // find by fragment tag and action tag
         val existFragment = multipleBackStack.findByFragmentTagAndActionTag(
-            rootFragmentBuilder.fragmentTag,
-            rootFragmentBuilder.actionTag
+            rootBackStackAbleFragment.getRootFragmentInfo().rootFragmentTag,
+            rootBackStackAbleFragment.getRootFragmentInfo().rootActionTag
         )
         if (existFragment != null) {
 
             // check existFragment is at top
             multipleBackStack.peek()?.let { topItem ->
-                if (topItem.getFragmentInfo().fragmentTag == existFragment.getFragmentInfo().fragmentTag
-                    && topItem.getFragmentInfo().actionTag == existFragment.getFragmentInfo().actionTag
+                if (topItem.getRootFragmentInfo().rootFragmentTag == existFragment.getRootFragmentInfo().rootFragmentTag
+                    && topItem.getRootFragmentInfo().rootActionTag == existFragment.getRootFragmentInfo().rootActionTag
                 ) {
                     Log.d(TAG, "existFragment is at top, do nothing")
                     return
                 }
 
                 // existFragment is not at top, and is single, move it to top and attach it
-                rootFragmentBuilder.onContext?.get()?.let { context ->
+                val transaction = activity.supportFragmentManager.beginTransaction()
+                transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
 
-                    val transaction = context().supportFragmentManager.beginTransaction()
-                    transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+                transaction.detach(topItem)
 
-                    transaction.detach(topItem)
+                multipleBackStack.toTop(existFragment)
+                transaction.attach(existFragment)
+                transaction.commitAllowingStateLoss()
 
-                    multipleBackStack.toTop(existFragment)
-                    transaction.attach(existFragment)
-                    transaction.commitAllowingStateLoss()
-
-                    Log.d(TAG, multipleBackStack.toString())
-                    return
-                }
+                Log.d(TAG, multipleBackStack.toString())
+                return
             }
 
             // pass check, can create new one
         }
 
-        rootFragmentBuilder.onContext?.get()?.let { context ->
+        val transaction = activity.supportFragmentManager.beginTransaction()
+        transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
 
-            val transaction = context().supportFragmentManager.beginTransaction()
-            transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-
-            // detach prev fragment
-            multipleBackStack.peek()?.let { topItem ->
-                transaction.detach(topItem)
-            }
-
-            // add new fragment
-            rootFragmentBuilder.onFragment?.get()?.let {
-
-                val fragment = it(rootFragmentBuilder.fragmentTag, rootFragmentBuilder.actionTag)
-
-                rootFragmentBuilder.onContainerId?.get()?.let { containerId ->
-
-                    transaction.replace(containerId(), fragment, fragment.getFragmentInfo().fragmentTag)
-                    transaction.commitAllowingStateLoss()
-                    multipleBackStack.push(fragment)
-
-                    Log.d(TAG, multipleBackStack.toString())
-                }
-            }
+        // detach prev fragment
+        multipleBackStack.peek()?.let { topItem ->
+            transaction.detach(topItem)
         }
+
+        // add new fragment
+        transaction.replace(containerId, rootBackStackAbleFragment, rootBackStackAbleFragment.getRootFragmentInfo().rootFragmentTag)
+        transaction.commitAllowingStateLoss()
+        multipleBackStack.push(rootBackStackAbleFragment)
+
+        Log.d(TAG, multipleBackStack.toString())
     }
 
     fun pressBack(fragmentActivity: FragmentActivity) {
@@ -122,13 +117,13 @@ object MultipleBackStackManager {
         multipleBackStack.peek()?.let { rootFragment ->
 
             // if rootFragment has child, pop it and return
-            rootFragment.getFragmentInfo().stack.pop()?.let { childFragment ->
+            rootFragment.getRootFragmentInfo().stack.pop()?.let { childFragment ->
 
                 val transaction = rootFragment.childFragmentManager.beginTransaction()
                 transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
                 transaction.remove(childFragment)
 
-                rootFragment.getFragmentInfo().stack.peek()?.let { topItem ->
+                rootFragment.getRootFragmentInfo().stack.peek()?.let { topItem ->
                     transaction.attach(topItem)
                 }
                 transaction.commitAllowingStateLoss()

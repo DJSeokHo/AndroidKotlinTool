@@ -9,7 +9,6 @@ import com.swein.androidkotlintool.R
 import com.swein.androidkotlintool.framework.util.log.ILog
 import com.swein.androidkotlintool.main.examples.multiplebackstackforfragmentsinactivity.manager.MultipleBackStackManager
 import com.swein.androidkotlintool.main.examples.multiplebackstackforfragmentsinactivity.manager.childfragment.ChildBackStackAbleFragment
-import com.swein.androidkotlintool.main.examples.multiplebackstackforfragmentsinactivity.manager.childfragment.ChildFragmentBuilder
 import com.swein.androidkotlintool.main.examples.multiplebackstackforfragmentsinactivity.manager.childfragment.ChildFragmentInfo
 
 
@@ -55,6 +54,9 @@ class TextViewChildFragment(childFragmentInfo: ChildFragmentInfo): ChildBackStac
 
         textView.setOnClickListener {
 
+            MultipleBackStackManager.createChildFragmentOnCurrentRootFragment(
+                newInstance(ChildFragmentInfo(TAG, "textSub"), "$content child"),
+                R.id.container)
 
         }
 

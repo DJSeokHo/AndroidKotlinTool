@@ -1,8 +1,5 @@
 package com.swein.androidkotlintool.main.examples.multiplebackstackforfragmentsinactivity.manager.childfragment
 
-import com.swein.androidkotlintool.main.examples.multiplebackstackforfragmentsinactivity.manager.rootfragment.RootBackStackAbleFragment
-
-
 open class ChildBackStack {
 
     private var list = mutableListOf<ChildBackStackAbleFragment>()
@@ -20,8 +17,8 @@ open class ChildBackStack {
         var string = "--- child top\n"
         for (fragment in list.reversed()) {
             string +=
-                "${fragment.getFragmentInfo().actionTag} " +
-                        "${fragment.getFragmentInfo().fragmentTag}\n"
+                "${fragment.getChildFragmentInfo().childActionTag} " +
+                        "${fragment.getChildFragmentInfo().childFragmentTag}\n"
         }
         string += " --- child bottom\n"
         return string

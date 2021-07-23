@@ -8,10 +8,9 @@ import android.widget.TextView
 import com.swein.androidkotlintool.R
 import com.swein.androidkotlintool.framework.util.log.ILog
 import com.swein.androidkotlintool.main.examples.multiplebackstackforfragmentsinactivity.manager.MultipleBackStackManager
-import com.swein.androidkotlintool.main.examples.multiplebackstackforfragmentsinactivity.manager.childfragment.ChildFragmentBuilder
 import com.swein.androidkotlintool.main.examples.multiplebackstackforfragmentsinactivity.manager.childfragment.ChildFragmentInfo
-import com.swein.androidkotlintool.main.examples.multiplebackstackforfragmentsinactivity.manager.rootfragment.RootFragmentInfo
 import com.swein.androidkotlintool.main.examples.multiplebackstackforfragmentsinactivity.manager.rootfragment.RootBackStackAbleFragment
+import com.swein.androidkotlintool.main.examples.multiplebackstackforfragmentsinactivity.manager.rootfragment.RootFragmentInfo
 import com.swein.androidkotlintool.main.examples.multiplebackstackforfragmentsinactivity.rootfragments.childfragments.TextViewChildFragment
 
 class TextViewRootFragment(rootFragmentInfo: RootFragmentInfo): RootBackStackAbleFragment(rootFragmentInfo) {
@@ -57,20 +56,9 @@ class TextViewRootFragment(rootFragmentInfo: RootFragmentInfo): RootBackStackAbl
 
         textView.setOnClickListener {
 
-            MultipleBackStackManager.createChildFragment(
-                ChildFragmentBuilder.Builder()
-                    .setActionTag("textSub")
-                    .setFragmentTag(TextViewChildFragment.TAG)
-                    .setContainerIdInRootFragmentCallback {
-                        R.id.container
-                    }
-                    .setFragmentCallback { fragmentTag, actionTag ->
-                        TextViewChildFragment.newInstance(ChildFragmentInfo(fragmentTag, actionTag), "$content child")
-                    }
-                    .build(),
-                getFragmentInfo().fragmentTag,
-                getFragmentInfo().actionTag
-            )
+            MultipleBackStackManager.createChildFragmentOnCurrentRootFragment(
+                TextViewChildFragment.newInstance(ChildFragmentInfo(TextViewChildFragment.TAG, "textSub"), "$content child"),
+                R.id.container)
 
         }
 
