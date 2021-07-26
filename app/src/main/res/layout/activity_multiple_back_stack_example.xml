@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".main.examples.multiplebackstackforfragmentsinactivity.main.MultipleBackStackExampleActivity">
+    tools:context=".main.examples.multiplebackstackforfragmentsinactivity.main.MultipleBackStackExampleActivity"
+    android:background="@color/white">
     
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
@@ -23,7 +24,7 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:clickable="false"
-            app:fabAlignmentMode="end"
+            app:fabAlignmentMode="center"
             app:fabAnimationMode="slide"
             app:hideOnScroll="true"
             app:fabCradleMargin="5dp"

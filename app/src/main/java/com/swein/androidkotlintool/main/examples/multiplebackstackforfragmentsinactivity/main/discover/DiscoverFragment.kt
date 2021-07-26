@@ -1,33 +1,37 @@
 package com.swein.androidkotlintool.main.examples.multiplebackstackforfragmentsinactivity.main.discover
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import com.swein.androidkotlintool.R
+import com.swein.androidkotlintool.main.examples.multiplebackstackforfragmentsinactivity.multiplebackstackmanager.BackStackAbleFragment
+import com.swein.androidkotlintool.main.examples.multiplebackstackforfragmentsinactivity.multiplebackstackmanager.FragmentInfo
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+class DiscoverFragment(fragmentInfo: FragmentInfo): BackStackAbleFragment(fragmentInfo) {
 
-/**
- * A simple [Fragment] subclass.
- * Use the [DiscoverFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class DiscoverFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    companion object {
+
+        const val TAG = "DiscoverFragment"
+
+        @JvmStatic
+        fun newInstance(fragmentInfo: FragmentInfo) =
+            DiscoverFragment(fragmentInfo).apply {
+                arguments = Bundle().apply {
+                }
+            }
+    }
+
+    private lateinit var button: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+
         }
+
+        setAsRootFragment(R.id.container)
     }
 
     override fun onCreateView(
@@ -38,23 +42,18 @@ class DiscoverFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_discover, container, false)
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment DiscoverFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            DiscoverFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        button = view.findViewById(R.id.button)
+
+        button.setOnClickListener {
+
+//            MultipleBackStackManager.createChildFragmentOnCurrentRootFragment(
+//                TextViewChildFragment.newInstance(FragmentInfo(TextViewChildFragment.TAG, "textSub"), "$content child"))
+
+        }
+
     }
 }

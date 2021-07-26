@@ -111,7 +111,7 @@ object MultipleBackStackManager {
         Log.d(TAG, multipleBackStack.toString())
     }
 
-    fun pressBack(fragmentActivity: FragmentActivity) {
+    fun pressBack(fragmentActivity: FragmentActivity, uiUpdateByCurrentActionTag: (actionTag: String, isRoot: Boolean) -> Unit) {
 
         multipleBackStack.peek()?.let { rootFragment ->
 
@@ -124,6 +124,7 @@ object MultipleBackStackManager {
 
                 rootFragment.getFragmentInfo().stack.peek()?.let { topItem ->
                     transaction.attach(topItem)
+                    uiUpdateByCurrentActionTag(topItem.getFragmentInfo().actionTag, topItem.getFragmentInfo().containerInFragment != -1)
                 }
                 transaction.commitAllowingStateLoss()
 
@@ -141,6 +142,7 @@ object MultipleBackStackManager {
 
             multipleBackStack.peek()?.let { topItem ->
                 transaction.attach(topItem)
+                uiUpdateByCurrentActionTag(topItem.getFragmentInfo().actionTag, topItem.getFragmentInfo().containerInFragment != -1)
             }
             transaction.commitAllowingStateLoss()
         }

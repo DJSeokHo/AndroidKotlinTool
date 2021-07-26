@@ -5,10 +5,12 @@ import androidx.fragment.app.FragmentActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.swein.androidkotlintool.R
+import com.swein.androidkotlintool.main.examples.multiplebackstackforfragmentsinactivity.main.discover.DiscoverFragment
+import com.swein.androidkotlintool.main.examples.multiplebackstackforfragmentsinactivity.main.favorite.FavoriteFragment
+import com.swein.androidkotlintool.main.examples.multiplebackstackforfragmentsinactivity.main.home.HomeFragment
+import com.swein.androidkotlintool.main.examples.multiplebackstackforfragmentsinactivity.main.profile.ProfileFragment
 import com.swein.androidkotlintool.main.examples.multiplebackstackforfragmentsinactivity.multiplebackstackmanager.FragmentInfo
 import com.swein.androidkotlintool.main.examples.multiplebackstackforfragmentsinactivity.multiplebackstackmanager.MultipleBackStackManager
-import com.swein.androidkotlintool.main.examples.multiplebackstackforfragmentsinactivity.rootfragments.ScrollViewRootFragment
-import com.swein.androidkotlintool.main.examples.multiplebackstackforfragmentsinactivity.rootfragments.TextViewRootFragment
 
 class MultipleBackStackExampleActivity : FragmentActivity() {
 
@@ -26,7 +28,7 @@ class MultipleBackStackExampleActivity : FragmentActivity() {
 
         setListener()
 
-        bottomNavigationView.selectedItemId = R.id.menuOne
+        bottomNavigationView.selectedItemId = R.id.menuHome
     }
 
     private fun setListener() {
@@ -34,30 +36,33 @@ class MultipleBackStackExampleActivity : FragmentActivity() {
             when (it.itemId) {
                 R.id.menuHome -> {
 
-//                    MultipleBackStackManager.createRootFragment(this, ScrollViewRootFragment.newInstance(
-//                        FragmentInfo(ScrollViewRootFragment.TAG, "menuOne")
-//                    ), R.id.frameLayoutContainer)
-
+                    MultipleBackStackManager.createRootFragment(this, HomeFragment.newInstance(
+                        FragmentInfo(HomeFragment.TAG, "menuHome")
+                    ), R.id.frameLayoutContainer)
 
                     return@setOnItemSelectedListener true
                 }
                 R.id.menuDiscover -> {
 
-//                    MultipleBackStackManager.createRootFragment(this, TextViewRootFragment.newInstance(
-//                        FragmentInfo(TextViewRootFragment.TAG, "menuTwo"), "menuTwo"
-//                    ), R.id.frameLayoutContainer)
+                    MultipleBackStackManager.createRootFragment(this, DiscoverFragment.newInstance(
+                        FragmentInfo(DiscoverFragment.TAG, "menuDiscover")
+                    ), R.id.frameLayoutContainer)
 
                     return@setOnItemSelectedListener true
                 }
-                R.id.menuNotification -> {
+                R.id.menuFavorite -> {
 
-//                    MultipleBackStackManager.createRootFragment(this, TextViewRootFragment.newInstance(
-//                        FragmentInfo(TextViewRootFragment.TAG, "menuThree"), "menuThree"
-//                    ), R.id.frameLayoutContainer)
+                    MultipleBackStackManager.createRootFragment(this, FavoriteFragment.newInstance(
+                        FragmentInfo(FavoriteFragment.TAG, "menuFavorite")
+                    ), R.id.frameLayoutContainer)
 
                     return@setOnItemSelectedListener true
                 }
                 R.id.menuProfile -> {
+
+                    MultipleBackStackManager.createRootFragment(this, ProfileFragment.newInstance(
+                        FragmentInfo(ProfileFragment.TAG, "menuProfile")
+                    ), R.id.frameLayoutContainer)
 
                     return@setOnItemSelectedListener true
                 }
@@ -72,7 +77,24 @@ class MultipleBackStackExampleActivity : FragmentActivity() {
     }
 
     override fun onBackPressed() {
-        MultipleBackStackManager.pressBack(this)
+        MultipleBackStackManager.pressBack(this) { actionTag: String, isRoot: Boolean ->
+            if (isRoot) {
+                when (actionTag) {
+                    "menuHome" -> {
+                        bottomNavigationView.selectedItemId = R.id.menuHome
+                    }
+                    "menuDiscover" -> {
+                        bottomNavigationView.selectedItemId = R.id.menuDiscover
+                    }
+                    "menuFavorite" -> {
+                        bottomNavigationView.selectedItemId = R.id.menuFavorite
+                    }
+                    "menuProfile" -> {
+                        bottomNavigationView.selectedItemId = R.id.menuProfile
+                    }
+                }
+            }
+        }
     }
 
     override fun onDestroy() {

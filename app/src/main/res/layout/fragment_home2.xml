@@ -3,12 +3,51 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".main.examples.multiplebackstackforfragmentsinactivity.main.home.HomeFragment">
+    tools:context=".main.examples.multiplebackstackforfragmentsinactivity.main.home.HomeFragment"
+    android:id="@+id/container">
     
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent">
+        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            
+            <Button
+                android:id="@+id/buttonRed"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:text="Home Red"
+                android:textSize="13pt"
+                android:backgroundTint="#f00"
+                android:layout_width="match_parent"
+                android:layout_height="500dp"/>
+            
+            <Button
+                android:id="@+id/buttonGreen"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:text="Home Green"
+                android:textSize="13pt"
+                android:backgroundTint="#0f0"
+                android:layout_width="match_parent"
+                android:layout_height="500dp"/>
+            
+            <Button
+                android:id="@+id/buttonBlue"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:text="Home Blue"
+                android:textSize="13pt"
+                android:backgroundTint="#00f"
+                android:layout_width="match_parent"
+                android:layout_height="500dp"/>
+        
+        </LinearLayout>
+    
+    </ScrollView>
 
 </FrameLayout>

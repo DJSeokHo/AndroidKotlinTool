@@ -9,6 +9,11 @@ class BackStack {
     fun count(): Int = list.size
 
     override fun toString(): String {
+
+        if (list.isEmpty()) {
+            return ""
+        }
+
         var string = "\ntop\n"
         for (fragment in list.reversed()) {
             string +=
