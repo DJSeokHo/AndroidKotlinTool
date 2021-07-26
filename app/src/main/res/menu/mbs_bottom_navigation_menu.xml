@@ -2,19 +2,15 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     
     <item
-        android:id="@+id/menuOne"
+        android:id="@+id/menuHome"
         android:icon="@mipmap/ti_home_un_selected"
-        android:title="One"/>
+        android:title="Home"/>
   
     <item
-        android:id="@+id/menuTwo"
+        android:id="@+id/menuDiscover"
         android:icon="@mipmap/ti_discover_un_selected"
-        android:title="Two"/>
-    
-    <item
-        android:id="@+id/menuThree"
-        android:icon="@mipmap/ti_profile_un_selected"
-        android:title="Three"/>
+        android:title="Discover"/>
+   
     
     <!-- spacer of center floating action button -->
     <item
@@ -22,4 +18,13 @@
         android:title=""
         />
     
+    <item
+        android:id="@+id/menuNotification"
+        android:icon="@mipmap/ti_notification_un_selected"
+        android:title="Notification"/>
+    
+    <item
+        android:id="@+id/menuProfile"
+        android:icon="@mipmap/ti_profile_un_selected"
+        android:title="Profile"/>
 </menu>

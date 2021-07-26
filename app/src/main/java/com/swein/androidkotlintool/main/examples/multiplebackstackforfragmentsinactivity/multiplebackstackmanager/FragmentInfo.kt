@@ -1,4 +1,4 @@
-package com.swein.androidkotlintool.main.examples.multiplebackstackforfragmentsinactivity.manager
+package com.swein.androidkotlintool.main.examples.multiplebackstackforfragmentsinactivity.multiplebackstackmanager
 
 data class FragmentInfo(
     val fragmentTag: String,

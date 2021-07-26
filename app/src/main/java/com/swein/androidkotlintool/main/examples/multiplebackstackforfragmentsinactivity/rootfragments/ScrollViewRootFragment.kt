@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import android.widget.Button
 import com.swein.androidkotlintool.R
 import com.swein.androidkotlintool.framework.util.log.ILog
-import com.swein.androidkotlintool.main.examples.multiplebackstackforfragmentsinactivity.manager.BackStackAbleFragment
-import com.swein.androidkotlintool.main.examples.multiplebackstackforfragmentsinactivity.manager.FragmentInfo
+import com.swein.androidkotlintool.main.examples.multiplebackstackforfragmentsinactivity.multiplebackstackmanager.BackStackAbleFragment
+import com.swein.androidkotlintool.main.examples.multiplebackstackforfragmentsinactivity.multiplebackstackmanager.FragmentInfo
 
 class ScrollViewRootFragment(fragmentInfo: FragmentInfo) :
     BackStackAbleFragment(fragmentInfo) {

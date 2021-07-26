@@ -1,4 +1,4 @@
-package com.swein.androidkotlintool.main.examples.multiplebackstackforfragmentsinactivity.manager
+package com.swein.androidkotlintool.main.examples.multiplebackstackforfragmentsinactivity.multiplebackstackmanager
 
 import android.util.Log
 import androidx.fragment.app.FragmentActivity

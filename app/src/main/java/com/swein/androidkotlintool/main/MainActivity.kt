@@ -23,8 +23,7 @@ import com.swein.androidkotlintool.framework.util.eventsplitshot.subject.ESSArro
 import com.swein.androidkotlintool.framework.util.glide.SHGlide
 import com.swein.androidkotlintool.framework.util.log.ILog
 import com.swein.androidkotlintool.framework.util.screen.ScreenUtil
-import com.swein.androidkotlintool.main.examples.multiplebackstackforfragmentsinactivity.MultipleBackStackExampleActivity
-import com.swein.androidkotlintool.main.examples.multipleselectionrecyclerview.MultipleSelectionRecyclerViewExampleActivity
+import com.swein.androidkotlintool.main.examples.multiplebackstackforfragmentsinactivity.main.MultipleBackStackExampleActivity
 import com.swein.androidkotlintool.main.moduledemo.ModuleDemoActivity
 import com.swein.androidkotlintool.template.bottomtab.activity.TabHostActivity
 import com.swein.androidkotlintool.template.handlerthread.HandlerThreadTemplateActivity

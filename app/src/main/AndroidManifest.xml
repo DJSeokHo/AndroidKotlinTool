@@ -49,8 +49,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".main.examples.multipleselectionrecyclerview.MultipleSelectionRecyclerViewExampleActivity"></activity>
-        <activity android:name=".main.examples.multiplebackstackforfragmentsinactivity.MultipleBackStackExampleActivity" />
+        <activity android:name=".main.examples.multiplebackstackforfragmentsinactivity.post.PostActivity"></activity>
+        <activity android:name=".main.examples.multipleselectionrecyclerview.MultipleSelectionRecyclerViewExampleActivity" />
+        <activity android:name=".main.examples.multiplebackstackforfragmentsinactivity.main.MultipleBackStackExampleActivity" />
         <activity android:name=".main.jetpackexample.navigation.post.PostActivity" />
         <activity android:name=".main.jetpackexample.navigation.sign.SignActivity" />
         <activity android:name=".main.jetpackexample.navigation.JetpackNavigationExampleActivity" />
