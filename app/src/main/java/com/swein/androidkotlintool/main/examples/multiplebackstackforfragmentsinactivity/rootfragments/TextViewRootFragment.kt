@@ -37,6 +37,7 @@ class TextViewRootFragment(rootFragmentInfo: RootFragmentInfo): RootBackStackAbl
         arguments?.let {
             content = it.getString("content", "")
         }
+
     }
 
     override fun onCreateView(
@@ -57,13 +58,14 @@ class TextViewRootFragment(rootFragmentInfo: RootFragmentInfo): RootBackStackAbl
         textView.setOnClickListener {
 
             MultipleBackStackManager.createChildFragmentOnCurrentRootFragment(
-                TextViewChildFragment.newInstance(ChildFragmentInfo(TextViewChildFragment.TAG, "textSub"), "$content child"),
-                R.id.container)
+                TextViewChildFragment.newInstance(ChildFragmentInfo(TextViewChildFragment.TAG, "textSub"), "$content child"))
 
         }
 
         textView.text = content
     }
+
+
 
     override fun onDestroyView() {
         ILog.debug("???", "onDestroyView $content")

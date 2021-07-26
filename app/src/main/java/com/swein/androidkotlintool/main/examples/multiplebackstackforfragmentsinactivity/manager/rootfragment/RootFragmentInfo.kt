@@ -5,5 +5,8 @@ import com.swein.androidkotlintool.main.examples.multiplebackstackforfragmentsin
 data class RootFragmentInfo(
     val rootFragmentTag: String,
     val rootActionTag: String,
+    val containerInRootFragment: Int,
     val stack: ChildBackStack = ChildBackStack()
-)
+) {
+
+}

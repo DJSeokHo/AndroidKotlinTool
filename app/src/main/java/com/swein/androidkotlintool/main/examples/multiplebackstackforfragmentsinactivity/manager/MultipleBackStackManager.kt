@@ -17,7 +17,7 @@ object MultipleBackStackManager {
 
     private var multipleBackStack = RootBackStack()
 
-    fun createChildFragmentOnCurrentRootFragment(childBackStackAbleFragment: ChildBackStackAbleFragment, containerId: Int) {
+    fun createChildFragmentOnCurrentRootFragment(childBackStackAbleFragment: ChildBackStackAbleFragment) {
 
         // find parent fragment first
         multipleBackStack.peek()?.let { rootFragment ->
@@ -31,7 +31,7 @@ object MultipleBackStackManager {
                 val rootTransaction = rootFragment.childFragmentManager.beginTransaction()
                 rootTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
 
-                rootTransaction.replace(containerId, childBackStackAbleFragment, childBackStackAbleFragment.getChildFragmentInfo().childFragmentTag)
+                rootTransaction.replace(rootFragment.getRootFragmentInfo().containerInRootFragment, childBackStackAbleFragment, childBackStackAbleFragment.getChildFragmentInfo().childFragmentTag)
                 rootTransaction.commitAllowingStateLoss()
                 rootFragment.getRootFragmentInfo().stack.push(childBackStackAbleFragment)
 
@@ -47,7 +47,7 @@ object MultipleBackStackManager {
                 rootTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
                 rootTransaction.detach(childTopItem)
 
-                rootTransaction.replace(containerId, childBackStackAbleFragment, childBackStackAbleFragment.getChildFragmentInfo().childFragmentTag)
+                rootTransaction.replace(rootFragment.getRootFragmentInfo().containerInRootFragment, childBackStackAbleFragment, childBackStackAbleFragment.getChildFragmentInfo().childFragmentTag)
                 rootTransaction.commitAllowingStateLoss()
                 rootFragment.getRootFragmentInfo().stack.push(childBackStackAbleFragment)
 

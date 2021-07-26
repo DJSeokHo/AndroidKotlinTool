@@ -2,7 +2,7 @@ package com.swein.androidkotlintool.main.examples.multiplebackstackforfragmentsi
 
 import androidx.fragment.app.Fragment
 
-open class ChildBackStackAbleFragment(private val childFragmentInfo: ChildFragmentInfo): Fragment() {
+class ChildBackStackAbleFragment(private val childFragmentInfo: ChildFragmentInfo): Fragment() {
 
     fun getChildFragmentInfo(): ChildFragmentInfo {
         return childFragmentInfo

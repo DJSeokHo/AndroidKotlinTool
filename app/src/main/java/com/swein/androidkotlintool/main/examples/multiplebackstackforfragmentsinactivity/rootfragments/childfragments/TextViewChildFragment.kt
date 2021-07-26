@@ -55,8 +55,7 @@ class TextViewChildFragment(childFragmentInfo: ChildFragmentInfo): ChildBackStac
         textView.setOnClickListener {
 
             MultipleBackStackManager.createChildFragmentOnCurrentRootFragment(
-                newInstance(ChildFragmentInfo(TAG, "textSub"), "$content child"),
-                R.id.container)
+                newInstance(ChildFragmentInfo(TAG, "textSub"), "$content child"))
 
         }
 
