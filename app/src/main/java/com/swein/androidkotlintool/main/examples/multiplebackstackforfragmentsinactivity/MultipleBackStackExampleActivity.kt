@@ -35,7 +35,7 @@ class MultipleBackStackExampleActivity : FragmentActivity() {
                 R.id.menuOne -> {
 
                     MultipleBackStackManager.createRootFragment(this, ScrollViewRootFragment.newInstance(
-                        FragmentInfo(ScrollViewRootFragment.TAG, "menuOne", R.id.container)
+                        FragmentInfo(ScrollViewRootFragment.TAG, "menuOne")
                     ), R.id.frameLayoutContainer)
 
 
@@ -44,7 +44,7 @@ class MultipleBackStackExampleActivity : FragmentActivity() {
                 R.id.menuTwo -> {
 
                     MultipleBackStackManager.createRootFragment(this, TextViewRootFragment.newInstance(
-                        FragmentInfo(TextViewRootFragment.TAG, "menuTwo", R.id.container), "menuTwo"
+                        FragmentInfo(TextViewRootFragment.TAG, "menuTwo"), "menuTwo"
                     ), R.id.frameLayoutContainer)
 
                     return@setOnItemSelectedListener true
@@ -52,7 +52,7 @@ class MultipleBackStackExampleActivity : FragmentActivity() {
                 R.id.menuThree -> {
 
                     MultipleBackStackManager.createRootFragment(this, TextViewRootFragment.newInstance(
-                        FragmentInfo(TextViewRootFragment.TAG, "menuThree", R.id.container), "menuThree"
+                        FragmentInfo(TextViewRootFragment.TAG, "menuThree"), "menuThree"
                     ), R.id.frameLayoutContainer)
 
                     return@setOnItemSelectedListener true

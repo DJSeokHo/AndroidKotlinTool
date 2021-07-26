@@ -4,7 +4,7 @@ import android.util.Log
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentTransaction
 import com.swein.androidkotlintool.framework.util.log.ILog
-
+import kotlin.Exception
 
 object MultipleBackStackManager {
 
@@ -16,6 +16,10 @@ object MultipleBackStackManager {
 
         // find parent fragment first
         multipleBackStack.peek()?.let { rootFragment ->
+
+            if (rootFragment.getFragmentInfo().containerInFragment == -1) {
+                throw Exception("check container id of your root fragment, run setAsRootFragment(containerIdInRootFragment: Int) in onCreate method of your root fragment")
+            }
 
             ILog.debug("???", "${rootFragment.getFragmentInfo().actionTag} ${rootFragment.getFragmentInfo().fragmentTag} ${rootFragment.getFragmentInfo().stack.count()}")
 

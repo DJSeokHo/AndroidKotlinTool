@@ -37,6 +37,7 @@ class TextViewRootFragment(fragmentInfo: FragmentInfo): BackStackAbleFragment(fr
             content = it.getString("content", "")
         }
 
+        setAsRootFragment(R.id.container)
     }
 
     override fun onCreateView(

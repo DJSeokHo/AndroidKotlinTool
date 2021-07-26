@@ -7,4 +7,8 @@ open class BackStackAbleFragment(private val fragmentInfo: FragmentInfo): Fragme
     fun getFragmentInfo(): FragmentInfo {
         return fragmentInfo
     }
+
+    fun setAsRootFragment(containerIdInRootFragment: Int) {
+        fragmentInfo.containerInFragment = containerIdInRootFragment
+    }
 }
