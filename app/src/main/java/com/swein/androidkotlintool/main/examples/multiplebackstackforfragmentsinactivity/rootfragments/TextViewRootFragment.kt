@@ -7,21 +7,20 @@ import android.view.ViewGroup
 import android.widget.TextView
 import com.swein.androidkotlintool.R
 import com.swein.androidkotlintool.framework.util.log.ILog
+import com.swein.androidkotlintool.main.examples.multiplebackstackforfragmentsinactivity.manager.BackStackAbleFragment
+import com.swein.androidkotlintool.main.examples.multiplebackstackforfragmentsinactivity.manager.FragmentInfo
 import com.swein.androidkotlintool.main.examples.multiplebackstackforfragmentsinactivity.manager.MultipleBackStackManager
-import com.swein.androidkotlintool.main.examples.multiplebackstackforfragmentsinactivity.manager.childfragment.ChildFragmentInfo
-import com.swein.androidkotlintool.main.examples.multiplebackstackforfragmentsinactivity.manager.rootfragment.RootBackStackAbleFragment
-import com.swein.androidkotlintool.main.examples.multiplebackstackforfragmentsinactivity.manager.rootfragment.RootFragmentInfo
 import com.swein.androidkotlintool.main.examples.multiplebackstackforfragmentsinactivity.rootfragments.childfragments.TextViewChildFragment
 
-class TextViewRootFragment(rootFragmentInfo: RootFragmentInfo): RootBackStackAbleFragment(rootFragmentInfo) {
+class TextViewRootFragment(fragmentInfo: FragmentInfo): BackStackAbleFragment(fragmentInfo) {
     
     companion object {
 
         const val TAG = "TextViewRootFragment"
 
         @JvmStatic
-        fun newInstance(rootFragmentInfo: RootFragmentInfo, content: String) =
-            TextViewRootFragment(rootFragmentInfo).apply {
+        fun newInstance(fragmentInfo: FragmentInfo, content: String) =
+            TextViewRootFragment(fragmentInfo).apply {
                 arguments = Bundle().apply {
                     this.putString("content", content)
                 }
@@ -58,7 +57,7 @@ class TextViewRootFragment(rootFragmentInfo: RootFragmentInfo): RootBackStackAbl
         textView.setOnClickListener {
 
             MultipleBackStackManager.createChildFragmentOnCurrentRootFragment(
-                TextViewChildFragment.newInstance(ChildFragmentInfo(TextViewChildFragment.TAG, "textSub"), "$content child"))
+                TextViewChildFragment.newInstance(FragmentInfo(TextViewChildFragment.TAG, "textSub"), "$content child"))
 
         }
 

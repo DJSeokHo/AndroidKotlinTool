@@ -7,20 +7,20 @@ import android.view.ViewGroup
 import android.widget.TextView
 import com.swein.androidkotlintool.R
 import com.swein.androidkotlintool.framework.util.log.ILog
+import com.swein.androidkotlintool.main.examples.multiplebackstackforfragmentsinactivity.manager.BackStackAbleFragment
+import com.swein.androidkotlintool.main.examples.multiplebackstackforfragmentsinactivity.manager.FragmentInfo
 import com.swein.androidkotlintool.main.examples.multiplebackstackforfragmentsinactivity.manager.MultipleBackStackManager
-import com.swein.androidkotlintool.main.examples.multiplebackstackforfragmentsinactivity.manager.childfragment.ChildBackStackAbleFragment
-import com.swein.androidkotlintool.main.examples.multiplebackstackforfragmentsinactivity.manager.childfragment.ChildFragmentInfo
 
 
-class TextViewChildFragment(childFragmentInfo: ChildFragmentInfo): ChildBackStackAbleFragment(childFragmentInfo) {
+class TextViewChildFragment(fragmentInfo: FragmentInfo): BackStackAbleFragment(fragmentInfo) {
 
     companion object {
 
         const val TAG = "TextViewChildFragment"
 
         @JvmStatic
-        fun newInstance(childFragmentInfo: ChildFragmentInfo, content: String) =
-            TextViewChildFragment(childFragmentInfo).apply {
+        fun newInstance(fragmentInfo: FragmentInfo, content: String) =
+            TextViewChildFragment(fragmentInfo).apply {
                 arguments = Bundle().apply {
                     this.putString("content", content)
                 }
@@ -55,7 +55,7 @@ class TextViewChildFragment(childFragmentInfo: ChildFragmentInfo): ChildBackStac
         textView.setOnClickListener {
 
             MultipleBackStackManager.createChildFragmentOnCurrentRootFragment(
-                newInstance(ChildFragmentInfo(TAG, "textSub"), "$content child"))
+                newInstance(FragmentInfo(TAG, "textSub"), "$content child"))
 
         }
 

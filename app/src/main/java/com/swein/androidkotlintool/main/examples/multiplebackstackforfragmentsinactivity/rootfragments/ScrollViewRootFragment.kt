@@ -7,19 +7,19 @@ import android.view.ViewGroup
 import android.widget.Button
 import com.swein.androidkotlintool.R
 import com.swein.androidkotlintool.framework.util.log.ILog
-import com.swein.androidkotlintool.main.examples.multiplebackstackforfragmentsinactivity.manager.rootfragment.RootFragmentInfo
-import com.swein.androidkotlintool.main.examples.multiplebackstackforfragmentsinactivity.manager.rootfragment.RootBackStackAbleFragment
+import com.swein.androidkotlintool.main.examples.multiplebackstackforfragmentsinactivity.manager.BackStackAbleFragment
+import com.swein.androidkotlintool.main.examples.multiplebackstackforfragmentsinactivity.manager.FragmentInfo
 
-class ScrollViewRootFragment(rootFragmentInfo: RootFragmentInfo) :
-    RootBackStackAbleFragment(rootFragmentInfo) {
+class ScrollViewRootFragment(fragmentInfo: FragmentInfo) :
+    BackStackAbleFragment(fragmentInfo) {
 
     companion object {
 
         const val TAG = "ScrollViewRootFragment"
 
         @JvmStatic
-        fun newInstance(rootFragmentInfo: RootFragmentInfo) =
-            ScrollViewRootFragment(rootFragmentInfo).apply {
+        fun newInstance(fragmentInfo: FragmentInfo) =
+            ScrollViewRootFragment(fragmentInfo).apply {
                 arguments = Bundle().apply {
 
                 }

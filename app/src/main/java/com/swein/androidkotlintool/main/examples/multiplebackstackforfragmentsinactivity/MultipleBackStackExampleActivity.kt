@@ -5,7 +5,7 @@ import androidx.fragment.app.FragmentActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.swein.androidkotlintool.R
-import com.swein.androidkotlintool.main.examples.multiplebackstackforfragmentsinactivity.manager.rootfragment.RootFragmentInfo
+import com.swein.androidkotlintool.main.examples.multiplebackstackforfragmentsinactivity.manager.FragmentInfo
 import com.swein.androidkotlintool.main.examples.multiplebackstackforfragmentsinactivity.manager.MultipleBackStackManager
 import com.swein.androidkotlintool.main.examples.multiplebackstackforfragmentsinactivity.rootfragments.ScrollViewRootFragment
 import com.swein.androidkotlintool.main.examples.multiplebackstackforfragmentsinactivity.rootfragments.TextViewRootFragment
@@ -35,7 +35,7 @@ class MultipleBackStackExampleActivity : FragmentActivity() {
                 R.id.menuOne -> {
 
                     MultipleBackStackManager.createRootFragment(this, ScrollViewRootFragment.newInstance(
-                        RootFragmentInfo(ScrollViewRootFragment.TAG, "menuOne", R.id.container)
+                        FragmentInfo(ScrollViewRootFragment.TAG, "menuOne", R.id.container)
                     ), R.id.frameLayoutContainer)
 
 
@@ -44,7 +44,7 @@ class MultipleBackStackExampleActivity : FragmentActivity() {
                 R.id.menuTwo -> {
 
                     MultipleBackStackManager.createRootFragment(this, TextViewRootFragment.newInstance(
-                        RootFragmentInfo(TextViewRootFragment.TAG, "menuTwo", R.id.container), "menuTwo"
+                        FragmentInfo(TextViewRootFragment.TAG, "menuTwo", R.id.container), "menuTwo"
                     ), R.id.frameLayoutContainer)
 
                     return@setOnItemSelectedListener true
@@ -52,7 +52,7 @@ class MultipleBackStackExampleActivity : FragmentActivity() {
                 R.id.menuThree -> {
 
                     MultipleBackStackManager.createRootFragment(this, TextViewRootFragment.newInstance(
-                        RootFragmentInfo(TextViewRootFragment.TAG, "menuThree", R.id.container), "menuThree"
+                        FragmentInfo(TextViewRootFragment.TAG, "menuThree", R.id.container), "menuThree"
                     ), R.id.frameLayoutContainer)
 
                     return@setOnItemSelectedListener true
