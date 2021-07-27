@@ -11,6 +11,9 @@ class ESSArrows {
         const val DISABLE_LIST_ITEM_CLICK = "DISABLE_LIST_ITEM_CLICK"
 
         const val SET_SELECTED_IMAGE_LIST = "SET_SELECTED_IMAGE_LIST"
+        const val PHONE_CERT_SUCCESS = "PHONE_CERT_SUCCESS"
+        const val PAYMENT_SUCCESS = "PAYMENT_SUCCESS"
+        const val PAYMENT_FAIL = "PAYMENT_FAIL"
     }
 
 }
