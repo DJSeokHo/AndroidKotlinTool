@@ -216,7 +216,7 @@ class OTPVerificationCodeViewExampleActivity : AppCompatActivity() {
         editTextFive.setText("")
         editTextSix.setText("")
 
-        initFocus()
+
     }
 
     private fun verifyOTPCode() {
@@ -251,6 +251,7 @@ class OTPVerificationCodeViewExampleActivity : AppCompatActivity() {
                     Toast.makeText(this, "Verify failed, input again", Toast.LENGTH_LONG).show()
                     textViewCountDown.text = ""
                     reset()
+                    initFocus()
                 }
 
                 hideProgress()
