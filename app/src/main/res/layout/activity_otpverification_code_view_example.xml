@@ -85,7 +85,75 @@
             android:background="@drawable/otp_item_bg"
             android:layout_width="40dp"
             android:layout_height="60dp"/>
+    
+        <EditText
+            android:enabled="false"
+            android:cursorVisible="false"
+            android:layout_marginStart="10dp"
+            android:imeOptions="actionNone"
+            android:maxLength="1"
+            android:maxLines="1"
+            android:inputType="numberDecimal"
+            android:gravity="center"
+            android:id="@+id/editTextFive"
+            android:textStyle="bold"
+            android:textSize="15pt"
+            android:textCursorDrawable="@null"
+            android:textColor="@color/white"
+            android:background="@drawable/otp_item_bg"
+            android:layout_width="40dp"
+            android:layout_height="60dp"/>
+    
+        <EditText
+            android:enabled="false"
+            android:cursorVisible="false"
+            android:layout_marginStart="10dp"
+            android:imeOptions="actionNone"
+            android:maxLength="1"
+            android:maxLines="1"
+            android:inputType="numberDecimal"
+            android:gravity="center"
+            android:id="@+id/editTextSix"
+            android:textStyle="bold"
+            android:textSize="15pt"
+            android:textCursorDrawable="@null"
+            android:textColor="@color/white"
+            android:background="@drawable/otp_item_bg"
+            android:layout_width="40dp"
+            android:layout_height="60dp"/>
         
     </LinearLayout>
     
+    <TextView
+        android:layout_gravity="center"
+        android:layout_marginBottom="100dp"
+        android:id="@+id/textViewCountDown"
+        android:textSize="10pt"
+        android:textColor="@color/white"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    
+    <Button
+        android:textSize="12pt"
+        android:backgroundTint="#999999"
+        android:layout_marginBottom="30dp"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:layout_gravity="center_horizontal|bottom"
+        android:id="@+id/buttonVerify"
+        android:text="Start verify"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    
+    <FrameLayout
+        android:visibility="gone"
+        android:id="@+id/progress"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        
+        <ProgressBar
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </FrameLayout>
 </FrameLayout>

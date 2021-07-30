@@ -23,6 +23,7 @@ import com.swein.androidkotlintool.framework.util.eventsplitshot.subject.ESSArro
 import com.swein.androidkotlintool.framework.util.glide.SHGlide
 import com.swein.androidkotlintool.framework.util.log.ILog
 import com.swein.androidkotlintool.framework.util.screen.ScreenUtil
+import com.swein.androidkotlintool.main.examples.firebaseauth.phone.FirebaseAuthPhoneActivity
 import com.swein.androidkotlintool.main.examples.multiplebackstackforfragmentsinactivity.main.MultipleBackStackExampleActivity
 import com.swein.androidkotlintool.main.examples.otpverificationcodeview.OTPVerificationCodeViewExampleActivity
 import com.swein.androidkotlintool.main.examples.webview.WebViewExampleActivity
@@ -130,7 +131,9 @@ class MainActivity : BasicPermissionActivity() {
 //        ActivityUtil.startNewActivityWithoutFinish(this, MultipleBackStackExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, MultipleSelectionRecyclerViewExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, WebViewExampleActivity::class.java)
+//        ActivityUtil.startNewActivityWithoutFinish(this, FirebaseAuthPhoneActivity::class.java)
         ActivityUtil.startNewActivityWithoutFinish(this, OTPVerificationCodeViewExampleActivity::class.java)
+
 
 //        SnackBarUtility.showSnackBar(frameLayoutRoot, "test")
 //        SnackBarUtility.showSnackBar(frameLayoutRoot, "test", "click me") {
