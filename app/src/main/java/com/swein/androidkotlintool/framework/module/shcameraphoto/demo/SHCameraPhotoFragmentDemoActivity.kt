@@ -3,6 +3,7 @@ package com.swein.androidkotlintool.framework.module.shcameraphoto.demo
 import android.Manifest
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentTransaction
 import com.swein.androidkotlintool.R
@@ -17,12 +18,21 @@ class SHCameraPhotoFragmentDemoActivity : FragmentActivity() {
 
         if (savedInstanceState == null) {
 
-            PermissionManager.requestPermission(this,
-                Manifest.permission.CAMERA,
-                Manifest.permission.READ_EXTERNAL_STORAGE) {
+//            EasyPermissionManager.requestPermission(this, 9999,
+//                Manifest.permission.CAMERA,
+//                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+//                Manifest.permission.READ_EXTERNAL_STORAGE
+//            ) {
+//                Log.d("EasyPermissionManager", "go go go")
+//            }
 
-                startCamera()
-            }
+//            PermissionManager.requestPermission(this,
+//                Manifest.permission.CAMERA,
+//                Manifest.permission.READ_EXTERNAL_STORAGE) {
+//
+//                startCamera()
+//            }
+
         }
 
     }
