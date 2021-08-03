@@ -15,6 +15,7 @@ import com.swein.androidkotlintool.constants.Constants
 import com.swein.androidkotlintool.framework.module.basicpermission.BasicPermissionActivity
 import com.swein.androidkotlintool.framework.module.basicpermission.PermissionManager
 import com.swein.androidkotlintool.framework.module.basicpermission.RequestPermission
+import com.swein.androidkotlintool.framework.module.shcameraphoto.demo.SHCameraPhotoFragmentDemoActivity
 import com.swein.androidkotlintool.framework.module.volley.VolleyModule
 import com.swein.androidkotlintool.framework.util.activity.ActivityUtil
 import com.swein.androidkotlintool.framework.util.display.DisplayUtil
@@ -104,7 +105,7 @@ class MainActivity : BasicPermissionActivity() {
 //        ActivityUtil.startNewActivityWithoutFinish(this, RoomDemoActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, RoomWithCoroutineAndStartUPExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, RoomWithCoroutineAndStartUPExampleActivity::class.java)
-//        ActivityUtil.startNewActivityWithoutFinish(this, SHCameraPhotoFragmentDemoActivity::class.java)
+        ActivityUtil.startNewActivityWithoutFinish(this, SHCameraPhotoFragmentDemoActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, WorkManagerDemoActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, LiveDataDemoActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, ViewModelDemoActivity::class.java)
@@ -132,7 +133,7 @@ class MainActivity : BasicPermissionActivity() {
 //        ActivityUtil.startNewActivityWithoutFinish(this, MultipleSelectionRecyclerViewExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, WebViewExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, FirebaseAuthPhoneActivity::class.java)
-        ActivityUtil.startNewActivityWithoutFinish(this, OTPVerificationCodeViewExampleActivity::class.java)
+//        ActivityUtil.startNewActivityWithoutFinish(this, OTPVerificationCodeViewExampleActivity::class.java)
 
 
 //        SnackBarUtility.showSnackBar(frameLayoutRoot, "test")

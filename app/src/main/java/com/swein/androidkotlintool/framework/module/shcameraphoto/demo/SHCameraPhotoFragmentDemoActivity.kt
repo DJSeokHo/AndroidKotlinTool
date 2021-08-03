@@ -1,10 +1,13 @@
 package com.swein.androidkotlintool.framework.module.shcameraphoto.demo
 
+import android.Manifest
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.FragmentActivity
+import androidx.fragment.app.FragmentTransaction
 import com.swein.androidkotlintool.R
 import com.swein.androidkotlintool.framework.module.shcameraphoto.camera.SHCameraPhotoFragment
-import com.swein.androidkotlintool.framework.util.activity.ActivityUtil
+import com.swein.androidkotlintool.main.examples.permissionexample.PermissionManager
 
 class SHCameraPhotoFragmentDemoActivity : FragmentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -14,33 +17,35 @@ class SHCameraPhotoFragmentDemoActivity : FragmentActivity() {
 
         if (savedInstanceState == null) {
 
-            ActivityUtil.addFragmentWithTAG(
-                this,
-                R.id.frameLayoutContainer,
-                SHCameraPhotoFragment.newInstance(10),
-                SHCameraPhotoFragment.TAG,
-                false,
-                null
-            )
+            PermissionManager.requestPermission(this,
+                Manifest.permission.CAMERA,
+                Manifest.permission.READ_EXTERNAL_STORAGE) {
 
+                startCamera()
+            }
         }
 
-//        AlbumSelectorWrapper.scanImageFile(
-//            this,
-//            object : AlbumSelectorWrapper.AlbumSelectorWrapperDelegate {
-//                override fun onSuccess(
-//                    albumFolderItemBeanList: MutableList<AlbumFolderItemBean>,
-//                    albumSelectorItemBeanList: MutableList<AlbumSelectorItemBean>
-//                ) {
-//                    ILog.debug("????", "${albumSelectorItemBeanList?.size}")
-//                }
-//
-//                override fun onError() {
-//                    ILog.debug("????", "onError")
-//                }
-//
-//            })
     }
 
+    private fun startCamera() {
 
+        supportFragmentManager.beginTransaction()
+            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+            .replace(R.id.frameLayoutContainer, SHCameraPhotoFragment.newInstance(10), SHCameraPhotoFragment.TAG)
+            .commitAllowingStateLoss()
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        PermissionManager.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        PermissionManager.onActivityResult(requestCode, resultCode)
+    }
 }

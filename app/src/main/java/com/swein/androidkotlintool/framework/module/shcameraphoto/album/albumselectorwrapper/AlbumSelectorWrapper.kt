@@ -21,7 +21,7 @@ object AlbumSelectorWrapper {
     fun scanMediaFile(context: Context, offset: Int, limit: Int,
                       onSuccess: (albumSelectorItemBeanList: MutableList<AlbumSelectorItemBean>) -> Unit, onError: () -> Unit) {
         val albumSelectorItemBeanList: MutableList<AlbumSelectorItemBean> = mutableListOf()
-
+        ILog.debug("??", "scanMediaFile")
         if (Environment.getExternalStorageState() != Environment.MEDIA_MOUNTED) {
             // storage error
             onError()
@@ -43,8 +43,8 @@ object AlbumSelectorWrapper {
 
         val selection = "${MediaStore.Images.Media.MIME_TYPE} = ? or ${MediaStore.Images.Media.MIME_TYPE} = ? or ${MediaStore.Images.Media.MIME_TYPE} = ?"
         val selectionArgs = arrayOf("image/jpeg", "image/jpg", "image/png")
-
-        contentResolver.query(
+        ILog.debug("??", "start")
+            contentResolver.query(
 
             uri, projection,
             Bundle().apply {
@@ -64,7 +64,7 @@ object AlbumSelectorWrapper {
             }, null
 
         )?.use { cursor ->
-
+            ILog.debug("??", "cursor ${cursor.count}")
             while (cursor.moveToNext()) {
                 /*
                 The number you are getting from your cursor is in the format of Unix Time which counts the number of seconds elapsed since 1 January 1970.

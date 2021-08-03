@@ -130,8 +130,8 @@ class AlbumSelectorViewHolder(
 
             ThreadUtility.startThread {
 
-//                AlbumSelectorWrapper.scanMediaFile(view.context, 0, 50, { albumSelectorItemBeanList ->
-                AlbumSelectorWrapper.scanFile(view.context, { albumSelectorItemBeanList ->
+                AlbumSelectorWrapper.scanMediaFile(view.context, 0, 50, { albumSelectorItemBeanList ->
+//                AlbumSelectorWrapper.scanFile(view.context, { albumSelectorItemBeanList ->
 
                     ThreadUtility.startUIThread(0) {
 

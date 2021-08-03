@@ -1,6 +1,5 @@
 package com.swein.androidkotlintool.framework.module.shcameraphoto.camera
 
-import android.Manifest
 import android.content.Context
 import android.content.res.Configuration
 import android.graphics.Bitmap
@@ -20,8 +19,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import com.google.common.util.concurrent.ListenableFuture
 import com.swein.androidkotlintool.R
-import com.swein.androidkotlintool.framework.module.basicpermission.PermissionManager
-import com.swein.androidkotlintool.framework.module.basicpermission.RequestPermission
 import com.swein.androidkotlintool.framework.module.shcameraphoto.album.selector.AlbumSelectorViewHolder
 import com.swein.androidkotlintool.framework.module.shcameraphoto.resultprocessor.SHCameraPhotoResultProcessor
 import com.swein.androidkotlintool.framework.module.shcameraphoto.shselectedimageviewholder.SHSelectedImageViewHolder
@@ -37,7 +34,7 @@ import com.swein.androidkotlintool.framework.util.sound.mediaplayer.MediaPlayerU
 import com.swein.androidkotlintool.framework.util.theme.ThemeUtil
 import com.swein.androidkotlintool.framework.util.thread.ThreadUtility
 import java.io.File
-import java.util.HashMap
+import java.util.*
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 import kotlin.math.abs
@@ -63,8 +60,6 @@ class SHCameraPhotoFragment : Fragment() {
         private const val RATIO_4_3_VALUE = 4.0 / 3.0
         private const val RATIO_16_9_VALUE = 16.0 / 9.0
     }
-
-    private lateinit var rootView: View
 
     private lateinit var imageButtonTake: ImageButton
     private lateinit var imageButtonSwitchCamera: ImageButton
@@ -142,9 +137,10 @@ class SHCameraPhotoFragment : Fragment() {
         super.onCreate(savedInstanceState)
 
         checkBundle()
+        initData()
     }
 
-    private fun initAudio() {
+    private fun initAudio(rootView: View) {
 
         AudioManagerUtil.init(rootView.context)
         MediaPlayerUtil.init(rootView.context, R.raw.camera_shutter_click) {
@@ -170,18 +166,16 @@ class SHCameraPhotoFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
-        rootView = inflater.inflate(R.layout.fragment_s_h_camera_photo, container, false)
-        initAudio()
-        initData()
-        findView()
-        setListener()
-
-        return rootView
+        return inflater.inflate(R.layout.fragment_s_h_camera_photo, container, false)
     }
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        initAudio(view)
+        findView(view)
+        setListener()
 
         initView()
         // Wait for the views to be properly laid out
@@ -207,7 +201,7 @@ class SHCameraPhotoFragment : Fragment() {
         textViewImageCount.text = "0"
     }
 
-    private fun findView() {
+    private fun findView(rootView: View) {
         frameLayoutRoot = rootView.findViewById(R.id.frameLayoutRoot)
 
         imageButtonTake = rootView.findViewById(R.id.imageButtonTake)
@@ -394,26 +388,16 @@ class SHCameraPhotoFragment : Fragment() {
         return AspectRatio.RATIO_16_9
     }
 
-    @RequestPermission(permissionCode = PermissionManager.PERMISSION_REQUEST_CAMERA_CODE)
     private fun initCamera(activity: FragmentActivity) {
 
-        if (PermissionManager.getInstance().requestPermission(
-                activity,
-                true,
-                PermissionManager.PERMISSION_REQUEST_CAMERA_CODE,
-                Manifest.permission.CAMERA
-            )) {
+        cameraProviderFuture = ProcessCameraProvider.getInstance(activity)
+        cameraProviderFuture.addListener({
 
-            cameraProviderFuture = ProcessCameraProvider.getInstance(activity)
-            cameraProviderFuture.addListener({
+            initCamera()
+            checkBackFrontCamera()
+            bindCameraUseCases()
 
-                initCamera()
-                checkBackFrontCamera()
-                bindCameraUseCases()
-
-            }, ContextCompat.getMainExecutor(activity))
-
-        }
+        }, ContextCompat.getMainExecutor(activity))
     }
 
     private fun checkBackFrontCamera() {
