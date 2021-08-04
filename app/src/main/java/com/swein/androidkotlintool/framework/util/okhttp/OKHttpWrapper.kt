@@ -132,7 +132,7 @@ object OKHttpWrapper {
 
         val requestBody: RequestBody
         // if form data
-        if (formData != null || fileList != null || fileNameList != null) {
+        if (formData != null) {
 
             val multipartBodyBuilder: MultipartBody.Builder = MultipartBody.Builder()
             multipartBodyBuilder.setType(MultipartBody.FORM)
