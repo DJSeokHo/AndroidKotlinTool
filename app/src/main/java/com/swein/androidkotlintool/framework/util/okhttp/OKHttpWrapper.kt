@@ -70,7 +70,6 @@ object OKHttpWrapper {
         val call = okHttpClient.newCall(request)
 
         // auto  thread
-        call.execute()
         call.enqueue(object : Callback {
             override fun onFailure(call: Call, e: IOException) {
                 okHttpWrapperDelegate.onFailure(call, e)
