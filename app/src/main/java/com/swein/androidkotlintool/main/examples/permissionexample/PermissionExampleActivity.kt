@@ -17,11 +17,16 @@ class PermissionExampleActivity : AppCompatActivity() {
         findViewById<Button>(R.id.button).setOnClickListener {
 
             PermissionManager.requestPermission(this,
-                Manifest.permission.CAMERA,
-                Manifest.permission.ACCESS_FINE_LOCATION,
-                Manifest.permission.ACCESS_COARSE_LOCATION,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                Manifest.permission.READ_EXTERNAL_STORAGE) {
+                9999,
+                "Permission",
+                "permissions are necessary",
+                "setting",
+                listOf(Manifest.permission.CAMERA,
+                    Manifest.permission.ACCESS_FINE_LOCATION,
+                    Manifest.permission.ACCESS_COARSE_LOCATION,
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                    Manifest.permission.READ_EXTERNAL_STORAGE)
+                ) {
 
                 yourMethodShouldRunAfterAllPermissionGranted()
             }

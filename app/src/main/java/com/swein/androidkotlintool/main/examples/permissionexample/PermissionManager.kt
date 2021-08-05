@@ -13,40 +13,54 @@ import java.util.*
 
 object PermissionManager {
 
-    private const val REQUEST_CODE = 9999
-
-    private var activity: WeakReference<Activity>? = null
+    private var activityWeakReference: WeakReference<Activity>? = null
     private var runnable: Runnable? = null
 
     private val permissionNotGrantedList = mutableListOf<String>()
 
+    private var permissionRequestCode = 6513
+
+    private var title = ""
+    private var message = ""
+    private var positiveButtonTitle = ""
+
     fun requestPermission(
         activity: Activity,
-        vararg permission: String,
+        requestCode: Int,
+        permissionDialogTitle: String,
+        permissionDialogMessage: String,
+        permissionDialogPositiveButtonTitle: String,
+        permissions: List<String>,
         runnableAfterPermissionGranted: Runnable? = null
     ) {
 
         permissionNotGrantedList.clear()
 
-        for (i in permission.indices) {
+        for (i in permissions.indices) {
 
-            if (ActivityCompat.checkSelfPermission(activity, permission[i]) != PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.checkSelfPermission(activity, permissions[i]) != PackageManager.PERMISSION_GRANTED) {
                 // if permission is not granted
-                permissionNotGrantedList.add(permission[i])
+                permissionNotGrantedList.add(permissions[i])
             }
         }
 
         if (permissionNotGrantedList.isNotEmpty()) {
 
+            title = permissionDialogTitle
+            message = permissionDialogMessage
+            positiveButtonTitle = permissionDialogPositiveButtonTitle
+
+            permissionRequestCode = requestCode
+
             // save the context and runnable
             runnable = runnableAfterPermissionGranted
-            this.activity = WeakReference(activity)
+            activityWeakReference = WeakReference(activity)
 
             // request permission
             ActivityCompat.requestPermissions(
                 activity,
                 permissionNotGrantedList.toTypedArray(),
-                REQUEST_CODE
+                permissionRequestCode
             )
         }
         else {
@@ -61,9 +75,9 @@ object PermissionManager {
         grantResults: IntArray
     ) {
 
-        if (requestCode == REQUEST_CODE) {
+        if (requestCode == permissionRequestCode) {
 
-            activity?.get()?.let {
+            activityWeakReference?.get()?.let {
 
                 val deniedPermissionList = mutableListOf<String>()
 
@@ -82,13 +96,13 @@ object PermissionManager {
                             // if users denied permission twice, than go to app setting page
                             AlertDialog.Builder(it).apply {
 
-                                this.setTitle("your title here")
-                                this.setMessage("your message here. For example, why need to request permissions")
-                                this.setPositiveButton("Confirm") { _: DialogInterface?, _: Int ->
+                                this.setTitle(title)
+                                this.setMessage(message)
+                                this.setPositiveButton(positiveButtonTitle) { _: DialogInterface?, _: Int ->
                                     val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
                                     val uri = Uri.fromParts("package", it.packageName, null)
                                     intent.data = uri
-                                    it.startActivityForResult(intent, REQUEST_CODE)
+                                    it.startActivityForResult(intent, permissionRequestCode)
                                 }
                                 this.create()
                                 this.show()
@@ -104,16 +118,18 @@ object PermissionManager {
                     runnable?.run()
                 }
 
-                activity = null
+                activityWeakReference?.clear()
+
             }
+
         }
     }
 
     fun onActivityResult(requestCode: Int, resultCode: Int) {
 
-        if (requestCode == REQUEST_CODE) {
+        if (requestCode == permissionRequestCode) {
 
-            activity?.get()?.let {
+            activityWeakReference?.get()?.let {
 
                 val deniedPermissionList = mutableListOf<String>()
 
@@ -133,7 +149,7 @@ object PermissionManager {
                     permissionNotGrantedList.clear()
                 }
 
-                activity = null
+                activityWeakReference?.clear()
 
             }
         }
