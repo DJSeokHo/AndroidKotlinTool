@@ -22,6 +22,11 @@ import java.lang.Exception
 
 private var okHttpClient: OkHttpClient = OkHttpClient.Builder().build()
 
+data class FormDataFile(
+    val filePath: String,
+    val fileName: String
+)
+
 object OKHttpWrapper {
 
     const val TAG = "OKHttpWrapper"
@@ -114,8 +119,7 @@ object OKHttpWrapper {
         url: String,
         header: MutableMap<String, String>? = null,
         formData: MutableMap<String, String>? = null,
-        fileList: MutableList<String>? = null,
-        fileNameList: MutableList<String>? = null,
+        fileList: MutableList<FormDataFile>? = null,
         fileKey: String = "",
         jsonObject: JSONObject? = null,
         okHttpWrapperDelegate: OKHttpWrapperDelegate
@@ -137,7 +141,7 @@ object OKHttpWrapper {
             val multipartBodyBuilder: MultipartBody.Builder = MultipartBody.Builder()
             multipartBodyBuilder.setType(MultipartBody.FORM)
 
-            formData?.let {
+            formData.let {
                 ILog.debug(TAG, "add form data")
                 for ((key, value) in formData) {
                     ILog.debug(TAG, "$key $value")
@@ -145,18 +149,18 @@ object OKHttpWrapper {
                 }
             }
 
-            if (fileList != null && fileNameList != null) {
+            if (fileList != null) {
                 ILog.debug(TAG, "add files")
                 var file: File
                 for (i in fileList.indices) {
-                    ILog.debug(TAG, fileNameList[i])
-                    val mediaType: MediaType = if (fileList[i].endsWith("png")) {
+                    ILog.debug(TAG, fileList[i].fileName)
+                    val mediaType: MediaType = if (fileList[i].fileName.endsWith("png")) {
                         "image/png".toMediaType()
                     } else {
                         "image/jpeg".toMediaType()
                     }
-                    file = File(fileList[i])
-                    multipartBodyBuilder.addFormDataPart(fileKey, fileNameList[i], RequestBody.create(mediaType, file))
+                    file = File(fileList[i].filePath)
+                    multipartBodyBuilder.addFormDataPart(fileKey, fileList[i].fileName, RequestBody.create(mediaType, file))
                 }
             }
 
@@ -198,8 +202,7 @@ object OKHttpWrapper {
         url: String,
         header: MutableMap<String, String>? = null,
         formData: MutableMap<String, String>? = null,
-        fileList: MutableList<String>? = null,
-        fileNameList: MutableList<String>? = null,
+        fileList: MutableList<FormDataFile>? = null,
         fileKey: String = "",
         jsonObject: JSONObject? = null
     ): Response {
@@ -215,12 +218,12 @@ object OKHttpWrapper {
 
         val requestBody: RequestBody
         // if form data
-        if (formData != null || fileList != null || fileNameList != null) {
+        if (formData != null) {
 
             val multipartBodyBuilder: MultipartBody.Builder = MultipartBody.Builder()
             multipartBodyBuilder.setType(MultipartBody.FORM)
 
-            formData?.let {
+            formData.let {
                 ILog.debug(TAG, "add form data")
                 for ((key, value) in formData) {
                     ILog.debug(TAG, "$key $value")
@@ -228,18 +231,18 @@ object OKHttpWrapper {
                 }
             }
 
-            if (fileList != null && fileNameList != null) {
+            if (fileList != null) {
                 ILog.debug(TAG, "add files")
                 var file: File
                 for (i in fileList.indices) {
-                    ILog.debug(TAG, fileNameList[i])
-                    val mediaType: MediaType = if (fileList[i].endsWith("png")) {
+                    ILog.debug(TAG, fileList[i].fileName)
+                    val mediaType: MediaType = if (fileList[i].fileName.endsWith("png")) {
                         "image/png".toMediaType()
                     } else {
                         "image/jpeg".toMediaType()
                     }
-                    file = File(fileList[i])
-                    multipartBodyBuilder.addFormDataPart(fileKey, fileNameList[i], RequestBody.create(mediaType, file))
+                    file = File(fileList[i].filePath)
+                    multipartBodyBuilder.addFormDataPart(fileKey, fileList[i].fileName, RequestBody.create(mediaType, file))
                 }
             }
 
@@ -273,8 +276,7 @@ object OKHttpWrapper {
         url: String,
         header: MutableMap<String, String>? = null,
         formData: MutableMap<String, String>? = null,
-        fileList: MutableList<String>? = null,
-        fileNameList: MutableList<String>? = null,
+        fileList: MutableList<FormDataFile>? = null,
         fileKey: String = "",
         jsonObject: JSONObject? = null,
         okHttpWrapperDelegate: OKHttpWrapperDelegate
@@ -291,12 +293,12 @@ object OKHttpWrapper {
 
         val requestBody: RequestBody
         // if form data
-        if (formData != null || fileList != null || fileNameList != null) {
+        if (formData != null) {
 
             val multipartBodyBuilder: MultipartBody.Builder = MultipartBody.Builder()
             multipartBodyBuilder.setType(MultipartBody.FORM)
 
-            formData?.let {
+            formData.let {
                 ILog.debug(TAG, "add form data")
                 for ((key, value) in formData) {
                     ILog.debug(TAG, "$key $value")
@@ -304,18 +306,18 @@ object OKHttpWrapper {
                 }
             }
 
-            if (fileList != null && fileNameList != null) {
+            if (fileList != null) {
                 ILog.debug(TAG, "add files")
                 var file: File
                 for (i in fileList.indices) {
-                    ILog.debug(TAG, fileNameList[i])
-                    val mediaType: MediaType = if (fileList[i].endsWith("png")) {
+                    ILog.debug(TAG, fileList[i].fileName)
+                    val mediaType: MediaType = if (fileList[i].fileName.endsWith("png")) {
                         "image/png".toMediaType()
                     } else {
                         "image/jpeg".toMediaType()
                     }
-                    file = File(fileList[i])
-                    multipartBodyBuilder.addFormDataPart(fileKey, fileNameList[i], RequestBody.create(mediaType, file))
+                    file = File(fileList[i].filePath)
+                    multipartBodyBuilder.addFormDataPart(fileKey, fileList[i].fileName, RequestBody.create(mediaType, file))
                 }
             }
 
@@ -357,8 +359,7 @@ object OKHttpWrapper {
         url: String,
         header: MutableMap<String, String>? = null,
         formData: MutableMap<String, String>? = null,
-        fileList: MutableList<String>? = null,
-        fileNameList: MutableList<String>? = null,
+        fileList: MutableList<FormDataFile>? = null,
         fileKey: String = "",
         jsonObject: JSONObject? = null
     ): Response {
@@ -374,12 +375,12 @@ object OKHttpWrapper {
 
         val requestBody: RequestBody
         // if form data
-        if (formData != null || fileList != null || fileNameList != null) {
+        if (formData != null) {
 
             val multipartBodyBuilder: MultipartBody.Builder = MultipartBody.Builder()
             multipartBodyBuilder.setType(MultipartBody.FORM)
 
-            formData?.let {
+            formData.let {
                 ILog.debug(TAG, "add form data")
                 for ((key, value) in formData) {
                     ILog.debug(TAG, "$key $value")
@@ -387,18 +388,18 @@ object OKHttpWrapper {
                 }
             }
 
-            if (fileList != null && fileNameList != null) {
+            if (fileList != null) {
                 ILog.debug(TAG, "add files")
                 var file: File
                 for (i in fileList.indices) {
-                    ILog.debug(TAG, fileNameList[i])
-                    val mediaType: MediaType = if (fileList[i].endsWith("png")) {
+                    ILog.debug(TAG, fileList[i].fileName)
+                    val mediaType: MediaType = if (fileList[i].fileName.endsWith("png")) {
                         "image/png".toMediaType()
                     } else {
                         "image/jpeg".toMediaType()
                     }
-                    file = File(fileList[i])
-                    multipartBodyBuilder.addFormDataPart(fileKey, fileNameList[i], RequestBody.create(mediaType, file))
+                    file = File(fileList[i].filePath)
+                    multipartBodyBuilder.addFormDataPart(fileKey, fileList[i].fileName, RequestBody.create(mediaType, file))
                 }
             }
 
