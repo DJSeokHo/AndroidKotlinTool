@@ -6,7 +6,7 @@ import com.swein.androidkotlintool.framework.module.firebase.clouddatabase.Cloud
 import com.swein.androidkotlintool.framework.module.firebase.cloudstorage.CloudStorageManager
 import com.swein.androidkotlintool.framework.module.firebase.demo.model.MemberModel
 import com.swein.androidkotlintool.framework.module.firebase.demo.model.MemberSelfModel
-import com.swein.androidkotlintool.framework.util.date.DateUtil
+import com.swein.androidkotlintool.framework.util.date.DateUtility
 import com.swein.androidkotlintool.framework.util.log.ILog
 import com.swein.androidkotlintool.framework.util.thread.ThreadUtility
 import com.swein.androidkotlintool.framework.util.uuid.UUIDUtil
@@ -89,7 +89,7 @@ object MemberModelService {
         memberModel.profileImageFileCloudPath = profileImageFileCloudPath
         memberModel.pushToken = pushToken
 
-        val date = DateUtil.getCurrentDateTimeString()
+        val date = DateUtility.getCurrentDateTimeString()
         memberModel.createDate = date
         memberModel.modifyDate = date
         memberModel.createBy = uuId
@@ -214,7 +214,7 @@ object MemberModelService {
 
                 ILog.debug(TAG, "updateMemberProfile")
 
-                it.modifyDate = DateUtil.getCurrentDateTimeString()
+                it.modifyDate = DateUtility.getCurrentDateTimeString()
 
                 CloudDBManager.update(MemberModel.CLOUD_DB_PATH, it.documentId, it.to(), object : CloudDBManager.UpdateDelegate {
                     override fun onSuccess(documentId: String, map: MutableMap<String, Any>) {

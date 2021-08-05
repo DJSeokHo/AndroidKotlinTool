@@ -24,7 +24,7 @@ import com.swein.androidkotlintool.framework.module.shcameraphoto.resultprocesso
 import com.swein.androidkotlintool.framework.module.shcameraphoto.shselectedimageviewholder.SHSelectedImageViewHolder
 import com.swein.androidkotlintool.framework.module.shcameraphoto.shselectedimageviewholder.adapter.item.ImageSelectedItemBean
 import com.swein.androidkotlintool.framework.util.animation.AnimationUtil
-import com.swein.androidkotlintool.framework.util.date.DateUtil
+import com.swein.androidkotlintool.framework.util.date.DateUtility
 import com.swein.androidkotlintool.framework.util.eventsplitshot.eventcenter.EventCenter
 import com.swein.androidkotlintool.framework.util.eventsplitshot.subject.ESSArrows
 import com.swein.androidkotlintool.framework.util.glide.SHGlide
@@ -540,7 +540,7 @@ class SHCameraPhotoFragment : Fragment() {
 
     private fun createFilePath(baseFolder: File): String {
 
-        return "${baseFolder}${DateUtil.getCurrentDateTimeSSSStringWithNoSpace("_")}$PHOTO_EXTENSION"
+        return "${baseFolder}${DateUtility.getCurrentDateTimeSSSStringWithNoSpace("_")}$PHOTO_EXTENSION"
     }
 
     private fun showSelectedImageArea() {

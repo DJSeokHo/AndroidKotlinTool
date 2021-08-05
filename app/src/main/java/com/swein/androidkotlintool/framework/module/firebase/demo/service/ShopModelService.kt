@@ -6,7 +6,7 @@ import com.swein.androidkotlintool.framework.module.firebase.clouddatabase.Cloud
 import com.swein.androidkotlintool.framework.module.firebase.cloudstorage.CloudStorageManager
 import com.swein.androidkotlintool.framework.module.firebase.demo.model.MemberSelfModel
 import com.swein.androidkotlintool.framework.module.firebase.demo.model.ShopModel
-import com.swein.androidkotlintool.framework.util.date.DateUtil
+import com.swein.androidkotlintool.framework.util.date.DateUtility
 import com.swein.androidkotlintool.framework.util.log.ILog
 import com.swein.androidkotlintool.framework.util.thread.ThreadUtility
 import com.swein.androidkotlintool.framework.util.uuid.UUIDUtil
@@ -120,7 +120,7 @@ object ShopModelService {
         shopModel.readyForSale = 0L
         shopModel.isOpen = 0L
 
-        val date = DateUtil.getCurrentDateTimeString()
+        val date = DateUtility.getCurrentDateTimeString()
         shopModel.createDate = date
         shopModel.modifyDate = date
         shopModel.createBy = ownerUuId
@@ -266,7 +266,7 @@ object ShopModelService {
             it.readyForSale = 0L
             it.isOpen = 0L
 
-            val date = DateUtil.getCurrentDateTimeString()
+            val date = DateUtility.getCurrentDateTimeString()
             it.modifyDate = date
 
             CloudDBManager.update(ShopModel.CLOUD_DB_PATH, it.documentId, it.to(), object : CloudDBManager.UpdateDelegate {

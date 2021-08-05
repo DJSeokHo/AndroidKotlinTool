@@ -86,13 +86,11 @@ class AlbumSelectorItemViewHolder(itemView: View) : RecyclerView.ViewHolder(item
 
     fun updateView() {
 
-        view.get()?.let {
-            imageView.setImageBitmap(null)
-            initESS()
-            toggleCheck()
+        imageView.setImageBitmap(null)
+        initESS()
+        toggleCheck()
 
-            SHGlide.setImage(imageView, width = imageView.width, height = imageView.height, rate = 0.7f, uri = albumSelectorItemBean.imageUri)
-        }
+        SHGlide.setImage(imageView, width = imageView.width, height = imageView.height, rate = 0.7f, uri = albumSelectorItemBean.imageUri)
     }
 
     private fun toggleCheck() {
@@ -104,16 +102,8 @@ class AlbumSelectorItemViewHolder(itemView: View) : RecyclerView.ViewHolder(item
         }
     }
 
-    private fun removeESS() {
+    fun removeESS() {
         EventCenter.removeAllObserver(this)
-    }
-
-//    fun clear() {
-//        imageView.setImageBitmap(null)
-//    }
-
-    protected fun finalize() {
-        removeESS()
     }
 
 }

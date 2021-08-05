@@ -8,7 +8,7 @@ import com.swein.androidkotlintool.framework.module.firebase.demo.model.MemberMo
 import com.swein.androidkotlintool.framework.module.firebase.demo.model.MemberSelfModel
 import com.swein.androidkotlintool.framework.module.firebase.demo.model.ProductModel
 import com.swein.androidkotlintool.framework.module.firebase.demo.model.ShopModel
-import com.swein.androidkotlintool.framework.util.date.DateUtil
+import com.swein.androidkotlintool.framework.util.date.DateUtility
 import com.swein.androidkotlintool.framework.util.log.ILog
 import com.swein.androidkotlintool.framework.util.thread.ThreadUtility
 import com.swein.androidkotlintool.framework.util.uuid.UUIDUtil
@@ -63,7 +63,7 @@ object ProductModelService {
         productModel.inventory = inventory
         productModel.pickerList.clear()
 
-        val date = DateUtil.getCurrentDateTimeString()
+        val date = DateUtility.getCurrentDateTimeString()
 
         productModel.createDate = date
         productModel.modifyDate = date
@@ -99,7 +99,7 @@ object ProductModelService {
 
             ILog.debug(TAG, "updateProductModel ${productModel.documentId}")
 
-            val date = DateUtil.getCurrentDateTimeString()
+            val date = DateUtility.getCurrentDateTimeString()
             productModel.modifyDate = date
 
             CloudDBManager.update(ProductModel.CLOUD_DB_PATH, productModel.documentId, productModel.to(), object : CloudDBManager.UpdateDelegate {
@@ -219,7 +219,7 @@ object ProductModelService {
 
                 ILog.debug(TAG, "${it.uuId} requestPickup ${productModel.name}")
 
-                val date = DateUtil.getCurrentDateTimeString()
+                val date = DateUtility.getCurrentDateTimeString()
                 productModel.modifyDate = date
 
                 var found = false
@@ -266,7 +266,7 @@ object ProductModelService {
 
             ILog.debug(TAG, "saleFinished ${productModel.name}")
 
-            val date = DateUtil.getCurrentDateTimeString()
+            val date = DateUtility.getCurrentDateTimeString()
             productModel.modifyDate = date
 
             productModel.inventory = 0

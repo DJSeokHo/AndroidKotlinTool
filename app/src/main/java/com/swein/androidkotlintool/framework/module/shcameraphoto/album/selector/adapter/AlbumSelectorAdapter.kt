@@ -1,5 +1,6 @@
 package com.swein.androidkotlintool.framework.module.shcameraphoto.album.selector.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -48,6 +49,7 @@ class AlbumSelectorAdapter(
 
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun reload(albumSelectorItemBeanList: MutableList<AlbumSelectorItemBean>) {
         this.albumSelectorItemBeanList.clear()
         this.albumSelectorItemBeanList.addAll(albumSelectorItemBeanList)
@@ -59,9 +61,9 @@ class AlbumSelectorAdapter(
         notifyItemRangeChanged(albumSelectorItemBeanList.size - albumSelectorItemBeanList.size + 1,albumSelectorItemBeanList.size)
     }
 
-//    override fun onViewRecycled(holder: AlbumSelectorItemViewHolder) {
-//        holder.clear()
-//        super.onViewRecycled(holder)
-//    }
+    override fun onViewRecycled(holder: AlbumSelectorItemViewHolder) {
+        super.onViewRecycled(holder)
+        holder.removeESS()
+    }
 
 }
