@@ -1,45 +1,34 @@
 package com.swein.androidkotlintool.framework.util.eventsplitshot.eventcenter
 
-import com.swein.androidkotlintool.framework.util.log.ILog
 import java.lang.ref.WeakReference
 
-object EventCenter {
+data class EventObserver(
+    val arrow: String,
+    val objectWeakReference: WeakReference<Any>,
+    val runnable: EventCenter.EventRunnable
+)
 
-    private const val TAG = "EventCenter"
+object EventCenter {
 
     interface EventRunnable {
         fun run(arrow: String, poster: Any, data: MutableMap<String, Any>?)
     }
 
-    private var map: MutableMap<String, MutableList<EventObserver>> = mutableMapOf()
-
-    class EventObserver {
-
-        var arrow: String? = null
-        var objectWeakReference: WeakReference<Any>? = null
-
-        var runnable: EventRunnable? = null
-
-        constructor(arrow: String, obj: Any, runnable: EventRunnable) {
-            this.arrow = arrow
-            this.objectWeakReference = WeakReference(obj)
-            this.runnable = runnable
-        }
-    }
+    private var eventMap: MutableMap<String, MutableList<EventObserver>> = mutableMapOf()
 
     fun addEventObserver(arrow: String, obj: Any, runnable: EventRunnable) {
-        val eventObserver = EventObserver(arrow, obj, runnable)
+        val eventObserver = EventObserver(arrow, WeakReference(obj), runnable)
         getObserverListForArrows(arrow).add(eventObserver)
     }
 
     fun removeAllObserver(obj: Any) {
         val deleteList: MutableList<EventObserver> = mutableListOf()
 
-        for(arrayList in map.values) {
+        for(arrayList in eventMap.values) {
             deleteList.clear()
 
             for(observer in arrayList) {
-                if(observer.objectWeakReference?.get() === obj) {
+                if(observer.objectWeakReference.get() === obj) {
                     deleteList.add(observer)
                 }
             }
@@ -55,35 +44,31 @@ object EventCenter {
         var any: Any?
 
         for(eventObserver in result) {
-            any = eventObserver.objectWeakReference?.get()
+            any = eventObserver.objectWeakReference.get()
             if (any === obj) {
                 deleteList.add(eventObserver)
             }
         }
 
-        for (eventObserver in deleteList) {
-            result.remove(eventObserver)
-        }
+        result.removeAll(deleteList)
     }
 
-    fun sendEvent(arrow: String, sender: Any, data: MutableMap<String, Any>?) {
+    fun sendEvent(arrow: String, sender: Any, data: MutableMap<String, Any>? = null) {
         val result: MutableList<EventObserver> = getObserverListForArrows(arrow)
 
         for(eventObserver in result) {
-            if (eventObserver.runnable != null) {
-                eventObserver.runnable!!.run(arrow, sender, data)
-            }
+            eventObserver.runnable.run(arrow, sender, data)
         }
     }
 
     private fun getObserverListForArrows(arrow: String): MutableList<EventObserver> {
-        var result: MutableList<EventObserver>?= map[arrow]
 
-        if (result == null) {
-            result = mutableListOf()
-            map[arrow] = result
+        eventMap[arrow]?.let {
+            return it
+        } ?: run {
+            val list = mutableListOf<EventObserver>()
+            eventMap[arrow] = list
+            return list
         }
-
-        return result
     }
 }
