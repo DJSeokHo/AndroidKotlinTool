@@ -226,23 +226,23 @@ class MainActivity : BasicPermissionActivity() {
         for (i in 0 until list.size) {
             when (i) {
                 0 -> {
-                    SHGlide.setImageFilePath(this, list[i], imageView1, null, 0, 0, 0f, 0f)
+                    SHGlide.setImage(imageView1, url = list[i])
 //                    imageView1.setImageBitmap(BitmapFactory.decodeFile(list[i]))
                 }
                 1 -> {
-                    SHGlide.setImageFilePath(this, list[i], imageView2, null, 0, 0, 0f, 0f)
+                    SHGlide.setImage(imageView2, url = list[i])
 //                    imageView2.setImageBitmap(BitmapFactory.decodeFile(list[i]))
                 }
                 2 -> {
-                    SHGlide.setImageFilePath(this, list[i], imageView3, null, 0, 0, 0f, 0f)
+                    SHGlide.setImage(imageView3, url = list[i])
 //                    imageView3.setImageBitmap(BitmapFactory.decodeFile(list[i]))
                 }
                 3 -> {
-                    SHGlide.setImageFilePath(this, list[i], imageView4, null, 0, 0, 0f, 0f)
+                    SHGlide.setImage(imageView4, url = list[i])
 //                    imageView4.setImageBitmap(BitmapFactory.decodeFile(list[i]))
                 }
                 4 -> {
-                    SHGlide.setImageFilePath(this, list[i], imageView5, null, 0, 0, 0f, 0f)
+                    SHGlide.setImage(imageView5, url = list[i])
 //                    imageView4.setImageBitmap(BitmapFactory.decodeFile(list[i]))
                 }
             }

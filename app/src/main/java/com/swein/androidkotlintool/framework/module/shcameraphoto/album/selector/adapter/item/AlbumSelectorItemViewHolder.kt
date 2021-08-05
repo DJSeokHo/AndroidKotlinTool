@@ -91,10 +91,7 @@ class AlbumSelectorItemViewHolder(itemView: View) : RecyclerView.ViewHolder(item
             initESS()
             toggleCheck()
 
-            SHGlide.setImageBitmapNoAnimation(
-                it.context, albumSelectorItemBean.imageUri, imageView, null,
-                imageView.width, imageView.height, 0.7f, 0f
-            )
+            SHGlide.setImage(imageView, width = imageView.width, height = imageView.height, rate = 0.7f, uri = albumSelectorItemBean.imageUri)
         }
     }
 

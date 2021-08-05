@@ -562,16 +562,7 @@ class SHCameraPhotoFragment : Fragment() {
                         imageView.setImageBitmap(null)
                     } else {
                         textViewImageCount.text = selectedImageList.size.toString()
-                        SHGlide.setImageBitmap(
-                            context,
-                            selectedImageList[0].imageUri,
-                            imageView,
-                            null,
-                            imageView.width,
-                            imageView.height,
-                            0f,
-                            0f
-                        )
+                        SHGlide.setImage(imageView, width = imageView.width, height = imageView.height, uri = selectedImageList[0].imageUri)
                     }
 
                     textViewAction.text = if (selectedImageList.isEmpty()) {
@@ -649,8 +640,7 @@ class SHCameraPhotoFragment : Fragment() {
 
     private fun togglePreviewThumbnail(imageUri: Uri) {
 
-        SHGlide.setImageBitmap(context, imageUri, imageView, null, imageView.width, imageView.height, 0f, 0f)
-
+        SHGlide.setImage(imageView, width = imageView.width, height = imageView.height, uri = imageUri)
         ILog.debug(TAG, selectedImageList.size.toString())
         textViewImageCount.text = selectedImageList.size.toString()
 
