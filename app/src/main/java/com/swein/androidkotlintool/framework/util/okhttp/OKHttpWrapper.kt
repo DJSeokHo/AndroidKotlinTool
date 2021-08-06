@@ -173,7 +173,7 @@ object OKHttpWrapper {
         }
         else {
 
-            val mediaType: MediaType = "application/x-www-form-urlencoded; charset=utf-8".toMediaType()
+            val mediaType: MediaType = "application/json; charset=utf-8".toMediaType()
 
             // if jsonObject
             requestBody = if (jsonObject == null) {
@@ -255,7 +255,7 @@ object OKHttpWrapper {
         }
         else {
 
-            val mediaType: MediaType = "application/x-www-form-urlencoded; charset=utf-8".toMediaType()
+            val mediaType: MediaType = "application/json; charset=utf-8".toMediaType()
 
             // if jsonObject
             requestBody = if (jsonObject == null) {
@@ -330,7 +330,7 @@ object OKHttpWrapper {
         }
         else {
 
-            val mediaType: MediaType = "application/x-www-form-urlencoded; charset=utf-8".toMediaType()
+            val mediaType: MediaType = "application/json; charset=utf-8".toMediaType()
 
             // if jsonObject
             requestBody = if (jsonObject == null) {
@@ -412,7 +412,7 @@ object OKHttpWrapper {
         }
         else {
 
-            val mediaType: MediaType = "application/x-www-form-urlencoded; charset=utf-8".toMediaType()
+            val mediaType: MediaType = "application/json; charset=utf-8".toMediaType()
 
             // if jsonObject
             requestBody = if (jsonObject == null) {
@@ -487,7 +487,7 @@ object OKHttpWrapper {
         }
         else {
 
-            val mediaType: MediaType = "application/x-www-form-urlencoded; charset=utf-8".toMediaType()
+            val mediaType: MediaType = "application/json; charset=utf-8".toMediaType()
 
             // if jsonObject
             requestBody = if (jsonObject == null) {
@@ -569,7 +569,7 @@ object OKHttpWrapper {
         }
         else {
 
-            val mediaType: MediaType = "application/x-www-form-urlencoded; charset=utf-8".toMediaType()
+            val mediaType: MediaType = "application/json; charset=utf-8".toMediaType()
 
             // if jsonObject
             requestBody = if (jsonObject == null) {
