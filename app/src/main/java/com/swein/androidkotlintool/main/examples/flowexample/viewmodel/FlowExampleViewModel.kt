@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.swein.androidkotlintool.framework.util.log.ILog
 import com.swein.androidkotlintool.main.examples.flowexample.modelservice.FlowExampleModelService
 import kotlinx.coroutines.async
+import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -32,6 +33,12 @@ class FlowExampleViewModel: ViewModel() {
             delay(1000)
             FlowExampleModelService.getTempDataFromDummyServer(offset, limit)
         }
+
+//        val resultList = listOf(     // fetch two docs at the same time
+//            async {  },  // async returns a result for the first doc
+//            async {  }   // async returns a result for the second doc
+//        )
+//        resultList.awaitAll()        // use awaitAll to wait for both network requests
 
         if (offset == 0) {
             _flowExampleUIState.value = FlowExampleState.Reload(result.await())

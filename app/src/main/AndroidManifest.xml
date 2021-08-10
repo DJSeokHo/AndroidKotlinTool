@@ -51,6 +51,12 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".main.examples.floweventcenterexample.demo.FlowEventExampleSecondActivity"
+            android:exported="true" />
+        <activity
+            android:name=".main.examples.floweventcenterexample.demo.FlowEventExampleFirstActivity"
+            android:exported="true" />
+        <activity
             android:name=".main.examples.flowexample.FlowExampleActivity"
             android:exported="true" />
         <activity

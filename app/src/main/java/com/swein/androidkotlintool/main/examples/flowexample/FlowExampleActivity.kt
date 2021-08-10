@@ -5,7 +5,7 @@ import android.view.View
 import android.widget.FrameLayout
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.*
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -50,6 +50,14 @@ class FlowExampleActivity : AppCompatActivity() {
     private fun initObserver() {
 
         lifecycleScope.launchWhenCreated {
+
+//            whenCreated {  }
+//            whenStarted {  }
+//            whenResumed {  }
+
+//            if (lifecycle.currentState == Lifecycle.State.DESTROYED) {
+//
+//            }
 
             viewModel.flowExampleUIState.collect {
 

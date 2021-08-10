@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.lifecycleScope
 import com.swein.androidkotlintool.R
 import com.swein.androidkotlintool.main.examples.livedata.viewmodel.ScoreLiveDataViewModel
 
@@ -41,6 +42,7 @@ class LiveDataDemoFragment : Fragment() {
         rootView = inflater.inflate(R.layout.fragment_live_data_demo, container, false)
         initObserver()
         setListener()
+
         return rootView
     }
 
