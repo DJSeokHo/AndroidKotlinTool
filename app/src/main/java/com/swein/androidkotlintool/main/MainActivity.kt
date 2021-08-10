@@ -25,6 +25,7 @@ import com.swein.androidkotlintool.framework.util.glide.SHGlide
 import com.swein.androidkotlintool.framework.util.log.ILog
 import com.swein.androidkotlintool.framework.util.screen.ScreenUtil
 import com.swein.androidkotlintool.main.examples.firebaseauth.phone.FirebaseAuthPhoneActivity
+import com.swein.androidkotlintool.main.examples.flowexample.FlowExampleActivity
 import com.swein.androidkotlintool.main.examples.multiplebackstackforfragmentsinactivity.main.MultipleBackStackExampleActivity
 import com.swein.androidkotlintool.main.examples.otpverificationcodeview.OTPVerificationCodeViewExampleActivity
 import com.swein.androidkotlintool.main.examples.webview.WebViewExampleActivity
@@ -105,7 +106,7 @@ class MainActivity : BasicPermissionActivity() {
 //        ActivityUtil.startNewActivityWithoutFinish(this, RoomDemoActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, RoomWithCoroutineAndStartUPExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, RoomWithCoroutineAndStartUPExampleActivity::class.java)
-        ActivityUtil.startNewActivityWithoutFinish(this, SHCameraPhotoFragmentDemoActivity::class.java)
+//        ActivityUtil.startNewActivityWithoutFinish(this, SHCameraPhotoFragmentDemoActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, WorkManagerDemoActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, LiveDataDemoActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, ViewModelDemoActivity::class.java)
@@ -134,6 +135,7 @@ class MainActivity : BasicPermissionActivity() {
 //        ActivityUtil.startNewActivityWithoutFinish(this, WebViewExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, FirebaseAuthPhoneActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, OTPVerificationCodeViewExampleActivity::class.java)
+        ActivityUtil.startNewActivityWithoutFinish(this, FlowExampleActivity::class.java)
 
 
 //        SnackBarUtility.showSnackBar(frameLayoutRoot, "test")

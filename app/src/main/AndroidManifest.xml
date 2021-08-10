@@ -51,6 +51,9 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".main.examples.flowexample.FlowExampleActivity"
+            android:exported="true" />
+        <activity
             android:name=".main.examples.firebaseauth.phone.FirebaseAuthPhoneActivity"
             android:exported="true" />
         <activity android:name=".main.examples.otpverificationcodeview.OTPVerificationCodeViewExampleActivity" />
@@ -63,7 +66,6 @@
         <activity android:name=".main.examples.multipleviewtypesrecyclerview.MultipleViewTypesRecyclerViewExampleActivity" />
         <activity android:name=".main.examples.circlemenu.CircleMenuExampleActivity" />
         <activity android:name=".main.examples.infinityautoscrollpaddingbanner.InfinityAutoScrollPaddingBannerExampleActivity" />
-        <activity android:name=".main.examples.rxkotlinlite.demo.RxKotlinLiteDemoActivity" />
         <activity android:name=".main.examples.livedata.networkstatemonitor.NetworkStateMonitorActivity" />
         <activity android:name=".main.examples.arcslidingmenu.ArcSlidingMenuActivity" />
         <activity android:name=".main.examples.materialdesigntutorial.dayseven.MDDaySevenActivity" />

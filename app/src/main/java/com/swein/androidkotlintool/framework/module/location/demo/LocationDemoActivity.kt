@@ -29,9 +29,10 @@ class LocationDemoActivity : AppCompatActivity() {
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
                 PermissionManager.requestPermission(
                     this,
-                    Manifest.permission.ACCESS_FINE_LOCATION,
-                    Manifest.permission.ACCESS_COARSE_LOCATION,
-                    Manifest.permission.ACCESS_BACKGROUND_LOCATION
+                    9999, "", "", "",
+                    listOf(Manifest.permission.ACCESS_FINE_LOCATION,
+                        Manifest.permission.ACCESS_COARSE_LOCATION,
+                        Manifest.permission.ACCESS_BACKGROUND_LOCATION)
                 ) {
 
                     requestLocation()
@@ -40,8 +41,9 @@ class LocationDemoActivity : AppCompatActivity() {
             else {
                 PermissionManager.requestPermission(
                     this,
-                    Manifest.permission.ACCESS_FINE_LOCATION,
-                    Manifest.permission.ACCESS_COARSE_LOCATION
+                    9999, "", "", "",
+                    listOf(Manifest.permission.ACCESS_FINE_LOCATION,
+                        Manifest.permission.ACCESS_COARSE_LOCATION)
                 ) {
 
                     requestLocation()

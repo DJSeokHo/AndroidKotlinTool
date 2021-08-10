@@ -13,10 +13,15 @@
         <entry key="app/src/main/res/drawable/rect_bg_gradient.xml" value="0.26851851851851855" />
         <entry key="app/src/main/res/drawable/round_corner_bg_gradient_stroke.xml" value="0.26851851851851855" />
         <entry key="app/src/main/res/layout/activity_firebase_auth_phone.xml" value="0.33958333333333335" />
+        <entry key="app/src/main/res/layout/activity_flow_example.xml" value="0.3494791666666667" />
+        <entry key="app/src/main/res/layout/activity_live_data_demo.xml" value="0.3494791666666667" />
+        <entry key="app/src/main/res/layout/activity_mvvmrecycler_view_example.xml" value="0.16995947315096252" />
         <entry key="app/src/main/res/layout/activity_otpverification_code_view_example.xml" value="0.14" />
+        <entry key="app/src/main/res/layout/activity_rx_kotlin_lite_demo.xml" value="0.3494791666666667" />
         <entry key="app/src/main/res/layout/fragment_s_h_camera_photo.xml" value="0.14513677811550152" />
         <entry key="app/src/main/res/layout/view_holder_album_selector.xml" value="0.14989733059548255" />
         <entry key="app/src/main/res/layout/view_holder_album_selector_item.xml" value="0.14513677811550152" />
+        <entry key="app/src/main/res/layout/view_holder_flow_example_item.xml" value="0.3494791666666667" />
         <entry key="app/src/main/res/layout/view_holder_sh_selected_image.xml" value="0.1519756838905775" />
         <entry key="app/src/main/res/layout/view_holder_sh_selected_image_item.xml" value="0.1519756838905775" />
       </map>
