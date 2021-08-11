@@ -32,10 +32,7 @@ interface OKHttpWrapperDelegate {
     fun onResponse(call: Call, response: Response)
 }
 
-data class CoroutineResponse(val call: Call) {
-    lateinit var response: Response
-    var exception: Exception? = null
-}
+data class CoroutineResponse(val call: Call, val response: Response)
 
 object OKHttpWrapper {
 
@@ -117,15 +114,8 @@ object OKHttpWrapper {
         val request = builder.get().url(url).build()
         val call = okHttpClient.newCall(request)
 
-        val coroutineResponse = CoroutineResponse(call)
-        try {
-            coroutineResponse.response = call.execute()
-        }
-        catch (e: Exception) {
-            coroutineResponse.exception = e
-        }
-
-        return coroutineResponse
+        val result = call.execute()
+        return CoroutineResponse(call, result)
     }
 
     /**
@@ -280,15 +270,8 @@ object OKHttpWrapper {
         val request = builder.post(requestBody).url(url).build()
         val call = okHttpClient.newCall(request)
 
-        val coroutineResponse = CoroutineResponse(call)
-        try {
-            coroutineResponse.response = call.execute()
-        }
-        catch (e: Exception) {
-            coroutineResponse.exception = e
-        }
-
-        return coroutineResponse
+        val result = call.execute()
+        return CoroutineResponse(call, result)
     }
 
     /**
@@ -443,15 +426,8 @@ object OKHttpWrapper {
         val request = builder.put(requestBody).url(url).build()
         val call = okHttpClient.newCall(request)
 
-        val coroutineResponse = CoroutineResponse(call)
-        try {
-            coroutineResponse.response = call.execute()
-        }
-        catch (e: Exception) {
-            coroutineResponse.exception = e
-        }
-
-        return coroutineResponse
+        val result = call.execute()
+        return CoroutineResponse(call, result)
     }
 
     /**
@@ -606,14 +582,7 @@ object OKHttpWrapper {
         val request = builder.delete(requestBody).url(url).build()
         val call = okHttpClient.newCall(request)
 
-        val coroutineResponse = CoroutineResponse(call)
-        try {
-            coroutineResponse.response = call.execute()
-        }
-        catch (e: Exception) {
-            coroutineResponse.exception = e
-        }
-
-        return coroutineResponse
+        val result = call.execute()
+        return CoroutineResponse(call, result)
     }
 }

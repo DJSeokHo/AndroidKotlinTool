@@ -18,10 +18,10 @@ class CoroutineDemoActivity : BaseCoroutineActivity() {
 
     private lateinit var constraintLayout: ConstraintLayout
 
-    private suspend fun getData(name: String) = withContext(Dispatchers.IO) {
-        val response = OKHttpWrapper.requestGet("https://httpbin.org/get?name=$name")
-        OKHttpWrapper.getStringResponse(response, "response empty $name")
-    }
+//    private suspend fun getData(name: String) = withContext(Dispatchers.IO) {
+//        val response = OKHttpWrapper.requestGet("https://httpbin.org/get?name=$name")
+//        OKHttpWrapper.getStringResponse(response, "response empty $name")
+//    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
