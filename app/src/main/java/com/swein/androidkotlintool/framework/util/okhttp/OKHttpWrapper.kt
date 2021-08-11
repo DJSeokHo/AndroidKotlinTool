@@ -27,11 +27,6 @@ data class FormDataFile(
     val fileName: String
 )
 
-data class CoroutineResponse(val url: String) {
-    lateinit var response: Response
-    var exception: Exception? = null
-}
-
 interface OKHttpWrapperDelegate {
     fun onFailure(call: Call, e: IOException)
     fun onResponse(call: Call, response: Response)
@@ -103,7 +98,7 @@ object OKHttpWrapper {
     fun requestGet(
         url: String,
         header: MutableMap<String, String>? = null
-    ): CoroutineResponse {
+    ): Response {
 
         val builder = Request.Builder()
 
@@ -117,17 +112,9 @@ object OKHttpWrapper {
         val request = builder.get().url(url).build()
         val call = okHttpClient.newCall(request)
 
-        val coroutineResponse = CoroutineResponse(url)
-        try {
-            coroutineResponse.response = call.execute()
-        }
-        catch (e: Exception) {
-            coroutineResponse.exception = e
-        }
-
+        val response = call.execute()
         cancelCall(call)
-
-        return coroutineResponse
+        return response
     }
 
     /**
@@ -223,7 +210,7 @@ object OKHttpWrapper {
         fileList: MutableList<FormDataFile>? = null,
         fileKey: String = "",
         jsonObject: JSONObject? = null
-    ): CoroutineResponse {
+    ): Response {
 
         val builder = Request.Builder()
 
@@ -282,18 +269,9 @@ object OKHttpWrapper {
         val request = builder.post(requestBody).url(url).build()
         val call = okHttpClient.newCall(request)
 
-        val coroutineResponse = CoroutineResponse(url)
-        try {
-            coroutineResponse.response = call.execute()
-        }
-        catch (e: Exception) {
-            coroutineResponse.exception = e
-        }
-
+        val response = call.execute()
         cancelCall(call)
-
-        return coroutineResponse
-
+        return response
     }
 
     /**
@@ -389,7 +367,7 @@ object OKHttpWrapper {
         fileList: MutableList<FormDataFile>? = null,
         fileKey: String = "",
         jsonObject: JSONObject? = null
-    ): CoroutineResponse {
+    ): Response {
 
         val builder = Request.Builder()
 
@@ -448,17 +426,9 @@ object OKHttpWrapper {
         val request = builder.put(requestBody).url(url).build()
         val call = okHttpClient.newCall(request)
 
-        val coroutineResponse = CoroutineResponse(url)
-        try {
-            coroutineResponse.response = call.execute()
-        }
-        catch (e: Exception) {
-            coroutineResponse.exception = e
-        }
-
+        val response = call.execute()
         cancelCall(call)
-
-        return coroutineResponse
+        return response
     }
 
     /**
@@ -554,7 +524,7 @@ object OKHttpWrapper {
         fileList: MutableList<FormDataFile>? = null,
         fileKey: String = "",
         jsonObject: JSONObject? = null
-    ): CoroutineResponse {
+    ): Response {
 
         val builder = Request.Builder()
 
@@ -613,16 +583,8 @@ object OKHttpWrapper {
         val request = builder.delete(requestBody).url(url).build()
         val call = okHttpClient.newCall(request)
 
-        val coroutineResponse = CoroutineResponse(url)
-        try {
-            coroutineResponse.response = call.execute()
-        }
-        catch (e: Exception) {
-            coroutineResponse.exception = e
-        }
-
+        val response = call.execute()
         cancelCall(call)
-
-        return coroutineResponse
+        return response
     }
 }
