@@ -1,6 +1,5 @@
 package com.swein.androidkotlintool.main.examples.flowexample
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
@@ -19,7 +18,7 @@ import com.swein.androidkotlintool.main.examples.flowexample.viewmodel.FlowExamp
 import com.swein.androidkotlintool.main.examples.flowexample.viewmodel.FlowExampleViewModel
 import kotlinx.coroutines.flow.collect
 
-class FlowExampleActivity : AppCompatActivity() {
+class FlowExampleSubActivity : AppCompatActivity() {
 
     private val swipeRefreshLayout: SwipeRefreshLayout by lazy {
         findViewById(R.id.swipeRefreshLayout)
@@ -46,7 +45,7 @@ class FlowExampleActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_flow_example)
+        setContentView(R.layout.activity_flow_example_sub)
 
         initObserver()
         initList()
@@ -58,13 +57,6 @@ class FlowExampleActivity : AppCompatActivity() {
             viewModel.testValue++
             textView.text = "${viewModel.testValue}"
         }
-
-        findViewById<Button>(R.id.buttonSub).setOnClickListener {
-            Intent(this, FlowExampleSubActivity::class.java).apply {
-                startActivity(this)
-            }
-        }
-
 
     }
 

@@ -5,7 +5,6 @@ import androidx.lifecycle.viewModelScope
 import com.swein.androidkotlintool.framework.util.log.ILog
 import com.swein.androidkotlintool.main.examples.flowexample.modelservice.FlowExampleModelService
 import kotlinx.coroutines.async
-import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -23,6 +22,8 @@ class FlowExampleViewModel: ViewModel() {
 
     private val _flowExampleUIState = MutableStateFlow<FlowExampleState>(FlowExampleState.None)
     val flowExampleUIState: StateFlow<FlowExampleState> = _flowExampleUIState
+
+    var testValue = 0
 
     fun load(offset: Int = 0, limit: Int = 10) = viewModelScope.launch {
 

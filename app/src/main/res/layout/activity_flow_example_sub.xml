@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".main.examples.flowexample.FlowExampleActivity">
+    tools:context=".main.examples.flowexample.FlowExampleSubActivity">
     
     <FrameLayout
         android:paddingHorizontal="20dp"
@@ -17,15 +17,6 @@
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
-    
-        <Button
-            android:text="sub"
-            android:layout_gravity="center"
-            android:id="@+id/buttonSub"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-        
-        
         <Button
             android:text="plus"
             android:layout_gravity="end|center_vertical"
