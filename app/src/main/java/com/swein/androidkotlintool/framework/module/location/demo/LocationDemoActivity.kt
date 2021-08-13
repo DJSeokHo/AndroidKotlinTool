@@ -26,29 +26,29 @@ class LocationDemoActivity : AppCompatActivity() {
 
         findViewById<Button>(R.id.buttonStart).setOnClickListener {
 
-            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
-                PermissionManager.requestPermission(
-                    this,
-                    9999, "", "", "",
-                    listOf(Manifest.permission.ACCESS_FINE_LOCATION,
-                        Manifest.permission.ACCESS_COARSE_LOCATION,
-                        Manifest.permission.ACCESS_BACKGROUND_LOCATION)
-                ) {
-
-                    requestLocation()
-                }
-            }
-            else {
-                PermissionManager.requestPermission(
-                    this,
-                    9999, "", "", "",
-                    listOf(Manifest.permission.ACCESS_FINE_LOCATION,
-                        Manifest.permission.ACCESS_COARSE_LOCATION)
-                ) {
-
-                    requestLocation()
-                }
-            }
+//            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
+//                PermissionManager.requestPermission(
+//                    this,
+//                    9999, "", "", "",
+//                    arrayOf(Manifest.permission.ACCESS_FINE_LOCATION,
+//                        Manifest.permission.ACCESS_COARSE_LOCATION,
+//                        Manifest.permission.ACCESS_BACKGROUND_LOCATION)
+//                ) {
+//
+//                    requestLocation()
+//                }
+//            }
+//            else {
+//                PermissionManager.requestPermission(
+//                    this,
+//                    9999, "", "", "",
+//                    arrayOf(Manifest.permission.ACCESS_FINE_LOCATION,
+//                        Manifest.permission.ACCESS_COARSE_LOCATION)
+//                ) {
+//
+//                    requestLocation()
+//                }
+//            }
 
         }
 

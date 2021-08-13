@@ -1,11 +1,15 @@
 package com.swein.androidkotlintool.main.examples.permissionexample
 
+import android.Manifest
 import android.app.Activity
 import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.provider.Settings
+import androidx.activity.ComponentActivity
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import java.lang.ref.WeakReference
@@ -24,13 +28,66 @@ object PermissionManager {
     private var message = ""
     private var positiveButtonTitle = ""
 
+    fun register(componentActivity: ComponentActivity): ActivityResultLauncher<Array<String>> {
+
+        return componentActivity.registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) {
+
+            activityWeakReference?.get()?.let { activity ->
+
+                val deniedPermissionList = mutableListOf<String>()
+
+                it.entries.forEach { permissionResultMap ->
+
+                    val permission = permissionResultMap.key
+                    val grantResult = permissionResultMap.value
+
+                    if(!grantResult) {
+
+                        if (ActivityCompat.shouldShowRequestPermissionRationale(activity, permission)) {
+                            // if users denied permission, should request again
+                            deniedPermissionList.add(permission)
+                        }
+                        else {
+                            // if users denied permission twice, than go to app setting page
+                            AlertDialog.Builder(activity).apply {
+
+                                this.setTitle(title)
+                                this.setMessage(message)
+                                this.setPositiveButton(positiveButtonTitle) { _: DialogInterface?, _: Int ->
+                                    val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
+                                    val uri = Uri.fromParts("package", activity.packageName, null)
+                                    intent.data = uri
+                                    activity.startActivityForResult(intent, permissionRequestCode)
+                                }
+                                this.create()
+                                this.show()
+                            }
+
+                            return@let
+                        }
+
+                    }
+                }
+
+                if (deniedPermissionList.isEmpty()) {
+                    runnable?.run()
+                }
+
+                activityWeakReference?.clear()
+
+            }
+        }
+
+    }
+
     fun requestPermission(
-        activity: Activity,
+        requestMultiplePermissions: ActivityResultLauncher<Array<String>>,
+        componentActivity: ComponentActivity,
         requestCode: Int,
         permissionDialogTitle: String,
         permissionDialogMessage: String,
         permissionDialogPositiveButtonTitle: String,
-        permissions: List<String>,
+        permissions: Array<String>,
         runnableAfterPermissionGranted: Runnable? = null
     ) {
 
@@ -38,7 +95,7 @@ object PermissionManager {
 
         for (i in permissions.indices) {
 
-            if (ActivityCompat.checkSelfPermission(activity, permissions[i]) != PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.checkSelfPermission(componentActivity, permissions[i]) != PackageManager.PERMISSION_GRANTED) {
                 // if permission is not granted
                 permissionNotGrantedList.add(permissions[i])
             }
@@ -54,14 +111,16 @@ object PermissionManager {
 
             // save the context and runnable
             runnable = runnableAfterPermissionGranted
-            activityWeakReference = WeakReference(activity)
+            activityWeakReference = WeakReference(componentActivity)
 
             // request permission
-            ActivityCompat.requestPermissions(
-                activity,
-                permissionNotGrantedList.toTypedArray(),
-                permissionRequestCode
-            )
+//            ActivityCompat.requestPermissions(
+//                componentActivity,
+//                permissionNotGrantedList.toTypedArray(),
+//                permissionRequestCode
+//            )
+
+            requestMultiplePermissions.launch(permissions)
         }
         else {
             // if all of permissions is granted

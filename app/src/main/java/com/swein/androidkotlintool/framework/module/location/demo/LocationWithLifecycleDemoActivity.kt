@@ -28,29 +28,29 @@ class LocationWithLifecycleDemoActivity : AppCompatActivity() {
 
             if (lifecycle.currentState.isAtLeast(Lifecycle.State.CREATED)) {
 
-                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
-                    PermissionManager.requestPermission(
-                        this,
-                        9999, "", "", "",
-                        listOf(Manifest.permission.ACCESS_FINE_LOCATION,
-                            Manifest.permission.ACCESS_COARSE_LOCATION,
-                            Manifest.permission.ACCESS_BACKGROUND_LOCATION)
-                    ) {
-
-                        locationObserver.isPermissionGranted = true
-                    }
-                }
-                else {
-                    PermissionManager.requestPermission(
-                        this,
-                        9999, "", "", "",
-                        listOf(Manifest.permission.ACCESS_FINE_LOCATION,
-                            Manifest.permission.ACCESS_COARSE_LOCATION)
-                    ) {
-
-                        locationObserver.isPermissionGranted = true
-                    }
-                }
+//                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
+//                    PermissionManager.requestPermission(
+//                        this,
+//                        9999, "", "", "",
+//                        arrayOf(Manifest.permission.ACCESS_FINE_LOCATION,
+//                            Manifest.permission.ACCESS_COARSE_LOCATION,
+//                            Manifest.permission.ACCESS_BACKGROUND_LOCATION)
+//                    ) {
+//
+//                        locationObserver.isPermissionGranted = true
+//                    }
+//                }
+//                else {
+//                    PermissionManager.requestPermission(
+//                        this,
+//                        9999, "", "", "",
+//                        arrayOf(Manifest.permission.ACCESS_FINE_LOCATION,
+//                            Manifest.permission.ACCESS_COARSE_LOCATION)
+//                    ) {
+//
+//                        locationObserver.isPermissionGranted = true
+//                    }
+//                }
 
             }
 

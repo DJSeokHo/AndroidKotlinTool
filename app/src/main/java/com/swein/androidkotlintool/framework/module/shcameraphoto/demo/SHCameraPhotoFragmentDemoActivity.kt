@@ -18,13 +18,13 @@ class SHCameraPhotoFragmentDemoActivity : FragmentActivity() {
 
         if (savedInstanceState == null) {
 
-            PermissionManager.requestPermission(this,
-                9999, "", "", "",
-                listOf(Manifest.permission.CAMERA,
-                Manifest.permission.READ_EXTERNAL_STORAGE)) {
-
-                startCamera()
-            }
+//            PermissionManager.requestPermission(this,
+//                9999, "", "", "",
+//                arrayOf(Manifest.permission.CAMERA,
+//                Manifest.permission.READ_EXTERNAL_STORAGE)) {
+//
+//                startCamera()
+//            }
 
         }
 

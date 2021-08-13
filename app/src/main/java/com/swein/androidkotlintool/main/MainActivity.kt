@@ -26,8 +26,11 @@ import com.swein.androidkotlintool.framework.util.log.ILog
 import com.swein.androidkotlintool.framework.util.screen.ScreenUtil
 import com.swein.androidkotlintool.main.examples.firebaseauth.phone.FirebaseAuthPhoneActivity
 import com.swein.androidkotlintool.main.examples.flowexample.FlowExampleActivity
+import com.swein.androidkotlintool.main.examples.materialdesigntutorial.dayseven.MDDaySevenActivity
 import com.swein.androidkotlintool.main.examples.multiplebackstackforfragmentsinactivity.main.MultipleBackStackExampleActivity
 import com.swein.androidkotlintool.main.examples.otpverificationcodeview.OTPVerificationCodeViewExampleActivity
+import com.swein.androidkotlintool.main.examples.permissionexample.PermissionExampleActivity
+import com.swein.androidkotlintool.main.examples.systemphotoandcrop.SystemPhotoAndCropExampleActivity
 import com.swein.androidkotlintool.main.examples.webview.WebViewExampleActivity
 import com.swein.androidkotlintool.main.moduledemo.ModuleDemoActivity
 import com.swein.androidkotlintool.template.bottomtab.activity.TabHostActivity
@@ -99,7 +102,7 @@ class MainActivity : BasicPermissionActivity() {
 //        ActivityUtil.startNewActivityWithoutFinish(this, DataBindingExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, CustomizeColorSwitchActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, LifecycleExampleActivity::class.java)
-//        ActivityUtil.startNewActivityWithoutFinish(this, PermissionExampleActivity::class.java)
+        ActivityUtil.startNewActivityWithoutFinish(this, PermissionExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, FirebaseDemoActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, LocationDemoActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, LocationWithLifecycleDemoActivity::class.java)
@@ -135,7 +138,8 @@ class MainActivity : BasicPermissionActivity() {
 //        ActivityUtil.startNewActivityWithoutFinish(this, WebViewExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, FirebaseAuthPhoneActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, OTPVerificationCodeViewExampleActivity::class.java)
-        ActivityUtil.startNewActivityWithoutFinish(this, FlowExampleActivity::class.java)
+//        ActivityUtil.startNewActivityWithoutFinish(this, FlowExampleActivity::class.java)
+//        ActivityUtil.startNewActivityWithoutFinish(this, SystemPhotoAndCropExampleActivity::class.java)
 
 
 //        SnackBarUtility.showSnackBar(frameLayoutRoot, "test")

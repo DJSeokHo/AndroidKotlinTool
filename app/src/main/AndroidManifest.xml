@@ -50,6 +50,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity android:name="com.theartofdev.edmodo.cropper.CropImageActivity" />
+        <activity
+            android:name=".main.examples.systemphotoandcrop.SystemPhotoAndCropExampleActivity"
+            android:exported="true" />
         <activity
             android:name=".main.examples.flowexample.FlowExampleSubActivity"
             android:exported="true" />
