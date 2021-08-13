@@ -1,17 +1,15 @@
 package com.swein.androidkotlintool.main.examples.permissionexample
 
 import android.Manifest
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
-import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AppCompatActivity
 import com.swein.androidkotlintool.R
 import com.swein.androidkotlintool.framework.util.toast.ToastUtility
 
 class PermissionExampleActivity : AppCompatActivity() {
 
-    private val requestMultiplePermissions = PermissionManager.register(this)
+    private val permissionManager = PermissionManager(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,6 +17,19 @@ class PermissionExampleActivity : AppCompatActivity() {
 
         findViewById<Button>(R.id.button).setOnClickListener {
 
+            permissionManager.requestPermission(
+                "Permission",
+                "permissions are necessary",
+                "setting",
+                arrayOf(Manifest.permission.CAMERA,
+                Manifest.permission.ACCESS_FINE_LOCATION,
+                Manifest.permission.ACCESS_COARSE_LOCATION,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                Manifest.permission.READ_EXTERNAL_STORAGE)
+            ) {
+
+                yourMethodShouldRunAfterAllPermissionGranted()
+            }
 //            requestMultiplePermissions.launch(
 //                arrayOf(
 //                    Manifest.permission.ACCESS_FINE_LOCATION,
@@ -28,21 +39,19 @@ class PermissionExampleActivity : AppCompatActivity() {
 //                )
 //            )
 
-            PermissionManager.requestPermission(requestMultiplePermissions,
-                this,
-                9999,
-                "Permission",
-                "permissions are necessary",
-                "setting",
-                arrayOf(Manifest.permission.CAMERA,
-                    Manifest.permission.ACCESS_FINE_LOCATION,
-                    Manifest.permission.ACCESS_COARSE_LOCATION,
-                    Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                    Manifest.permission.READ_EXTERNAL_STORAGE)
-                ) {
-
-                yourMethodShouldRunAfterAllPermissionGranted()
-            }
+//            permissionManager.requestPermission(
+//                "Permission",
+//                "permissions are necessary",
+//                "setting",
+//                arrayOf(Manifest.permission.CAMERA,
+//                    Manifest.permission.ACCESS_FINE_LOCATION,
+//                    Manifest.permission.ACCESS_COARSE_LOCATION,
+//                    Manifest.permission.WRITE_EXTERNAL_STORAGE,
+//                    Manifest.permission.READ_EXTERNAL_STORAGE)
+//                ) {
+//
+//                yourMethodShouldRunAfterAllPermissionGranted()
+//            }
         }
     }
 
