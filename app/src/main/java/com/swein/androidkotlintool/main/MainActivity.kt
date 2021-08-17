@@ -125,7 +125,7 @@ class MainActivity : BasicPermissionActivity() {
 //        ActivityUtil.startNewActivityWithoutFinish(this, MDDayFourActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, MDDayFiveActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, MDDaySixActivity::class.java)
-//        ActivityUtil.startNewActivityWithoutFinish(this, MDDaySevenActivity::class.java)
+        ActivityUtil.startNewActivityWithoutFinish(this, MDDaySevenActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, ArcSlidingMenuActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, NetworkStateMonitorActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, RxKotlinLiteDemoActivity::class.java)
