@@ -8,7 +8,7 @@ import java.io.FileInputStream
 import java.io.FileOutputStream
 import java.lang.Exception
 
-object SHDataStorageUtil {
+object SHDataStorageUtility {
 
     enum class StorageType {
         APP_INNER_DATA, APP_INNER_CACHE, EXTERNAL_DATA, EXTERNAL_CACHE
@@ -247,3 +247,43 @@ object SHDataStorageUtil {
         }
     }
 }
+
+/*
+private fun store() {
+        // test 1 save a txt file into app internal storage
+
+//        DataStorageUtil.storeTextInfoFile(this,
+//            DataStorageUtil.StorageType.APP_INNER_DATA, "internal.txt", "Hello, internal data storage, 안녕, 你好", "child1", "child2")
+
+        // test 2 save a txt file into app cache storage
+//        DataStorageUtil.storeTextInfoFile(this,
+//            DataStorageUtil.StorageType.APP_INNER_CACHE, "inner_cache.txt", "Hello, internal cache storage, 안녕, 你好", "child1", "child2")
+
+        // test 3 save a txt file into external data storage
+//        DataStorageUtil.storeTextInfoFile(this,
+//            DataStorageUtil.StorageType.EXTERNAL_DATA, "external_data.txt", "Hello, external, 안녕, 위부 저장소, 你好, 外部存储空间～", "child1", "child2")
+
+        // test 4 save a txt file into external cache storage
+        DataStorageUtil.storeTextInfoFile(this,
+            DataStorageUtil.StorageType.EXTERNAL_CACHE, "external_cache.txt", "Hello, external, 안녕, 위부 저장소, 你好, 外部缓存空间～", "child1", "child2")
+    }
+
+    private fun load() {
+        // test 1 load content from  a txt file in app internal storage
+//        val content = DataStorageUtil.loadTextFromFile(this, DataStorageUtil.StorageType.APP_INNER_DATA, "internal.txt", "child1", "child2")
+//        editText.setText(content)
+
+        // test 2 load content from  a txt file in app cache storage
+//        val content = DataStorageUtil.loadTextFromFile(this, DataStorageUtil.StorageType.APP_INNER_CACHE, "inner_cache.txt", "child1", "child2")
+//        editText.setText(content)
+
+        // test 3 load content from  a txt file in external data storage
+//        val content = DataStorageUtil.loadTextFromFile(this, DataStorageUtil.StorageType.EXTERNAL_DATA, "external_data.txt", "child1", "child2")
+//        editText.setText(content)
+
+        // test 4 load content from  a txt file in external cache storage
+        val content = DataStorageUtil.loadTextFromFile(this, DataStorageUtil.StorageType.EXTERNAL_CACHE, "external_cache.txt", "child1", "child2")
+        editText.setText(content)
+    }
+
+ */
