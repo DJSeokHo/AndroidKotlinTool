@@ -1,5 +1,6 @@
 package com.swein.androidkotlintool.main.examples.systemphotopicker
 
+import android.Manifest
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Matrix
@@ -11,14 +12,16 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.FileProvider
 import androidx.exifinterface.media.ExifInterface
 import com.swein.androidkotlintool.BuildConfig
+import com.swein.androidkotlintool.main.examples.permissionexample.PermissionManager
 import java.io.File
 import java.io.FileOutputStream
 import java.util.*
 
 class SystemPhotoPickManager(private val componentActivity: ComponentActivity) {
 
-    private var takePicture: ActivityResultLauncher<Uri>
-    private var selectPicture: ActivityResultLauncher<String>
+    private val takePicture: ActivityResultLauncher<Uri>
+    private val selectPicture: ActivityResultLauncher<String>
+    private val permissionManager: PermissionManager = PermissionManager(componentActivity)
 
     init {
         takePicture = registerTakePicture()
@@ -81,48 +84,96 @@ class SystemPhotoPickManager(private val componentActivity: ComponentActivity) {
     }
 
     fun selectPicture(selectedDelegate: (uri: Uri) -> Unit) {
-        this.selectedDelegate = selectedDelegate
-        selectPicture.launch("image/*")
+
+        permissionManager.requestPermission(
+            "Permission",
+            "permissions are necessary",
+            "setting",
+            arrayOf(
+                Manifest.permission.CAMERA,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                Manifest.permission.READ_EXTERNAL_STORAGE)
+        ) {
+            this.selectedDelegate = selectedDelegate
+            selectPicture.launch("image/*")
+        }
+
     }
 
     fun takePictureWithFilePath(shouldCompress: Boolean = false, takePathDelegate: (imagePath: String) -> Unit) {
-        this.shouldCompress = shouldCompress
-        this.takePathDelegate = takePathDelegate
 
-        tempImageUri = FileProvider.getUriForFile(
-            componentActivity, BuildConfig.APPLICATION_ID + ".provider",
-            createImageFile().also {
-                tempImageFilePath = it.absolutePath
-            }
-        )
+        permissionManager.requestPermission(
+            "Permission",
+            "permissions are necessary",
+            "setting",
+            arrayOf(
+                Manifest.permission.CAMERA,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                Manifest.permission.READ_EXTERNAL_STORAGE)
+        ) {
+            this.shouldCompress = shouldCompress
+            this.takePathDelegate = takePathDelegate
 
-        takePicture.launch(tempImageUri)
+            tempImageUri = FileProvider.getUriForFile(
+                componentActivity, BuildConfig.APPLICATION_ID + ".provider",
+                createImageFile().also {
+                    tempImageFilePath = it.absolutePath
+                }
+            )
+
+            takePicture.launch(tempImageUri)
+        }
+
     }
 
     fun takePictureWithUri(takeUriDelegate: (uri: Uri) -> Unit) {
-        this.takeUriDelegate = takeUriDelegate
 
-        tempImageUri = FileProvider.getUriForFile(
-            componentActivity, BuildConfig.APPLICATION_ID + ".provider",
-            createImageFile().also {
-                tempImageFilePath = it.absolutePath
-            }
-        )
+        permissionManager.requestPermission(
+            "Permission",
+            "permissions are necessary",
+            "setting",
+            arrayOf(
+                Manifest.permission.CAMERA,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                Manifest.permission.READ_EXTERNAL_STORAGE)
+        ) {
+            this.takeUriDelegate = takeUriDelegate
 
-        takePicture.launch(tempImageUri)
+            tempImageUri = FileProvider.getUriForFile(
+                componentActivity, BuildConfig.APPLICATION_ID + ".provider",
+                createImageFile().also {
+                    tempImageFilePath = it.absolutePath
+                }
+            )
+
+            takePicture.launch(tempImageUri)
+        }
+
     }
 
     fun takePictureWithBitmap(takeBitmapDelegate: ((bitmap: Bitmap) -> Unit)) {
-        this.takeBitmapDelegate = takeBitmapDelegate
 
-        tempImageUri = FileProvider.getUriForFile(
-            componentActivity, BuildConfig.APPLICATION_ID + ".provider",
-            createImageFile().also {
-                tempImageFilePath = it.absolutePath
-            }
-        )
+        permissionManager.requestPermission(
+            "Permission",
+            "permissions are necessary",
+            "setting",
+            arrayOf(
+                Manifest.permission.CAMERA,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                Manifest.permission.READ_EXTERNAL_STORAGE)
+        ) {
+            this.takeBitmapDelegate = takeBitmapDelegate
 
-        takePicture.launch(tempImageUri)
+            tempImageUri = FileProvider.getUriForFile(
+                componentActivity, BuildConfig.APPLICATION_ID + ".provider",
+                createImageFile().also {
+                    tempImageFilePath = it.absolutePath
+                }
+            )
+
+            takePicture.launch(tempImageUri)
+        }
+
     }
 
     private fun compressImage(filePath: String, targetMB: Double = 1.0) {
