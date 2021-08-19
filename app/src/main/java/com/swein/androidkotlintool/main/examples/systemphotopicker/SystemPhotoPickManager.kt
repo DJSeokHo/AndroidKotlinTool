@@ -17,6 +17,21 @@ import java.io.File
 import java.io.FileOutputStream
 import java.util.*
 
+/**
+StartActivityForResult()
+RequestMultiplePermissions()
+RequestPermission()
+TakePicturePreview()
+TakePicture()
+TakeVideo()
+PickContact()
+CreateDocument()
+OpenDocumentTree()
+OpenMultipleDocuments()
+OpenDocument()
+GetMultipleContents()
+GetContent()
+ */
 class SystemPhotoPickManager(private val componentActivity: ComponentActivity) {
 
     private val takePicture: ActivityResultLauncher<Uri>
@@ -83,96 +98,75 @@ class SystemPhotoPickManager(private val componentActivity: ComponentActivity) {
         }
     }
 
-    fun selectPicture(selectedDelegate: (uri: Uri) -> Unit) {
+    fun requestPermission(permissionDialogTitle: String = "permission",
+                          permissionDialogMessage: String = "permissions are necessary",
+                          permissionDialogPositiveButtonTitle: String =  "setting",
+                          runnable: (SystemPhotoPickManager) -> Unit) {
 
         permissionManager.requestPermission(
-            "Permission",
-            "permissions are necessary",
-            "setting",
+            permissionDialogTitle,
+            permissionDialogMessage,
+            permissionDialogPositiveButtonTitle,
             arrayOf(
                 Manifest.permission.CAMERA,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE,
                 Manifest.permission.READ_EXTERNAL_STORAGE)
         ) {
-            this.selectedDelegate = selectedDelegate
-            selectPicture.launch("image/*")
+            runnable(this)
         }
+
+    }
+
+    fun selectPicture(selectedDelegate: (uri: Uri) -> Unit) {
+
+        this.selectedDelegate = selectedDelegate
+        selectPicture.launch("image/*")
 
     }
 
     fun takePictureWithFilePath(shouldCompress: Boolean = false, takePathDelegate: (imagePath: String) -> Unit) {
 
-        permissionManager.requestPermission(
-            "Permission",
-            "permissions are necessary",
-            "setting",
-            arrayOf(
-                Manifest.permission.CAMERA,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                Manifest.permission.READ_EXTERNAL_STORAGE)
-        ) {
-            this.shouldCompress = shouldCompress
-            this.takePathDelegate = takePathDelegate
+        this.shouldCompress = shouldCompress
+        this.takePathDelegate = takePathDelegate
 
-            tempImageUri = FileProvider.getUriForFile(
-                componentActivity, BuildConfig.APPLICATION_ID + ".provider",
-                createImageFile().also {
-                    tempImageFilePath = it.absolutePath
-                }
-            )
+        tempImageUri = FileProvider.getUriForFile(
+            componentActivity, BuildConfig.APPLICATION_ID + ".provider",
+            createImageFile().also {
+                tempImageFilePath = it.absolutePath
+            }
+        )
 
-            takePicture.launch(tempImageUri)
-        }
+        takePicture.launch(tempImageUri)
 
     }
 
     fun takePictureWithUri(takeUriDelegate: (uri: Uri) -> Unit) {
 
-        permissionManager.requestPermission(
-            "Permission",
-            "permissions are necessary",
-            "setting",
-            arrayOf(
-                Manifest.permission.CAMERA,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                Manifest.permission.READ_EXTERNAL_STORAGE)
-        ) {
-            this.takeUriDelegate = takeUriDelegate
+        this.takeUriDelegate = takeUriDelegate
 
-            tempImageUri = FileProvider.getUriForFile(
-                componentActivity, BuildConfig.APPLICATION_ID + ".provider",
-                createImageFile().also {
-                    tempImageFilePath = it.absolutePath
-                }
-            )
+        tempImageUri = FileProvider.getUriForFile(
+            componentActivity, BuildConfig.APPLICATION_ID + ".provider",
+            createImageFile().also {
+                tempImageFilePath = it.absolutePath
+            }
+        )
 
-            takePicture.launch(tempImageUri)
-        }
+        takePicture.launch(tempImageUri)
 
     }
 
     fun takePictureWithBitmap(takeBitmapDelegate: ((bitmap: Bitmap) -> Unit)) {
 
-        permissionManager.requestPermission(
-            "Permission",
-            "permissions are necessary",
-            "setting",
-            arrayOf(
-                Manifest.permission.CAMERA,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                Manifest.permission.READ_EXTERNAL_STORAGE)
-        ) {
-            this.takeBitmapDelegate = takeBitmapDelegate
+        this.takeBitmapDelegate = takeBitmapDelegate
 
-            tempImageUri = FileProvider.getUriForFile(
-                componentActivity, BuildConfig.APPLICATION_ID + ".provider",
-                createImageFile().also {
-                    tempImageFilePath = it.absolutePath
-                }
-            )
+        tempImageUri = FileProvider.getUriForFile(
+            componentActivity, BuildConfig.APPLICATION_ID + ".provider",
+            createImageFile().also {
+                tempImageFilePath = it.absolutePath
+            }
+        )
 
-            takePicture.launch(tempImageUri)
-        }
+        takePicture.launch(tempImageUri)
 
     }
 

@@ -14,7 +14,6 @@ class SystemPhotoPickerExampleActivity : AppCompatActivity() {
 
     private val imageView: ImageView by lazy {
         findViewById(R.id.imageView)
-
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,21 +23,25 @@ class SystemPhotoPickerExampleActivity : AppCompatActivity() {
 
         findViewById<Button>(R.id.button).setOnClickListener {
 
-//            systemPhotoPickManager.selectPicture {
+            systemPhotoPickManager.requestPermission {
+
+//            it.selectPicture { uri ->
 //                SHGlide.setImage(imageView, uri = it)
 //            }
 
-            systemPhotoPickManager.takePictureWithFilePath(true) {
-                SHGlide.setImage(imageView, filePath = it)
+                it.takePictureWithFilePath(true) { filePath ->
+                    SHGlide.setImage(imageView, filePath = filePath)
+                }
+
+//            it.takePictureWithUri { uri ->
+//                SHGlide.setImage(imageView, uri = uri)
+//            }
+
+//            it.takePictureWithBitmap { bitmap ->
+//                SHGlide.setImage(imageView, bitmap = bitmap)
+//            }
+
             }
-
-//            systemPhotoPickManager.takePictureWithUri {
-//                SHGlide.setImage(imageView, uri = it)
-//            }
-
-//            systemPhotoPickManager.takePictureWithBitmap {
-//                SHGlide.setImage(imageView, bitmap = it)
-//            }
 
         }
     }
