@@ -114,7 +114,6 @@ class SystemPhotoPickManager(private val componentActivity: ComponentActivity) {
         ) {
             runnable(this)
         }
-
     }
 
     fun selectPicture(selectedDelegate: (uri: Uri) -> Unit) {
