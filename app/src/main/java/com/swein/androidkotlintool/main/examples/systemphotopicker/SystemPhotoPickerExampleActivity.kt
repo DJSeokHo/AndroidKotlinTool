@@ -6,6 +6,7 @@ import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import com.swein.androidkotlintool.R
 import com.swein.androidkotlintool.framework.util.glide.SHGlide
+import com.swein.androidkotlintool.framework.util.log.ILog
 
 
 class SystemPhotoPickerExampleActivity : AppCompatActivity() {
@@ -25,13 +26,18 @@ class SystemPhotoPickerExampleActivity : AppCompatActivity() {
 
             systemPhotoPickManager.requestPermission {
 
-//            it.selectPicture { uri ->
-//                SHGlide.setImage(imageView, uri = it)
-//            }
+//                it.selectPicture { uri ->
+//                    SHGlide.setImage(imageView, uri = uri)
+//                }
 
-                it.takePictureWithFilePath(true) { filePath ->
+                it.selectPathPicture { filePath ->
+                    ILog.debug("???", filePath)
                     SHGlide.setImage(imageView, filePath = filePath)
                 }
+
+//                it.takePictureWithFilePath(true) { filePath ->
+//                    SHGlide.setImage(imageView, filePath = filePath)
+//                }
 
 //            it.takePictureWithUri { uri ->
 //                SHGlide.setImage(imageView, uri = uri)

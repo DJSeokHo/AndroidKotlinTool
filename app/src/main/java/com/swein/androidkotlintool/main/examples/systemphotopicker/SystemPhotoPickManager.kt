@@ -1,6 +1,7 @@
 package com.swein.androidkotlintool.main.examples.systemphotopicker
 
 import android.Manifest
+import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Matrix
@@ -43,7 +44,8 @@ class SystemPhotoPickManager(private val componentActivity: ComponentActivity) {
         selectPicture = registerSelectPicture()
     }
 
-    private lateinit var selectedDelegate: (uri: Uri) -> Unit
+    private var selectedDelegate: ((uri: Uri) -> Unit)? = null
+    private var selectedPathDelegate: ((imagePath: String) -> Unit)? = null
 
     private var takePathDelegate: ((imagePath: String) -> Unit)? = null
     private var takeUriDelegate: ((uri: Uri) -> Unit)? = null
@@ -93,8 +95,22 @@ class SystemPhotoPickManager(private val componentActivity: ComponentActivity) {
 
     private fun registerSelectPicture(): ActivityResultLauncher<String> {
 
-        return componentActivity.registerForActivityResult(ActivityResultContracts.GetContent()) {
-            selectedDelegate(it)
+        return componentActivity.registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
+
+            selectedPathDelegate?.let {
+                uriToFile(componentActivity, uri, "select_image")?.let { file ->
+
+                    if (shouldCompress) {
+                        compressImage(file.absolutePath)
+                    }
+
+                    it(file.absolutePath)
+                }
+            }
+
+            selectedDelegate?.let {
+                it(uri)
+            }
         }
     }
 
@@ -119,6 +135,13 @@ class SystemPhotoPickManager(private val componentActivity: ComponentActivity) {
     fun selectPicture(selectedDelegate: (uri: Uri) -> Unit) {
 
         this.selectedDelegate = selectedDelegate
+        selectPicture.launch("image/*")
+
+    }
+
+    fun selectPathPicture(shouldCompress: Boolean = false, selectedPathDelegate: (imagePath: String) -> Unit) {
+        this.shouldCompress = shouldCompress
+        this.selectedPathDelegate = selectedPathDelegate
         selectPicture.launch("image/*")
 
     }
@@ -226,13 +249,30 @@ class SystemPhotoPickManager(private val componentActivity: ComponentActivity) {
         }
     }
 
-    private fun createImageFile(): File {
+    private fun createImageFile(imageName: String = "temp_image"): File {
         // Create an image file name
         val storageDir = componentActivity.getExternalFilesDir(Environment.DIRECTORY_PICTURES)
         return File.createTempFile(
-            "temp_image",
+            imageName,
             ".jpg",
             storageDir
         )
+    }
+
+    private fun uriToFile(context: Context, uri: Uri, fileName: String): File? {
+
+        context.contentResolver.openInputStream(uri)?.let { inputStream ->
+
+            val tempFile = createImageFile(fileName)
+            val fileOutputStream = FileOutputStream(tempFile)
+
+            inputStream.copyTo(fileOutputStream)
+            inputStream.close()
+            fileOutputStream.close()
+
+            return tempFile
+        }
+
+        return null
     }
 }
