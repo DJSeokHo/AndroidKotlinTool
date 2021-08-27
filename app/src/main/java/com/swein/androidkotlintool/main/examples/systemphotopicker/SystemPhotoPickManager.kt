@@ -97,6 +97,10 @@ class SystemPhotoPickManager(private val componentActivity: ComponentActivity) {
 
         return componentActivity.registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
 
+            if (uri == null) {
+                return@registerForActivityResult
+            }
+
             selectedPathDelegate?.let {
                 uriToFile(componentActivity, uri, "select_image")?.let { file ->
 
