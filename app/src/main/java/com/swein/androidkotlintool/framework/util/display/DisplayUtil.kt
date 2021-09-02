@@ -106,27 +106,12 @@ class DisplayUtil {
             return context.resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
         }
 
-        /**
-         * px value to dip or dp
-         *
-         * @param context
-         * @param pxValue
-         * @return
-         */
         fun pxToDip(context: Context, pxValue: Float): Int {
-            val scale = context.resources.displayMetrics.density
-
-            return (pxValue / scale + 0.5f).toInt()
+            return (pxValue / context.resources.displayMetrics.density).toInt()
         }
 
-        /**
-         * dip or dp to px value
-         * @param context
-         * @param dipValue
-         * @return
-         */
         fun dipToPx(context: Context, dipValue: Float): Int {
-            return (dipValue * (context.resources.displayMetrics.density) + 0.5f).toInt()
+            return (dipValue * context.resources.displayMetrics.density).toInt()
         }
 
         /**

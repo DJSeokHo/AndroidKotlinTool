@@ -30,6 +30,7 @@ import com.swein.androidkotlintool.main.examples.materialdesigntutorial.dayseven
 import com.swein.androidkotlintool.main.examples.multiplebackstackforfragmentsinactivity.main.MultipleBackStackExampleActivity
 import com.swein.androidkotlintool.main.examples.otpverificationcodeview.OTPVerificationCodeViewExampleActivity
 import com.swein.androidkotlintool.main.examples.permissionexample.PermissionExampleActivity
+import com.swein.androidkotlintool.main.examples.recyclerviewwithslide.RecyclerViewWithSlideActivity
 import com.swein.androidkotlintool.main.examples.systemphotoandcrop.SystemPhotoAndCropExampleActivity
 import com.swein.androidkotlintool.main.examples.systemphotopicker.SystemPhotoPickerExampleActivity
 import com.swein.androidkotlintool.main.examples.webview.WebViewExampleActivity
@@ -141,7 +142,8 @@ class MainActivity : BasicPermissionActivity() {
 //        ActivityUtil.startNewActivityWithoutFinish(this, OTPVerificationCodeViewExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, FlowExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, SystemPhotoAndCropExampleActivity::class.java)
-        ActivityUtil.startNewActivityWithoutFinish(this, SystemPhotoPickerExampleActivity::class.java)
+//        ActivityUtil.startNewActivityWithoutFinish(this, SystemPhotoPickerExampleActivity::class.java)
+        ActivityUtil.startNewActivityWithoutFinish(this, RecyclerViewWithSlideActivity::class.java)
 
 
 //        SnackBarUtility.showSnackBar(frameLayoutRoot, "test")
