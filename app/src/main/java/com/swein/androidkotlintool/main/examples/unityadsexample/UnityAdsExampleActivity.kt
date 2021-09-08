@@ -104,6 +104,7 @@ class UnityAdsExampleActivity : AppCompatActivity() {
         }
 
         findViewById<Button>(R.id.buttonRewarded).setOnClickListener {
+            isFullScreenAdShown = false
             showAd(REWARDED_ID)
         }
 
