@@ -13,7 +13,7 @@ import android.view.WindowInsets
 import android.view.WindowManager
 
 
-class DisplayUtil {
+class DisplayUtility {
 
     interface DisplayRootViewInfoDelegate {
         fun onInfo(

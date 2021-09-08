@@ -7,7 +7,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import com.swein.androidkotlintool.R
-import com.swein.androidkotlintool.framework.util.display.DisplayUtil
+import com.swein.androidkotlintool.framework.util.display.DisplayUtility
 
 class CustomTabViewHolder(context: Context): LinearLayout(context) {
 
@@ -51,8 +51,8 @@ class CustomTabViewHolder(context: Context): LinearLayout(context) {
         if (imageView.visibility == View.VISIBLE) {
             // you can add animation for this
             val layoutParams = imageView.layoutParams
-            layoutParams.width = DisplayUtil.dipToPx(context, 40f)
-            layoutParams.height = DisplayUtil.dipToPx(context, 40f)
+            layoutParams.width = DisplayUtility.dipToPx(context, 40f)
+            layoutParams.height = DisplayUtility.dipToPx(context, 40f)
             imageView.layoutParams = layoutParams
         }
         textViewTitle.setTextColor(Color.parseColor("#ee6e61"))
@@ -63,8 +63,8 @@ class CustomTabViewHolder(context: Context): LinearLayout(context) {
         if (imageView.visibility == View.VISIBLE) {
             // you can add animation for this
             val layoutParams = imageView.layoutParams
-            layoutParams.width = DisplayUtil.dipToPx(context, 30f)
-            layoutParams.height = DisplayUtil.dipToPx(context, 30f)
+            layoutParams.width = DisplayUtility.dipToPx(context, 30f)
+            layoutParams.height = DisplayUtility.dipToPx(context, 30f)
             imageView.layoutParams = layoutParams
         }
         textViewTitle.setTextColor(Color.parseColor("#333333"))

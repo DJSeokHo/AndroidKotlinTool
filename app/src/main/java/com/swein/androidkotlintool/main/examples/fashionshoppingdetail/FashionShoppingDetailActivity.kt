@@ -15,8 +15,7 @@ import com.bumptech.glide.load.resource.bitmap.BitmapTransitionOptions
 import com.google.android.material.imageview.ShapeableImageView
 import com.google.android.material.shape.CornerFamily
 import com.swein.androidkotlintool.R
-import com.swein.androidkotlintool.framework.util.display.DisplayUtil
-import com.swein.androidkotlintool.framework.util.glide.SHGlide
+import com.swein.androidkotlintool.framework.util.display.DisplayUtility
 
 class FashionShoppingDetailActivity : AppCompatActivity() {
 
@@ -75,7 +74,7 @@ class FashionShoppingDetailActivity : AppCompatActivity() {
         textViewXXL = findViewById(R.id.textViewXXL)
         buttonContinue = findViewById(R.id.buttonContinue)
 
-        val radius = DisplayUtil.dipToPx(this, 36f)
+        val radius = DisplayUtility.dipToPx(this, 36f)
         shapeableImageView.shapeAppearanceModel = shapeableImageView.shapeAppearanceModel.toBuilder()
             .setBottomLeftCorner(CornerFamily.ROUNDED, radius.toFloat())
             .build()

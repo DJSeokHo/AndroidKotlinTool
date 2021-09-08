@@ -12,7 +12,6 @@ import android.widget.Toast
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.swein.androidkotlintool.R
-import com.swein.androidkotlintool.framework.util.display.DisplayUtil
 
 class BottomActionSheetFragment(private val isFullScreen: Boolean = false): BottomSheetDialogFragment() {
 

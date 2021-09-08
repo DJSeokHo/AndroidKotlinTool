@@ -6,7 +6,7 @@ import android.os.Handler
 import android.os.Looper
 import android.view.View
 import androidx.constraintlayout.widget.ConstraintLayout
-import com.swein.androidkotlintool.framework.util.display.DisplayUtil
+import com.swein.androidkotlintool.framework.util.display.DisplayUtility
 
 
 class MenuAnimationInfoData {
@@ -40,37 +40,37 @@ object MenuAnimatorController {
         positionList.clear()
 
         val position0 = MenuAnimationInfoData().apply {
-            this.radius = DisplayUtil.dipToPx(context, 70f).toFloat()
+            this.radius = DisplayUtility.dipToPx(context, 70f).toFloat()
             this.angle = 0f
-            this.size = DisplayUtil.dipToPx(context, 60f)
+            this.size = DisplayUtility.dipToPx(context, 60f)
         }
         positionList.add(position0)
 
         val position65 = MenuAnimationInfoData().apply {
-            this.radius = DisplayUtil.dipToPx(context, 80f).toFloat()
+            this.radius = DisplayUtility.dipToPx(context, 80f).toFloat()
             this.angle = 65f
-            this.size = DisplayUtil.dipToPx(context, 40f)
+            this.size = DisplayUtility.dipToPx(context, 40f)
         }
         positionList.add(position65)
 
         val position90 = MenuAnimationInfoData().apply {
-            this.radius = DisplayUtil.dipToPx(context, 130f).toFloat()
+            this.radius = DisplayUtility.dipToPx(context, 130f).toFloat()
             this.angle = 90f
-            this.size = DisplayUtil.dipToPx(context, 40f)
+            this.size = DisplayUtility.dipToPx(context, 40f)
         }
         positionList.add(position90)
 
         val position270 = MenuAnimationInfoData().apply {
-            this.radius = DisplayUtil.dipToPx(context, 130f).toFloat()
+            this.radius = DisplayUtility.dipToPx(context, 130f).toFloat()
             this.angle = 270f
-            this.size = DisplayUtil.dipToPx(context, 40f)
+            this.size = DisplayUtility.dipToPx(context, 40f)
         }
         positionList.add(position270)
 
         val position295 = MenuAnimationInfoData().apply {
-            this.radius = DisplayUtil.dipToPx(context, 80f).toFloat()
+            this.radius = DisplayUtility.dipToPx(context, 80f).toFloat()
             this.angle = 295f
-            this.size = DisplayUtil.dipToPx(context, 40f)
+            this.size = DisplayUtility.dipToPx(context, 40f)
         }
         positionList.add(position295)
     }
@@ -168,8 +168,8 @@ object MenuAnimatorController {
     fun getCenterViewIndex(): Int {
         for (i in 0 until viewList.size) {
             val layoutParams = viewList[i].layoutParams as ConstraintLayout.LayoutParams
-            if (layoutParams.width == DisplayUtil.dipToPx(viewList[i].context, 60f)
-                && layoutParams.height == DisplayUtil.dipToPx(viewList[i].context, 60f)) {
+            if (layoutParams.width == DisplayUtility.dipToPx(viewList[i].context, 60f)
+                && layoutParams.height == DisplayUtility.dipToPx(viewList[i].context, 60f)) {
                 return i
             }
         }
@@ -196,9 +196,9 @@ object MenuAnimatorController {
         if (rotateDirection == RotateDirection.RIGHT) {
             if (currentViewPositionIndex == positionList.size - 1) {
                 endData = MenuAnimationInfoData().apply {
-                    this.radius = DisplayUtil.dipToPx(currentView.context, 70f).toFloat()
+                    this.radius = DisplayUtility.dipToPx(currentView.context, 70f).toFloat()
                     this.angle = 360f
-                    this.size = DisplayUtil.dipToPx(currentView.context, 60f)
+                    this.size = DisplayUtility.dipToPx(currentView.context, 60f)
                 }
             }
             else {
@@ -208,9 +208,9 @@ object MenuAnimatorController {
         else if (rotateDirection == RotateDirection.LEFT) {
             if (currentViewPositionIndex == 0) {
                 endData = MenuAnimationInfoData().apply {
-                    this.radius = DisplayUtil.dipToPx(currentView.context, 80f).toFloat()
+                    this.radius = DisplayUtility.dipToPx(currentView.context, 80f).toFloat()
                     this.angle = -65f
-                    this.size = DisplayUtil.dipToPx(currentView.context, 40f)
+                    this.size = DisplayUtility.dipToPx(currentView.context, 40f)
                 }
             }
             else {

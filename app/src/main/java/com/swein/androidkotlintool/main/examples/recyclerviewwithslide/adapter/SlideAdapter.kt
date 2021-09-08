@@ -16,6 +16,11 @@ class SlideAdapter: RecyclerView.Adapter<SlideItemViewHolder>() {
 
     override fun onBindViewHolder(holder: SlideItemViewHolder, position: Int) {
         holder.index = list[position]
+
+        holder.onDeleteClick = {
+            removeItem(it)
+        }
+
         holder.updateView()
     }
 
@@ -29,7 +34,7 @@ class SlideAdapter: RecyclerView.Adapter<SlideItemViewHolder>() {
         return list.size
     }
 
-    fun removeItem(viewHolder: RecyclerView.ViewHolder) {
+    private fun removeItem(viewHolder: RecyclerView.ViewHolder) {
         list.removeAt(viewHolder.adapterPosition)
         notifyItemRemoved(viewHolder.adapterPosition)
     }

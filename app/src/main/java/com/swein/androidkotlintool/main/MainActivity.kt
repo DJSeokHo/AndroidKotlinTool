@@ -15,26 +15,15 @@ import com.swein.androidkotlintool.constants.Constants
 import com.swein.androidkotlintool.framework.module.basicpermission.BasicPermissionActivity
 import com.swein.androidkotlintool.framework.module.basicpermission.PermissionManager
 import com.swein.androidkotlintool.framework.module.basicpermission.RequestPermission
-import com.swein.androidkotlintool.framework.module.shcameraphoto.demo.SHCameraPhotoFragmentDemoActivity
 import com.swein.androidkotlintool.framework.module.volley.VolleyModule
 import com.swein.androidkotlintool.framework.util.activity.ActivityUtil
-import com.swein.androidkotlintool.framework.util.display.DisplayUtil
+import com.swein.androidkotlintool.framework.util.display.DisplayUtility
 import com.swein.androidkotlintool.framework.util.eventsplitshot.eventcenter.EventCenter
 import com.swein.androidkotlintool.framework.util.eventsplitshot.subject.ESSArrows
 import com.swein.androidkotlintool.framework.util.glide.SHGlide
 import com.swein.androidkotlintool.framework.util.log.ILog
 import com.swein.androidkotlintool.framework.util.screen.ScreenUtil
-import com.swein.androidkotlintool.main.examples.firebaseauth.phone.FirebaseAuthPhoneActivity
-import com.swein.androidkotlintool.main.examples.flowexample.FlowExampleActivity
-import com.swein.androidkotlintool.main.examples.materialdesigntutorial.dayseven.MDDaySevenActivity
-import com.swein.androidkotlintool.main.examples.multiplebackstackforfragmentsinactivity.main.MultipleBackStackExampleActivity
-import com.swein.androidkotlintool.main.examples.otpverificationcodeview.OTPVerificationCodeViewExampleActivity
-import com.swein.androidkotlintool.main.examples.permissionexample.PermissionExampleActivity
 import com.swein.androidkotlintool.main.examples.recyclerviewwithslide.RecyclerViewWithSlideActivity
-import com.swein.androidkotlintool.main.examples.systemphotoandcrop.SystemPhotoAndCropExampleActivity
-import com.swein.androidkotlintool.main.examples.systemphotopicker.SystemPhotoPickerExampleActivity
-import com.swein.androidkotlintool.main.examples.unityadsexample.UnityAdsExampleActivity
-import com.swein.androidkotlintool.main.examples.webview.WebViewExampleActivity
 import com.swein.androidkotlintool.main.moduledemo.ModuleDemoActivity
 import com.swein.androidkotlintool.template.bottomtab.activity.TabHostActivity
 import com.swein.androidkotlintool.template.handlerthread.HandlerThreadTemplateActivity
@@ -144,8 +133,8 @@ class MainActivity : BasicPermissionActivity() {
 //        ActivityUtil.startNewActivityWithoutFinish(this, FlowExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, SystemPhotoAndCropExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, SystemPhotoPickerExampleActivity::class.java)
-//        ActivityUtil.startNewActivityWithoutFinish(this, RecyclerViewWithSlideActivity::class.java)
-        ActivityUtil.startNewActivityWithoutFinish(this, UnityAdsExampleActivity::class.java)
+        ActivityUtil.startNewActivityWithoutFinish(this, RecyclerViewWithSlideActivity::class.java)
+//        ActivityUtil.startNewActivityWithoutFinish(this, UnityAdsExampleActivity::class.java)
 
 
 //        SnackBarUtility.showSnackBar(frameLayoutRoot, "test")
@@ -199,10 +188,10 @@ class MainActivity : BasicPermissionActivity() {
             val insets: Insets = windowMetrics.windowInsets.getInsetsIgnoringVisibility(WindowInsets.Type.systemBars())
             val width = windowMetrics.bounds.width() - insets.left - insets.right
             ILog.debug(TAG, "${windowMetrics.bounds.width()} - ${insets.left} - ${insets.right} $width")
-            ILog.debug(TAG, "${DisplayUtil.getScreenWidthPx(this)}")
+            ILog.debug(TAG, "${DisplayUtility.getScreenWidthPx(this)}")
 
 
-            DisplayUtil.getRootViewInfo(view, object : DisplayUtil.DisplayRootViewInfoDelegate {
+            DisplayUtility.getRootViewInfo(view, object : DisplayUtility.DisplayRootViewInfoDelegate {
                 override fun onInfo(
                     screenWidth: Int,
                     screenHeight: Int,
@@ -210,8 +199,8 @@ class MainActivity : BasicPermissionActivity() {
                     bottomHeight: Int,
                     keypadHeight: Int
                 ) {
-                    ILog.debug(TAG, "screenWidth $screenWidth ${DisplayUtil.getScreenWidthPx(this@MainActivity)} ${DisplayUtil.getScreenWidth(this@MainActivity)}")
-                    ILog.debug(TAG, "screenHeight $screenHeight ${DisplayUtil.getScreenHeightPx(this@MainActivity)} ${DisplayUtil.getScreenHeight(this@MainActivity)}")
+                    ILog.debug(TAG, "screenWidth $screenWidth ${DisplayUtility.getScreenWidthPx(this@MainActivity)} ${DisplayUtility.getScreenWidth(this@MainActivity)}")
+                    ILog.debug(TAG, "screenHeight $screenHeight ${DisplayUtility.getScreenHeightPx(this@MainActivity)} ${DisplayUtility.getScreenHeight(this@MainActivity)}")
                     ILog.debug(TAG, "statusHeight $statusHeight ${windowMetrics.windowInsets.getInsetsIgnoringVisibility(WindowInsets.Type.statusBars())}")
                     ILog.debug(TAG, "bottomHeight $bottomHeight ${windowMetrics.windowInsets.getInsetsIgnoringVisibility(WindowInsets.Type.systemBars())}")
                 }

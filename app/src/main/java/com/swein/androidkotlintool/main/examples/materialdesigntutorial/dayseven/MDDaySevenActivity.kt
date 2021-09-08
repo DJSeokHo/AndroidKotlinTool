@@ -18,7 +18,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.swein.androidkotlintool.R
-import com.swein.androidkotlintool.framework.util.display.DisplayUtil
+import com.swein.androidkotlintool.framework.util.display.DisplayUtility
 import com.swein.androidkotlintool.framework.util.log.ILog
 import kotlin.math.abs
 
@@ -118,10 +118,10 @@ class MDDaySevenActivity : FragmentActivity() {
         toolbar.title = "title"
         collapsingToolbarLayout.setExpandedTitleColor(Color.WHITE)
         collapsingToolbarLayout.setExpandedTitleMargin(
-            DisplayUtil.dipToPx(this, 30f),
+            DisplayUtility.dipToPx(this, 30f),
             0,
             0,
-            DisplayUtil.dipToPx(this, 100f),
+            DisplayUtility.dipToPx(this, 100f),
         )
 
         toolbar.navigationIcon = ContextCompat.getDrawable(this, R.mipmap.ic_launcher)
