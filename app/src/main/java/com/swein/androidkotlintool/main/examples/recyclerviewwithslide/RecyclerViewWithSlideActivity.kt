@@ -101,32 +101,34 @@ class RecyclerViewWithSlideActivity : AppCompatActivity() {
                 isCurrentlyActive: Boolean
             ) {
 
-                // 首次滑动时，记录下ItemView当前滑动的距离
-                if (dX == 0f) {
-                    currentScrollX = viewHolder.itemView.scrollX
-                    firstInactive = true
-                }
+                if (actionState == ItemTouchHelper.ACTION_STATE_SWIPE) {
 
-                if (isCurrentlyActive) { // 手指滑动
-                    // 基于当前的距离滑动
-
-                    var scrollOffset = currentScrollX + (-dX).toInt()
-                    if (scrollOffset > limitScrollX) {
-                        scrollOffset = limitScrollX
-                    }
-                    else if (scrollOffset < 0) {
-                        scrollOffset = 0
+                    // 首次滑动时，记录下ItemView当前滑动的距离
+                    if (dX == 0f) {
+                        currentScrollX = viewHolder.itemView.scrollX
+                        firstInactive = true
                     }
 
-                    viewHolder.itemView.scrollTo(scrollOffset, 0)
-                }
-                else {
-                    // 动画滑动
-                    if (firstInactive) {
-                        firstInactive = false
-                        currentScrollXWhenInactive = viewHolder.itemView.scrollX
-                        initXWhenInactive = dX
+                    if (isCurrentlyActive) { // 手指滑动
+                        // 基于当前的距离滑动
+
+                        var scrollOffset = currentScrollX + (-dX).toInt()
+                        if (scrollOffset > limitScrollX) {
+                            scrollOffset = limitScrollX
+                        }
+                        else if (scrollOffset < 0) {
+                            scrollOffset = 0
+                        }
+
+                        viewHolder.itemView.scrollTo(scrollOffset, 0)
                     }
+                    else {
+                        // 动画滑动
+                        if (firstInactive) {
+                            firstInactive = false
+                            currentScrollXWhenInactive = viewHolder.itemView.scrollX
+                            initXWhenInactive = dX
+                        }
 //                    if (viewHolder.itemView.scrollX >= defaultScrollX) {
 //                        // 当手指松开时，ItemView的滑动距离大于给定阈值，那么最终就停留在阈值，显示删除按钮。
 //                        viewHolder.itemView.scrollTo((currentScrollX + (-dX).toInt()).coerceAtLeast(defaultScrollX), 0)
@@ -135,11 +137,14 @@ class RecyclerViewWithSlideActivity : AppCompatActivity() {
 //                        viewHolder.itemView.scrollTo((currentScrollXWhenInactive * dX / initXWhenInactive).toInt(), 0)
 //                    }
 
-                    if (viewHolder.itemView.scrollX < limitScrollX) {
-                        // 当手指松开时，ItemView的滑动距离大于给定阈值，那么最终就停留在阈值，显示删除按钮。
-                        viewHolder.itemView.scrollTo((currentScrollXWhenInactive * dX / initXWhenInactive).toInt(), 0)
+                        if (viewHolder.itemView.scrollX < limitScrollX) {
+                            // 当手指松开时，ItemView的滑动距离大于给定阈值，那么最终就停留在阈值，显示删除按钮。
+                            viewHolder.itemView.scrollTo((currentScrollXWhenInactive * dX / initXWhenInactive).toInt(), 0)
+                        }
                     }
+
                 }
+
             }
 
             override fun clearView(
