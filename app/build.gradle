@@ -159,6 +159,9 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth-ktx'
 
     implementation files('../libs/unity-ads.aar')
+
+    implementation 'com.google.android.exoplayer:exoplayer:2.15.0'
+    implementation 'com.google.android.exoplayer:exoplayer-ui:2.15.0'
 }
 
 apply plugin: 'com.google.gms.google-services'
