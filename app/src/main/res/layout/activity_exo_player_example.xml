@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".main.examples.exoplayerexample.ExoPlayerExampleActivity"
-    android:background="@color/black">
+    android:background="@color/black"
+    android:id="@+id/constraintLayoutRoot">
     
     <com.google.android.exoplayer2.ui.PlayerView
         app:layout_constraintDimensionRatio="16:9"
