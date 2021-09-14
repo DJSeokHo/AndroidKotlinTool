@@ -48,7 +48,6 @@ class ExoPlayerExampleActivity : AppCompatActivity() {
         window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
 
         val rootView = window.decorView.rootView
-        ILog.debug("???", "${rootView.javaClass.kotlin.simpleName}")
 
         findView()
         initPlayer()
@@ -115,6 +114,27 @@ class ExoPlayerExampleActivity : AppCompatActivity() {
 
     }
 
+    private fun hideSystemUI() {
+
+        actionBar?.hide()
+
+        window.decorView.systemUiVisibility = (View.SYSTEM_UI_FLAG_IMMERSIVE
+                or View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                or View.SYSTEM_UI_FLAG_FULLSCREEN)
+    }
+
+    private fun showSystemUI() {
+
+        actionBar?.show()
+
+        window.decorView.systemUiVisibility = (View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN)
+    }
+
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
 
@@ -128,23 +148,11 @@ class ExoPlayerExampleActivity : AppCompatActivity() {
 
         if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
 
-            actionBar?.hide()
-
-            window.decorView.systemUiVisibility = (View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                    or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                    or View.SYSTEM_UI_FLAG_FULLSCREEN
-                    or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                    or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                    or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY)
+            hideSystemUI()
         }
         else {
 
-            actionBar?.show()
-
-            window.decorView.systemUiVisibility = (View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                    or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                    or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                    )
+            showSystemUI()
 
             val layoutParams = exoPlayerView.layoutParams as ConstraintLayout.LayoutParams
             layoutParams.dimensionRatio = "16:9"
