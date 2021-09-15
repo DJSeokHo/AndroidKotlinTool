@@ -31,7 +31,7 @@ import com.swein.androidkotlintool.framework.util.glide.SHGlide
 import com.swein.androidkotlintool.framework.util.log.ILog
 import com.swein.androidkotlintool.framework.util.sound.audiomanager.AudioManagerUtil
 import com.swein.androidkotlintool.framework.util.sound.mediaplayer.MediaPlayerUtil
-import com.swein.androidkotlintool.framework.util.theme.ThemeUtil
+import com.swein.androidkotlintool.framework.util.window.WindowUtility
 import com.swein.androidkotlintool.framework.util.thread.ThreadUtility
 import java.io.File
 import java.util.*
@@ -673,14 +673,14 @@ class SHCameraPhotoFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         activity?.let {
-            ThemeUtil.hideSystemUI(it)
+            WindowUtility.hideSystemUI(it)
         }
     }
 
     override fun onPause() {
         super.onPause()
         activity?.let {
-            ThemeUtil.showSystemUI(it)
+            WindowUtility.showSystemUI(it)
         }
     }
 

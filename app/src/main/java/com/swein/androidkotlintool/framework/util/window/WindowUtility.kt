@@ -1,17 +1,12 @@
-package com.swein.androidkotlintool.framework.util.theme
+package com.swein.androidkotlintool.framework.util.window
 
-import android.annotation.TargetApi
 import android.app.Activity
 import android.content.Context
 import android.content.res.Configuration
-import android.graphics.Color
-import android.os.Build
 import android.view.View
-import android.view.Window
 import android.view.WindowManager
-import androidx.core.content.ContextCompat
 
-object ThemeUtil {
+object WindowUtility {
 
     /**
      * hide system top status bar and bottom navigation button bar

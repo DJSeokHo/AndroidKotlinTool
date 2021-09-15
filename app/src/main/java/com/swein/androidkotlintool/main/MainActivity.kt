@@ -24,8 +24,6 @@ import com.swein.androidkotlintool.framework.util.glide.SHGlide
 import com.swein.androidkotlintool.framework.util.log.ILog
 import com.swein.androidkotlintool.framework.util.screen.ScreenUtil
 import com.swein.androidkotlintool.main.examples.exoplayerexample.ExoPlayerExampleActivity
-import com.swein.androidkotlintool.main.examples.recyclerviewwithslide.RecyclerViewWithSlideActivity
-import com.swein.androidkotlintool.main.examples.systemuivisibilityexample.SystemUiVisibilityActivity
 import com.swein.androidkotlintool.main.moduledemo.ModuleDemoActivity
 import com.swein.androidkotlintool.template.bottomtab.activity.TabHostActivity
 import com.swein.androidkotlintool.template.handlerthread.HandlerThreadTemplateActivity
@@ -137,8 +135,7 @@ class MainActivity : BasicPermissionActivity() {
 //        ActivityUtil.startNewActivityWithoutFinish(this, SystemPhotoPickerExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, RecyclerViewWithSlideActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, UnityAdsExampleActivity::class.java)
-//        ActivityUtil.startNewActivityWithoutFinish(this, ExoPlayerExampleActivity::class.java)
-        ActivityUtil.startNewActivityWithoutFinish(this, SystemUiVisibilityActivity::class.java)
+        ActivityUtil.startNewActivityWithoutFinish(this, ExoPlayerExampleActivity::class.java)
 
 
 //        SnackBarUtility.showSnackBar(frameLayoutRoot, "test")
