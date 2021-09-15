@@ -51,10 +51,13 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".main.examples.systemuivisibilityexample.SystemUiVisibilityActivity"
+            android:exported="true" />
+        <activity
             android:name=".main.examples.exoplayerexample.ExoPlayerExampleActivity"
+            android:configChanges="orientation|keyboard|layoutDirection|screenSize"
             android:exported="true"
-            android:launchMode="singleTask"
-            android:configChanges="orientation|keyboard|layoutDirection|screenSize" />
+            android:launchMode="singleTask" />
         <activity
             android:name=".main.examples.unityadsexample.UnityAdsExampleActivity"
             android:exported="true" />
