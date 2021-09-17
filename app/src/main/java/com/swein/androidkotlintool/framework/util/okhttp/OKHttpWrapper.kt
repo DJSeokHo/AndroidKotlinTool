@@ -7,6 +7,7 @@ import org.json.JSONObject
 import java.io.File
 import java.io.IOException
 import java.lang.Exception
+import okhttp3.RequestBody.Companion.toRequestBody
 
 /**
  *
@@ -175,14 +176,7 @@ object OKHttpWrapper {
         else {
 
             val mediaType: MediaType = "application/json; charset=utf-8".toMediaType()
-
-            // if jsonObject
-            requestBody = if (jsonObject == null) {
-                RequestBody.create(mediaType, "")
-            }
-            else {
-                RequestBody.create(mediaType, jsonObject.toString())
-            }
+            requestBody = jsonObject?.toString()?.toRequestBody(mediaType) ?: "".toRequestBody(mediaType)
         }
 
         val request = builder.post(requestBody).url(url).build()
@@ -257,14 +251,7 @@ object OKHttpWrapper {
         else {
 
             val mediaType: MediaType = "application/json; charset=utf-8".toMediaType()
-
-            // if jsonObject
-            requestBody = if (jsonObject == null) {
-                RequestBody.create(mediaType, "")
-            }
-            else {
-                RequestBody.create(mediaType, jsonObject.toString())
-            }
+            requestBody = jsonObject?.toString()?.toRequestBody(mediaType) ?: "".toRequestBody(mediaType)
         }
 
         val request = builder.post(requestBody).url(url).build()
@@ -331,14 +318,7 @@ object OKHttpWrapper {
         else {
 
             val mediaType: MediaType = "application/json; charset=utf-8".toMediaType()
-
-            // if jsonObject
-            requestBody = if (jsonObject == null) {
-                RequestBody.create(mediaType, "")
-            }
-            else {
-                RequestBody.create(mediaType, jsonObject.toString())
-            }
+            requestBody = jsonObject?.toString()?.toRequestBody(mediaType) ?: "".toRequestBody(mediaType)
         }
 
         val request = builder.put(requestBody).url(url).build()
@@ -413,14 +393,7 @@ object OKHttpWrapper {
         else {
 
             val mediaType: MediaType = "application/json; charset=utf-8".toMediaType()
-
-            // if jsonObject
-            requestBody = if (jsonObject == null) {
-                RequestBody.create(mediaType, "")
-            }
-            else {
-                RequestBody.create(mediaType, jsonObject.toString())
-            }
+            requestBody = jsonObject?.toString()?.toRequestBody(mediaType) ?: "".toRequestBody(mediaType)
         }
 
         val request = builder.put(requestBody).url(url).build()
@@ -487,14 +460,7 @@ object OKHttpWrapper {
         else {
 
             val mediaType: MediaType = "application/json; charset=utf-8".toMediaType()
-
-            // if jsonObject
-            requestBody = if (jsonObject == null) {
-                RequestBody.create(mediaType, "")
-            }
-            else {
-                RequestBody.create(mediaType, jsonObject.toString())
-            }
+            requestBody = jsonObject?.toString()?.toRequestBody(mediaType) ?: "".toRequestBody(mediaType)
         }
 
         val request = builder.delete(requestBody).url(url).build()
@@ -569,14 +535,7 @@ object OKHttpWrapper {
         else {
 
             val mediaType: MediaType = "application/json; charset=utf-8".toMediaType()
-
-            // if jsonObject
-            requestBody = if (jsonObject == null) {
-                RequestBody.create(mediaType, "")
-            }
-            else {
-                RequestBody.create(mediaType, jsonObject.toString())
-            }
+            requestBody = jsonObject?.toString()?.toRequestBody(mediaType) ?: "".toRequestBody(mediaType)
         }
 
         val request = builder.delete(requestBody).url(url).build()
