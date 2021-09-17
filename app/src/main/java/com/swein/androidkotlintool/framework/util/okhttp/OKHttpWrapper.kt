@@ -142,12 +142,12 @@ object OKHttpWrapper {
 
         val requestBody: RequestBody
         // if form data
-        if (formData != null) {
+        if (formData != null || fileKey != "") {
 
             val multipartBodyBuilder: MultipartBody.Builder = MultipartBody.Builder()
             multipartBodyBuilder.setType(MultipartBody.FORM)
 
-            formData.let {
+            formData?.let {
                 ILog.debug(TAG, "add form data")
                 for ((key, value) in formData) {
                     ILog.debug(TAG, "$key $value")
@@ -224,12 +224,12 @@ object OKHttpWrapper {
 
         val requestBody: RequestBody
         // if form data
-        if (formData != null) {
+        if (formData != null || fileKey != "") {
 
             val multipartBodyBuilder: MultipartBody.Builder = MultipartBody.Builder()
             multipartBodyBuilder.setType(MultipartBody.FORM)
 
-            formData.let {
+            formData?.let {
                 ILog.debug(TAG, "add form data")
                 for ((key, value) in formData) {
                     ILog.debug(TAG, "$key $value")
@@ -298,12 +298,12 @@ object OKHttpWrapper {
 
         val requestBody: RequestBody
         // if form data
-        if (formData != null) {
+        if (formData != null || fileKey != "") {
 
             val multipartBodyBuilder: MultipartBody.Builder = MultipartBody.Builder()
             multipartBodyBuilder.setType(MultipartBody.FORM)
 
-            formData.let {
+            formData?.let {
                 ILog.debug(TAG, "add form data")
                 for ((key, value) in formData) {
                     ILog.debug(TAG, "$key $value")
@@ -380,12 +380,12 @@ object OKHttpWrapper {
 
         val requestBody: RequestBody
         // if form data
-        if (formData != null) {
+        if (formData != null || fileKey != "") {
 
             val multipartBodyBuilder: MultipartBody.Builder = MultipartBody.Builder()
             multipartBodyBuilder.setType(MultipartBody.FORM)
 
-            formData.let {
+            formData?.let {
                 ILog.debug(TAG, "add form data")
                 for ((key, value) in formData) {
                     ILog.debug(TAG, "$key $value")

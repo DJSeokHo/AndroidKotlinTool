@@ -15,7 +15,7 @@ android {
 
     defaultConfig {
         applicationId "com.swein.androidkotlintool"
-        minSdkVersion 23
+        minSdkVersion 24
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -162,6 +162,8 @@ dependencies {
 
     implementation 'com.google.android.exoplayer:exoplayer:2.15.0'
     implementation 'com.google.android.exoplayer:exoplayer-ui:2.15.0'
+
+    implementation 'com.shine56.richtextx:richtextx:1.0.5-beta'
 }
 
 apply plugin: 'com.google.gms.google-services'
