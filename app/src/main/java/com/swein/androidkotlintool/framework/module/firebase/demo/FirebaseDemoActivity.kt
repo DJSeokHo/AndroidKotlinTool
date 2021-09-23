@@ -2,12 +2,9 @@ package com.swein.androidkotlintool.framework.module.firebase.demo
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import autoLoginWhenAppStartExample
 import com.swein.androidkotlintool.R
-import com.swein.androidkotlintool.framework.module.firebase.demo.model.MemberSelfModel
 import com.swein.androidkotlintool.framework.util.preferences.SharedPreferencesUtil
 import com.swein.androidkotlintool.framework.util.thread.ThreadUtility
-import getProductDetailExample
 
 class FirebaseDemoActivity : AppCompatActivity() {
 
@@ -20,7 +17,7 @@ class FirebaseDemoActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_firebase_demo)
         SharedPreferencesUtil.init(this)
-        MemberSelfModel.initWhenAppStart()
+//        MemberSelfModel.initWhenAppStart()
 
 //        registerExample()
 //        autoLoginWhenAppStartExample()
@@ -37,7 +34,7 @@ class FirebaseDemoActivity : AppCompatActivity() {
 //        }
 
 
-        autoLoginWhenAppStartExample()
+//        autoLoginWhenAppStartExample()
 
 //        ThreadUtil.startUIThread(1000) {
 //            requestShopInfoExample()
@@ -49,7 +46,7 @@ class FirebaseDemoActivity : AppCompatActivity() {
 
         ThreadUtility.startUIThread(1000) {
 //            getProductListExample()
-            getProductDetailExample()
+//            getProductDetailExample()
 //            deleteProductExample("ddNd9a4SkEly5BVFNJQ9")
         }
     }

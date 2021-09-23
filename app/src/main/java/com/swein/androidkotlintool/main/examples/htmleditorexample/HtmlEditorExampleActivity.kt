@@ -2,10 +2,10 @@ package com.swein.androidkotlintool.main.examples.htmleditorexample
 
 
 import android.graphics.drawable.Drawable
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Html
 import android.widget.Button
+import androidx.appcompat.app.AppCompatActivity
 import com.shine56.richtextx.view.RichEditText
 import com.swein.androidkotlintool.R
 import com.swein.androidkotlintool.framework.util.date.DateUtility
@@ -13,9 +13,7 @@ import com.swein.androidkotlintool.framework.util.log.ILog
 import com.swein.androidkotlintool.framework.util.okhttp.FormDataFile
 import com.swein.androidkotlintool.framework.util.okhttp.OKHttpWrapper
 import com.swein.androidkotlintool.framework.util.okhttp.OKHttpWrapperDelegate
-import com.swein.androidkotlintool.framework.util.push.PushUtil
 import com.swein.androidkotlintool.framework.util.thread.ThreadUtility
-import com.swein.androidkotlintool.framework.util.toast.ToastUtility
 import com.swein.androidkotlintool.main.examples.systemphotopicker.SystemPhotoPickManager
 import okhttp3.Call
 import okhttp3.Response
