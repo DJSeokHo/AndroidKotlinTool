@@ -4,10 +4,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.swein.androidkotlintool.framework.module.firebase.cloudfirestore.demo.model.MemberModel
 import com.swein.androidkotlintool.framework.module.firebase.cloudfirestore.demo.service.MemberModelService
-import com.swein.androidkotlintool.framework.util.log.ILog
 import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
