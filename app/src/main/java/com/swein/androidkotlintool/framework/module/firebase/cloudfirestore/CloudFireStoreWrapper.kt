@@ -33,7 +33,6 @@ object CloudFireStoreWrapper {
 
             conditionMap?.let {
                 it.forEach { map ->
-                    ILog.debug("", "${map.key}, ${map.value}")
                     query = collectionReference.whereEqualTo(map.key, map.value)
                 }
             }
