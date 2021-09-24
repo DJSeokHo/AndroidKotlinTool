@@ -23,6 +23,14 @@ object MemberModelService {
         return@withContext CloudFireStoreWrapper.select(MemberModel.CLOUD_FIRE_STORE_PATH, map)
     }
 
+    suspend fun modify(memberModel: MemberModel): Void = withContext(Dispatchers.IO) {
+        return@withContext CloudFireStoreWrapper.update(MemberModel.CLOUD_FIRE_STORE_PATH, memberModel.uuId, memberModel.to())
+    }
+
+    suspend fun delete(uuId: String): Void = withContext(Dispatchers.IO) {
+        return@withContext CloudFireStoreWrapper.delete(MemberModel.CLOUD_FIRE_STORE_PATH, uuId)
+    }
+
 //    fun checkIsMemberExist(provider: String, providerId: String,
 //                           onSuccessResponse: (list: MutableList<MutableMap<String, Any>>, documentIdList: MutableList<String>, documentSnapshot: DocumentSnapshot?) -> Unit,
 //                           onErrorResponse: (e: Exception?) -> Unit, onEmptyResponse: () -> Unit) {

@@ -39,6 +39,31 @@ class CloudFireStoreDemoActivity : AppCompatActivity() {
 
         initFlow()
 
+//        registerTest()
+//        signInTest()
+
+        deleteTest("")
+    }
+
+    private fun deleteTest(uuId: String) {
+        memberViewModel.delete(uuId)
+    }
+
+    private fun modifyTest(memberModel: MemberModel) {
+
+        memberModel.id = "test"
+        memberModel.email = "testnew@test.com"
+        memberModel.nickname = "tester new"
+        memberModel.modifyDate = DateUtility.getCurrentDateTimeString()
+
+        memberViewModel.modify(memberModel)
+    }
+
+    private fun signInTest() {
+        memberViewModel.signIn("test", "qwer1234")
+    }
+
+    private fun registerTest() {
         val memberModel = MemberModel()
         val uuid = UUIDUtil.getUUIDString()
         memberModel.uuId = uuid
@@ -53,8 +78,7 @@ class CloudFireStoreDemoActivity : AppCompatActivity() {
         memberModel.createBy = uuid
         memberModel.modifyBy = uuid
 
-//        memberViewModel.register(memberModel)
-        memberViewModel.signIn("test", "qwer1234")
+        memberViewModel.register(memberModel)
     }
 
     private fun initFlow() {
@@ -67,12 +91,24 @@ class CloudFireStoreDemoActivity : AppCompatActivity() {
                     when (it) {
 
                         is MemberViewModelState.RegisterSuccessfully -> {
-                            ILog.debug(TAG, it.memberModel)
+                            ILog.debug(TAG, "register ${it.memberModel}")
                             hideProgress()
                         }
 
                         is MemberViewModelState.SignSuccessfully -> {
-                            ILog.debug(TAG, it.memberModel.to())
+                            ILog.debug(TAG, "sign in ${it.memberModel}")
+                            hideProgress()
+
+                            modifyTest(it.memberModel)
+                        }
+
+                        is MemberViewModelState.UpdateSuccessfully -> {
+                            ILog.debug(TAG, "update ${it.memberModel}")
+                            hideProgress()
+                        }
+
+                        is MemberViewModelState.DeleteSuccessfully -> {
+                            ILog.debug(TAG, "delete ${it.uuId}")
                             hideProgress()
                         }
 

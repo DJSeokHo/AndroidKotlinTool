@@ -12,13 +12,16 @@ import kotlinx.coroutines.launch
 
 sealed class MemberViewModelState {
 
-//    data class Reload(val memberModel: MemberModel): MemberViewModelState()
     data class RegisterSuccessfully(val memberModel: MemberModel): MemberViewModelState()
     data class SignSuccessfully(val memberModel: MemberModel): MemberViewModelState()
+    data class UpdateSuccessfully(val memberModel: MemberModel): MemberViewModelState()
+    data class DeleteSuccessfully(val uuId: String): MemberViewModelState()
+
     object Empty: MemberViewModelState()
     data class Error(val message: String?): MemberViewModelState()
-    object None: MemberViewModelState()
     object Loading: MemberViewModelState()
+
+    object None: MemberViewModelState()
 }
 
 class MemberViewModel: ViewModel() {
@@ -85,40 +88,48 @@ class MemberViewModel: ViewModel() {
         }
     }
 
-//    fun reload(
-//        fieldName: String = "ALL",
-//        keyWord: String = "",
-//        levKey: String = "",
-//        catKey: String = "0",
-//        orderBy: String = "0",
-//        offset: Int = 0,
-//        size: Int = 20
-//    ) = viewModelScope.launch {
-//
-//        _homeViewModelState.value = HomeViewModelState.Loading
-//
-//        try {
-//            coroutineScope {
-//
-//                val mainListResult = async {
-//                    HomeService.mainList(fieldName, keyWord, levKey, catKey, orderBy, offset, size)
-//                }
-//
-//                val mainTopListResult = async {
-//                    HomeService.mainTopList()
-//                }
-//
-//                val resultMainList = mainListResult.await()
-//                val resultMainTopList = mainTopListResult.await()
-//
-//                _homeViewModelState.value = HomeViewModelState.Reload(resultMainList, resultMainTopList)
-//
-//            }
-//        }
-//        catch (e: Exception) {
-//            _homeViewModelState.value = HomeViewModelState.Error(e.message)
-//        }
-//
-//    }
+    fun modify(memberModel: MemberModel) = viewModelScope.launch {
+
+        _memberViewModelState.value = MemberViewModelState.Loading
+
+        try {
+            coroutineScope {
+
+                val modify = async {
+                    MemberModelService.modify(memberModel)
+                }
+
+                modify.await()
+
+                _memberViewModelState.value = MemberViewModelState.UpdateSuccessfully(memberModel)
+            }
+        }
+        catch (e: Exception) {
+            _memberViewModelState.value = MemberViewModelState.Error(e.message)
+        }
+
+    }
+
+    fun delete(uuId: String) = viewModelScope.launch {
+
+        _memberViewModelState.value = MemberViewModelState.Loading
+
+        try {
+            coroutineScope {
+
+                val delete = async {
+                    MemberModelService.delete(uuId)
+                }
+
+                delete.await()
+
+                _memberViewModelState.value = MemberViewModelState.DeleteSuccessfully(uuId)
+            }
+        }
+        catch (e: Exception) {
+            _memberViewModelState.value = MemberViewModelState.Error(e.message)
+        }
+
+    }
 
 }
