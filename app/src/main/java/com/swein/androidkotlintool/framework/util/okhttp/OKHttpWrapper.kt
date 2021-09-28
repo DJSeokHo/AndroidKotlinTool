@@ -3,6 +3,7 @@ package com.swein.androidkotlintool.framework.util.okhttp
 import com.swein.androidkotlintool.framework.util.log.ILog
 import okhttp3.*
 import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.RequestBody.Companion.asRequestBody
 import org.json.JSONObject
 import java.io.File
 import java.io.IOException
@@ -167,7 +168,7 @@ object OKHttpWrapper {
                         "image/jpeg".toMediaType()
                     }
                     file = File(fileList[i].filePath)
-                    multipartBodyBuilder.addFormDataPart(fileKey, fileList[i].fileName, RequestBody.create(mediaType, file))
+                    multipartBodyBuilder.addFormDataPart(fileKey, fileList[i].fileName, file.asRequestBody(mediaType))
                 }
             }
 
@@ -242,7 +243,7 @@ object OKHttpWrapper {
                         "image/jpeg".toMediaType()
                     }
                     file = File(fileList[i].filePath)
-                    multipartBodyBuilder.addFormDataPart(fileKey, fileList[i].fileName, RequestBody.create(mediaType, file))
+                    multipartBodyBuilder.addFormDataPart(fileKey, fileList[i].fileName, file.asRequestBody(mediaType))
                 }
             }
 
@@ -309,7 +310,7 @@ object OKHttpWrapper {
                         "image/jpeg".toMediaType()
                     }
                     file = File(fileList[i].filePath)
-                    multipartBodyBuilder.addFormDataPart(fileKey, fileList[i].fileName, RequestBody.create(mediaType, file))
+                    multipartBodyBuilder.addFormDataPart(fileKey, fileList[i].fileName, file.asRequestBody(mediaType))
                 }
             }
 
@@ -384,7 +385,7 @@ object OKHttpWrapper {
                         "image/jpeg".toMediaType()
                     }
                     file = File(fileList[i].filePath)
-                    multipartBodyBuilder.addFormDataPart(fileKey, fileList[i].fileName, RequestBody.create(mediaType, file))
+                    multipartBodyBuilder.addFormDataPart(fileKey, fileList[i].fileName, file.asRequestBody(mediaType))
                 }
             }
 
@@ -451,7 +452,7 @@ object OKHttpWrapper {
                         "image/jpeg".toMediaType()
                     }
                     file = File(fileList[i].filePath)
-                    multipartBodyBuilder.addFormDataPart(fileKey, fileList[i].fileName, RequestBody.create(mediaType, file))
+                    multipartBodyBuilder.addFormDataPart(fileKey, fileList[i].fileName, file.asRequestBody(mediaType))
                 }
             }
 
@@ -526,7 +527,7 @@ object OKHttpWrapper {
                         "image/jpeg".toMediaType()
                     }
                     file = File(fileList[i].filePath)
-                    multipartBodyBuilder.addFormDataPart(fileKey, fileList[i].fileName, RequestBody.create(mediaType, file))
+                    multipartBodyBuilder.addFormDataPart(fileKey, fileList[i].fileName, file.asRequestBody(mediaType))
                 }
             }
 
