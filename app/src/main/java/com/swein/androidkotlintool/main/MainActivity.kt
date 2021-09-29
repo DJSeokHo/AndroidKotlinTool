@@ -16,6 +16,7 @@ import com.swein.androidkotlintool.framework.module.basicpermission.BasicPermiss
 import com.swein.androidkotlintool.framework.module.basicpermission.PermissionManager
 import com.swein.androidkotlintool.framework.module.basicpermission.RequestPermission
 import com.swein.androidkotlintool.framework.module.firebase.cloudfirestore.demo.CloudFireStoreDemoActivity
+import com.swein.androidkotlintool.framework.module.firebase.storage.demo.FirebaseStorageActivity
 import com.swein.androidkotlintool.framework.module.volley.VolleyModule
 import com.swein.androidkotlintool.framework.util.activity.ActivityUtil
 import com.swein.androidkotlintool.framework.util.display.DisplayUtility
@@ -139,7 +140,8 @@ class MainActivity : BasicPermissionActivity() {
 //        ActivityUtil.startNewActivityWithoutFinish(this, UnityAdsExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, ExoPlayerExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, HtmlEditorExampleActivity::class.java)
-        ActivityUtil.startNewActivityWithoutFinish(this, CloudFireStoreDemoActivity::class.java)
+//        ActivityUtil.startNewActivityWithoutFinish(this, CloudFireStoreDemoActivity::class.java)
+        ActivityUtil.startNewActivityWithoutFinish(this, FirebaseStorageActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, CallbackToCoroutineActivity::class.java)
 
 

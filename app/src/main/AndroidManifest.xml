@@ -51,6 +51,9 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".framework.module.firebase.storage.demo.FirebaseStorageActivity"
+            android:exported="true" />
+        <activity
             android:name=".main.examples.callbacktocoroutine.CallbackToCoroutineActivity"
             android:exported="true" />
         <activity

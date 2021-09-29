@@ -1,4 +1,4 @@
-package com.swein.androidkotlintool.framework.module.firebase.cloudstorage
+package com.swein.androidkotlintool.framework.module.firebase.storage
 
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -15,20 +15,59 @@ import java.io.File
 import java.io.FileInputStream
 
 
-object CloudStorageManager {
+object FirebaseStorageManager {
 
-    enum class CloudStorageFileType {
+    enum class StorageFileType {
         FILE, BYTE, STREAM
     }
 
-    private const val TAG = "CloudStorageManager"
+    private const val TAG = "FirebaseStorageManager"
     const val FILE_STORAGE_DOMAIN = "gs://androidkotlintool.appspot.com"
-    const val MEMBER_PROFILE_IMAGE_FOLDER = "Member/Profile/"
-    const val SHOP_PROFILE_IMAGE_FOLDER = "Shop/Profile/"
-    const val SHOP_BUSINESS_IMAGE_FOLDER = "Shop/Business/"
-    const val PRODUCT_IMAGE_FOLDER = "Product/"
+    const val MEMBER_IMAGE_FOLDER = "Member/"
 
-    fun uploadImage(uploadPath: String, filePath: String, fileName: String, type: CloudStorageFileType, onSuccess: (imageUrl: String) -> Unit, onFailure: () -> Unit) {
+    suspend fun uploadImage(uploadPath: String,
+                    fileUri: Uri,
+                    fileName: String,
+                    onSuccess: (imageUrl: String) -> Unit, onFailure: () -> Unit) {
+
+        ThreadUtility.startThread {
+
+            val storageRef: StorageReference =  FirebaseStorage.getInstance(uploadPath).reference
+            val storageReference: StorageReference = storageRef.child(fileName)
+
+            val uploadTask: UploadTask = storageReference.putFile(fileUri)
+
+            uploadTask.addOnFailureListener {
+                ILog.debug(TAG, "${it.message}")
+            }.addOnSuccessListener {
+                ILog.debug(TAG, "success ${storageReference.downloadUrl}")
+                it.task.continueWithTask(Continuation<UploadTask.TaskSnapshot, Task<Uri>> { task ->
+                    if (!task.isSuccessful) {
+                        onFailure()
+                    }
+
+                    return@Continuation storageReference.downloadUrl
+                }).addOnCompleteListener { uriTask ->
+                    if (uriTask.isSuccessful) {
+                        val downloadUri = uriTask.result
+                        onSuccess(downloadUri.toString())
+                    }
+                    else {
+                        onFailure()
+                    }
+                }
+            }.addOnFailureListener {
+                onFailure()
+            }
+
+        }
+    }
+
+    fun uploadImage(uploadPath: String,
+                    type: StorageFileType,
+                    filePath: String,
+                    fileName: String,
+                    onSuccess: (imageUrl: String) -> Unit, onFailure: () -> Unit) {
 
         ThreadUtility.startThread {
 
@@ -37,15 +76,15 @@ object CloudStorageManager {
 
             val uploadTask: UploadTask = when (type) {
 
-                CloudStorageFileType.FILE -> {
+                StorageFileType.FILE -> {
                     storageReference.putFile(Uri.fromFile(File(filePath)))
                 }
 
-                CloudStorageFileType.STREAM -> {
+                StorageFileType.STREAM -> {
                     storageReference.putStream(FileInputStream(File(filePath)))
                 }
 
-                CloudStorageFileType.BYTE -> {
+                StorageFileType.BYTE -> {
                     val byteArrayOutputStream = ByteArrayOutputStream()
                     BitmapFactory.decodeFile(filePath).compress(Bitmap.CompressFormat.JPEG, 90, byteArrayOutputStream)
                     storageReference.putBytes(byteArrayOutputStream.toByteArray())
