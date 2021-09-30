@@ -161,6 +161,9 @@ dependencies {
     implementation 'com.google.android.exoplayer:exoplayer:2.15.1'
     implementation 'com.google.android.exoplayer:exoplayer-ui:2.15.1'
 
+    implementation 'androidx.paging:paging-runtime-ktx:3.0.1'
+//    implementation("androidx.paging:paging-compose:1.0.0-alpha12")
+
     implementation 'com.shine56.richtextx:richtextx:1.0.5-beta'
 }
 

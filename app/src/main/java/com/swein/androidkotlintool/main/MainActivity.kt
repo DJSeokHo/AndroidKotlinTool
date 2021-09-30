@@ -27,6 +27,7 @@ import com.swein.androidkotlintool.framework.util.log.ILog
 import com.swein.androidkotlintool.framework.util.screen.ScreenUtil
 import com.swein.androidkotlintool.main.examples.callbacktocoroutine.CallbackToCoroutineActivity
 import com.swein.androidkotlintool.main.examples.htmleditorexample.HtmlEditorExampleActivity
+import com.swein.androidkotlintool.main.examples.pagingexample.PagingExampleActivity
 import com.swein.androidkotlintool.main.moduledemo.ModuleDemoActivity
 import com.swein.androidkotlintool.template.bottomtab.activity.TabHostActivity
 import com.swein.androidkotlintool.template.handlerthread.HandlerThreadTemplateActivity
@@ -141,8 +142,9 @@ class MainActivity : BasicPermissionActivity() {
 //        ActivityUtil.startNewActivityWithoutFinish(this, ExoPlayerExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, HtmlEditorExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, CloudFireStoreDemoActivity::class.java)
-        ActivityUtil.startNewActivityWithoutFinish(this, FirebaseStorageActivity::class.java)
+//        ActivityUtil.startNewActivityWithoutFinish(this, FirebaseStorageActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, CallbackToCoroutineActivity::class.java)
+        ActivityUtil.startNewActivityWithoutFinish(this, PagingExampleActivity::class.java)
 
 
 //        SnackBarUtility.showSnackBar(frameLayoutRoot, "test")
