@@ -1,11 +1,13 @@
 package com.swein.androidkotlintool.main.examples.pagingexample
 
 import android.os.Bundle
-import android.view.View
-import android.widget.FrameLayout
+import android.widget.Button
+import android.widget.ProgressBar
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.whenCreated
 import androidx.paging.LoadState
@@ -15,6 +17,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.swein.androidkotlintool.R
 import com.swein.androidkotlintool.framework.util.log.ILog
 import com.swein.androidkotlintool.main.examples.pagingexample.adapter.GithubRepoAdapter
+import com.swein.androidkotlintool.main.examples.pagingexample.adapter.GithubRepoLoadStateAdapter
 import com.swein.androidkotlintool.main.examples.pagingexample.viewmodel.GithubRepoViewModel
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -33,8 +36,14 @@ class PagingExampleActivity : AppCompatActivity() {
         findViewById(R.id.recyclerView)
     }
 
-    private val progress: FrameLayout by lazy {
-        findViewById(R.id.progress)
+    private val progressBar: ProgressBar by lazy {
+        findViewById(R.id.progressBar)
+    }
+    private val textviewEmpty: TextView by lazy {
+        findViewById(R.id.textviewEmpty)
+    }
+    private val buttonRetry: Button by lazy {
+        findViewById(R.id.buttonRetry)
     }
 
     private val adapter = GithubRepoAdapter()
@@ -45,6 +54,18 @@ class PagingExampleActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_paging_example)
 
+        setListener()
+        initList()
+
+    }
+
+    private fun setListener() {
+        buttonRetry.setOnClickListener {
+            adapter.retry()
+        }
+    }
+
+    private fun initList() {
         lifecycleScope.launch {
 
             whenCreated {
@@ -57,46 +78,41 @@ class PagingExampleActivity : AppCompatActivity() {
 
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-        recyclerView.adapter = adapter
+        recyclerView.adapter = adapter.withLoadStateHeaderAndFooter(
+            header = GithubRepoLoadStateAdapter {
+                adapter.retry()
+            },
+            footer = GithubRepoLoadStateAdapter {
+                adapter.retry()
+            }
+        )
 
-        adapter.addLoadStateListener {
+        adapter.addLoadStateListener { loadState ->
 
-            when (it.refresh) {
+            // show empty list
+            val isListEmpty = loadState.refresh is LoadState.NotLoading && adapter.itemCount == 0
 
-                is LoadState.NotLoading -> {
-                    ILog.debug(TAG, "refresh NotLoading")
-                    hideProgress()
-                }
+            textviewEmpty.isVisible = isListEmpty
+            // Only show the list if refresh succeeds.
+            swipeRefreshLayout.isVisible = loadState.source.refresh is LoadState.NotLoading
+            // Show loading spinner during initial load or refresh.
+            progressBar.isVisible = loadState.source.refresh is LoadState.Loading
+            // Show the retry state if initial load or refresh fails.
+            buttonRetry.isVisible = loadState.source.refresh is LoadState.Error
 
-                is LoadState.Loading -> {
-                    ILog.debug(TAG, "refresh Loading")
-                    showProgress()
-                }
-
-                is LoadState.Error -> {
-                    ILog.debug(TAG, "refresh ERROR")
-                    val stateError = it.refresh as LoadState.Error
-                    hideProgress()
-                    Toast.makeText(this, "${stateError.error.message}", Toast.LENGTH_SHORT).show()
-                }
+            // Toast on any error, regardless of whether it came from RemoteMediator or PagingSource
+            val errorState = loadState.source.append as? LoadState.Error
+                ?: loadState.source.prepend as? LoadState.Error
+                ?: loadState.append as? LoadState.Error
+                ?: loadState.prepend as? LoadState.Error
+            errorState?.let {
+                Toast.makeText(
+                    this,
+                    "\uD83D\uDE28 Wooops ${it.error}",
+                    Toast.LENGTH_LONG
+                ).show()
             }
 
-            when (it.append) {
-
-                is LoadState.NotLoading -> {
-                    ILog.debug(TAG, "append NotLoading")
-                }
-
-                is LoadState.Loading -> {
-                    ILog.debug(TAG, "append Loading")
-                }
-
-                is LoadState.Error -> {
-                    ILog.debug(TAG, "append ERROR")
-                    val stateError = it.append as LoadState.Error
-                    Toast.makeText(this, "${stateError.error.message}", Toast.LENGTH_SHORT).show()
-                }
-            }
         }
 
         swipeRefreshLayout.setOnRefreshListener {
@@ -104,14 +120,4 @@ class PagingExampleActivity : AppCompatActivity() {
             adapter.refresh()
         }
     }
-
-
-    private fun showProgress() {
-        progress.visibility = View.VISIBLE
-    }
-
-    private fun hideProgress() {
-        progress.visibility = View.GONE
-    }
-
 }
