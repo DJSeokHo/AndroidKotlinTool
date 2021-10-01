@@ -54,9 +54,6 @@
             android:name=".framework.module.firebase.demo.LoginExampleActivity"
             android:exported="true" />
         <activity
-            android:name=".framework.module.firebase.demo.ProfileExampleActivity"
-            android:exported="true" />
-        <activity
             android:name=".framework.module.firebase.demo.InputInfoExampleActivity"
             android:exported="true" />
         <activity
