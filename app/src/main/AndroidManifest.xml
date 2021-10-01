@@ -57,7 +57,7 @@
             android:name=".framework.module.firebase.demo.ProfileExampleActivity"
             android:exported="true" />
         <activity
-            android:name=".framework.module.firebase.demo.ModifyExampleActivity"
+            android:name=".framework.module.firebase.demo.InputInfoExampleActivity"
             android:exported="true" />
         <activity
             android:name=".main.examples.pagingexample.PagingExampleActivity"

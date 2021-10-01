@@ -1,5 +1,6 @@
 package com.swein.androidkotlintool.framework.module.firebase.demo
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -20,6 +21,16 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 class LoginExampleActivity : AppCompatActivity() {
+
+    companion object {
+
+        fun start(context: Context) {
+            Intent(context, FirebaseDemoActivity::class.java).apply {
+                context.startActivity(this)
+            }
+        }
+
+    }
 
     private val buttonLogin: Button by lazy {
         findViewById(R.id.buttonLogin)
@@ -76,7 +87,7 @@ class LoginExampleActivity : AppCompatActivity() {
                                     putString("pw", pw)
                                 }
 
-                                val intent = Intent(this@LoginExampleActivity, ModifyExampleActivity::class.java)
+                                val intent = Intent(this@LoginExampleActivity, InputInfoExampleActivity::class.java)
 
                                 intent.putExtra("signUpBundle", bundle)
 
@@ -101,16 +112,7 @@ class LoginExampleActivity : AppCompatActivity() {
                             }
                         }
 
-                        is MemberViewModelState.SignSuccessfully -> {
-                            hideProgress()
-
-                        }
-
-                        is MemberViewModelState.UpdateSuccessfully -> {
-                            hideProgress()
-                        }
-
-                        is MemberViewModelState.DeleteSuccessfully -> {
+                        is MemberViewModelState.SignInSuccessfully -> {
                             hideProgress()
                         }
 
