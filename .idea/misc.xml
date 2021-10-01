@@ -21,19 +21,22 @@
         <entry key="app/src/main/res/layout/activity_customize_color_switch.xml" value="0.215625" />
         <entry key="app/src/main/res/layout/activity_exo_player_example.xml" value="0.2791666666666667" />
         <entry key="app/src/main/res/layout/activity_firebase_auth_phone.xml" value="0.33958333333333335" />
-        <entry key="app/src/main/res/layout/activity_firebase_demo.xml" value="0.29739583333333336" />
+        <entry key="app/src/main/res/layout/activity_firebase_demo.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_firebase_storage.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_flow_example.xml" value="0.3494791666666667" />
         <entry key="app/src/main/res/layout/activity_flow_example_sub.xml" value="0.3451086956521739" />
         <entry key="app/src/main/res/layout/activity_html_editor_example.xml" value="0.18" />
         <entry key="app/src/main/res/layout/activity_live_data_demo.xml" value="0.3494791666666667" />
+        <entry key="app/src/main/res/layout/activity_login_example.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_mdday_five.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_mdday_seven.xml" value="0.10648148148148148" />
         <entry key="app/src/main/res/layout/activity_motion_layout_basic.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_mvvmrecycler_view_example.xml" value="0.16995947315096252" />
         <entry key="app/src/main/res/layout/activity_otpverification_code_view_example.xml" value="0.14" />
         <entry key="app/src/main/res/layout/activity_paging_example.xml" value="0.2765625" />
+        <entry key="app/src/main/res/layout/activity_profile_example.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_recycler_view_with_slide.xml" value="0.20833333333333334" />
+        <entry key="app/src/main/res/layout/activity_register_example.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_rx_kotlin_lite_demo.xml" value="0.3494791666666667" />
         <entry key="app/src/main/res/layout/activity_summer_note_example.xml" value="0.327445652173913" />
         <entry key="app/src/main/res/layout/activity_system_photo_and_crop_example.xml" value="0.33242753623188404" />

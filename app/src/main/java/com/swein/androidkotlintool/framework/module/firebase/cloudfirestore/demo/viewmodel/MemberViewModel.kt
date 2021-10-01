@@ -13,9 +13,11 @@ import kotlinx.coroutines.launch
 sealed class MemberViewModelState {
 
     data class RegisterSuccessfully(val memberModel: MemberModel): MemberViewModelState()
-    data class SignSuccessfully(val memberModel: MemberModel): MemberViewModelState()
+    data class SignInSuccessfully(val memberModel: MemberModel): MemberViewModelState()
     data class UpdateSuccessfully(val memberModel: MemberModel): MemberViewModelState()
     data class DeleteSuccessfully(val uuId: String): MemberViewModelState()
+    data class CheckIDExistsSuccessfully(val id: String): MemberViewModelState()
+    data class AutoSignInSuccessfully(val memberModel: MemberModel): MemberViewModelState()
 
     object Empty: MemberViewModelState()
     data class Error(val message: String?): MemberViewModelState()
@@ -80,7 +82,7 @@ class MemberViewModel: ViewModel() {
                 val memberModel = MemberModel()
                 memberModel.parsing(list[0])
 
-                _memberViewModelState.value = MemberViewModelState.SignSuccessfully(memberModel)
+                _memberViewModelState.value = MemberViewModelState.SignInSuccessfully(memberModel)
             }
         }
         catch (e: Exception) {
@@ -132,4 +134,63 @@ class MemberViewModel: ViewModel() {
 
     }
 
+    fun isIdExists(id: String) = viewModelScope.launch {
+
+        _memberViewModelState.value = MemberViewModelState.Loading
+
+        try {
+            coroutineScope {
+
+                val signIn = async {
+                    MemberModelService.isIdExists(id)
+                }
+
+                val querySnapshot = signIn.await()
+
+
+                if (querySnapshot.documents.isNotEmpty()) {
+                    _memberViewModelState.value = MemberViewModelState.CheckIDExistsSuccessfully("")
+                }
+                else {
+                    _memberViewModelState.value = MemberViewModelState.CheckIDExistsSuccessfully(id)
+                }
+            }
+        }
+        catch (e: Exception) {
+            _memberViewModelState.value = MemberViewModelState.Error(e.message)
+        }
+    }
+
+    fun autoSign(uuId: String) = viewModelScope.launch {
+        _memberViewModelState.value = MemberViewModelState.Loading
+
+        try {
+            coroutineScope {
+
+                val signIn = async {
+                    MemberModelService.autoSignIn(uuId)
+                }
+
+                val querySnapshot = signIn.await()
+
+                val list = mutableListOf<MutableMap<String, Any>>()
+                for (document in querySnapshot.documents) {
+                    list.add(document.data as MutableMap<String, Any>)
+                }
+
+                if (list.isEmpty()) {
+                    _memberViewModelState.value = MemberViewModelState.Empty
+                    return@coroutineScope
+                }
+
+                val memberModel = MemberModel()
+                memberModel.parsing(list[0])
+
+                _memberViewModelState.value = MemberViewModelState.AutoSignInSuccessfully(memberModel)
+            }
+        }
+        catch (e: Exception) {
+            _memberViewModelState.value = MemberViewModelState.Error(e.message)
+        }
+    }
 }

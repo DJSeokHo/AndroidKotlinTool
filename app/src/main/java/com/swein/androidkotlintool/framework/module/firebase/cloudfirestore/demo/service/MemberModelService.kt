@@ -23,12 +23,24 @@ object MemberModelService {
         return@withContext CloudFireStoreWrapper.select(MemberModel.CLOUD_FIRE_STORE_PATH, map)
     }
 
+    suspend fun autoSignIn(uuId: String): QuerySnapshot = withContext(Dispatchers.IO) {
+        val map = mutableMapOf<String, Any>()
+        map[MemberModel.UUID_KEY] = uuId
+        return@withContext CloudFireStoreWrapper.select(MemberModel.CLOUD_FIRE_STORE_PATH, map)
+    }
+
     suspend fun modify(memberModel: MemberModel): Void = withContext(Dispatchers.IO) {
         return@withContext CloudFireStoreWrapper.update(MemberModel.CLOUD_FIRE_STORE_PATH, memberModel.uuId, memberModel.to())
     }
 
     suspend fun delete(uuId: String): Void = withContext(Dispatchers.IO) {
         return@withContext CloudFireStoreWrapper.delete(MemberModel.CLOUD_FIRE_STORE_PATH, uuId)
+    }
+
+    suspend fun isIdExists(id: String): QuerySnapshot = withContext(Dispatchers.IO) {
+        val map = mutableMapOf<String, Any>()
+        map[MemberModel.ID_KEY] = id
+        return@withContext CloudFireStoreWrapper.select(MemberModel.CLOUD_FIRE_STORE_PATH, map)
     }
 
 //    fun checkIsMemberExist(provider: String, providerId: String,

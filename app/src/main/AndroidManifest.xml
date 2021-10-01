@@ -51,6 +51,15 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".framework.module.firebase.demo.LoginExampleActivity"
+            android:exported="true" />
+        <activity
+            android:name=".framework.module.firebase.demo.ProfileExampleActivity"
+            android:exported="true" />
+        <activity
+            android:name=".framework.module.firebase.demo.ModifyExampleActivity"
+            android:exported="true" />
+        <activity
             android:name=".main.examples.pagingexample.PagingExampleActivity"
             android:exported="true" />
         <activity

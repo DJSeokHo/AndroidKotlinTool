@@ -1,5 +1,7 @@
 package com.swein.androidkotlintool.framework.module.firebase.cloudfirestore.demo.model
 
+import android.os.Bundle
+
 class MemberModel {
 
     companion object {
@@ -19,8 +21,6 @@ class MemberModel {
         const val MODIFY_BY_KEY = "MODIFY_BY"
 
     }
-
-    var documentId = ""
 
     var uuId = ""
     var id = ""
@@ -64,5 +64,33 @@ class MemberModel {
         modifyDate = map[MODIFY_DATE_KEY] as String
         createBy = map[CREATE_BY_KEY] as String
         modifyBy = map[MODIFY_BY_KEY] as String
+    }
+
+    fun toBundle(): Bundle {
+        return Bundle().apply {
+            putString(UUID_KEY, uuId)
+            putString(ID_KEY, id)
+            putString(PASSWORD_KEY, password)
+            putString(EMAIL_KEY, email)
+            putString(PROFILE_IMAGE_URL_KEY, profileImageUrl)
+            putString(PROFILE_IMAGE_FILE_CLOUD_PATH_KEY, profileImageFileCloudPath)
+            putString(CREATE_DATE_KEY, createDate)
+            putString(MODIFY_DATE_KEY, modifyDate)
+            putString(CREATE_DATE_KEY, createBy)
+            putString(MODIFY_BY_KEY, modifyBy)
+        }
+    }
+
+    fun parsing(bundle: Bundle) {
+        uuId = bundle.getString(UUID_KEY, "")
+        id = bundle.getString(ID_KEY, "")
+        password = bundle.getString(PASSWORD_KEY, "")
+        email = bundle.getString(EMAIL_KEY, "")
+        profileImageUrl = bundle.getString(PROFILE_IMAGE_URL_KEY, "")
+        profileImageFileCloudPath = bundle.getString(PROFILE_IMAGE_FILE_CLOUD_PATH_KEY, "")
+        createDate = bundle.getString(CREATE_DATE_KEY, "")
+        modifyDate = bundle.getString(MODIFY_DATE_KEY, "")
+        createBy = bundle.getString(CREATE_BY_KEY, "")
+        modifyBy = bundle.getString(MODIFY_BY_KEY, "")
     }
 }
