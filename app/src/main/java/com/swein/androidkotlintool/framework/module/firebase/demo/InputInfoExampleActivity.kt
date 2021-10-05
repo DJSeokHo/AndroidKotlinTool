@@ -163,10 +163,7 @@ class InputInfoExampleActivity : AppCompatActivity() {
 
                         is MemberViewModelState.Error -> {
                             hideProgress()
-                        }
-
-                        is MemberViewModelState.Empty -> {
-                            hideProgress()
+                            Toast.makeText(this@InputInfoExampleActivity, it.message, Toast.LENGTH_SHORT).show()
                         }
 
                         is MemberViewModelState.Loading -> {

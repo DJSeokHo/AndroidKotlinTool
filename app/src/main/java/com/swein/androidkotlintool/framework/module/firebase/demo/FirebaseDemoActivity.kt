@@ -103,6 +103,7 @@ class FirebaseDemoActivity : AppCompatActivity() {
 
                         is MemberViewModelState.Error -> {
                             hideProgress()
+                            Toast.makeText(this@FirebaseDemoActivity, it.message, Toast.LENGTH_SHORT).show()
                         }
 
                         is MemberViewModelState.Loading -> {

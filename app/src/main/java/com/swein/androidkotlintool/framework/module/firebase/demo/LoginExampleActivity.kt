@@ -87,6 +87,7 @@ class LoginExampleActivity : AppCompatActivity() {
                                 val pw = editTextPW.text.toString().trim()
 
                                 InputInfoExampleActivity.register(this@LoginExampleActivity, id, pw, checkBox.isChecked)
+                                finish()
                             }
                             else {
                                 Toast.makeText(this@LoginExampleActivity, "id has existed", Toast.LENGTH_SHORT).show()
@@ -113,6 +114,7 @@ class LoginExampleActivity : AppCompatActivity() {
 
                         is MemberViewModelState.Error -> {
                             hideProgress()
+                            Toast.makeText(this@LoginExampleActivity, it.message, Toast.LENGTH_SHORT).show()
                         }
 
                         is MemberViewModelState.Empty -> {

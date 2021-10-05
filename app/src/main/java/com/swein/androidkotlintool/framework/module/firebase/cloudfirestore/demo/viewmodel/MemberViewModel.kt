@@ -3,7 +3,6 @@ package com.swein.androidkotlintool.framework.module.firebase.cloudfirestore.dem
 import android.net.Uri
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.navigation.dynamicfeatures.Constants
 import com.swein.androidkotlintool.framework.module.firebase.cloudfirestore.demo.model.MemberModel
 import com.swein.androidkotlintool.framework.module.firebase.cloudfirestore.demo.service.MemberModelService
 import com.swein.androidkotlintool.framework.module.firebase.storage.FirebaseStorageManager
@@ -50,7 +49,7 @@ class MemberViewModel: ViewModel() {
                 }
 
                 val imageUrl = uploadImage.await()
-                val imagePath = "${FirebaseStorageManager.MEMBER_IMAGE_FOLDER}imageFileName"
+                val imagePath = "${FirebaseStorageManager.MEMBER_IMAGE_FOLDER}$imageFileName"
 
                 memberModel.profileImageUrl = imageUrl
                 memberModel.profileImageFileCloudPath = imagePath
