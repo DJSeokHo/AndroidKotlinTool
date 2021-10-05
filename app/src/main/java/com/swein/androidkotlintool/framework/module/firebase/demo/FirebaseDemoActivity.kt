@@ -58,6 +58,21 @@ class FirebaseDemoActivity : AppCompatActivity() {
     }
 
     private fun initObserver() {
+
+        EventCenter.addEventObserver(ESSArrows.ON_REGISTER, this, object : EventCenter.EventRunnable {
+            override fun run(arrow: String, poster: Any, data: MutableMap<String, Any>?) {
+
+                data?.let {
+                    isAlreadySignIn = true
+
+                    val memberModel = data["memberModel"] as MemberModel
+
+                    updateView(memberModel)
+                }
+
+            }
+        })
+
         EventCenter.addEventObserver(ESSArrows.ON_UPDATE_PROFILE, this, object : EventCenter.EventRunnable {
             override fun run(arrow: String, poster: Any, data: MutableMap<String, Any>?) {
 

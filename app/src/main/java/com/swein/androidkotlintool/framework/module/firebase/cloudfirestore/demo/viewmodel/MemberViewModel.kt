@@ -1,9 +1,12 @@
 package com.swein.androidkotlintool.framework.module.firebase.cloudfirestore.demo.viewmodel
 
+import android.net.Uri
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.navigation.dynamicfeatures.Constants
 import com.swein.androidkotlintool.framework.module.firebase.cloudfirestore.demo.model.MemberModel
 import com.swein.androidkotlintool.framework.module.firebase.cloudfirestore.demo.service.MemberModelService
+import com.swein.androidkotlintool.framework.module.firebase.storage.FirebaseStorageManager
 import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -35,12 +38,22 @@ class MemberViewModel: ViewModel() {
     private val _memberViewModelState = MutableStateFlow<MemberViewModelState>(MemberViewModelState.None)
     val memberViewModelState: StateFlow<MemberViewModelState> = _memberViewModelState
 
-    fun register(memberModel: MemberModel) = viewModelScope.launch {
+    fun register(imageUri: Uri, imageFileName: String, memberModel: MemberModel) = viewModelScope.launch {
 
         _memberViewModelState.value = MemberViewModelState.Loading
 
         try {
             coroutineScope {
+
+                val uploadImage = async {
+                    MemberModelService.uploadImageFile(imageUri)
+                }
+
+                val imageUrl = uploadImage.await()
+                val imagePath = "${FirebaseStorageManager.MEMBER_IMAGE_FOLDER}imageFileName"
+
+                memberModel.profileImageUrl = imageUrl
+                memberModel.profileImageFileCloudPath = imagePath
 
                 val register = async {
                     MemberModelService.register(memberModel)
@@ -90,12 +103,22 @@ class MemberViewModel: ViewModel() {
         }
     }
 
-    fun modify(memberModel: MemberModel) = viewModelScope.launch {
+    fun modify(imageUri: Uri?, memberModel: MemberModel) = viewModelScope.launch {
 
         _memberViewModelState.value = MemberViewModelState.Loading
 
         try {
             coroutineScope {
+
+                imageUri?.let {
+
+                    val uploadImage = async {
+                        MemberModelService.uploadImageFile(imageUri)
+                    }
+
+                    val imageUrl = uploadImage.await()
+                    memberModel.profileImageUrl = imageUrl
+                }
 
                 val modify = async {
                     MemberModelService.modify(memberModel)
@@ -149,10 +172,10 @@ class MemberViewModel: ViewModel() {
 
 
                 if (querySnapshot.documents.isNotEmpty()) {
-                    _memberViewModelState.value = MemberViewModelState.CheckIDExistsSuccessfully("")
+                    _memberViewModelState.value = MemberViewModelState.CheckIDExistsSuccessfully(id)
                 }
                 else {
-                    _memberViewModelState.value = MemberViewModelState.CheckIDExistsSuccessfully(id)
+                    _memberViewModelState.value = MemberViewModelState.CheckIDExistsSuccessfully("")
                 }
             }
         }

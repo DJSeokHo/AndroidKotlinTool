@@ -1,10 +1,12 @@
 package com.swein.androidkotlintool.framework.module.firebase.cloudfirestore.demo.service
 
+import android.net.Uri
 import com.google.android.gms.tasks.Task
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.QuerySnapshot
 import com.swein.androidkotlintool.framework.module.firebase.cloudfirestore.CloudFireStoreWrapper
 import com.swein.androidkotlintool.framework.module.firebase.cloudfirestore.demo.model.MemberModel
+import com.swein.androidkotlintool.framework.module.firebase.storage.FirebaseStorageManager
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
@@ -41,6 +43,15 @@ object MemberModelService {
         val map = mutableMapOf<String, Any>()
         map[MemberModel.ID_KEY] = id
         return@withContext CloudFireStoreWrapper.select(MemberModel.CLOUD_FIRE_STORE_PATH, map)
+    }
+
+    suspend fun uploadImageFile(uri: Uri): String = withContext(Dispatchers.IO) {
+
+        return@withContext FirebaseStorageManager.uploadImage(
+            uri = uri,
+            folderName = FirebaseStorageManager.MEMBER_IMAGE_FOLDER,
+            fileName = "test.jpg"
+        )
     }
 
 //    fun checkIsMemberExist(provider: String, providerId: String,

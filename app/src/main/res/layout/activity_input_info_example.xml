@@ -1,10 +1,119 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".framework.module.firebase.demo.InputInfoExampleActivity">
     
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+    
+        <ImageView
+            android:layout_marginTop="50dp"
+            android:background="@color/light_gray"
+            android:id="@+id/imageView"
+            android:scaleType="centerCrop"
+            android:layout_width="100dp"
+            android:layout_height="100dp"/>
+     
+        <EditText
+            android:hint="Input nickname"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="50dp"
+            android:id="@+id/editTextNickname"
+            android:textColor="@color/black"
+            android:textSize="7pt"
+            android:maxLines="1"
+            android:inputType="text"
+            android:imeOptions="actionNext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    
+        <EditText
+            android:inputType="textEmailAddress"
+            android:imeOptions="actionDone"
+            android:hint="Input email"
+            android:layout_marginTop="10dp"
+            android:layout_marginHorizontal="20dp"
+            android:id="@+id/editTextEmail"
+            android:maxLength="8"
+            android:textColor="@color/black"
+            android:textSize="7pt"
+            android:maxLines="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    
+        <Button
+            android:layout_marginTop="30dp"
+            android:layout_marginHorizontal="20dp"
+            android:textAllCaps="false"
+            android:id="@+id/button"
+            android:textSize="8pt"
+            android:textColor="@color/white"
+            android:background="@color/black"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"/>
+        
+    </LinearLayout>
+    
+    <LinearLayout
+        android:visibility="gone"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="#B3000000"
+        android:id="@+id/linearLayoutPhotoSelector"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="bottom|center_horizontal"
+        android:paddingBottom="20dp">
+       
+        <Button
+            android:text="Camera"
+            android:layout_marginTop="30dp"
+            android:layout_marginHorizontal="20dp"
+            android:textAllCaps="false"
+            android:id="@+id/buttonCamera"
+            android:textSize="8pt"
+            android:textColor="@color/black"
+            android:backgroundTint="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"/>
+    
+        <Button
+            android:text="Gallery"
+            android:layout_marginTop="30dp"
+            android:layout_marginHorizontal="20dp"
+            android:textAllCaps="false"
+            android:id="@+id/buttonGallery"
+            android:textSize="8pt"
+            android:textColor="@color/black"
+            android:backgroundTint="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"/>
+        
+        
+        
+    </LinearLayout>
+    
+    <!-- progress -->
+    <FrameLayout
+        android:visibility="gone"
+        android:clickable="true"
+        android:focusable="true"
+        android:id="@+id/progress"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        
+        <ProgressBar
+            android:layout_gravity="center"
+            android:indeterminateTint="#f00"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </FrameLayout>
+    
+</FrameLayout>

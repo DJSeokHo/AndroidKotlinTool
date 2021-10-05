@@ -5,14 +5,19 @@ import android.graphics.BitmapFactory
 import android.net.Uri
 import com.google.android.gms.tasks.Continuation
 import com.google.android.gms.tasks.Task
+import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.UploadTask
+import com.google.firebase.storage.ktx.storage
 import com.swein.androidkotlintool.framework.util.log.ILog
 import com.swein.androidkotlintool.framework.util.thread.ThreadUtility
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileInputStream
+import kotlin.coroutines.resume
+import kotlin.coroutines.resumeWithException
+import kotlin.coroutines.suspendCoroutine
 
 
 object FirebaseStorageManager {
@@ -25,41 +30,42 @@ object FirebaseStorageManager {
     const val FILE_STORAGE_DOMAIN = "gs://androidkotlintool.appspot.com"
     const val MEMBER_IMAGE_FOLDER = "Member/"
 
-    suspend fun uploadImage(uploadPath: String,
-                    fileUri: Uri,
-                    fileName: String,
-                    onSuccess: (imageUrl: String) -> Unit, onFailure: () -> Unit) {
+    suspend fun uploadImage(uri: Uri, folderName: String, fileName: String): String {
 
-        ThreadUtility.startThread {
+        return suspendCoroutine { continuation ->
 
-            val storageRef: StorageReference =  FirebaseStorage.getInstance(uploadPath).reference
-            val storageReference: StorageReference = storageRef.child(fileName)
+            val storageRef = Firebase.storage(FILE_STORAGE_DOMAIN).reference
+            val storageReference: StorageReference = storageRef.child("$folderName/$fileName")
 
-            val uploadTask: UploadTask = storageReference.putFile(fileUri)
+            val uploadTask: UploadTask = storageReference.putFile(uri)
 
             uploadTask.addOnFailureListener {
-                ILog.debug(TAG, "${it.message}")
+
+                continuation.resumeWithException(it)
+
             }.addOnSuccessListener {
+
                 ILog.debug(TAG, "success ${storageReference.downloadUrl}")
+
                 it.task.continueWithTask(Continuation<UploadTask.TaskSnapshot, Task<Uri>> { task ->
                     if (!task.isSuccessful) {
-                        onFailure()
-                    }
+                        task.exception?.let { exception ->
+                            continuation.resumeWithException(exception)
+                        }
 
+                    }
                     return@Continuation storageReference.downloadUrl
+
                 }).addOnCompleteListener { uriTask ->
+
                     if (uriTask.isSuccessful) {
                         val downloadUri = uriTask.result
-                        onSuccess(downloadUri.toString())
+                        continuation.resume(downloadUri.toString())
                     }
-                    else {
-                        onFailure()
-                    }
-                }
-            }.addOnFailureListener {
-                onFailure()
-            }
 
+                }
+
+            }
         }
     }
 

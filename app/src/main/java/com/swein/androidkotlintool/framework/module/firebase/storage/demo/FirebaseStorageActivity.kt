@@ -5,7 +5,7 @@ import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.swein.androidkotlintool.R
-import com.swein.androidkotlintool.framework.module.firebase.storage.FirebaseStorageCoroutineManager
+import com.swein.androidkotlintool.framework.module.firebase.storage.FirebaseStorageManager
 import com.swein.androidkotlintool.framework.util.glide.SHGlide
 import com.swein.androidkotlintool.framework.util.log.ILog
 import com.swein.androidkotlintool.main.examples.systemphotopicker.SystemPhotoPickManager
@@ -37,9 +37,9 @@ class FirebaseStorageActivity : AppCompatActivity() {
                     lifecycleScope.launch(Dispatchers.Main) {
 
                         val result = async {
-                            FirebaseStorageCoroutineManager.uploadImage(
+                            FirebaseStorageManager.uploadImage(
                                 uri = uri,
-                                folderName = FirebaseStorageCoroutineManager.MEMBER_IMAGE_FOLDER,
+                                folderName = FirebaseStorageManager.MEMBER_IMAGE_FOLDER,
                                 fileName = "test.jpg"
                             )
                         }

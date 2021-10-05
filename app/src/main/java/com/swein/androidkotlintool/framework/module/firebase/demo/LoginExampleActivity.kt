@@ -15,6 +15,7 @@ import com.swein.androidkotlintool.framework.module.firebase.cloudfirestore.demo
 import com.swein.androidkotlintool.framework.module.firebase.cloudfirestore.demo.viewmodel.MemberViewModelState
 import com.swein.androidkotlintool.framework.util.eventsplitshot.eventcenter.EventCenter
 import com.swein.androidkotlintool.framework.util.eventsplitshot.subject.ESSArrows
+import com.swein.androidkotlintool.framework.util.log.ILog
 import com.swein.androidkotlintool.main.jetpackexample.datastore.DataStoreManager
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
@@ -25,7 +26,7 @@ class LoginExampleActivity : AppCompatActivity() {
     companion object {
 
         fun start(context: Context) {
-            Intent(context, FirebaseDemoActivity::class.java).apply {
+            Intent(context, LoginExampleActivity::class.java).apply {
                 context.startActivity(this)
             }
         }
@@ -75,23 +76,17 @@ class LoginExampleActivity : AppCompatActivity() {
                     when (it) {
 
                         is MemberViewModelState.CheckIDExistsSuccessfully -> {
+                            hideProgress()
+
+                            ILog.debug("???", it.id)
 
                             if (it.id == "") {
                                 // fire store doesn't exist the id, can register
 
-                                val id = it.id
+                                val id = editTextID.text.toString().trim()
                                 val pw = editTextPW.text.toString().trim()
 
-                                val bundle = Bundle().apply {
-                                    putString("id", id)
-                                    putString("pw", pw)
-                                }
-
-                                val intent = Intent(this@LoginExampleActivity, InputInfoExampleActivity::class.java)
-
-                                intent.putExtra("signUpBundle", bundle)
-
-                                startActivity(intent)
+                                InputInfoExampleActivity.register(this@LoginExampleActivity, id, pw, checkBox.isChecked)
                             }
                             else {
                                 Toast.makeText(this@LoginExampleActivity, "id has existed", Toast.LENGTH_SHORT).show()
@@ -128,7 +123,7 @@ class LoginExampleActivity : AppCompatActivity() {
                             showProgress()
                         }
 
-                        is MemberViewModelState.None -> Unit
+                        else -> Unit
                     }
                 }
 

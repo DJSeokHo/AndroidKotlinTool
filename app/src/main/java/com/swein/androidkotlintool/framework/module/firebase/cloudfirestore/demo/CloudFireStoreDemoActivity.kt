@@ -56,7 +56,7 @@ class CloudFireStoreDemoActivity : AppCompatActivity() {
         memberModel.nickname = "tester new"
         memberModel.modifyDate = DateUtility.getCurrentDateTimeString()
 
-        memberViewModel.modify(memberModel)
+//        memberViewModel.modify(memberModel)
     }
 
     private fun signInTest() {
@@ -78,7 +78,7 @@ class CloudFireStoreDemoActivity : AppCompatActivity() {
         memberModel.createBy = uuid
         memberModel.modifyBy = uuid
 
-        memberViewModel.register(memberModel)
+//        memberViewModel.register(imageUri, "", memberModel)
     }
 
     private fun initFlow() {
@@ -95,7 +95,7 @@ class CloudFireStoreDemoActivity : AppCompatActivity() {
                             hideProgress()
                         }
 
-                        is MemberViewModelState.SignSuccessfully -> {
+                        is MemberViewModelState.SignInSuccessfully -> {
                             ILog.debug(TAG, "sign in ${it.memberModel}")
                             hideProgress()
 

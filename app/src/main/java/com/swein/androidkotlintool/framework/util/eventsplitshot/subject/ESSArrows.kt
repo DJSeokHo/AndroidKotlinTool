@@ -15,6 +15,7 @@ class ESSArrows {
         const val PAYMENT_SUCCESS = "PAYMENT_SUCCESS"
         const val PAYMENT_FAIL = "PAYMENT_FAIL"
 
+        const val ON_REGISTER = "ON_REGISTER"
         const val ON_UPDATE_PROFILE = "ON_UPDATE_PROFILE"
     }
 
