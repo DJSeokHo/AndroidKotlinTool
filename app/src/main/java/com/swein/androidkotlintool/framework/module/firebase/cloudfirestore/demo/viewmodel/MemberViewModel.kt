@@ -30,10 +30,6 @@ sealed class MemberViewModelState {
 
 class MemberViewModel: ViewModel() {
 
-    companion object {
-        private const val TAG = "MemberViewModel"
-    }
-
     private val _memberViewModelState = MutableStateFlow<MemberViewModelState>(MemberViewModelState.None)
     val memberViewModelState: StateFlow<MemberViewModelState> = _memberViewModelState
 
@@ -45,7 +41,7 @@ class MemberViewModel: ViewModel() {
             coroutineScope {
 
                 val uploadImage = async {
-                    MemberModelService.uploadImageFile(imageUri)
+                    MemberModelService.uploadImageFile(imageUri, imageFileName)
                 }
 
                 val imageUrl = uploadImage.await()
@@ -112,7 +108,7 @@ class MemberViewModel: ViewModel() {
                 imageUri?.let {
 
                     val uploadImage = async {
-                        MemberModelService.uploadImageFile(imageUri)
+                        MemberModelService.uploadImageFile(imageUri, "${memberModel.uuId}.jpg")
                     }
 
                     val imageUrl = uploadImage.await()
@@ -134,20 +130,26 @@ class MemberViewModel: ViewModel() {
 
     }
 
-    fun delete(uuId: String) = viewModelScope.launch {
+    fun delete(memberModel: MemberModel) = viewModelScope.launch {
 
         _memberViewModelState.value = MemberViewModelState.Loading
 
         try {
             coroutineScope {
 
+                val deleteImage = async {
+                    MemberModelService.deleteImageFile(memberModel.profileImageFileCloudPath)
+                }
+
+                deleteImage.await()
+
                 val delete = async {
-                    MemberModelService.delete(uuId)
+                    MemberModelService.delete(memberModel.uuId)
                 }
 
                 delete.await()
 
-                _memberViewModelState.value = MemberViewModelState.DeleteSuccessfully(uuId)
+                _memberViewModelState.value = MemberViewModelState.DeleteSuccessfully(memberModel.uuId)
             }
         }
         catch (e: Exception) {

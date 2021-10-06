@@ -1,5 +1,6 @@
 package com.swein.androidkotlintool.framework.module.firebase.demo
 
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.widget.*
@@ -11,41 +12,81 @@ import com.swein.androidkotlintool.R
 import com.swein.androidkotlintool.framework.module.firebase.cloudfirestore.demo.model.MemberModel
 import com.swein.androidkotlintool.framework.module.firebase.cloudfirestore.demo.viewmodel.MemberViewModel
 import com.swein.androidkotlintool.framework.module.firebase.cloudfirestore.demo.viewmodel.MemberViewModelState
+import com.swein.androidkotlintool.framework.util.date.DateUtility
 import com.swein.androidkotlintool.framework.util.eventsplitshot.eventcenter.EventCenter
 import com.swein.androidkotlintool.framework.util.eventsplitshot.subject.ESSArrows
 import com.swein.androidkotlintool.framework.util.glide.SHGlide
-import com.swein.androidkotlintool.main.jetpackexample.datastore.DataStoreManager
+import com.swein.androidkotlintool.framework.util.uuid.UUIDUtil
+import com.swein.androidkotlintool.main.examples.systemphotopicker.SystemPhotoPickManager
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 class FirebaseDemoActivity : AppCompatActivity() {
 
+    private val systemPhotoPickManager = SystemPhotoPickManager(this)
+
     private val imageView: ImageView by lazy {
         findViewById(R.id.imageView)
     }
 
-    private val textViewNickname: TextView by lazy {
-        findViewById(R.id.textViewNickname)
+    private val editTextID: EditText by lazy {
+        findViewById(R.id.editTextID)
     }
-    private val textViewEmail: TextView by lazy {
-        findViewById(R.id.textViewEmail)
+
+    private val editTextPW: EditText by lazy {
+        findViewById(R.id.editTextPW)
+    }
+
+    private val editTextNickname: EditText by lazy {
+        findViewById(R.id.editTextNickname)
+    }
+
+    private val editTextEmail: EditText by lazy {
+        findViewById(R.id.editTextEmail)
+    }
+
+    private val buttonRegister: Button by lazy {
+        findViewById(R.id.buttonRegister)
     }
 
     private val buttonLogin: Button by lazy {
         findViewById(R.id.buttonLogin)
     }
+
     private val buttonModify: Button by lazy {
         findViewById(R.id.buttonModify)
     }
+
+    private val buttonDelete: Button by lazy {
+        findViewById(R.id.buttonDelete)
+    }
+
+    private val buttonClean: Button by lazy {
+        findViewById(R.id.buttonClean)
+    }
+
+    private val linearLayoutPhotoSelector: LinearLayout by lazy {
+        findViewById(R.id.linearLayoutPhotoSelector)
+    }
+
+    private val buttonCamera: Button by lazy {
+        findViewById(R.id.buttonCamera)
+    }
+
+    private val buttonGallery: Button by lazy {
+        findViewById(R.id.buttonGallery)
+    }
+
 
     private val progress: FrameLayout by lazy {
         findViewById(R.id.progress)
     }
 
-    private var isAlreadySignIn = false
-
     private val viewModel: MemberViewModel by viewModels()
+
+    private var tempImageUri: Uri? = null
+    private var memberModel: MemberModel? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,31 +100,9 @@ class FirebaseDemoActivity : AppCompatActivity() {
 
     private fun initObserver() {
 
-        EventCenter.addEventObserver(ESSArrows.ON_REGISTER, this, object : EventCenter.EventRunnable {
+        EventCenter.addEventObserver(ESSArrows.REQUEST_REFRESH, this, object : EventCenter.EventRunnable {
             override fun run(arrow: String, poster: Any, data: MutableMap<String, Any>?) {
-
-                data?.let {
-                    isAlreadySignIn = true
-
-                    val memberModel = data["memberModel"] as MemberModel
-
-                    updateView(memberModel)
-                }
-
-            }
-        })
-
-        EventCenter.addEventObserver(ESSArrows.ON_UPDATE_PROFILE, this, object : EventCenter.EventRunnable {
-            override fun run(arrow: String, poster: Any, data: MutableMap<String, Any>?) {
-
-                data?.let {
-                    isAlreadySignIn = true
-
-                    val memberModel = data["memberModel"] as MemberModel
-
-                    updateView(memberModel)
-                }
-
+                updateView()
             }
         })
     }
@@ -97,8 +116,27 @@ class FirebaseDemoActivity : AppCompatActivity() {
 
                     when (it) {
 
-                        is MemberViewModelState.AutoSignInSuccessfully -> {
+                        is MemberViewModelState.RegisterSuccessfully -> {
                             hideProgress()
+                            memberModel = it.memberModel
+                            updateView()
+                        }
+
+                        is MemberViewModelState.SignInSuccessfully -> {
+                            hideProgress()
+                            memberModel = it.memberModel
+                            updateView()
+                        }
+
+                        is MemberViewModelState.UpdateSuccessfully -> {
+                            hideProgress()
+                            memberModel = it.memberModel
+                            updateView()
+                        }
+
+                        is MemberViewModelState.DeleteSuccessfully -> {
+                            hideProgress()
+                            clean()
                         }
 
                         is MemberViewModelState.Error -> {
@@ -121,68 +159,103 @@ class FirebaseDemoActivity : AppCompatActivity() {
 
     private fun setListener() {
 
+        buttonRegister.setOnClickListener {
+
+            memberModel = MemberModel().apply {
+                uuId = UUIDUtil.getUUIDString()
+                id = editTextID.text.toString().trim()
+                password = editTextPW.text.toString().trim()
+                email = editTextEmail.text.toString().trim()
+                nickname = editTextNickname.text.toString().trim()
+                profileImageUrl = ""
+                profileImageFileCloudPath = ""
+                createDate = DateUtility.getCurrentDateTimeString()
+                modifyDate = createDate
+                createBy = uuId
+                modifyBy = uuId
+            }
+
+            viewModel.register(tempImageUri!!, "${memberModel!!.uuId}.jpg", memberModel!!)
+        }
+
         buttonLogin.setOnClickListener {
 
-            if (isAlreadySignIn) {
-                // logout
-                logout()
-            }
-            else {
-                LoginExampleActivity.start(this)
-            }
+            val id = editTextID.text.toString().trim()
+            val pw = editTextPW.text.toString().trim()
+
+            viewModel.signIn(id, pw)
         }
 
         buttonModify.setOnClickListener {
-//            if (isAlreadySignIn) {
-//                // modify
-//                modify()
-//            }
-//            else {
-//                // sign in
-//                signIn()
-//            }
+
+            memberModel!!.nickname = editTextNickname.text.toString().trim()
+            memberModel!!.email = editTextEmail.text.toString().trim()
+            memberModel!!.modifyDate = DateUtility.getCurrentDateTimeString()
+            memberModel!!.modifyBy = memberModel!!.uuId
+
+            viewModel.modify(tempImageUri, memberModel!!)
+        }
+
+        buttonDelete.setOnClickListener {
+
+            viewModel.delete(memberModel!!)
+        }
+
+        buttonClean.setOnClickListener {
+
+            clean()
+        }
+
+        linearLayoutPhotoSelector.setOnClickListener {
+            linearLayoutPhotoSelector.visibility = View.GONE
+        }
+
+        buttonCamera.setOnClickListener {
+            systemPhotoPickManager.requestPermission {
+
+                it.takePictureWithUri { uri ->
+
+                    linearLayoutPhotoSelector.visibility = View.GONE
+                    tempImageUri = uri
+                    imageView.setImageURI(uri)
+                }
+            }
+        }
+
+        buttonGallery.setOnClickListener {
+            systemPhotoPickManager.requestPermission {
+
+                it.selectPicture { uri ->
+
+                    linearLayoutPhotoSelector.visibility = View.GONE
+                    tempImageUri = uri
+                    imageView.setImageURI(uri)
+
+                }
+            }
+        }
+
+        imageView.setOnClickListener {
+
+            linearLayoutPhotoSelector.visibility = View.VISIBLE
         }
 
     }
 
-    private fun updateView(memberModel: MemberModel? = null) {
+    private fun updateView() {
 
-        memberModel?.let {
-            SHGlide.setImage(imageView, url = it.profileImageUrl)
-            textViewNickname.text = it.nickname
-            textViewEmail.text = it.email
-        } ?: run {
-            imageView.setImageDrawable(null)
-            textViewNickname.text = ""
-            textViewEmail.text = ""
-        }
+        SHGlide.setImage(imageView, url = memberModel!!.profileImageUrl)
+        editTextNickname.setText(memberModel!!.nickname)
+        editTextEmail.setText(memberModel!!.email)
     }
 
-
-//    private fun modify() {
-//
-//        viewModel.memberModel?.let {
-//            val intent = Intent(this, InputInfoExampleActivity::class.java)
-//
-//            intent.putExtra("modifyBundle", it.toBundle())
-//
-//            startActivity(intent)
-//        }
-//
-//    }
-
-
-    private fun logout() {
-
-        lifecycleScope.launch {
-
-            DataStoreManager.saveValue(this@FirebaseDemoActivity, MemberModel.UUID_KEY, "")
-            isAlreadySignIn = false
-
-            updateView()
-        }
+    private fun clean() {
+        imageView.setImageBitmap(null)
+        editTextID.setText("")
+        editTextPW.setText("")
+        editTextNickname.setText("")
+        editTextEmail.setText("")
     }
-
 
     private fun showProgress() {
         progress.visibility = View.VISIBLE

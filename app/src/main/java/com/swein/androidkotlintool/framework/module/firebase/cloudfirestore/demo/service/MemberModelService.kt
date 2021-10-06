@@ -45,12 +45,19 @@ object MemberModelService {
         return@withContext CloudFireStoreWrapper.select(MemberModel.CLOUD_FIRE_STORE_PATH, map)
     }
 
-    suspend fun uploadImageFile(uri: Uri): String = withContext(Dispatchers.IO) {
+    suspend fun uploadImageFile(uri: Uri, fileName: String): String = withContext(Dispatchers.IO) {
 
         return@withContext FirebaseStorageManager.uploadImage(
             uri = uri,
             folderName = FirebaseStorageManager.MEMBER_IMAGE_FOLDER,
-            fileName = "test.jpg"
+            fileName = fileName
+        )
+    }
+
+    suspend fun deleteImageFile(filePath: String) = withContext(Dispatchers.IO) {
+
+        return@withContext FirebaseStorageManager.deleteImage(
+            filePath = filePath
         )
     }
 

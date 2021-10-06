@@ -46,7 +46,7 @@ class CloudFireStoreDemoActivity : AppCompatActivity() {
     }
 
     private fun deleteTest(uuId: String) {
-        memberViewModel.delete(uuId)
+//        memberViewModel.delete(uuId)
     }
 
     private fun modifyTest(memberModel: MemberModel) {

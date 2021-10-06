@@ -134,4 +134,22 @@ object FirebaseStorageManager {
             ILog.debug(TAG, "${it.message}")
         }
     }
+
+    suspend fun deleteImage(filePath: String): Void {
+
+        return suspendCoroutine { continuation ->
+
+            val storageRef: StorageReference =  FirebaseStorage.getInstance(FILE_STORAGE_DOMAIN).reference
+            val storageReference: StorageReference = storageRef.child(filePath)
+
+            storageReference.delete().addOnSuccessListener {
+                continuation.resume(it)
+            }.addOnFailureListener {
+                it.printStackTrace()
+                continuation.resumeWithException(it)
+            }
+
+        }
+
+    }
 }
