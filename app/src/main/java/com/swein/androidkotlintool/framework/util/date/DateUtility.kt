@@ -3,7 +3,9 @@ package com.swein.androidkotlintool.framework.util.date
 import android.annotation.SuppressLint
 import java.lang.Exception
 import java.text.SimpleDateFormat
+import java.time.Duration
 import java.util.*
+import java.util.concurrent.TimeUnit
 
 object DateUtility {
     @SuppressLint("SimpleDateFormat")
@@ -55,5 +57,25 @@ object DateUtility {
         }
 
         return ""
+    }
+
+    fun daysBetween(startDateTime: Date, endDateTime: Date): Int {
+        val diff: Long = endDateTime.time - startDateTime.time
+        return TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS).toInt()
+    }
+
+    fun hoursBetween(startDateTime: Date, endDateTime: Date): Int {
+        val diff: Long = endDateTime.time - startDateTime.time
+        return TimeUnit.HOURS.convert(diff, TimeUnit.MILLISECONDS).toInt()
+    }
+
+    fun minutesBetween(startDateTime: Date, endDateTime: Date): Int {
+        val diff: Long = endDateTime.time - startDateTime.time
+        return TimeUnit.MINUTES.convert(diff, TimeUnit.MILLISECONDS).toInt()
+    }
+
+    fun secondsBetween(startDateTime: Date, endDateTime: Date): Int {
+        val diff: Long = endDateTime.time - startDateTime.time
+        return TimeUnit.SECONDS.convert(diff, TimeUnit.MILLISECONDS).toInt()
     }
 }

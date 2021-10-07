@@ -27,6 +27,7 @@ import com.swein.androidkotlintool.framework.util.glide.SHGlide
 import com.swein.androidkotlintool.framework.util.log.ILog
 import com.swein.androidkotlintool.framework.util.screen.ScreenUtil
 import com.swein.androidkotlintool.main.examples.callbacktocoroutine.CallbackToCoroutineActivity
+import com.swein.androidkotlintool.main.examples.customschschedule.CustomScheduleExampleActivity
 import com.swein.androidkotlintool.main.examples.htmleditorexample.HtmlEditorExampleActivity
 import com.swein.androidkotlintool.main.examples.pagingexample.PagingExampleActivity
 import com.swein.androidkotlintool.main.moduledemo.ModuleDemoActivity
@@ -146,7 +147,8 @@ class MainActivity : BasicPermissionActivity() {
 //        ActivityUtil.startNewActivityWithoutFinish(this, FirebaseStorageActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, CallbackToCoroutineActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, PagingExampleActivity::class.java)
-        ActivityUtil.startNewActivityWithoutFinish(this, FirebaseDemoActivity::class.java)
+//        ActivityUtil.startNewActivityWithoutFinish(this, FirebaseDemoActivity::class.java)
+        ActivityUtil.startNewActivityWithoutFinish(this, CustomScheduleExampleActivity::class.java)
 
 
 //        SnackBarUtility.showSnackBar(frameLayoutRoot, "test")
