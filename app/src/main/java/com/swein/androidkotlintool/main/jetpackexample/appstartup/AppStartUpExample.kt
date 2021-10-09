@@ -2,7 +2,7 @@ package com.swein.androidkotlintool.main.jetpackexample.appstartup
 
 import android.content.Context
 import androidx.startup.Initializer
-import com.swein.androidkotlintool.framework.module.room.example.database.DatabaseManager
+//import com.swein.androidkotlintool.framework.module.room.example.database.DatabaseManager
 import com.swein.androidkotlintool.framework.util.log.ILog
 
 /**
@@ -24,7 +24,7 @@ class AppStartUpExample: Initializer<Unit> {
     override fun create(context: Context) {
         ILog.debug(TAG, "create")
         AnyToolNeedContextWhenInit.init(context)
-        DatabaseManager.init(context, "IDEA_DB")
+//        DatabaseManager.init(context, "IDEA_DB")
     }
 
     override fun dependencies(): List<Class<out Initializer<*>>> {

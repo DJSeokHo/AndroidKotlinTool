@@ -23,16 +23,16 @@ data class UserInfo(
 
     @PrimaryKey
     @ColumnInfo(name = "UID")
-    val uid: String,
+    var uid: String = "",
 
     @ColumnInfo(name = "NAME")
-    val name: String,
+    var name: String = "",
 
     @ColumnInfo(name = "AGE")
-    val age: Int,
+    var age: Int = 0,
 
     @ColumnInfo(name = "ADDRESS")
-    val address: String,
+    var address: String = "",
 
     // Room 会为实体中定义的每个字段创建一个列。如果某个实体中有您不想保留的字段，则可以使用 @Ignore 为这些字段添加注释
 //    @Ignore
@@ -44,11 +44,9 @@ data class UserInfo(
      * 然后，表示 User 对象的表将包含具有以下名称的列：uid、name、age, address, street, state, city 和 post_code。
      */
     @Embedded
-    val addressInfo: AddressInfo
+    var addressInfo: AddressInfo = AddressInfo()
 
-) {
-    constructor() : this("", "", 0, "", AddressInfo())
-}
+)
 
 /**
 如果实体继承了父实体的字段，则使用 @Entity 属性的 ignoredColumns 属性通常会更容易：

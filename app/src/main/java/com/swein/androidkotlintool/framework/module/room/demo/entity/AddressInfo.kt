@@ -5,13 +5,11 @@ import androidx.room.ColumnInfo
 data class AddressInfo(
 
     @ColumnInfo(name = "STREET")
-    val street: String,
+    var street: String = "",
 
     @ColumnInfo(name = "CITY")
-    val city: String,
+    var city: String = "",
 
     @ColumnInfo(name = "POST_CODE")
-    val postCode: String
-) {
-    constructor(): this("", "", "")
-}
+    var postCode: String = ""
+)

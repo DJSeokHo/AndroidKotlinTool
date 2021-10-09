@@ -47,6 +47,7 @@
         <entry key="app/src/main/res/layout/activity_system_ui_visibility.xml" value="0.28489583333333335" />
         <entry key="app/src/main/res/layout/activity_unity_ads_example.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_web_view_example.xml" value="0.2015625" />
+        <entry key="app/src/main/res/layout/activity_youtube_player_example.xml" value="0.2875" />
         <entry key="app/src/main/res/layout/fragment_bottom_action_sheet.xml" value="0.26458333333333334" />
         <entry key="app/src/main/res/layout/fragment_exo_player_example.xml" value="0.2791666666666667" />
         <entry key="app/src/main/res/layout/fragment_s_h_camera_photo.xml" value="0.14513677811550152" />
@@ -66,6 +67,7 @@
       </map>
     </option>
   </component>
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/classes" />
   </component>

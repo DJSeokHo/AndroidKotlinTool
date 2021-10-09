@@ -42,11 +42,11 @@ interface UserDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertUserInfo(userInfo: UserInfo)
 
-    @Delete
-    fun delete(userInfo: UserInfo)
-
-    @Delete // 虽然通常没有必要，但是您可以让此方法返回一个 int 值，以指示从数据库中删除的行数。
-    fun deleteUsers(vararg userInfoArray: UserInfo)
+//    @Delete
+//    fun delete(userInfo: UserInfo): Int
+//
+//    @Delete // 虽然通常没有必要，但是您可以让此方法返回一个 int 值，以指示从数据库中删除的行数。
+//    fun deleteUsers(vararg userInfoArray: UserInfo): Int
 
     @Update // 虽然通常没有必要，但是您可以让此方法返回一个 int 值，以指示从数据库中删除的行数。
     fun updateUsers(vararg userInfoArray: UserInfo)

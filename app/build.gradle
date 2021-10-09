@@ -157,6 +157,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth-ktx'
 
     implementation files('../libs/unity-ads.aar')
+    implementation files('../libs/YouTubeAndroidPlayerApi.jar')
 
     implementation 'com.google.android.exoplayer:exoplayer:2.15.1'
     implementation 'com.google.android.exoplayer:exoplayer-ui:2.15.1'
@@ -165,6 +166,8 @@ dependencies {
 //    implementation("androidx.paging:paging-compose:1.0.0-alpha12")
 
     implementation 'com.shine56.richtextx:richtextx:1.0.5-beta'
+
+
 }
 
 apply plugin: 'com.google.gms.google-services'
