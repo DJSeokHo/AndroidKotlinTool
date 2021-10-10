@@ -1,10 +1,7 @@
 package com.swein.androidkotlintool.main.examples.youtubeplayer
 
 import android.os.Bundle
-import com.google.android.youtube.player.YouTubeBaseActivity
-import com.google.android.youtube.player.YouTubeInitializationResult
-import com.google.android.youtube.player.YouTubePlayer
-import com.google.android.youtube.player.YouTubePlayerView
+import com.google.android.youtube.player.*
 import com.swein.androidkotlintool.R
 import com.swein.androidkotlintool.framework.util.log.ILog
 
@@ -22,6 +19,11 @@ class YoutubePlayerExampleActivity : YouTubeBaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_youtube_player_example)
 
+        /*
+        https://img.youtube.com/vi/Ee2y5YoLQB4/mqdefault.jpg
+        https://img.youtube.com/vi/Ee2y5YoLQB4/hqdefault.jpg
+        https://img.youtube.com/vi/Ee2y5YoLQB4/maxresdefault.jpg
+         */
         youTubePlayerView.initialize("AIzaSyAVx79aGFmshEL4dCg_0WmRdWVi3kANz7Y", object : YouTubePlayer.OnInitializedListener {
             override fun onInitializationSuccess(
                 provider: YouTubePlayer.Provider?,
@@ -43,5 +45,6 @@ class YoutubePlayerExampleActivity : YouTubeBaseActivity() {
             }
 
         })
+
     }
 }
