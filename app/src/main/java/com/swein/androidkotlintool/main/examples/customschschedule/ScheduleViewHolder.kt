@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
 import com.swein.androidkotlintool.R
-import com.swein.androidkotlintool.framework.util.log.ILog
 
 @SuppressLint("ViewConstructor")
 class ScheduleViewHolder(
