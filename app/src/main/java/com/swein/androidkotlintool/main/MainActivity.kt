@@ -15,9 +15,7 @@ import com.swein.androidkotlintool.constants.Constants
 import com.swein.androidkotlintool.framework.module.basicpermission.BasicPermissionActivity
 import com.swein.androidkotlintool.framework.module.basicpermission.PermissionManager
 import com.swein.androidkotlintool.framework.module.basicpermission.RequestPermission
-import com.swein.androidkotlintool.framework.module.firebase.cloudfirestore.demo.CloudFireStoreDemoActivity
-import com.swein.androidkotlintool.framework.module.firebase.demo.FirebaseDemoActivity
-import com.swein.androidkotlintool.framework.module.firebase.storage.demo.FirebaseStorageActivity
+import com.swein.androidkotlintool.framework.module.firebase.pagination.FirebasePaginationDemoActivity
 import com.swein.androidkotlintool.framework.module.volley.VolleyModule
 import com.swein.androidkotlintool.framework.util.activity.ActivityUtil
 import com.swein.androidkotlintool.framework.util.display.DisplayUtility
@@ -26,11 +24,7 @@ import com.swein.androidkotlintool.framework.util.eventsplitshot.subject.ESSArro
 import com.swein.androidkotlintool.framework.util.glide.SHGlide
 import com.swein.androidkotlintool.framework.util.log.ILog
 import com.swein.androidkotlintool.framework.util.screen.ScreenUtil
-import com.swein.androidkotlintool.main.examples.callbacktocoroutine.CallbackToCoroutineActivity
-import com.swein.androidkotlintool.main.examples.customschschedule.CustomScheduleExampleActivity
-import com.swein.androidkotlintool.main.examples.htmleditorexample.HtmlEditorExampleActivity
-import com.swein.androidkotlintool.main.examples.pagingexample.PagingExampleActivity
-import com.swein.androidkotlintool.main.examples.youtubeplayer.YoutubePlayerExampleActivity
+import com.swein.androidkotlintool.main.examples.customschedule.CustomScheduleExampleActivity
 import com.swein.androidkotlintool.main.moduledemo.ModuleDemoActivity
 import com.swein.androidkotlintool.template.bottomtab.activity.TabHostActivity
 import com.swein.androidkotlintool.template.handlerthread.HandlerThreadTemplateActivity
@@ -149,8 +143,9 @@ class MainActivity : BasicPermissionActivity() {
 //        ActivityUtil.startNewActivityWithoutFinish(this, CallbackToCoroutineActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, PagingExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, FirebaseDemoActivity::class.java)
-//        ActivityUtil.startNewActivityWithoutFinish(this, CustomScheduleExampleActivity::class.java)
-        ActivityUtil.startNewActivityWithoutFinish(this, YoutubePlayerExampleActivity::class.java)
+        ActivityUtil.startNewActivityWithoutFinish(this, CustomScheduleExampleActivity::class.java)
+//        ActivityUtil.startNewActivityWithoutFinish(this, YoutubePlayerExampleActivity::class.java)
+//        ActivityUtil.startNewActivityWithoutFinish(this, FirebasePaginationDemoActivity::class.java)
 
 
 //        SnackBarUtility.showSnackBar(frameLayoutRoot, "test")

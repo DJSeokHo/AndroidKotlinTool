@@ -78,4 +78,17 @@ object DateUtility {
         val diff: Long = endDateTime.time - startDateTime.time
         return TimeUnit.SECONDS.convert(diff, TimeUnit.MILLISECONDS).toInt()
     }
+
+    fun getHour24(date: Date): Int {
+        val calendar = Calendar.getInstance()
+        calendar.time = date
+        return calendar.get(Calendar.HOUR_OF_DAY)
+    }
+
+    fun getMinute(date: Date): Int {
+        val calendar = Calendar.getInstance()
+        calendar.time = date
+        return calendar.get(Calendar.MINUTE)
+    }
+
 }

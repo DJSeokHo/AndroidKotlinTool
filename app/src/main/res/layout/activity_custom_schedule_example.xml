@@ -4,16 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".main.examples.customschschedule.CustomScheduleExampleActivity">
-    
-    <com.swein.androidkotlintool.main.examples.customschschedule.CustomScheduleViewGroup
-        app:layout_constraintTop_toTopOf="parent"
-        android:id="@+id/customScheduleViewGroup"
-        android:layout_margin="25dp"
-        android:layout_width="match_parent"
-        android:layout_height="500dp"
-        android:background="@color/black">
-        
-    </com.swein.androidkotlintool.main.examples.customschschedule.CustomScheduleViewGroup>
+    tools:context=".main.examples.customschedule.CustomScheduleExampleActivity"
+    android:background="@color/white"
+    android:id="@+id/container">
     
 </androidx.constraintlayout.widget.ConstraintLayout>
