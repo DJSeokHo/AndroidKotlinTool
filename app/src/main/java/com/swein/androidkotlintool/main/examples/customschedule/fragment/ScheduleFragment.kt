@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.ScrollView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.swein.androidkotlintool.R
 import com.swein.androidkotlintool.framework.util.date.DateUtility
@@ -113,9 +114,11 @@ class ScheduleFragment : Fragment() {
 
                             when {
                                 result > 100 -> {
+                                    Toast.makeText(context, "right", Toast.LENGTH_SHORT).show()
                                     ILog.debug("???", "right")
                                 }
                                 result < -100 -> {
+                                    Toast.makeText(context, "left", Toast.LENGTH_SHORT).show()
                                     ILog.debug("???", "left")
                                 }
                                 else -> {

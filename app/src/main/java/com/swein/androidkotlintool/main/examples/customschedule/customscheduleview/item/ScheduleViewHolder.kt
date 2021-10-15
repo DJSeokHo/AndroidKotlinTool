@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Color
 import android.view.ViewGroup
+import android.widget.FrameLayout
 import android.widget.LinearLayout
 import android.widget.TextView
 import com.swein.androidkotlintool.R
@@ -21,8 +22,9 @@ class ScheduleViewHolder(
     private val unitHeight: Int,
     var startPositionY: Int,
     backgroundColor: Int = Color.TRANSPARENT
-): LinearLayout(context) {
+): FrameLayout(context) {
 
+    private lateinit var linearLayout: LinearLayout
     private lateinit var textViewTitle: TextView
     private lateinit var textViewMember: TextView
 
@@ -35,17 +37,18 @@ class ScheduleViewHolder(
 
         inflate(context, R.layout.view_holder_schedule, this)
 
-        setBackgroundColor(backgroundColor)
-
         initView()
 
         findView()
+
+        linearLayout.setBackgroundColor(backgroundColor)
 
         updateView()
     }
 
     private fun findView() {
 
+        linearLayout = findViewById(R.id.linearLayout)
         textViewTitle = findViewById(R.id.textViewTitle)
         textViewMember = findViewById(R.id.textViewMember)
     }
