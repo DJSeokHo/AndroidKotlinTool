@@ -56,6 +56,9 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".main.examples.grouprecyclerview.GroupRecyclerViewActivity"
+            android:exported="false" />
+        <activity
             android:name=".framework.module.firebase.pagination.FirebasePaginationDemoActivity"
             android:exported="false" />
         <activity

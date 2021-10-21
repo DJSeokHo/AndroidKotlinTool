@@ -15,7 +15,6 @@ import com.swein.androidkotlintool.constants.Constants
 import com.swein.androidkotlintool.framework.module.basicpermission.BasicPermissionActivity
 import com.swein.androidkotlintool.framework.module.basicpermission.PermissionManager
 import com.swein.androidkotlintool.framework.module.basicpermission.RequestPermission
-import com.swein.androidkotlintool.framework.module.firebase.pagination.FirebasePaginationDemoActivity
 import com.swein.androidkotlintool.framework.module.volley.VolleyModule
 import com.swein.androidkotlintool.framework.util.activity.ActivityUtil
 import com.swein.androidkotlintool.framework.util.display.DisplayUtility
@@ -24,7 +23,7 @@ import com.swein.androidkotlintool.framework.util.eventsplitshot.subject.ESSArro
 import com.swein.androidkotlintool.framework.util.glide.SHGlide
 import com.swein.androidkotlintool.framework.util.log.ILog
 import com.swein.androidkotlintool.framework.util.screen.ScreenUtil
-import com.swein.androidkotlintool.main.examples.customschedule.CustomScheduleExampleActivity
+import com.swein.androidkotlintool.main.examples.grouprecyclerview.GroupRecyclerViewActivity
 import com.swein.androidkotlintool.main.moduledemo.ModuleDemoActivity
 import com.swein.androidkotlintool.template.bottomtab.activity.TabHostActivity
 import com.swein.androidkotlintool.template.handlerthread.HandlerThreadTemplateActivity
@@ -143,9 +142,10 @@ class MainActivity : BasicPermissionActivity() {
 //        ActivityUtil.startNewActivityWithoutFinish(this, CallbackToCoroutineActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, PagingExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, FirebaseDemoActivity::class.java)
-        ActivityUtil.startNewActivityWithoutFinish(this, CustomScheduleExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, YoutubePlayerExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, FirebasePaginationDemoActivity::class.java)
+        ActivityUtil.startNewActivityWithoutFinish(this, GroupRecyclerViewActivity::class.java)
+//        ActivityUtil.startNewActivityWithoutFinish(this, CustomScheduleExampleActivity::class.java)
 
 
 //        SnackBarUtility.showSnackBar(frameLayoutRoot, "test")
@@ -199,7 +199,7 @@ class MainActivity : BasicPermissionActivity() {
             val insets: Insets = windowMetrics.windowInsets.getInsetsIgnoringVisibility(WindowInsets.Type.systemBars())
             val width = windowMetrics.bounds.width() - insets.left - insets.right
             ILog.debug(TAG, "${windowMetrics.bounds.width()} - ${insets.left} - ${insets.right} $width")
-            ILog.debug(TAG, "${DisplayUtility.getScreenWidthPx(this)}")
+            ILog.debug(TAG, "${DisplayUtility.getScreenWidth(this)}")
 
 
             DisplayUtility.getRootViewInfo(view, object : DisplayUtility.DisplayRootViewInfoDelegate {
@@ -210,8 +210,8 @@ class MainActivity : BasicPermissionActivity() {
                     bottomHeight: Int,
                     keypadHeight: Int
                 ) {
-                    ILog.debug(TAG, "screenWidth $screenWidth ${DisplayUtility.getScreenWidthPx(this@MainActivity)} ${DisplayUtility.getScreenWidth(this@MainActivity)}")
-                    ILog.debug(TAG, "screenHeight $screenHeight ${DisplayUtility.getScreenHeightPx(this@MainActivity)} ${DisplayUtility.getScreenHeight(this@MainActivity)}")
+                    ILog.debug(TAG, "screenWidth $screenWidth ${DisplayUtility.getScreenWidth(this@MainActivity)} ${DisplayUtility.getScreenWidth(this@MainActivity)}")
+                    ILog.debug(TAG, "screenHeight $screenHeight ${DisplayUtility.getScreenHeight(this@MainActivity)} ${DisplayUtility.getScreenHeight(this@MainActivity)}")
                     ILog.debug(TAG, "statusHeight $statusHeight ${windowMetrics.windowInsets.getInsetsIgnoringVisibility(WindowInsets.Type.statusBars())}")
                     ILog.debug(TAG, "bottomHeight $bottomHeight ${windowMetrics.windowInsets.getInsetsIgnoringVisibility(WindowInsets.Type.systemBars())}")
                 }

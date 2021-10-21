@@ -11,6 +11,10 @@ import android.view.View
 import android.view.ViewTreeObserver.OnGlobalLayoutListener
 import android.view.WindowInsets
 import android.view.WindowManager
+import android.view.Display
+
+
+
 
 
 class DisplayUtility {
@@ -54,7 +58,7 @@ class DisplayUtility {
             }
         }
 
-        fun getScreenWidthPx(context: Context): Int {
+        fun getScreenWidth(context: Context): Int {
             val outMetrics = DisplayMetrics()
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
@@ -71,7 +75,7 @@ class DisplayUtility {
             return outMetrics.widthPixels
         }
 
-        fun getScreenHeightPx(context: Context): Int {
+        fun getScreenHeight(context: Context): Int {
             val outMetrics = DisplayMetrics()
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
