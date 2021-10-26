@@ -23,7 +23,9 @@ import com.swein.androidkotlintool.framework.util.eventsplitshot.subject.ESSArro
 import com.swein.androidkotlintool.framework.util.glide.SHGlide
 import com.swein.androidkotlintool.framework.util.log.ILog
 import com.swein.androidkotlintool.framework.util.screen.ScreenUtil
+import com.swein.androidkotlintool.main.examples.customschedule.CustomScheduleExampleActivity
 import com.swein.androidkotlintool.main.examples.grouprecyclerview.GroupRecyclerViewActivity
+import com.swein.androidkotlintool.main.examples.shapeableimageviewexample.ShapeAbleImageViewExampleActivity
 import com.swein.androidkotlintool.main.moduledemo.ModuleDemoActivity
 import com.swein.androidkotlintool.template.bottomtab.activity.TabHostActivity
 import com.swein.androidkotlintool.template.handlerthread.HandlerThreadTemplateActivity
@@ -144,8 +146,9 @@ class MainActivity : BasicPermissionActivity() {
 //        ActivityUtil.startNewActivityWithoutFinish(this, FirebaseDemoActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, YoutubePlayerExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, FirebasePaginationDemoActivity::class.java)
-        ActivityUtil.startNewActivityWithoutFinish(this, GroupRecyclerViewActivity::class.java)
+//        ActivityUtil.startNewActivityWithoutFinish(this, GroupRecyclerViewActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, CustomScheduleExampleActivity::class.java)
+        ActivityUtil.startNewActivityWithoutFinish(this, ShapeAbleImageViewExampleActivity::class.java)
 
 
 //        SnackBarUtility.showSnackBar(frameLayoutRoot, "test")
