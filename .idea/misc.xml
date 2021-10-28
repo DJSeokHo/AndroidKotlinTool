@@ -31,8 +31,10 @@
         <entry key="app/src/main/res/layout/activity_group_recycler_view.xml" value="0.2984375" />
         <entry key="app/src/main/res/layout/activity_html_editor_example.xml" value="0.18" />
         <entry key="app/src/main/res/layout/activity_input_info_example.xml" value="0.14" />
+        <entry key="app/src/main/res/layout/activity_ktor_example.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_live_data_demo.xml" value="0.3494791666666667" />
         <entry key="app/src/main/res/layout/activity_login_example.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_m_v_p_login.xml" value="0.2875" />
         <entry key="app/src/main/res/layout/activity_mdday_five.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_mdday_seven.xml" value="0.10648148148148148" />
         <entry key="app/src/main/res/layout/activity_motion_layout_basic.xml" value="0.1" />

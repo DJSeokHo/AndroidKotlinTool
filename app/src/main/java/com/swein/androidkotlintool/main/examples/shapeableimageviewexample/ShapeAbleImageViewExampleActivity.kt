@@ -34,6 +34,9 @@ class ShapeAbleImageViewExampleActivity : AppCompatActivity() {
     private val imageView7: ShapeableImageView by lazy {
         findViewById(R.id.imageView7)
     }
+    private val imageView8: ShapeableImageView by lazy {
+        findViewById(R.id.imageView8)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -85,6 +88,18 @@ class ShapeAbleImageViewExampleActivity : AppCompatActivity() {
             .setBottomLeftCorner(RoundedCornerTreatment())
             .setTopRightCornerSize(RelativeCornerSize(0.6f))
             .setBottomLeftCornerSize(RelativeCornerSize(0.6f))
+            .build()
+
+        // pencil
+        imageView8.shapeAppearanceModel = ShapeAppearanceModel.builder()
+            .setTopLeftCorner(RoundedCornerTreatment())
+            .setTopRightCorner(RoundedCornerTreatment())
+            .setBottomLeftCorner(CutCornerTreatment())
+            .setBottomRightCorner(CutCornerTreatment())
+            .setTopLeftCornerSize(RelativeCornerSize(0.5f))
+            .setTopRightCornerSize(RelativeCornerSize(0.5f))
+            .setBottomLeftCornerSize(RelativeCornerSize(0.5f))
+            .setBottomRightCornerSize(RelativeCornerSize(0.5f))
             .build()
     }
 

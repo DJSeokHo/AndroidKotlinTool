@@ -15,6 +15,7 @@ import com.swein.androidkotlintool.constants.Constants
 import com.swein.androidkotlintool.framework.module.basicpermission.BasicPermissionActivity
 import com.swein.androidkotlintool.framework.module.basicpermission.PermissionManager
 import com.swein.androidkotlintool.framework.module.basicpermission.RequestPermission
+import com.swein.androidkotlintool.framework.module.firebase.demo.FirebaseDemoActivity
 import com.swein.androidkotlintool.framework.module.volley.VolleyModule
 import com.swein.androidkotlintool.framework.util.activity.ActivityUtil
 import com.swein.androidkotlintool.framework.util.display.DisplayUtility
@@ -25,6 +26,7 @@ import com.swein.androidkotlintool.framework.util.log.ILog
 import com.swein.androidkotlintool.framework.util.screen.ScreenUtil
 import com.swein.androidkotlintool.main.examples.customschedule.CustomScheduleExampleActivity
 import com.swein.androidkotlintool.main.examples.grouprecyclerview.GroupRecyclerViewActivity
+import com.swein.androidkotlintool.main.examples.ktorexample.KtorExampleActivity
 import com.swein.androidkotlintool.main.examples.shapeableimageviewexample.ShapeAbleImageViewExampleActivity
 import com.swein.androidkotlintool.main.moduledemo.ModuleDemoActivity
 import com.swein.androidkotlintool.template.bottomtab.activity.TabHostActivity
@@ -148,7 +150,8 @@ class MainActivity : BasicPermissionActivity() {
 //        ActivityUtil.startNewActivityWithoutFinish(this, FirebasePaginationDemoActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, GroupRecyclerViewActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, CustomScheduleExampleActivity::class.java)
-        ActivityUtil.startNewActivityWithoutFinish(this, ShapeAbleImageViewExampleActivity::class.java)
+//        ActivityUtil.startNewActivityWithoutFinish(this, ShapeAbleImageViewExampleActivity::class.java)
+        ActivityUtil.startNewActivityWithoutFinish(this, KtorExampleActivity::class.java)
 
 
 //        SnackBarUtility.showSnackBar(frameLayoutRoot, "test")

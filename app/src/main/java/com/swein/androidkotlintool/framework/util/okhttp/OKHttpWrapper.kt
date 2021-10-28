@@ -14,11 +14,6 @@ import okhttp3.RequestBody.Companion.toRequestBody
  *
  * After Android 9.0
  * OKHttp can not access http
- *
- * so add this in AndroidManifest.xml between the <application></application>
- *
- * <uses-library android:name="org.apache.http.legacy" android:required="false"/>
- *
  * and add android:usesCleartextTraffic="true" in the <application>
  */
 
