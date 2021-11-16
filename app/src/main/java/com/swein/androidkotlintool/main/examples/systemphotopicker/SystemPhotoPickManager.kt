@@ -160,7 +160,9 @@ class SystemPhotoPickManager(private val componentActivity: ComponentActivity) {
 
                     }
 
-                    it(imageFileList)
+                    handler.post {
+                        it(imageFileList)
+                    }
 
                 }.start()
 
