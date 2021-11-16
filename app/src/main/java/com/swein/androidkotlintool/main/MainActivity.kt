@@ -28,6 +28,7 @@ import com.swein.androidkotlintool.main.examples.customschedule.CustomScheduleEx
 import com.swein.androidkotlintool.main.examples.grouprecyclerview.GroupRecyclerViewActivity
 import com.swein.androidkotlintool.main.examples.ktorexample.KtorExampleActivity
 import com.swein.androidkotlintool.main.examples.shapeableimageviewexample.ShapeAbleImageViewExampleActivity
+import com.swein.androidkotlintool.main.examples.systemphotopicker.SystemPhotoPickerExampleActivity
 import com.swein.androidkotlintool.main.moduledemo.ModuleDemoActivity
 import com.swein.androidkotlintool.template.bottomtab.activity.TabHostActivity
 import com.swein.androidkotlintool.template.handlerthread.HandlerThreadTemplateActivity
@@ -136,7 +137,7 @@ class MainActivity : BasicPermissionActivity() {
 //        ActivityUtil.startNewActivityWithoutFinish(this, OTPVerificationCodeViewExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, FlowExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, SystemPhotoAndCropExampleActivity::class.java)
-//        ActivityUtil.startNewActivityWithoutFinish(this, SystemPhotoPickerExampleActivity::class.java)
+        ActivityUtil.startNewActivityWithoutFinish(this, SystemPhotoPickerExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, RecyclerViewWithSlideActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, UnityAdsExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, ExoPlayerExampleActivity::class.java)
@@ -151,7 +152,7 @@ class MainActivity : BasicPermissionActivity() {
 //        ActivityUtil.startNewActivityWithoutFinish(this, GroupRecyclerViewActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, CustomScheduleExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, ShapeAbleImageViewExampleActivity::class.java)
-        ActivityUtil.startNewActivityWithoutFinish(this, KtorExampleActivity::class.java)
+//        ActivityUtil.startNewActivityWithoutFinish(this, KtorExampleActivity::class.java)
 
 
 //        SnackBarUtility.showSnackBar(frameLayoutRoot, "test")

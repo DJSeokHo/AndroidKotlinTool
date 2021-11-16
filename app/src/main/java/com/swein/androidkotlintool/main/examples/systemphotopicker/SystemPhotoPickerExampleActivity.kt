@@ -26,14 +26,21 @@ class SystemPhotoPickerExampleActivity : AppCompatActivity() {
 
             systemPhotoPickManager.requestPermission {
 
+                it.selectMultiplePicture { uriList ->
+
+                    for (uri in uriList) {
+                        ILog.debug("????", uri.path)
+                    }
+
+                }
 //                it.selectPicture { uri ->
 //                    SHGlide.setImage(imageView, uri = uri)
 //                }
 
-                it.selectPathPicture { filePath ->
-                    ILog.debug("???", filePath)
-                    SHGlide.setImage(imageView, filePath = filePath)
-                }
+//                it.selectPathPicture { filePath ->
+//                    ILog.debug("???", filePath)
+//                    SHGlide.setImage(imageView, filePath = filePath)
+//                }
 
 //                it.takePictureWithFilePath(true) { filePath ->
 //                    SHGlide.setImage(imageView, filePath = filePath)

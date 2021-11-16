@@ -7,6 +7,8 @@ import android.graphics.BitmapFactory
 import android.graphics.Matrix
 import android.net.Uri
 import android.os.Environment
+import android.os.Handler
+import android.os.Looper
 import androidx.activity.ComponentActivity
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
@@ -35,17 +37,25 @@ GetContent()
  */
 class SystemPhotoPickManager(private val componentActivity: ComponentActivity) {
 
+    // handler for multiple picture selection
+    // need compress in thread and back to UI thread for UI updating
+    private val handler = Handler(Looper.getMainLooper())
+
     private val takePicture: ActivityResultLauncher<Uri>
     private val selectPicture: ActivityResultLauncher<String>
+    private val selectMultiplePicture: ActivityResultLauncher<String>
     private val permissionManager: PermissionManager = PermissionManager(componentActivity)
 
     init {
         takePicture = registerTakePicture()
         selectPicture = registerSelectPicture()
+        selectMultiplePicture = registerSelectMultiplePicture()
     }
 
     private var selectedDelegate: ((uri: Uri) -> Unit)? = null
+    private var selectedMultipleDelegate: ((uriList: List<Uri>) -> Unit)? = null
     private var selectedPathDelegate: ((imagePath: String) -> Unit)? = null
+    private var selectedMultiplePathDelegate: ((imagePathList: List<String>) -> Unit)? = null
 
     private var takePathDelegate: ((imagePath: String) -> Unit)? = null
     private var takeUriDelegate: ((uri: Uri) -> Unit)? = null
@@ -102,6 +112,7 @@ class SystemPhotoPickManager(private val componentActivity: ComponentActivity) {
             }
 
             selectedPathDelegate?.let {
+
                 uriToFile(componentActivity, uri, "select_image")?.let { file ->
 
                     if (shouldCompress) {
@@ -114,6 +125,49 @@ class SystemPhotoPickManager(private val componentActivity: ComponentActivity) {
 
             selectedDelegate?.let {
                 it(uri)
+            }
+        }
+    }
+
+    private fun registerSelectMultiplePicture(): ActivityResultLauncher<String> {
+
+        return componentActivity.registerForActivityResult(ActivityResultContracts.GetMultipleContents()) { uriList ->
+
+            if (uriList == null) {
+                return@registerForActivityResult
+            }
+
+            if (uriList.isEmpty()) {
+                return@registerForActivityResult
+            }
+
+            selectedMultiplePathDelegate?.let {
+
+                Thread {
+
+                    val imageFileList = mutableListOf<String>()
+
+                    for (uri in uriList) {
+
+                        uriToFile(componentActivity, uri, "select_image")?.let { file ->
+
+                            if (shouldCompress) {
+                                compressImage(file.absolutePath)
+                            }
+
+                            imageFileList.add(file.absolutePath)
+                        }
+
+                    }
+
+                    it(imageFileList)
+
+                }.start()
+
+            }
+
+            selectedMultipleDelegate?.let {
+                it(uriList)
             }
         }
     }
@@ -143,12 +197,24 @@ class SystemPhotoPickManager(private val componentActivity: ComponentActivity) {
 
     }
 
+    fun selectMultiplePicture(selectedMultipleDelegate: (uriList: List<Uri>) -> Unit) {
+
+        this.selectedMultipleDelegate = selectedMultipleDelegate
+        selectMultiplePicture.launch("image/*")
+    }
+
     fun selectPathPicture(shouldCompress: Boolean = false, selectedPathDelegate: (imagePath: String) -> Unit) {
         this.shouldCompress = shouldCompress
         this.selectedPathDelegate = selectedPathDelegate
         selectPicture.launch("image/*")
-
     }
+
+    fun selectMultiplePathPicture(shouldCompress: Boolean = false, selectedMultiplePathDelegate: (imagePathList: List<String>) -> Unit) {
+        this.shouldCompress = shouldCompress
+        this.selectedMultiplePathDelegate = selectedMultiplePathDelegate
+        selectMultiplePicture.launch("image/*")
+    }
+
 
     fun takePictureWithFilePath(shouldCompress: Boolean = false, takePathDelegate: (imagePath: String) -> Unit) {
 
