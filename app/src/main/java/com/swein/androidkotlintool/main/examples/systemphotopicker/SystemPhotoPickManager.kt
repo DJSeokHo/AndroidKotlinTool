@@ -15,6 +15,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.FileProvider
 import androidx.exifinterface.media.ExifInterface
 import com.swein.androidkotlintool.BuildConfig
+import com.swein.androidkotlintool.framework.util.log.ILog
 import com.swein.androidkotlintool.main.examples.permissionexample.PermissionManager
 import java.io.File
 import java.io.FileOutputStream
@@ -147,15 +148,17 @@ class SystemPhotoPickManager(private val componentActivity: ComponentActivity) {
 
                     val imageFileList = mutableListOf<String>()
 
+                    var index = 0
                     for (uri in uriList) {
-
-                        uriToFile(componentActivity, uri, "select_image")?.let { file ->
+                        ILog.debug("???", "index $index")
+                        uriToFile(componentActivity, uri, "select_image_$index")?.let { file ->
 
                             if (shouldCompress) {
                                 compressImage(file.absolutePath)
                             }
 
                             imageFileList.add(file.absolutePath)
+                            index++
                         }
 
                     }
