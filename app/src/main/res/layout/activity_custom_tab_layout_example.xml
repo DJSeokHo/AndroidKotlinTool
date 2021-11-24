@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".main.examples.customtablayoutexample.CustomTabLayoutExampleActivity"
+    android:background="@color/white"
+    android:orientation="vertical">
+    
+    <com.google.android.material.tabs.TabLayout
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/tabLayout1"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bg_tab_corner"
+        app:tabIndicator="@drawable/bg_tab_indicator"
+        app:tabIndicatorColor="@color/red"
+        app:tabIndicatorHeight="40dp"
+        app:tabMode="auto"
+        app:tabIndicatorAnimationMode="elastic"
+        app:tabTextColor="@color/black"
+        app:tabSelectedTextColor="@color/white"/>
+    
+    <com.google.android.material.tabs.TabLayout
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/tabLayout2"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/white"
+        app:tabIndicator="@drawable/bg_border_tab_indicator"
+        app:tabIndicatorColor="@color/transparent"
+        app:tabIndicatorHeight="40dp"
+        app:tabMode="auto"
+        app:tabIndicatorAnimationMode="linear"
+        app:tabTextColor="@color/light_gray"
+        app:tabSelectedTextColor="@color/black"/>
+ 
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPager2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+    
+</LinearLayout>

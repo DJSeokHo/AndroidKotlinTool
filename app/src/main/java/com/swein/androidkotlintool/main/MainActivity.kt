@@ -25,6 +25,7 @@ import com.swein.androidkotlintool.framework.util.glide.SHGlide
 import com.swein.androidkotlintool.framework.util.log.ILog
 import com.swein.androidkotlintool.framework.util.screen.ScreenUtil
 import com.swein.androidkotlintool.main.examples.customschedule.CustomScheduleExampleActivity
+import com.swein.androidkotlintool.main.examples.customtablayoutexample.CustomTabLayoutExampleActivity
 import com.swein.androidkotlintool.main.examples.grouprecyclerview.GroupRecyclerViewActivity
 import com.swein.androidkotlintool.main.examples.ktorexample.KtorExampleActivity
 import com.swein.androidkotlintool.main.examples.shapeableimageviewexample.ShapeAbleImageViewExampleActivity
@@ -137,7 +138,7 @@ class MainActivity : BasicPermissionActivity() {
 //        ActivityUtil.startNewActivityWithoutFinish(this, OTPVerificationCodeViewExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, FlowExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, SystemPhotoAndCropExampleActivity::class.java)
-        ActivityUtil.startNewActivityWithoutFinish(this, SystemPhotoPickerExampleActivity::class.java)
+//        ActivityUtil.startNewActivityWithoutFinish(this, SystemPhotoPickerExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, RecyclerViewWithSlideActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, UnityAdsExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, ExoPlayerExampleActivity::class.java)
@@ -153,6 +154,7 @@ class MainActivity : BasicPermissionActivity() {
 //        ActivityUtil.startNewActivityWithoutFinish(this, CustomScheduleExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, ShapeAbleImageViewExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, KtorExampleActivity::class.java)
+        ActivityUtil.startNewActivityWithoutFinish(this, CustomTabLayoutExampleActivity::class.java)
 
 
 //        SnackBarUtility.showSnackBar(frameLayoutRoot, "test")

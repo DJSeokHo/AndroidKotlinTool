@@ -200,7 +200,7 @@ class MDDaySevenActivity : FragmentActivity() {
 class TabLayoutAdapter(fragmentActivity: FragmentActivity, private val fragmentList: MutableList<Fragment>) : FragmentStateAdapter(fragmentActivity) {
 
     override fun getItemCount(): Int {
-        return 10
+        return 3
     }
 
     override fun createFragment(position: Int): Fragment {
