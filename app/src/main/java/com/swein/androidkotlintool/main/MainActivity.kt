@@ -30,6 +30,7 @@ import com.swein.androidkotlintool.main.examples.grouprecyclerview.GroupRecycler
 import com.swein.androidkotlintool.main.examples.ktorexample.KtorExampleActivity
 import com.swein.androidkotlintool.main.examples.shapeableimageviewexample.ShapeAbleImageViewExampleActivity
 import com.swein.androidkotlintool.main.examples.systemphotopicker.SystemPhotoPickerExampleActivity
+import com.swein.androidkotlintool.main.examples.systemuivisibility.SystemUIVisibilityActivity
 import com.swein.androidkotlintool.main.moduledemo.ModuleDemoActivity
 import com.swein.androidkotlintool.template.bottomtab.activity.TabHostActivity
 import com.swein.androidkotlintool.template.handlerthread.HandlerThreadTemplateActivity
@@ -154,7 +155,8 @@ class MainActivity : BasicPermissionActivity() {
 //        ActivityUtil.startNewActivityWithoutFinish(this, CustomScheduleExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, ShapeAbleImageViewExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, KtorExampleActivity::class.java)
-        ActivityUtil.startNewActivityWithoutFinish(this, CustomTabLayoutExampleActivity::class.java)
+//        ActivityUtil.startNewActivityWithoutFinish(this, CustomTabLayoutExampleActivity::class.java)
+        ActivityUtil.startNewActivityWithoutFinish(this, SystemUIVisibilityActivity::class.java)
 
 
 //        SnackBarUtility.showSnackBar(frameLayoutRoot, "test")
