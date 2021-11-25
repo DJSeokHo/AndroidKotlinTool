@@ -1,60 +1,195 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".main.examples.systemuivisibility.SystemUIVisibilityActivity"
-    android:orientation="vertical"
     android:background="@color/white">
     
     <LinearLayout
-        android:layout_gravity="center_horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        
-        <Button
-            android:textSize="5pt"
-            android:textAllCaps="false"
-            android:text="System State Bar Visible"
-            android:id="@+id/buttonVisibleStateBar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+    
+        <View
+            android:background="@color/red"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"/>
+    
+        <LinearLayout
+            android:layout_gravity="center_horizontal"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
         
+            <Button
+                android:textSize="5pt"
+                android:textAllCaps="false"
+                android:text="State Bar Visible"
+                android:id="@+id/buttonVisibleStateBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        
+            <Button
+                android:textSize="5pt"
+                android:textAllCaps="false"
+                android:text="State InVisible"
+                android:id="@+id/buttonInVisibleStateBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+    
+        </LinearLayout>
+    
+        <LinearLayout
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+        
+            <Button
+                android:textSize="5pt"
+                android:textAllCaps="false"
+                android:text="Light State Bar"
+                android:id="@+id/buttonLightStateBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        
+            <Button
+                android:textSize="5pt"
+                android:textAllCaps="false"
+                android:text="Dark State Bar"
+                android:id="@+id/buttonDarkStateBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+    
+        </LinearLayout>
+    
+    
+    
         <Button
+            android:layout_gravity="center_horizontal"
             android:textSize="5pt"
             android:textAllCaps="false"
-            android:text="System State InVisible"
-            android:id="@+id/buttonInVisibleStateBar"
+            android:text="State Bar Color"
+            android:id="@+id/buttonStateBarColor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
     
+    
+        <LinearLayout
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+        
+            <Button
+                android:textSize="5pt"
+                android:textAllCaps="false"
+                android:text="Navigation Bar Visible"
+                android:id="@+id/buttonVisibleNavigationBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        
+            <Button
+                android:textSize="5pt"
+                android:textAllCaps="false"
+                android:text="Navigation Bar InVisible"
+                android:id="@+id/buttonInVisibleNavigationBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+    
+        </LinearLayout>
+    
+        <LinearLayout
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+        
+            <Button
+                android:textSize="5pt"
+                android:textAllCaps="false"
+                android:text="Light Navigation Bar"
+                android:id="@+id/buttonLightNavigationBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        
+            <Button
+                android:textSize="5pt"
+                android:textAllCaps="false"
+                android:text="Dark Navigation Bar"
+                android:id="@+id/buttonDarkNavigationBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+    
+        </LinearLayout>
+    
+        <Button
+            android:layout_gravity="center_horizontal"
+            android:textSize="5pt"
+            android:textAllCaps="false"
+            android:text="Navigation Bar Color"
+            android:id="@+id/buttonNavigationBarColor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    
+    
+        <LinearLayout
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+        
+            <Button
+                android:textSize="5pt"
+                android:textAllCaps="false"
+                android:text="Enable Immersive"
+                android:id="@+id/buttonEnableImmersive"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        
+            <Button
+                android:textSize="5pt"
+                android:textAllCaps="false"
+                android:text="Disable Immersive"
+                android:id="@+id/buttonDisableImmersive"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+    
+        </LinearLayout>
+    
+        <LinearLayout
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+        
+            <Button
+                android:textSize="5pt"
+                android:textAllCaps="false"
+                android:text="Layout Full Screen"
+                android:id="@+id/buttonLayoutFullScreen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        
+            <Button
+                android:textSize="5pt"
+                android:textAllCaps="false"
+                android:text="Layout Normal Screen"
+                android:id="@+id/buttonLayoutNormalScreen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+    
+        </LinearLayout>
+        
     </LinearLayout>
     
-    <LinearLayout
-        android:layout_gravity="center_horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+    <View
+        android:layout_gravity="bottom"
+        android:background="@color/red"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"/>
     
-        <Button
-            android:textSize="5pt"
-            android:textAllCaps="false"
-            android:text="Light System State Bar"
-            android:id="@+id/buttonLightStateBar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-    
-        <Button
-            android:textSize="5pt"
-            android:textAllCaps="false"
-            android:text="Dark System State Bar"
-            android:id="@+id/buttonDarkStateBar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-        
-    </LinearLayout>
-    
-    
-</LinearLayout>
+</FrameLayout>
