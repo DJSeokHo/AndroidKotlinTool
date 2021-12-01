@@ -1,7 +1,5 @@
 package com.swein.androidkotlintool.framework.module.location.demo
 
-import android.Manifest
-import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
@@ -9,9 +7,7 @@ import com.google.android.gms.location.LocationRequest
 import com.swein.androidkotlintool.R
 import com.swein.androidkotlintool.framework.module.location.LocationManager
 import com.swein.androidkotlintool.framework.module.location.geo.SHGeoCoder
-import com.swein.androidkotlintool.framework.module.location.service.LocationService
-import com.swein.androidkotlintool.framework.util.log.ILog
-import com.swein.androidkotlintool.main.examples.permissionexample.PermissionManager
+import com.swein.androidkotlintool.framework.utility.debug.ILog
 
 
 class LocationDemoActivity : AppCompatActivity() {

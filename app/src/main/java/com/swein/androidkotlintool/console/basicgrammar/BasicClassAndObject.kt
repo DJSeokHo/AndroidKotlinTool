@@ -1,6 +1,6 @@
 package com.swein.androidkotlintool.console.basicgrammar
 
-import com.swein.androidkotlintool.framework.util.log.ILog
+import com.swein.androidkotlintool.framework.utility.debug.ILog
 
 class BasicClassAndObject {
 

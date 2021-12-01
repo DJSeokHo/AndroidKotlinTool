@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.swein.androidkotlintool.R
-import com.swein.androidkotlintool.framework.util.log.ILog
+import com.swein.androidkotlintool.framework.utility.debug.ILog
 import com.swein.androidkotlintool.main.examples.flowexample.adapter.FlowExampleAdapter
 import com.swein.androidkotlintool.main.examples.flowexample.viewmodel.FlowExampleState
 import com.swein.androidkotlintool.main.examples.flowexample.viewmodel.FlowExampleViewModel

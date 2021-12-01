@@ -8,9 +8,9 @@ import android.widget.FrameLayout
 import android.widget.LinearLayout
 import android.widget.TextView
 import com.swein.androidkotlintool.R
-import com.swein.androidkotlintool.framework.util.date.DateUtility
-import com.swein.androidkotlintool.framework.util.display.DisplayUtility
-import com.swein.androidkotlintool.framework.util.log.ILog
+import com.swein.androidkotlintool.framework.utility.date.DateUtility
+import com.swein.androidkotlintool.framework.utility.display.DisplayUtility
+import com.swein.androidkotlintool.framework.utility.debug.ILog
 import java.util.*
 import kotlin.math.floor
 

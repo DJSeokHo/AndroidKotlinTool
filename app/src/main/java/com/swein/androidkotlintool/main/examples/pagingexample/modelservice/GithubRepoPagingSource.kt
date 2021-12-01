@@ -2,7 +2,7 @@ package com.swein.androidkotlintool.main.examples.pagingexample.modelservice
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.swein.androidkotlintool.framework.util.log.ILog
+import com.swein.androidkotlintool.framework.utility.debug.ILog
 import com.swein.androidkotlintool.main.examples.pagingexample.model.GithubRepoItemModel
 import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope

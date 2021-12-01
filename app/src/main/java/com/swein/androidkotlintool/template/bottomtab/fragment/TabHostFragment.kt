@@ -10,8 +10,8 @@ import android.widget.ImageButton
 import androidx.fragment.app.Fragment
 
 import com.swein.androidkotlintool.R
-import com.swein.androidkotlintool.framework.util.activity.ActivityUtil
-import com.swein.androidkotlintool.framework.util.log.ILog
+import com.swein.androidkotlintool.framework.utility.activity.ActivityUtil
+import com.swein.androidkotlintool.framework.utility.debug.ILog
 import com.swein.androidkotlintool.template.bottomtab.subfragment.TabHostEventFragment
 import com.swein.androidkotlintool.template.bottomtab.subfragment.TabHostFriendFragment
 import com.swein.androidkotlintool.template.bottomtab.subfragment.TabHostHomeFragment

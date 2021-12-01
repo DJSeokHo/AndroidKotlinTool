@@ -10,8 +10,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationMenuView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.swein.androidkotlintool.R
-import com.swein.androidkotlintool.framework.util.log.ILog
-import com.swein.androidkotlintool.framework.util.toast.ToastUtility
+import com.swein.androidkotlintool.framework.utility.toast.ToastUtility
 
 class MDDayFourActivity : AppCompatActivity() {
 

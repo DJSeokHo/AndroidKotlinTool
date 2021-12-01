@@ -1,13 +1,10 @@
 package com.swein.androidkotlintool.main.jetpackexample.viewbinding
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.FragmentActivity
-import androidx.fragment.app.FragmentTransaction
-import com.swein.androidkotlintool.R
 import com.swein.androidkotlintool.databinding.ActivityViewBindingExampleBinding
-import com.swein.androidkotlintool.framework.util.activity.ActivityUtil
-import com.swein.androidkotlintool.framework.util.log.ILog
+import com.swein.androidkotlintool.framework.utility.activity.ActivityUtil
+import com.swein.androidkotlintool.framework.utility.debug.ILog
 
 class ViewBindingExampleActivity : FragmentActivity() {
 

@@ -6,8 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.swein.androidkotlintool.R
-import com.swein.androidkotlintool.framework.util.log.ILog
-import com.swein.androidkotlintool.main.jetpackexample.navigation.sign.auth.AuthFragment
+import com.swein.androidkotlintool.framework.utility.debug.ILog
 
 class SignUpFragment : Fragment() {
 

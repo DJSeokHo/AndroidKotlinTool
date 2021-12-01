@@ -4,16 +4,11 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
-import android.widget.Toast
 import com.swein.androidkotlintool.R
 //import com.swein.androidkotlintool.framework.module.room.example.controller.db.DBController
 //import com.swein.androidkotlintool.framework.module.room.example.database.DatabaseManager
 //import com.swein.androidkotlintool.framework.module.room.example.model.IdeaModel
-import com.swein.androidkotlintool.framework.util.log.ILog
 import com.swein.androidkotlintool.template.coroutine.BaseCoroutineActivity
-import kotlinx.coroutines.*
-import java.text.SimpleDateFormat
-import java.util.*
 
 class RoomWithCoroutineAndStartUPExampleActivity : BaseCoroutineActivity() {
 

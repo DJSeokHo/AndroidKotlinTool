@@ -10,8 +10,8 @@ import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.UploadTask
 import com.google.firebase.storage.ktx.storage
-import com.swein.androidkotlintool.framework.util.log.ILog
-import com.swein.androidkotlintool.framework.util.thread.ThreadUtility
+import com.swein.androidkotlintool.framework.utility.debug.ILog
+import com.swein.androidkotlintool.framework.utility.thread.ThreadUtility
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileInputStream

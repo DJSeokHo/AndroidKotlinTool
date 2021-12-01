@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
-import com.swein.androidkotlintool.framework.util.log.ILog
+import com.swein.androidkotlintool.framework.utility.debug.ILog
 
 class LCObserver(private val context: Context, private val lifeCycle: Lifecycle): LifecycleObserver {
 

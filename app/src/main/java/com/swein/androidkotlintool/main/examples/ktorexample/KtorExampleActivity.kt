@@ -8,7 +8,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.swein.androidkotlintool.R
-import com.swein.androidkotlintool.framework.util.log.ILog
+import com.swein.androidkotlintool.framework.utility.debug.ILog
 import com.swein.androidkotlintool.main.examples.ktorexample.KtorExampleConstants.MY_TEST_SERVER_DOMAIN
 import com.swein.androidkotlintool.main.examples.ktorexample.KtorExampleConstants.SAMPLE_IMAGE_FILE_PATH
 import io.ktor.client.*

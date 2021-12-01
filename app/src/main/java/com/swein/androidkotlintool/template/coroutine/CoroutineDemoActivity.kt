@@ -5,8 +5,7 @@ import android.os.Bundle
 import android.widget.Button
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.swein.androidkotlintool.R
-import com.swein.androidkotlintool.framework.util.log.ILog
-import com.swein.androidkotlintool.framework.util.okhttp.OKHttpWrapper
+import com.swein.androidkotlintool.framework.utility.debug.ILog
 import kotlinx.coroutines.*
 import kotlin.system.measureTimeMillis
 

@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.swein.androidkotlintool.R
 import com.swein.androidkotlintool.framework.module.shcameraphoto.shselectedimageviewholder.adapter.SHSelectedImageViewHolderAdapter
 import com.swein.androidkotlintool.framework.module.shcameraphoto.shselectedimageviewholder.adapter.item.ImageSelectedItemBean
-import com.swein.androidkotlintool.framework.util.views.ViewUtil
+import com.swein.androidkotlintool.framework.utility.views.ViewUtil
 
 class SHSelectedImageViewHolder (
     context: Context?,

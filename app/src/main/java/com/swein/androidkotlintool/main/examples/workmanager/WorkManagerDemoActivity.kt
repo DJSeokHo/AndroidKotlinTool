@@ -7,7 +7,7 @@ import android.widget.TextView
 import androidx.fragment.app.FragmentActivity
 import androidx.work.*
 import com.swein.androidkotlintool.R
-import com.swein.androidkotlintool.framework.util.log.ILog
+import com.swein.androidkotlintool.framework.utility.debug.ILog
 
 
 class WorkManagerDemoActivity : FragmentActivity() {

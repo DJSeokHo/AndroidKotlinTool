@@ -9,8 +9,8 @@ import androidx.fragment.app.FragmentTransaction
 import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.swein.androidkotlintool.R
-import com.swein.androidkotlintool.framework.util.log.ILog
-import com.swein.androidkotlintool.framework.util.toast.ToastUtility
+import com.swein.androidkotlintool.framework.utility.debug.ILog
+import com.swein.androidkotlintool.framework.utility.toast.ToastUtility
 
 class MaterialDesignBottomBarExampleActivity : FragmentActivity() {
 

@@ -7,7 +7,7 @@ import androidx.lifecycle.OnLifecycleEvent
 import com.google.android.gms.location.LocationRequest
 import com.swein.androidkotlintool.framework.module.location.LocationManager
 import com.swein.androidkotlintool.framework.module.location.geo.SHGeoCoder
-import com.swein.androidkotlintool.framework.util.log.ILog
+import com.swein.androidkotlintool.framework.utility.debug.ILog
 import java.lang.ref.WeakReference
 
 // 观察者

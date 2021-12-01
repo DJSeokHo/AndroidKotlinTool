@@ -56,6 +56,9 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".main.examples.pipexample.PIPExampleActivity"
+            android:exported="false" />
+        <activity
             android:name=".main.examples.systemuivisibility.SystemUIVisibilityActivity"
             android:exported="false" />
         <activity
@@ -316,7 +319,7 @@
             tools:ignore="Instantiatable" />
         
         <receiver
-            android:name=".framework.util.shortcut.ShortcutReceiver"
+            android:name=".framework.utility.shortcut.ShortcutReceiver"
             android:exported="false" />
         
         <uses-library

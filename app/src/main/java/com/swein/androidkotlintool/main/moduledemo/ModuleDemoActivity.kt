@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.fragment.app.FragmentActivity
 import com.swein.androidkotlintool.R
 import com.swein.androidkotlintool.constants.Constants
-import com.swein.androidkotlintool.framework.util.screen.ScreenUtil
+import com.swein.androidkotlintool.framework.utility.screen.ScreenUtil
 
 class ModuleDemoActivity : FragmentActivity() {
 

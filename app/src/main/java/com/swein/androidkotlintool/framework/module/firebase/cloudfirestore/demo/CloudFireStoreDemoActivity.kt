@@ -8,16 +8,13 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.whenCreated
-import com.google.firebase.firestore.Query
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
 import com.swein.androidkotlintool.R
 import com.swein.androidkotlintool.framework.module.firebase.cloudfirestore.demo.model.MemberModel
 import com.swein.androidkotlintool.framework.module.firebase.cloudfirestore.demo.viewmodel.MemberViewModel
 import com.swein.androidkotlintool.framework.module.firebase.cloudfirestore.demo.viewmodel.MemberViewModelState
-import com.swein.androidkotlintool.framework.util.date.DateUtility
-import com.swein.androidkotlintool.framework.util.log.ILog
-import com.swein.androidkotlintool.framework.util.uuid.UUIDUtil
+import com.swein.androidkotlintool.framework.utility.date.DateUtility
+import com.swein.androidkotlintool.framework.utility.debug.ILog
+import com.swein.androidkotlintool.framework.utility.uuid.UUIDUtil
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.collect
 

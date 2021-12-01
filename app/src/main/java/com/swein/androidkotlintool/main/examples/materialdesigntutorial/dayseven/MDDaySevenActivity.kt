@@ -18,8 +18,8 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.swein.androidkotlintool.R
-import com.swein.androidkotlintool.framework.util.display.DisplayUtility
-import com.swein.androidkotlintool.framework.util.log.ILog
+import com.swein.androidkotlintool.framework.utility.display.DisplayUtility
+import com.swein.androidkotlintool.framework.utility.debug.ILog
 import kotlin.math.abs
 
 

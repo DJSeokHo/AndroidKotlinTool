@@ -1,6 +1,5 @@
 package com.swein.androidkotlintool.main.examples.customview
 
-import android.app.ActionBar
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Color
@@ -8,8 +7,7 @@ import android.graphics.Paint
 import android.graphics.Path
 import android.util.AttributeSet
 import android.view.View
-import com.swein.androidkotlintool.framework.util.log.ILog
-import java.util.jar.Attributes
+import com.swein.androidkotlintool.framework.utility.debug.ILog
 
 class TestViewOne : View {
 

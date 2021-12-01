@@ -5,8 +5,6 @@ import android.widget.Button
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import com.swein.androidkotlintool.R
-import com.swein.androidkotlintool.framework.util.glide.SHGlide
-import com.swein.androidkotlintool.framework.util.log.ILog
 
 
 class SystemPhotoPickerExampleActivity : AppCompatActivity() {

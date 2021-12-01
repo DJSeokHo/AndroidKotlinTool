@@ -7,7 +7,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import com.swein.androidkotlintool.R
-import com.swein.androidkotlintool.framework.util.display.DisplayUtility
+import com.swein.androidkotlintool.framework.utility.display.DisplayUtility
 
 class CustomTabViewHolder(context: Context): LinearLayout(context) {
 

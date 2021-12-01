@@ -5,8 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.room.Room
 import com.swein.androidkotlintool.R
 import com.swein.androidkotlintool.framework.module.room.demo.database.AppDatabase
-import com.swein.androidkotlintool.framework.util.log.ILog
-import com.swein.androidkotlintool.framework.util.thread.ThreadUtility
+import com.swein.androidkotlintool.framework.utility.debug.ILog
+import com.swein.androidkotlintool.framework.utility.thread.ThreadUtility
 
 
 /**

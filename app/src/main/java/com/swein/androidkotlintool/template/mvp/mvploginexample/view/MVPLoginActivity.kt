@@ -9,7 +9,7 @@ import android.widget.FrameLayout
 import android.widget.TextView
 import androidx.fragment.app.FragmentActivity
 import com.swein.androidkotlintool.R
-import com.swein.androidkotlintool.framework.util.log.ILog
+import com.swein.androidkotlintool.framework.utility.debug.ILog
 import com.swein.androidkotlintool.template.mvp.mvploginexample.presenter.ILoginPresenter
 import com.swein.androidkotlintool.template.mvp.mvploginexample.presenter.LoginPresenter
 

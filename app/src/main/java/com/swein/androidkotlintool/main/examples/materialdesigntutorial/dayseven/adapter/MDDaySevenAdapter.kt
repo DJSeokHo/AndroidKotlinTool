@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.swein.androidkotlintool.R
-import com.swein.androidkotlintool.framework.util.log.ILog
+import com.swein.androidkotlintool.framework.utility.debug.ILog
 import com.swein.androidkotlintool.main.examples.materialdesigntutorial.dayseven.adapter.item.MDDaySevenItemViewHolder
 
 class MDDaySevenAdapter: RecyclerView.Adapter<MDDaySevenItemViewHolder>() {

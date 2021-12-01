@@ -3,7 +3,6 @@ package com.swein.androidkotlintool.framework.module.shcameraphoto.resultprocess
 import android.content.Context
 import android.net.Uri
 import android.webkit.MimeTypeMap
-import com.swein.androidkotlintool.framework.util.log.ILog
 import java.io.*
 
 object SHCameraPhotoResultProcessor {

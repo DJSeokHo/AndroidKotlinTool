@@ -5,7 +5,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.swein.androidkotlintool.R
 import com.swein.androidkotlintool.framework.module.firebase.pagination.model.FirebasePaginationItemModel
-import com.swein.androidkotlintool.framework.util.log.ILog
 import java.lang.ref.WeakReference
 
 class FirebasePaginationItemViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {

@@ -7,11 +7,11 @@ import android.os.Bundle
 import android.widget.FrameLayout
 import androidx.appcompat.app.AppCompatActivity
 import com.swein.androidkotlintool.R
-import com.swein.androidkotlintool.framework.util.eventsplitshot.eventcenter.EventCenter
-import com.swein.androidkotlintool.framework.util.eventsplitshot.subject.ESSArrows
-import com.swein.androidkotlintool.framework.util.log.ILog
-import com.swein.androidkotlintool.framework.util.thread.ThreadUtility
-import com.swein.androidkotlintool.framework.util.toast.ToastUtility
+import com.swein.androidkotlintool.framework.utility.eventsplitshot.eventcenter.EventCenter
+import com.swein.androidkotlintool.framework.utility.eventsplitshot.subject.ESSArrows
+import com.swein.androidkotlintool.framework.utility.debug.ILog
+import com.swein.androidkotlintool.framework.utility.thread.ThreadUtility
+import com.swein.androidkotlintool.framework.utility.toast.ToastUtility
 import com.swein.androidkotlintool.main.examples.webview.javascript.PaymentInterface
 import com.swein.androidkotlintool.main.examples.webview.javascript.PersonalCertificationJsInterface
 import java.net.URISyntaxException

@@ -1,6 +1,6 @@
 package com.swein.androidkotlintool.template.pattern.singleton
 
-import com.swein.androidkotlintool.framework.util.log.ILog
+import com.swein.androidkotlintool.framework.utility.debug.ILog
 
 object Singleton {
 

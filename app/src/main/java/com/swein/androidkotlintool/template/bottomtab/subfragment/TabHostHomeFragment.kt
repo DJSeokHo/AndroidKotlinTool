@@ -10,7 +10,7 @@ import android.widget.ImageButton
 import androidx.fragment.app.Fragment
 
 import com.swein.androidkotlintool.R
-import com.swein.androidkotlintool.framework.util.activity.ActivityUtil
+import com.swein.androidkotlintool.framework.utility.activity.ActivityUtil
 
 class TabHostHomeFragment : Fragment() {
 

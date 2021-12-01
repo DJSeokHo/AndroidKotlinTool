@@ -2,7 +2,7 @@ package com.swein.androidkotlintool.main.examples.flowexample.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.swein.androidkotlintool.framework.util.log.ILog
+import com.swein.androidkotlintool.framework.utility.debug.ILog
 import com.swein.androidkotlintool.main.examples.flowexample.modelservice.FlowExampleModelService
 import kotlinx.coroutines.async
 import kotlinx.coroutines.delay

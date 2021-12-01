@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.swein.androidkotlintool.R
-import com.swein.androidkotlintool.framework.util.display.DisplayUtility
+import com.swein.androidkotlintool.framework.utility.display.DisplayUtility
 import com.swein.androidkotlintool.main.examples.recyclerviewwithslide.adapter.SlideAdapter
 
 class RecyclerViewWithSlideActivity : AppCompatActivity() {

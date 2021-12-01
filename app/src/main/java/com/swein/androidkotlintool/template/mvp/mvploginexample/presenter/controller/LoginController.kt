@@ -1,6 +1,6 @@
 package com.swein.androidkotlintool.template.mvp.mvploginexample.presenter.controller
 
-import com.swein.androidkotlintool.framework.util.thread.ThreadUtility
+import com.swein.androidkotlintool.framework.utility.thread.ThreadUtility
 
 object LoginController {
 

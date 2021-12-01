@@ -3,7 +3,7 @@ package com.swein.androidkotlintool.main.jetpackexample.appstartup
 import android.content.Context
 import androidx.startup.Initializer
 //import com.swein.androidkotlintool.framework.module.room.example.database.DatabaseManager
-import com.swein.androidkotlintool.framework.util.log.ILog
+import com.swein.androidkotlintool.framework.utility.debug.ILog
 
 /**
 <provider

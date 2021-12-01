@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import com.swein.androidkotlintool.R
-import com.swein.androidkotlintool.framework.util.toast.ToastUtility
+import com.swein.androidkotlintool.framework.utility.toast.ToastUtility
 
 class PermissionExampleActivity : AppCompatActivity() {
 

@@ -13,7 +13,7 @@ import android.view.animation.AnticipateOvershootInterpolator
 import android.widget.*
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.swein.androidkotlintool.R
-import com.swein.androidkotlintool.framework.util.log.ILog
+import com.swein.androidkotlintool.framework.utility.debug.ILog
 
 
 class ArcSlidingMenuFragment : Fragment() {

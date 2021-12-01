@@ -7,9 +7,8 @@ import android.widget.FrameLayout
 import androidx.fragment.app.FragmentActivity
 import com.swein.androidkotlintool.R
 import com.swein.androidkotlintool.constants.Constants
-import com.swein.androidkotlintool.framework.util.activity.ActivityUtil
-import com.swein.androidkotlintool.framework.util.log.ILog
-import com.swein.androidkotlintool.framework.util.screen.ScreenUtil
+import com.swein.androidkotlintool.framework.utility.activity.ActivityUtil
+import com.swein.androidkotlintool.framework.utility.screen.ScreenUtil
 import com.swein.androidkotlintool.template.memeberjoin.login.LoginTemplateFragment
 import com.swein.androidkotlintool.template.navigationbar.NavigationBarTemplate
 

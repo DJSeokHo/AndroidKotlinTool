@@ -12,11 +12,11 @@ import com.swein.androidkotlintool.R
 import com.swein.androidkotlintool.framework.module.shcameraphoto.album.albumselectorwrapper.AlbumSelectorWrapper
 import com.swein.androidkotlintool.framework.module.shcameraphoto.album.albumselectorwrapper.bean.AlbumSelectorItemBean
 import com.swein.androidkotlintool.framework.module.shcameraphoto.album.selector.adapter.AlbumSelectorAdapter
-import com.swein.androidkotlintool.framework.util.eventsplitshot.eventcenter.EventCenter
-import com.swein.androidkotlintool.framework.util.eventsplitshot.subject.ESSArrows
-import com.swein.androidkotlintool.framework.util.log.ILog
-import com.swein.androidkotlintool.framework.util.thread.ThreadUtility
-import com.swein.androidkotlintool.framework.util.views.ViewUtil
+import com.swein.androidkotlintool.framework.utility.eventsplitshot.eventcenter.EventCenter
+import com.swein.androidkotlintool.framework.utility.eventsplitshot.subject.ESSArrows
+import com.swein.androidkotlintool.framework.utility.debug.ILog
+import com.swein.androidkotlintool.framework.utility.thread.ThreadUtility
+import com.swein.androidkotlintool.framework.utility.views.ViewUtil
 
 class AlbumSelectorViewHolder(
     context: Context,

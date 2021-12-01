@@ -2,7 +2,6 @@ package com.swein.androidkotlintool.main.examples.livedata.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.swein.androidkotlintool.framework.util.log.ILog
 
 class ScoreLiveDataViewModel: ViewModel() {
 

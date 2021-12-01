@@ -10,8 +10,8 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.swein.androidkotlintool.R
 import com.swein.androidkotlintool.constants.Constants
-import com.swein.androidkotlintool.framework.util.screen.ScreenUtil
-import com.swein.androidkotlintool.framework.util.thread.ThreadUtility
+import com.swein.androidkotlintool.framework.utility.screen.ScreenUtil
+import com.swein.androidkotlintool.framework.utility.thread.ThreadUtility
 import com.swein.androidkotlintool.template.list.adapter.SHListAdapter
 import com.swein.androidkotlintool.template.list.adapter.item.model.ItemDataModel
 import com.swein.androidkotlintool.template.navigationbar.NavigationBarTemplate

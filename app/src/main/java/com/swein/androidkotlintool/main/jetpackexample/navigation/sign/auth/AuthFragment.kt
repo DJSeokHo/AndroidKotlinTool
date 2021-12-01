@@ -7,13 +7,10 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.swein.androidkotlintool.R
-import com.swein.androidkotlintool.framework.util.log.ILog
-import com.swein.androidkotlintool.main.jetpackexample.navigation.sign.signin.SignInFragment
-import com.swein.androidkotlintool.main.jetpackexample.navigation.sign.signin.SignInFragmentDirections
+import com.swein.androidkotlintool.framework.utility.debug.ILog
 import com.swein.androidkotlintool.main.jetpackexample.navigation.topnavigationbar.CustomTopNavigationBarViewHolder
 
 class AuthFragment : Fragment() {

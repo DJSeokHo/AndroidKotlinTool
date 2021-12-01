@@ -5,9 +5,9 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.swein.androidkotlintool.R
 import com.swein.androidkotlintool.framework.module.shcameraphoto.album.albumselectorwrapper.bean.AlbumSelectorItemBean
-import com.swein.androidkotlintool.framework.util.eventsplitshot.eventcenter.EventCenter
-import com.swein.androidkotlintool.framework.util.eventsplitshot.subject.ESSArrows
-import com.swein.androidkotlintool.framework.util.glide.SHGlide
+import com.swein.androidkotlintool.framework.utility.eventsplitshot.eventcenter.EventCenter
+import com.swein.androidkotlintool.framework.utility.eventsplitshot.subject.ESSArrows
+import com.swein.androidkotlintool.framework.utility.glide.SHGlide
 import java.lang.ref.WeakReference
 
 class AlbumSelectorItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

@@ -12,9 +12,9 @@ import android.widget.ScrollView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.swein.androidkotlintool.R
-import com.swein.androidkotlintool.framework.util.date.DateUtility
-import com.swein.androidkotlintool.framework.util.display.DisplayUtility
-import com.swein.androidkotlintool.framework.util.log.ILog
+import com.swein.androidkotlintool.framework.utility.date.DateUtility
+import com.swein.androidkotlintool.framework.utility.display.DisplayUtility
+import com.swein.androidkotlintool.framework.utility.debug.ILog
 import com.swein.androidkotlintool.main.examples.customschedule.ScheduleTimeViewHolder
 import com.swein.androidkotlintool.main.examples.customschedule.customscheduleview.CustomScheduleViewGroup
 import com.swein.androidkotlintool.main.examples.customschedule.customscheduleview.item.ScheduleModel

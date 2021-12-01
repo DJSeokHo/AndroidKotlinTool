@@ -1,6 +1,6 @@
 package com.swein.androidkotlintool.template.mvp.mvploginexample.presenter
 
-import com.swein.androidkotlintool.framework.util.thread.ThreadUtility
+import com.swein.androidkotlintool.framework.utility.thread.ThreadUtility
 import com.swein.androidkotlintool.template.mvp.mvploginexample.model.UserModel
 import com.swein.androidkotlintool.template.mvp.mvploginexample.presenter.controller.LoginController
 import com.swein.androidkotlintool.template.mvp.mvploginexample.view.ILoginView

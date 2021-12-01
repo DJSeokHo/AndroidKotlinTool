@@ -4,7 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import com.swein.androidkotlintool.databinding.ViewHolderViewBindingExampleBinding
-import com.swein.androidkotlintool.framework.util.log.ILog
+import com.swein.androidkotlintool.framework.utility.debug.ILog
 
 class ViewBindingExampleViewHolder(context: Context) {
 

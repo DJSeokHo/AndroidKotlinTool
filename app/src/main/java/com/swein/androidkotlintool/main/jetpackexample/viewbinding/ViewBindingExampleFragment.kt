@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.swein.androidkotlintool.databinding.FragmentViewBindingExampleBinding
-import com.swein.androidkotlintool.framework.util.log.ILog
+import com.swein.androidkotlintool.framework.utility.debug.ILog
 
 class ViewBindingExampleFragment : Fragment() {
 

@@ -4,8 +4,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.swein.androidkotlintool.R
-import com.swein.androidkotlintool.framework.util.log.ILog
-import com.swein.androidkotlintool.framework.util.toast.ToastUtility
+import com.swein.androidkotlintool.framework.utility.debug.ILog
+import com.swein.androidkotlintool.framework.utility.toast.ToastUtility
 import com.swein.androidkotlintool.template.list.adapter.item.model.ItemDataModel
 import com.swein.androidkotlintool.template.list.adapter.item.viewholder.ItemViewHolder
 

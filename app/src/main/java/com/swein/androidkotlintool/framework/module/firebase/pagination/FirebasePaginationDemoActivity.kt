@@ -18,8 +18,8 @@ import com.swein.androidkotlintool.framework.module.firebase.pagination.adapter.
 import com.swein.androidkotlintool.framework.module.firebase.pagination.model.FirebasePaginationItemModel
 import com.swein.androidkotlintool.framework.module.firebase.pagination.viewmodel.FirebasePaginationViewModel
 import com.swein.androidkotlintool.framework.module.firebase.pagination.viewmodel.FirebasePaginationViewModelState
-import com.swein.androidkotlintool.framework.util.date.DateUtility
-import com.swein.androidkotlintool.framework.util.log.ILog
+import com.swein.androidkotlintool.framework.utility.date.DateUtility
+import com.swein.androidkotlintool.framework.utility.debug.ILog
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collect

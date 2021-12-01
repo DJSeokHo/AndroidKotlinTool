@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.TextView
 import com.swein.androidkotlintool.R
-import com.swein.androidkotlintool.framework.util.display.DisplayUtility
+import com.swein.androidkotlintool.framework.utility.display.DisplayUtility
 
 @SuppressLint("ViewConstructor")
 class ScheduleTimeViewHolder(

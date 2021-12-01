@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.swein.androidkotlintool.R
-import com.swein.androidkotlintool.framework.util.thread.ThreadUtility
+import com.swein.androidkotlintool.framework.utility.thread.ThreadUtility
 import com.swein.androidkotlintool.main.examples.coordinatorlayoutexample.adapter.CoordinatorLayoutExampleAdapter
 
 class CoordinatorLayoutExampleActivity : AppCompatActivity() {

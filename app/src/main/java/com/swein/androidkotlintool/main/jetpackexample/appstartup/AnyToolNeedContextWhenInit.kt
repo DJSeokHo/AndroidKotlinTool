@@ -2,7 +2,6 @@ package com.swein.androidkotlintool.main.jetpackexample.appstartup
 
 import android.annotation.SuppressLint
 import android.content.Context
-import com.swein.androidkotlintool.framework.util.log.ILog
 
 @SuppressLint("StaticFieldLeak")
 object AnyToolNeedContextWhenInit {

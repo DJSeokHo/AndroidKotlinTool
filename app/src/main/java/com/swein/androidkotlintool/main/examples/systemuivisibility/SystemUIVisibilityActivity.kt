@@ -1,6 +1,5 @@
 package com.swein.androidkotlintool.main.examples.systemuivisibility
 
-import android.annotation.SuppressLint
 import android.app.Activity
 import android.graphics.Color
 import android.os.Build
@@ -9,17 +8,10 @@ import android.os.Bundle
 import android.view.View
 import android.view.WindowInsets
 import android.view.WindowInsetsController
-import android.view.WindowInsetsController.APPEARANCE_LIGHT_NAVIGATION_BARS
-import android.view.WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS
 import android.view.WindowManager
 import android.widget.Button
-import android.widget.FrameLayout
 import androidx.core.view.ViewCompat
-import androidx.core.view.WindowCompat
-import androidx.core.view.WindowInsetsCompat
-import androidx.core.view.WindowInsetsControllerCompat
 import com.swein.androidkotlintool.R
-import com.swein.androidkotlintool.framework.util.log.ILog
 import kotlin.random.Random
 
 class SystemUIVisibilityActivity : AppCompatActivity() {

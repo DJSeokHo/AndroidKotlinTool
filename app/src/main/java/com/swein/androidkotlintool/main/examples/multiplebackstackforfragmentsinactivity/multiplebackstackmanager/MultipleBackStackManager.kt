@@ -3,7 +3,7 @@ package com.swein.androidkotlintool.main.examples.multiplebackstackforfragmentsi
 import android.util.Log
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentTransaction
-import com.swein.androidkotlintool.framework.util.log.ILog
+import com.swein.androidkotlintool.framework.utility.debug.ILog
 import kotlin.Exception
 
 object MultipleBackStackManager {

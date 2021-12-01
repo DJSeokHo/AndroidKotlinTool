@@ -6,9 +6,7 @@ import android.view.View
 import android.widget.Button
 import androidx.databinding.ObservableArrayMap
 import com.swein.androidkotlintool.databinding.ActivityDataBindingExampleBinding
-import com.swein.androidkotlintool.framework.util.log.ILog
-import java.util.ArrayList
-import java.util.HashMap
+import com.swein.androidkotlintool.framework.utility.debug.ILog
 
 class DataBindingExampleActivity : AppCompatActivity() {
 

@@ -1,6 +1,5 @@
 package com.swein.androidkotlintool.main.jetpackexample.navigation.sign.signin
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,8 +9,7 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.swein.androidkotlintool.R
-import com.swein.androidkotlintool.framework.util.log.ILog
-import com.swein.androidkotlintool.main.jetpackexample.navigation.sign.auth.AuthFragment
+import com.swein.androidkotlintool.framework.utility.debug.ILog
 import com.swein.androidkotlintool.main.jetpackexample.navigation.topnavigationbar.CustomTopNavigationBarViewHolder
 
 class SignInFragment : Fragment() {

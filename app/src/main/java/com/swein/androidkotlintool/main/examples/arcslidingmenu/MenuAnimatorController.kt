@@ -6,7 +6,7 @@ import android.os.Handler
 import android.os.Looper
 import android.view.View
 import androidx.constraintlayout.widget.ConstraintLayout
-import com.swein.androidkotlintool.framework.util.display.DisplayUtility
+import com.swein.androidkotlintool.framework.utility.display.DisplayUtility
 
 
 class MenuAnimationInfoData {

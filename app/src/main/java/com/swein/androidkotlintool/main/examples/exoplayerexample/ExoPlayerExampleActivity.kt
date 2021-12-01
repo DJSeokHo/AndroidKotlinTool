@@ -1,8 +1,6 @@
 package com.swein.androidkotlintool.main.examples.exoplayerexample
 
-import android.app.Activity
 import android.content.res.Configuration
-import android.graphics.Color
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -21,12 +19,8 @@ import com.google.android.exoplayer2.upstream.DataSource
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory
 import com.google.android.exoplayer2.util.Util
 import com.swein.androidkotlintool.R
-import android.os.Build
-import android.view.ViewGroup
-import androidx.core.view.OnApplyWindowInsetsListener
 import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.swein.androidkotlintool.framework.util.log.ILog
+import com.swein.androidkotlintool.framework.utility.debug.ILog
 
 
 class ExoPlayerExampleActivity : AppCompatActivity() {

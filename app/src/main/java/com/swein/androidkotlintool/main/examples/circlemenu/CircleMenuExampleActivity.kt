@@ -5,18 +5,13 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MotionEvent
 import android.view.View
-import android.view.ViewGroup
-import android.view.animation.AnticipateInterpolator
 import android.view.animation.AnticipateOvershootInterpolator
 import android.widget.ImageButton
 import android.widget.LinearLayout
-import android.widget.TextView
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.swein.androidkotlintool.R
-import com.swein.androidkotlintool.framework.util.log.ILog
-import com.swein.androidkotlintool.main.examples.arcslidingmenu.MenuAnimatorController
-import com.swein.androidkotlintool.main.examples.arcslidingmenu.RotateDirection
+import com.swein.androidkotlintool.framework.utility.debug.ILog
 
 class CircleMenuExampleActivity : AppCompatActivity() {
 

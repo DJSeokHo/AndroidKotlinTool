@@ -3,7 +3,7 @@ package com.swein.androidkotlintool.main.examples.youtubeplayer
 import android.os.Bundle
 import com.google.android.youtube.player.*
 import com.swein.androidkotlintool.R
-import com.swein.androidkotlintool.framework.util.log.ILog
+import com.swein.androidkotlintool.framework.utility.debug.ILog
 
 class YoutubePlayerExampleActivity : YouTubeBaseActivity() {
 

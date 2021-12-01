@@ -13,7 +13,7 @@ import androidx.fragment.app.FragmentActivity
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.FutureTarget
 import com.swein.androidkotlintool.R
-import com.swein.androidkotlintool.framework.util.thread.ThreadUtility
+import com.swein.androidkotlintool.framework.utility.thread.ThreadUtility
 
 
 class BlurMaskActivity : FragmentActivity() {

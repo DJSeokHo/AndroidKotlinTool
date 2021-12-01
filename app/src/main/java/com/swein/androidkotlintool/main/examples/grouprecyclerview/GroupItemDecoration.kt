@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.swein.androidkotlintool.framework.util.display.DisplayUtility
+import com.swein.androidkotlintool.framework.utility.display.DisplayUtility
 import com.swein.androidkotlintool.main.examples.grouprecyclerview.adapter.item.GroupItemHeaderViewHolder
 import com.swein.androidkotlintool.main.examples.grouprecyclerview.adapter.item.GroupItemModel
 

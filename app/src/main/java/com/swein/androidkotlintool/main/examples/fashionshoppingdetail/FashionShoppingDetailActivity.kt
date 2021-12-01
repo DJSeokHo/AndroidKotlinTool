@@ -15,7 +15,7 @@ import com.bumptech.glide.load.resource.bitmap.BitmapTransitionOptions
 import com.google.android.material.imageview.ShapeableImageView
 import com.google.android.material.shape.CornerFamily
 import com.swein.androidkotlintool.R
-import com.swein.androidkotlintool.framework.util.display.DisplayUtility
+import com.swein.androidkotlintool.framework.utility.display.DisplayUtility
 
 class FashionShoppingDetailActivity : AppCompatActivity() {
 

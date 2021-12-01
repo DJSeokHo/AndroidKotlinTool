@@ -1,7 +1,7 @@
 package com.swein.androidkotlintool.main.examples.pagingexample.modelservice
 
-import com.swein.androidkotlintool.framework.util.log.ILog
-import com.swein.androidkotlintool.framework.util.okhttp.OKHttpWrapper
+import com.swein.androidkotlintool.framework.utility.debug.ILog
+import com.swein.androidkotlintool.framework.utility.okhttp.OKHttpWrapper
 import com.swein.androidkotlintool.main.examples.pagingexample.model.GithubRepoItemModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext

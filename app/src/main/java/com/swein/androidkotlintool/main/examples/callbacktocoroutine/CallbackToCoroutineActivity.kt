@@ -10,9 +10,7 @@ import android.widget.ImageView
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.whenCreated
 import com.swein.androidkotlintool.R
-import com.swein.androidkotlintool.framework.util.log.ILog
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import kotlin.coroutines.resume
 import kotlin.coroutines.suspendCoroutine
 

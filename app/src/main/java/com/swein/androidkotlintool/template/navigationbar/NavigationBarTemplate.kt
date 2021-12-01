@@ -5,7 +5,7 @@ import android.view.View
 import android.widget.ImageButton
 import android.widget.TextView
 import com.swein.androidkotlintool.R
-import com.swein.androidkotlintool.framework.util.views.ViewUtil
+import com.swein.androidkotlintool.framework.utility.views.ViewUtil
 
 class NavigationBarTemplate {
 

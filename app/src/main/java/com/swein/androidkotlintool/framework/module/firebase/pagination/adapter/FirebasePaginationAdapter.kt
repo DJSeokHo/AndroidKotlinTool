@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.swein.androidkotlintool.R
 import com.swein.androidkotlintool.framework.module.firebase.pagination.adapter.item.FirebasePaginationItemViewHolder
 import com.swein.androidkotlintool.framework.module.firebase.pagination.model.FirebasePaginationItemModel
-import com.swein.androidkotlintool.framework.util.log.ILog
 
 class FirebasePaginationAdapter(private val onLoadMore: () -> Unit): RecyclerView.Adapter<FirebasePaginationItemViewHolder>() {
 

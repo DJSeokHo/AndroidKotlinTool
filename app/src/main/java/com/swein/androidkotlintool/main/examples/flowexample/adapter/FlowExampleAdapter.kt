@@ -5,9 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.swein.androidkotlintool.R
-import com.swein.androidkotlintool.framework.util.log.ILog
 import com.swein.androidkotlintool.main.examples.flowexample.adapter.item.FlowExampleItemViewHolder
-import com.swein.androidkotlintool.main.examples.mvvmrecyclerviewexample.MVVMRecyclerViewExampleActivity
 
 class FlowExampleAdapter(private val onLoadMore: () -> Unit) : RecyclerView.Adapter<FlowExampleItemViewHolder>() {
 

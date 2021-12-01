@@ -15,7 +15,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.swein.androidkotlintool.R
-import com.swein.androidkotlintool.framework.util.log.ILog
 import com.swein.androidkotlintool.main.examples.pagingexample.adapter.GithubRepoAdapter
 import com.swein.androidkotlintool.main.examples.pagingexample.adapter.GithubRepoLoadStateAdapter
 import com.swein.androidkotlintool.main.examples.pagingexample.viewmodel.GithubRepoViewModel

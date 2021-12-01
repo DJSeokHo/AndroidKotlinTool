@@ -3,7 +3,7 @@ package com.swein.androidkotlintool.main.examples.customschedule.customschedulev
 import android.content.Context
 import android.util.AttributeSet
 import android.view.ViewGroup
-import com.swein.androidkotlintool.framework.util.log.ILog
+import com.swein.androidkotlintool.framework.utility.debug.ILog
 import com.swein.androidkotlintool.main.examples.customschedule.customscheduleview.item.ScheduleViewHolder
 
 class CustomScheduleViewGroup: ViewGroup {

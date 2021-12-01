@@ -20,9 +20,9 @@ import com.swein.androidkotlintool.framework.module.basicpermission.BasicPermiss
 import com.swein.androidkotlintool.framework.module.basicpermission.PermissionManager
 import com.swein.androidkotlintool.framework.module.basicpermission.RequestPermission
 import com.swein.androidkotlintool.framework.module.shcameraphoto.camera.NormalImageRealTimeAnalyzer
-import com.swein.androidkotlintool.framework.util.bitmap.BitmapUtil
-import com.swein.androidkotlintool.framework.util.log.ILog
-import com.swein.androidkotlintool.framework.util.thread.ThreadUtility
+import com.swein.androidkotlintool.framework.utility.bitmap.BitmapUtil
+import com.swein.androidkotlintool.framework.utility.debug.ILog
+import com.swein.androidkotlintool.framework.utility.thread.ThreadUtility
 import java.io.BufferedOutputStream
 import java.io.File
 import java.io.FileOutputStream

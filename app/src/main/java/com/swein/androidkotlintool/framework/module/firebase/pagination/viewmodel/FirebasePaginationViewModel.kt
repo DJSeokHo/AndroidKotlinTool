@@ -5,7 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.google.firebase.firestore.DocumentSnapshot
 import com.swein.androidkotlintool.framework.module.firebase.pagination.model.FirebasePaginationItemModel
 import com.swein.androidkotlintool.framework.module.firebase.pagination.service.FirebasePaginationService
-import com.swein.androidkotlintool.framework.util.log.ILog
+import com.swein.androidkotlintool.framework.utility.debug.ILog
 import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.flow.MutableStateFlow
