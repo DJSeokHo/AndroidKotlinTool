@@ -44,11 +44,21 @@ object WindowUtility {
     }
 
     fun setStateBarToLightTheme(activity: Activity) {
-        ViewCompat.getWindowInsetsController(activity.window.decorView)?.isAppearanceLightStatusBars = true
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            ViewCompat.getWindowInsetsController(activity.window.decorView)?.isAppearanceLightStatusBars = true
+        }
+        else {
+            activity.window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+        }
     }
 
     fun setStateBarToDarkTheme(activity: Activity) {
-        ViewCompat.getWindowInsetsController(activity.window.decorView)?.isAppearanceLightStatusBars = false
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            ViewCompat.getWindowInsetsController(activity.window.decorView)?.isAppearanceLightStatusBars = false
+        }
+        else {
+            activity.window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_VISIBLE
+        }
     }
 
     fun setStatusBarColor(activity: Activity, color: Int) {
