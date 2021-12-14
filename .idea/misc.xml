@@ -9,6 +9,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../../../../layout/custom_preview.xml" value="0.25" />
+        <entry key="app/src/main/res/drawable-v21/app_widget_background.xml" value="0.2601851851851852" />
         <entry key="app/src/main/res/drawable/album_selector_item_check_bg.xml" value="0.26851851851851855" />
         <entry key="app/src/main/res/drawable/arc_menu_button_bg.xml" value="0.25" />
         <entry key="app/src/main/res/drawable/badge_number_background.xml" value="0.25925925925925924" />
@@ -22,6 +23,7 @@
         <entry key="app/src/main/res/drawable/rect_bg_gradient.xml" value="0.26851851851851855" />
         <entry key="app/src/main/res/drawable/round_corner_bg_gradient_stroke.xml" value="0.26851851851851855" />
         <entry key="app/src/main/res/drawable/switch_custom_thumb_selector.xml" value="0.2282051282051282" />
+        <entry key="app/src/main/res/layout/activity_app_widget_example.xml" value="0.30104166666666665" />
         <entry key="app/src/main/res/layout/activity_callback_to_coroutine.xml" value="0.29739583333333336" />
         <entry key="app/src/main/res/layout/activity_cloud_fire_store_demo.xml" value="0.29739583333333336" />
         <entry key="app/src/main/res/layout/activity_custom_schedule_example.xml" value="0.12" />
@@ -53,6 +55,7 @@
         <entry key="app/src/main/res/layout/activity_register_example.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_rx_kotlin_lite_demo.xml" value="0.3494791666666667" />
         <entry key="app/src/main/res/layout/activity_shape_able_image_view_example.xml" value="0.3026041666666667" />
+        <entry key="app/src/main/res/layout/activity_short_cuts_example.xml" value="0.2869791666666667" />
         <entry key="app/src/main/res/layout/activity_summer_note_example.xml" value="0.327445652173913" />
         <entry key="app/src/main/res/layout/activity_system_photo_and_crop_example.xml" value="0.33242753623188404" />
         <entry key="app/src/main/res/layout/activity_system_photo_picker_example.xml" value="0.2921875" />
@@ -66,6 +69,8 @@
         <entry key="app/src/main/res/layout/fragment_exo_player_example.xml" value="0.2791666666666667" />
         <entry key="app/src/main/res/layout/fragment_s_h_camera_photo.xml" value="0.14513677811550152" />
         <entry key="app/src/main/res/layout/fragment_schedule.xml" value="0.30833333333333335" />
+        <entry key="app/src/main/res/layout/new_app_widget.xml" value="0.146403242147923" />
+        <entry key="app/src/main/res/layout/new_app_widget_configure.xml" value="0.30104166666666665" />
         <entry key="app/src/main/res/layout/view_holder_album_selector.xml" value="0.14989733059548255" />
         <entry key="app/src/main/res/layout/view_holder_album_selector_item.xml" value="0.14513677811550152" />
         <entry key="app/src/main/res/layout/view_holder_custom_tab.xml" value="0.14583333333333334" />

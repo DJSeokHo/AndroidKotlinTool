@@ -673,14 +673,14 @@ class SHCameraPhotoFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         activity?.let {
-            WindowUtility.hideSystemUI(it)
+            WindowUtility.enableImmersiveMode(it)
         }
     }
 
     override fun onPause() {
         super.onPause()
         activity?.let {
-            WindowUtility.showSystemUI(it)
+            WindowUtility.disableImmersiveMode(it)
         }
     }
 

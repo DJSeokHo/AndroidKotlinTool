@@ -55,7 +55,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-       
         <activity
             android:name=".main.examples.systemuivisibility.SystemUIVisibilityActivity"
             android:exported="false" />
@@ -322,8 +321,7 @@
         
         <uses-library
             android:name="org.apache.http.legacy"
-            android:required="false" />
-        <!-- FileProvider used to share photos with other apps -->
+            android:required="false" /> <!-- FileProvider used to share photos with other apps -->
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.provider"
