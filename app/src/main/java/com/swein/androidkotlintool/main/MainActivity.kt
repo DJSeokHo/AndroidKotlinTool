@@ -23,6 +23,7 @@ import com.swein.androidkotlintool.framework.utility.eventsplitshot.subject.ESSA
 import com.swein.androidkotlintool.framework.utility.glide.SHGlide
 import com.swein.androidkotlintool.framework.utility.debug.ILog
 import com.swein.androidkotlintool.framework.utility.screen.ScreenUtil
+import com.swein.androidkotlintool.main.examples.scenetransitionanimationexample.SceneTransitionAnimationExampleActivity
 import com.swein.androidkotlintool.main.examples.systemuivisibility.SystemUIVisibilityActivity
 import com.swein.androidkotlintool.main.moduledemo.ModuleDemoActivity
 import com.swein.androidkotlintool.template.bottomtab.activity.TabHostActivity
@@ -149,7 +150,8 @@ class MainActivity : BasicPermissionActivity() {
 //        ActivityUtil.startNewActivityWithoutFinish(this, ShapeAbleImageViewExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, KtorExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, CustomTabLayoutExampleActivity::class.java)
-        ActivityUtil.startNewActivityWithoutFinish(this, SystemUIVisibilityActivity::class.java)
+//        ActivityUtil.startNewActivityWithoutFinish(this, SystemUIVisibilityActivity::class.java)
+        ActivityUtil.startNewActivityWithoutFinish(this, SceneTransitionAnimationExampleActivity::class.java)
 
 
 //        SnackBarUtility.showSnackBar(frameLayoutRoot, "test")
