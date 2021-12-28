@@ -19,6 +19,8 @@
         <entry key="app/src/main/res/drawable/bottom_app_bar_item_ripple.xml" value="0.25925925925925924" />
         <entry key="app/src/main/res/drawable/buy_button_bg.xml" value="0.22962962962962963" />
         <entry key="app/src/main/res/drawable/circle_bg_gradient.xml" value="0.26851851851851855" />
+        <entry key="app/src/main/res/drawable/circle_gray_border_white_bg.xml" value="0.12083333333333333" />
+        <entry key="app/src/main/res/drawable/circle_white_bg.xml" value="0.24479166666666666" />
         <entry key="app/src/main/res/drawable/html_editor_bg.xml" value="0.22962962962962963" />
         <entry key="app/src/main/res/drawable/rect_bg_gradient.xml" value="0.26851851851851855" />
         <entry key="app/src/main/res/drawable/round_corner_bg_gradient_stroke.xml" value="0.26851851851851855" />
@@ -48,6 +50,7 @@
         <entry key="app/src/main/res/layout/activity_motion_layout_basic.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_mvvmrecycler_view_example.xml" value="0.16995947315096252" />
         <entry key="app/src/main/res/layout/activity_otpverification_code_view_example.xml" value="0.14" />
+        <entry key="app/src/main/res/layout/activity_over_lap_view.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_paging_example.xml" value="0.2765625" />
         <entry key="app/src/main/res/layout/activity_pipexample.xml" value="0.30104166666666665" />
         <entry key="app/src/main/res/layout/activity_profile_example.xml" value="0.25" />
@@ -55,7 +58,7 @@
         <entry key="app/src/main/res/layout/activity_register_example.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_rx_kotlin_lite_demo.xml" value="0.3494791666666667" />
         <entry key="app/src/main/res/layout/activity_scene_transition_animation_detail_example.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/activity_scene_transition_animation_example.xml" value="0.2869791666666667" />
+        <entry key="app/src/main/res/layout/activity_scene_transition_animation_example.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_shape_able_image_view_example.xml" value="0.3026041666666667" />
         <entry key="app/src/main/res/layout/activity_short_cuts_example.xml" value="0.2869791666666667" />
         <entry key="app/src/main/res/layout/activity_summer_note_example.xml" value="0.327445652173913" />
@@ -90,6 +93,9 @@
         <entry key="app/src/main/res/layout/view_holder_sh_selected_image_item.xml" value="0.1519756838905775" />
         <entry key="app/src/main/res/layout/view_holder_slide_item.xml" value="0.20833333333333334" />
         <entry key="app/src/main/res/layout/view_holder_web.xml" value="0.2015625" />
+        <entry key="app/src/main/res/layout/view_navigation_bar_template.xml" value="0.21458333333333332" />
+        <entry key="app/src/main/res/layout/view_over_lap_item_view.xml" value="0.1046875" />
+        <entry key="app/src/main/res/layout/view_over_lap_view.xml" value="0.22864583333333333" />
         <entry key="app/src/main/res/xml/scene_basic.xml" value="0.22708333333333333" />
       </map>
     </option>

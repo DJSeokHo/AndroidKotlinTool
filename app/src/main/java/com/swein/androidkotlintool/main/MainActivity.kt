@@ -23,6 +23,7 @@ import com.swein.androidkotlintool.framework.utility.eventsplitshot.subject.ESSA
 import com.swein.androidkotlintool.framework.utility.glide.SHGlide
 import com.swein.androidkotlintool.framework.utility.debug.ILog
 import com.swein.androidkotlintool.framework.utility.screen.ScreenUtil
+import com.swein.androidkotlintool.main.examples.overlapviewexample.OverLapViewActivity
 import com.swein.androidkotlintool.main.examples.scenetransitionanimationexample.SceneTransitionAnimationExampleActivity
 import com.swein.androidkotlintool.main.examples.systemuivisibility.SystemUIVisibilityActivity
 import com.swein.androidkotlintool.main.moduledemo.ModuleDemoActivity
@@ -151,7 +152,8 @@ class MainActivity : BasicPermissionActivity() {
 //        ActivityUtil.startNewActivityWithoutFinish(this, KtorExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, CustomTabLayoutExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, SystemUIVisibilityActivity::class.java)
-        ActivityUtil.startNewActivityWithoutFinish(this, SceneTransitionAnimationExampleActivity::class.java)
+//        ActivityUtil.startNewActivityWithoutFinish(this, SceneTransitionAnimationExampleActivity::class.java)
+        ActivityUtil.startNewActivityWithoutFinish(this, OverLapViewActivity::class.java)
 
 
 //        SnackBarUtility.showSnackBar(frameLayoutRoot, "test")

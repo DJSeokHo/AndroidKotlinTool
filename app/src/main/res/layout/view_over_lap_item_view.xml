@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    tools:context=".main.examples.overlapviewexample.OverLapViewActivity">
+    
+    <com.google.android.material.imageview.ShapeableImageView
+        android:visibility="gone"
+        android:padding="1dp"
+        app:strokeWidth="2dp"
+        app:strokeColor="@color/black"
+        android:background="@color/transparent"
+        android:id="@+id/imageView"
+        android:src="@drawable/coding_with_cat"
+        android:scaleType="fitCenter"
+        android:layout_width="40dp"
+        android:layout_height="40dp"/>
+    
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/textView"
+        android:textColor="@color/black"
+        android:gravity="center"
+        android:background="@drawable/circle_gray_border_white_bg"
+        android:layout_width="40dp"
+        android:layout_height="40dp"/>
+    
+</FrameLayout>

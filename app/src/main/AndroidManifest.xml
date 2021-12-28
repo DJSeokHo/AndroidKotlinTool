@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.swein.androidkotlintool" >
-
+    package="com.swein.androidkotlintool">
+    
     <queries>
         <intent>
             <action android:name="com.google.android.youtube.api.service.START" />
@@ -38,14 +38,14 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
     <uses-permission android:name="com.android.launcher.permission.UNINSTALL_SHORTCUT" />
-
+    
     <uses-feature
         android:name="android.hardware.camera"
         android:required="true" />
     <uses-feature
         android:name="android.hardware.camera.autofocus"
         android:required="false" />
-
+    
     <application
         android:allowBackup="true"
         android:fullBackupContent="false"
@@ -54,7 +54,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:usesCleartextTraffic="true" >
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".main.examples.overlapviewexample.OverLapViewActivity"
+            android:exported="false" />
         <activity
             android:name=".main.examples.scenetransitionanimationexample.detail.SceneTransitionAnimationDetailExampleActivity"
             android:exported="false" />
@@ -309,10 +312,10 @@
         <activity
             android:name=".splash.SplashActivity"
             android:exported="true"
-            android:launchMode="singleTask" >
+            android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
+    
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -320,11 +323,11 @@
             android:name=".main.MainActivity"
             android:launchMode="singleTask"
             tools:ignore="Instantiatable" />
-
+        
         <receiver
             android:name=".framework.utility.shortcut.ShortcutReceiver"
             android:exported="false" />
-
+        
         <uses-library
             android:name="org.apache.http.legacy"
             android:required="false" /> <!-- FileProvider used to share photos with other apps -->
@@ -332,7 +335,7 @@
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.provider"
             android:exported="false"
-            android:grantUriPermissions="true" >
+            android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
@@ -341,20 +344,20 @@
             android:name="androidx.startup.InitializationProvider"
             android:authorities="${applicationId}.androidx-startup"
             android:exported="false"
-            tools:node="merge" >
-
+            tools:node="merge">
+    
             <!-- This entry makes ExampleLoggerInitializer discoverable. -->
             <meta-data
                 android:name="com.swein.androidkotlintool.main.jetpackexample.appstartup.AppStartUpExample"
                 android:value="androidx.startup" />
-
+    
             <!-- if you don't need -->
             <!-- <meta-data -->
             <!-- android:name="com.swein.androidkotlintool.main.examples.appstartup.AppStartUpExample" -->
             <!-- tools:node="remove" -->
             <!-- /> -->
         </provider>
-
+        
         <service
             android:name=".framework.module.location.service.LocationService"
             android:enabled="true"
