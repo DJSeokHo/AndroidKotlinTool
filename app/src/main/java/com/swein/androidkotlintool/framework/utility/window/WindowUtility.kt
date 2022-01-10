@@ -97,6 +97,7 @@ object WindowUtility {
     fun setNavigationBarColor(activity: Activity, color: Int) {
         val window = activity.window
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+        window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
         window.navigationBarColor = color
     }
 

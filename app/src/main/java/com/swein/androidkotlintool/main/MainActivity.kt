@@ -15,6 +15,7 @@ import com.swein.androidkotlintool.constants.Constants
 import com.swein.androidkotlintool.framework.module.basicpermission.BasicPermissionActivity
 import com.swein.androidkotlintool.framework.module.basicpermission.PermissionManager
 import com.swein.androidkotlintool.framework.module.basicpermission.RequestPermission
+import com.swein.androidkotlintool.framework.module.shcameraphoto.demo.SHCameraPhotoFragmentDemoActivity
 import com.swein.androidkotlintool.framework.module.volley.VolleyModule
 import com.swein.androidkotlintool.framework.utility.activity.ActivityUtil
 import com.swein.androidkotlintool.framework.utility.display.DisplayUtility
@@ -24,6 +25,7 @@ import com.swein.androidkotlintool.framework.utility.glide.SHGlide
 import com.swein.androidkotlintool.framework.utility.debug.ILog
 import com.swein.androidkotlintool.framework.utility.screen.ScreenUtil
 import com.swein.androidkotlintool.main.examples.overlapviewexample.OverLapViewActivity
+import com.swein.androidkotlintool.main.examples.regularexpression.RegularExpressionExampleActivity
 import com.swein.androidkotlintool.main.examples.scenetransitionanimationexample.SceneTransitionAnimationExampleActivity
 import com.swein.androidkotlintool.main.examples.sensorexample.SensorExampleActivity
 import com.swein.androidkotlintool.main.examples.sensorexample.light.LightSensorExampleActivity
@@ -157,7 +159,8 @@ class MainActivity : BasicPermissionActivity() {
 //        ActivityUtil.startNewActivityWithoutFinish(this, SceneTransitionAnimationExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, OverLapViewActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, SensorExampleActivity::class.java)
-        ActivityUtil.startNewActivityWithoutFinish(this, LightSensorExampleActivity::class.java)
+//        ActivityUtil.startNewActivityWithoutFinish(this, LightSensorExampleActivity::class.java)
+        ActivityUtil.startNewActivityWithoutFinish(this, RegularExpressionExampleActivity::class.java)
 
 
 //        SnackBarUtility.showSnackBar(frameLayoutRoot, "test")

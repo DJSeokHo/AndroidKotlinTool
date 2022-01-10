@@ -56,6 +56,9 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".main.examples.regularexpression.RegularExpressionExampleActivity"
+            android:exported="false" />
+        <activity
             android:name=".main.examples.sensorexample.light.LightSensorExampleActivity"
             android:exported="false" />
         <activity
@@ -368,6 +371,10 @@
             android:name=".framework.module.location.service.LocationService"
             android:enabled="true"
             android:exported="false" />
+        
+        <meta-data
+            android:name="android.notch_support"
+            android:value="true" />
     </application>
 
 </manifest>

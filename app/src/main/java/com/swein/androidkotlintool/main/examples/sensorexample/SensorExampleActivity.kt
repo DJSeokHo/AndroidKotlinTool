@@ -127,6 +127,12 @@ class SensorExampleActivity : AppCompatActivity() {
 
         getSensor(Sensor.TYPE_MOTION_DETECT, "TYPE_MOTION_DETECT")
 
+        // 计步器传感器提供自已激活传感器后最后一次重启以来用户迈出的步数。与步测器传感器相比，计步器的延迟时间更长（最多 10 秒），但精确度更高。
+        getSensor(Sensor.TYPE_STEP_COUNTER, "TYPE_STEP_COUNTER")
+
+        // 每次用户迈步时，步测器传感器都会触发事件。延迟时间预计将低于 2 秒。
+        getSensor(Sensor.TYPE_STEP_DETECTOR, "TYPE_STEP_DETECTOR")
+
     }
 
 
