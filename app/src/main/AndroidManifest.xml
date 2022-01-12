@@ -56,6 +56,18 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".main.examples.customintentexample.CustomIntentExampleActivity"
+            android:exported="false" />
+        <activity
+            android:name=".main.examples.broadcastexample.BroadcastExampleActivity"
+            android:exported="false" />
+        <activity
+            android:name=".main.examples.notificationexample.NotificationExampleActivity"
+            android:exported="false" />
+        <activity
+            android:name=".main.examples.alarmmanager.AlarmManagerExampleActivity"
+            android:exported="false" />
+        <activity
             android:name=".main.examples.regularexpression.RegularExpressionExampleActivity"
             android:exported="false" />
         <activity
@@ -375,6 +387,14 @@
         <meta-data
             android:name="android.notch_support"
             android:value="true" />
+        
+        <receiver
+            android:name=".main.examples.broadcastexample.BroadcastReceiverExample"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.swein.pass.data" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

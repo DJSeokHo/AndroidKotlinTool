@@ -24,6 +24,10 @@ import com.swein.androidkotlintool.framework.utility.eventsplitshot.subject.ESSA
 import com.swein.androidkotlintool.framework.utility.glide.SHGlide
 import com.swein.androidkotlintool.framework.utility.debug.ILog
 import com.swein.androidkotlintool.framework.utility.screen.ScreenUtil
+import com.swein.androidkotlintool.main.examples.alarmmanager.AlarmManagerExampleActivity
+import com.swein.androidkotlintool.main.examples.broadcastexample.BroadcastExampleActivity
+import com.swein.androidkotlintool.main.examples.customintentexample.CustomIntentExampleActivity
+import com.swein.androidkotlintool.main.examples.notificationexample.NotificationExampleActivity
 import com.swein.androidkotlintool.main.examples.overlapviewexample.OverLapViewActivity
 import com.swein.androidkotlintool.main.examples.regularexpression.RegularExpressionExampleActivity
 import com.swein.androidkotlintool.main.examples.scenetransitionanimationexample.SceneTransitionAnimationExampleActivity
@@ -160,7 +164,11 @@ class MainActivity : BasicPermissionActivity() {
 //        ActivityUtil.startNewActivityWithoutFinish(this, OverLapViewActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, SensorExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, LightSensorExampleActivity::class.java)
-        ActivityUtil.startNewActivityWithoutFinish(this, RegularExpressionExampleActivity::class.java)
+//        ActivityUtil.startNewActivityWithoutFinish(this, RegularExpressionExampleActivity::class.java)
+//        ActivityUtil.startNewActivityWithoutFinish(this, CustomIntentExampleActivity::class.java)
+        ActivityUtil.startNewActivityWithoutFinish(this, BroadcastExampleActivity::class.java)
+//        ActivityUtil.startNewActivityWithoutFinish(this, NotificationExampleActivity::class.java)
+//        ActivityUtil.startNewActivityWithoutFinish(this, AlarmManagerExampleActivity::class.java)
 
 
 //        SnackBarUtility.showSnackBar(frameLayoutRoot, "test")

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".main.examples.alarmmanager.AlarmManagerExampleActivity"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@color/white">
+
+    <Button
+        android:textSize="7pt"
+        android:text="Elapsed Real Time With Repeat"
+        android:textAllCaps="false"
+        android:backgroundTint="@color/black"
+        android:textColor="@color/white"
+        android:id="@+id/buttonElapsedRealTimeWithRepeat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+   
+    <Button
+        android:textSize="7pt"
+        android:text="Elapsed Real Time"
+        android:textAllCaps="false"
+        android:backgroundTint="@color/black"
+        android:textColor="@color/white"
+        android:id="@+id/buttonElapsedRealTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    
+    
+    <Button
+        android:textSize="7pt"
+        android:text="RTC With Repeat"
+        android:textAllCaps="false"
+        android:backgroundTint="@color/black"
+        android:textColor="@color/white"
+        android:id="@+id/buttonRTCWithRepeat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    
+    <Button
+        android:textSize="7pt"
+        android:text="RTC"
+        android:textAllCaps="false"
+        android:backgroundTint="@color/black"
+        android:textColor="@color/white"
+        android:id="@+id/buttonRTC"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    
+    
+</LinearLayout>

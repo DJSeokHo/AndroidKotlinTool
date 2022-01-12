@@ -25,9 +25,12 @@
         <entry key="app/src/main/res/drawable/rect_bg_gradient.xml" value="0.26851851851851855" />
         <entry key="app/src/main/res/drawable/round_corner_bg_gradient_stroke.xml" value="0.26851851851851855" />
         <entry key="app/src/main/res/drawable/switch_custom_thumb_selector.xml" value="0.2282051282051282" />
+        <entry key="app/src/main/res/layout/activity_alarm_manager_example.xml" value="0.34375" />
         <entry key="app/src/main/res/layout/activity_app_widget_example.xml" value="0.30104166666666665" />
+        <entry key="app/src/main/res/layout/activity_broadcast_example.xml" value="0.3296875" />
         <entry key="app/src/main/res/layout/activity_callback_to_coroutine.xml" value="0.29739583333333336" />
         <entry key="app/src/main/res/layout/activity_cloud_fire_store_demo.xml" value="0.29739583333333336" />
+        <entry key="app/src/main/res/layout/activity_custom_intent_example.xml" value="0.315625" />
         <entry key="app/src/main/res/layout/activity_custom_schedule_example.xml" value="0.12" />
         <entry key="app/src/main/res/layout/activity_custom_swipe_refresh_layout_example.xml" value="0.25364583333333335" />
         <entry key="app/src/main/res/layout/activity_custom_tab_layout_example.xml" value="0.22" />
@@ -51,6 +54,7 @@
         <entry key="app/src/main/res/layout/activity_mdday_seven.xml" value="0.10648148148148148" />
         <entry key="app/src/main/res/layout/activity_motion_layout_basic.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_mvvmrecycler_view_example.xml" value="0.16995947315096252" />
+        <entry key="app/src/main/res/layout/activity_notification_example.xml" value="0.3296875" />
         <entry key="app/src/main/res/layout/activity_otpverification_code_view_example.xml" value="0.14" />
         <entry key="app/src/main/res/layout/activity_over_lap_view.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_paging_example.xml" value="0.2765625" />
