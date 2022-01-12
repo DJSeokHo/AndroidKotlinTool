@@ -48,6 +48,10 @@ object NotificationUtility {
         DEFAULT, LOW, MIN, HIGH, MAX
     }
 
+    enum class NotificationBigType(var any: Any?, var hideLargeIconWhenBigType: Boolean = true) {
+        TEXT(null), IMAGE(null, true)
+    }
+
     fun createSimpleNotification(
         context: Context,
         title: String,
@@ -57,10 +61,11 @@ object NotificationUtility {
         channelNameForAndroidO: String, // can not be a "" (a empty string)
         channelDescriptionForAndroidO: String = "",
         pendingIntent: PendingIntent? = null,
-        longMessage: String = "",
         largeIcon: Bitmap? = null,
+        bigType: NotificationBigType? = null,
         importanceType: NotificationImportanceType = NotificationImportanceType.DEFAULT,
-        autoCancel: Boolean = true
+        autoCancel: Boolean = true,
+        autoCancelAfterSecond: Int = 0
     ): Notification {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -121,12 +126,48 @@ object NotificationUtility {
             builder.setContentIntent(it)
         }
 
-        if (longMessage != "") {
-            builder.setStyle(NotificationCompat.BigTextStyle().bigText(longMessage))
+        bigType?.let {
+
+            when (it) {
+                NotificationBigType.TEXT -> {
+
+                    it.any?.let { any ->
+                        if (any is String && any != "") {
+                            builder.setStyle(NotificationCompat.BigTextStyle().bigText(any))
+                        }
+                    }
+
+                }
+
+                NotificationBigType.IMAGE -> {
+
+                    it.any?.let { any ->
+                        if (any is Bitmap) {
+                            builder.setStyle(
+                                NotificationCompat
+                                    .BigPictureStyle()
+                                    .bigPicture(any)
+                                    .bigLargeIcon(if (it.hideLargeIconWhenBigType) {
+                                        null
+                                    }
+                                    else {
+                                        largeIcon
+                                    })
+                            )
+                        }
+                    }
+
+                }
+            }
+
         }
 
         largeIcon?.let {
             builder.setLargeIcon(it)
+        }
+
+        if (autoCancelAfterSecond != 0) {
+            builder.setTimeoutAfter(autoCancelAfterSecond * 1000L)
         }
 
         return builder.build()
