@@ -392,9 +392,10 @@
             android:name=".main.examples.broadcastexample.BroadcastReceiverExample"
             android:exported="true">
             <intent-filter>
-                <action android:name="com.swein.pass.data" />
+                <action android:name="com.swein.broadcast.passdata" />
             </intent-filter>
         </receiver>
+        
     </application>
 
 </manifest>
