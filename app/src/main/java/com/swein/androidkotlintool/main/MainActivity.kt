@@ -166,8 +166,8 @@ class MainActivity : BasicPermissionActivity() {
 //        ActivityUtil.startNewActivityWithoutFinish(this, LightSensorExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, RegularExpressionExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, CustomIntentExampleActivity::class.java)
-        ActivityUtil.startNewActivityWithoutFinish(this, BroadcastExampleActivity::class.java)
-//        ActivityUtil.startNewActivityWithoutFinish(this, NotificationExampleActivity::class.java)
+//        ActivityUtil.startNewActivityWithoutFinish(this, BroadcastExampleActivity::class.java)
+        ActivityUtil.startNewActivityWithoutFinish(this, NotificationExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, AlarmManagerExampleActivity::class.java)
 
 
