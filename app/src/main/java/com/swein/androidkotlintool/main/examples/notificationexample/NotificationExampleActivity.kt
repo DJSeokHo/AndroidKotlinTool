@@ -1,11 +1,13 @@
 package com.swein.androidkotlintool.main.examples.notificationexample
 
+import android.app.PendingIntent
 import android.content.Intent
 import android.content.IntentFilter
 import android.graphics.BitmapFactory
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import androidx.core.app.NotificationCompat
 import com.swein.androidkotlintool.R
 import com.swein.androidkotlintool.framework.utility.intent.IntentUtility
 import com.swein.androidkotlintool.framework.utility.notification.NotificationUtility
@@ -29,6 +31,10 @@ class NotificationExampleActivity : AppCompatActivity() {
 
     private val buttonBigPicture: Button by lazy {
         findViewById(R.id.buttonBigPicture)
+    }
+
+    private val buttonFullScreen: Button by lazy {
+        findViewById(R.id.buttonFullScreen)
     }
 
     var notificationId = 123
@@ -154,6 +160,38 @@ class NotificationExampleActivity : AppCompatActivity() {
                 )
             )
         }
+
+        buttonFullScreen.setOnClickListener {
+            // 注意：如果应用的目标平台是 Android 10（API 级别 29）或更高版本，
+            // 必须在应用清单文件中请求 USE_FULL_SCREEN_INTENT 权限，以便系统启动与时效性通知关联的全屏 Activity。
+
+            val pendingIntent = IntentUtility.createPendingIntent(
+                IntentUtility.PendingIntentEnum.ACTIVITY,
+                this,
+                567,
+                intent,
+                PendingIntent.FLAG_UPDATE_CURRENT
+            )
+
+            NotificationUtility.showNotification(
+                this,
+                999,
+                NotificationUtility.createSimpleNotification(
+                    context = this,
+                    R.drawable.coding_with_cat,
+                    title = "Incoming call",
+                    message = "123456789",
+                    channelId = "your_channel_id",
+                    channelNameForAndroidO = "your_channel_name",
+                    channelDescriptionForAndroidO = "your_channel_description",
+                    pendingIntent = pendingIntent,
+                    importanceType = NotificationUtility.NotificationImportanceType.HIGH,
+                    category = NotificationCompat.CATEGORY_CALL,
+                    isFullScreenIntent = true
+                )
+            )
+        }
+
     }
 
 

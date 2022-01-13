@@ -54,16 +54,18 @@ object NotificationUtility {
 
     fun createSimpleNotification(
         context: Context,
-        title: String,
-        message: String,
         smallIcon: Int,
-        channelId: String,
-        channelNameForAndroidO: String, // can not be a "" (a empty string)
+        title: String = "",
+        message: String = "",
+        channelId: String = "",
+        channelNameForAndroidO: String = "notification channel", // can not be a "" (a empty string)
         channelDescriptionForAndroidO: String = "",
         pendingIntent: PendingIntent? = null,
         largeIcon: Bitmap? = null,
         bigType: NotificationBigType? = null,
         importanceType: NotificationImportanceType = NotificationImportanceType.DEFAULT,
+        category: String = "",
+        isFullScreenIntent: Boolean = false,
         autoCancel: Boolean = true,
         autoCancelAfterSecond: Int = 0
     ): Notification {
@@ -92,12 +94,14 @@ object NotificationUtility {
             }).apply {
                 description = channelDescriptionForAndroidO
             }
+
             // Register the channel with the system
             NotificationManagerCompat.from(context).createNotificationChannel(notificationChannel)
         }
 
         val builder = NotificationCompat.Builder(context, channelId)
         builder.setSmallIcon(smallIcon).setContentTitle(title).setContentText(message)
+
         builder.priority = when (importanceType) {
             NotificationImportanceType.DEFAULT -> {
                 NotificationCompat.PRIORITY_DEFAULT
@@ -120,10 +124,23 @@ object NotificationUtility {
             }
         }
 
+        if (category != "") {
+            builder.setCategory(category)
+        }
+
         builder.setAutoCancel(autoCancel)
 
         pendingIntent?.let {
-            builder.setContentIntent(it)
+
+            if (isFullScreenIntent) {
+                builder.setFullScreenIntent(pendingIntent,
+                    importanceType == NotificationImportanceType.HIGH || importanceType == NotificationImportanceType.MAX
+                )
+            }
+            else {
+                builder.setContentIntent(it)
+            }
+
         }
 
         bigType?.let {

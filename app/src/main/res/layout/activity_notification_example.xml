@@ -49,4 +49,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
     
+    <Button
+        android:id="@+id/buttonFullScreen"
+        android:backgroundTint="#333333"
+        android:textAllCaps="false"
+        android:textSize="7pt"
+        android:textColor="@color/white"
+        android:text="full screen notification"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    
 </LinearLayout>
