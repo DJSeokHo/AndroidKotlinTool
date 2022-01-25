@@ -25,8 +25,10 @@ import com.swein.androidkotlintool.framework.utility.glide.SHGlide
 import com.swein.androidkotlintool.framework.utility.debug.ILog
 import com.swein.androidkotlintool.framework.utility.screen.ScreenUtil
 import com.swein.androidkotlintool.main.examples.alarmmanager.AlarmManagerExampleActivity
+import com.swein.androidkotlintool.main.examples.alarmmanager.demo.AlarmDemoActivity
 import com.swein.androidkotlintool.main.examples.broadcastexample.BroadcastExampleActivity
 import com.swein.androidkotlintool.main.examples.customintentexample.CustomIntentExampleActivity
+import com.swein.androidkotlintool.main.examples.htmleditorexample.HtmlEditorExampleActivity
 import com.swein.androidkotlintool.main.examples.notificationexample.NotificationExampleActivity
 import com.swein.androidkotlintool.main.examples.overlapviewexample.OverLapViewActivity
 import com.swein.androidkotlintool.main.examples.regularexpression.RegularExpressionExampleActivity
@@ -146,7 +148,7 @@ class MainActivity : BasicPermissionActivity() {
 //        ActivityUtil.startNewActivityWithoutFinish(this, RecyclerViewWithSlideActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, UnityAdsExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, ExoPlayerExampleActivity::class.java)
-//        ActivityUtil.startNewActivityWithoutFinish(this, HtmlEditorExampleActivity::class.java)
+        ActivityUtil.startNewActivityWithoutFinish(this, HtmlEditorExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, CloudFireStoreDemoActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, FirebaseStorageActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, CallbackToCoroutineActivity::class.java)
@@ -167,8 +169,9 @@ class MainActivity : BasicPermissionActivity() {
 //        ActivityUtil.startNewActivityWithoutFinish(this, RegularExpressionExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, CustomIntentExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, BroadcastExampleActivity::class.java)
-        ActivityUtil.startNewActivityWithoutFinish(this, NotificationExampleActivity::class.java)
+//        ActivityUtil.startNewActivityWithoutFinish(this, NotificationExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, AlarmManagerExampleActivity::class.java)
+//        ActivityUtil.startNewActivityWithoutFinish(this, AlarmDemoActivity::class.java)
 
 
 //        SnackBarUtility.showSnackBar(frameLayoutRoot, "test")

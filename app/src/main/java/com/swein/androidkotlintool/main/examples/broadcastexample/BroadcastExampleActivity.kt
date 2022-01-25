@@ -3,6 +3,7 @@ package com.swein.androidkotlintool.main.examples.broadcastexample
 import android.content.Intent
 import android.content.IntentFilter
 import android.net.ConnectivityManager
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -16,10 +17,14 @@ class BroadcastExampleActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_broadcast_example)
 
-        IntentFilter().apply {
-            addAction("com.swein.broadcast.passdata")
-            registerReceiver(broadcastReceiverExample, this)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            IntentFilter().apply {
+                addAction("com.swein.broadcast.passdata")
+                // Register broadcast receiver under context from Android 8.0 API 26
+                registerReceiver(broadcastReceiverExample, this)
+            }
         }
+
 
 
         findViewById<Button>(R.id.button).setOnClickListener {
@@ -43,7 +48,11 @@ class BroadcastExampleActivity : AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        unregisterReceiver(broadcastReceiverExample)
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            unregisterReceiver(broadcastReceiverExample)
+        }
+
     }
 
 }

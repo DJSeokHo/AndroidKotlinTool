@@ -50,5 +50,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
     
+    <Button
+        android:textSize="7pt"
+        android:text="Cancel"
+        android:textAllCaps="false"
+        android:backgroundTint="@color/black"
+        android:textColor="@color/white"
+        android:id="@+id/buttonCancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    
     
 </LinearLayout>
