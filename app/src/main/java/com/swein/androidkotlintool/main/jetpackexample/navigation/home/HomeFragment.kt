@@ -61,8 +61,8 @@ class HomeFragment : Fragment() {
 
     private fun setListener() {
         buttonSign.setOnClickListener {
-            val action = HomeFragmentDirections.actionHomeFragmentToSignNavigation()
-            findNavController().navigate(action)
+//            val action = HomeFragmentDirections.actionHomeFragmentToSignNavigation()
+//            findNavController().navigate(action)
         }
 
         buttonCount.setOnClickListener {

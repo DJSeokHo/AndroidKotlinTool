@@ -79,8 +79,8 @@ class SignInFragment : Fragment() {
 
         buttonAuth.setOnClickListener {
 
-            val action = SignInFragmentDirections.actionSignInFragmentToAuthFragment("test")
-            findNavController().navigate(action)
+//            val action = SignInFragmentDirections.actionSignInFragmentToAuthFragment("test")
+//            findNavController().navigate(action)
         }
 
     }

@@ -21,7 +21,7 @@ class AuthFragment : Fragment() {
 
     private lateinit var buttonRegister: Button
 
-    val args: AuthFragmentArgs by navArgs()
+//    val args: AuthFragmentArgs by navArgs()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,7 +33,7 @@ class AuthFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        ILog.debug(TAG, args.test)
+//        ILog.debug(TAG, args.test)
         ILog.debug(TAG, "onCreateView")
         inflater.inflate(R.layout.fragment_auth, container, false).apply {
             initTopNavigationBar(this)
@@ -70,8 +70,8 @@ class AuthFragment : Fragment() {
 
     private fun setListener() {
         buttonRegister.setOnClickListener {
-            val bundle = bundleOf("test" to args.test)
-            findNavController().navigate(R.id.action_authFragment_to_signUpFragment, bundle)
+//            val bundle = bundleOf("test" to args.test)
+//            findNavController().navigate(R.id.action_authFragment_to_signUpFragment, bundle)
         }
     }
 

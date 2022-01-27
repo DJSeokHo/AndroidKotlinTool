@@ -29,6 +29,7 @@ import com.swein.androidkotlintool.main.examples.alarmmanager.demo.AlarmDemoActi
 import com.swein.androidkotlintool.main.examples.broadcastexample.BroadcastExampleActivity
 import com.swein.androidkotlintool.main.examples.customintentexample.CustomIntentExampleActivity
 import com.swein.androidkotlintool.main.examples.htmleditorexample.HtmlEditorExampleActivity
+import com.swein.androidkotlintool.main.examples.inpersonsigning.InPersonSigningActivity
 import com.swein.androidkotlintool.main.examples.notificationexample.NotificationExampleActivity
 import com.swein.androidkotlintool.main.examples.overlapviewexample.OverLapViewActivity
 import com.swein.androidkotlintool.main.examples.regularexpression.RegularExpressionExampleActivity
@@ -148,7 +149,7 @@ class MainActivity : BasicPermissionActivity() {
 //        ActivityUtil.startNewActivityWithoutFinish(this, RecyclerViewWithSlideActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, UnityAdsExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, ExoPlayerExampleActivity::class.java)
-        ActivityUtil.startNewActivityWithoutFinish(this, HtmlEditorExampleActivity::class.java)
+//        ActivityUtil.startNewActivityWithoutFinish(this, HtmlEditorExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, CloudFireStoreDemoActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, FirebaseStorageActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, CallbackToCoroutineActivity::class.java)
@@ -172,6 +173,7 @@ class MainActivity : BasicPermissionActivity() {
 //        ActivityUtil.startNewActivityWithoutFinish(this, NotificationExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, AlarmManagerExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, AlarmDemoActivity::class.java)
+        ActivityUtil.startNewActivityWithoutFinish(this, InPersonSigningActivity::class.java)
 
 
 //        SnackBarUtility.showSnackBar(frameLayoutRoot, "test")

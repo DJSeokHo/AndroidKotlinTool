@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".main.examples.inpersonsigning.InPersonSigningActivity"
+    android:background="#dddddd">
+    
+    <TextView
+        android:layout_marginTop="10dp"
+        android:textStyle="bold"
+        android:textSize="8pt"
+        android:id="@+id/constraintTextView"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textColor="#333333"
+        android:text="sign result image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    
+    <ImageView
+        android:background="#333333"
+        android:layout_marginTop="20dp"
+        android:layout_marginHorizontal="20dp"
+        app:layout_constraintTop_toBottomOf="@+id/constraintTextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintDimensionRatio="1:1"
+        android:id="@+id/imageView"
+        android:scaleType="fitCenter"
+        android:layout_width="0dp"
+        android:layout_height="0dp"/>
+        
+    <com.swein.androidkotlintool.main.examples.inpersonsigning.SignatureView
+        android:layout_marginVertical="10dp"
+        android:layout_marginHorizontal="20dp"
+        android:id="@+id/signatureView"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLinearLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"/>
+    
+    <LinearLayout
+        android:layout_marginBottom="10dp"
+        android:layout_marginHorizontal="20dp"
+        android:id="@+id/constraintLinearLayout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        
+        <Button
+            android:text="create"
+            android:backgroundTint="#333333"
+            android:textColor="@color/white"
+            android:id="@+id/buttonCreate"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"/>
+       
+        <Button
+            android:text="clear"
+            android:layout_marginStart="20dp"
+            android:backgroundTint="#333333"
+            android:textColor="@color/white"
+            android:id="@+id/buttonClear"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"/>
+        
+    </LinearLayout>
+    
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -40,6 +40,10 @@
     <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
     <uses-permission android:name="com.android.launcher.permission.UNINSTALL_SHORTCUT" />
     
+    <permission
+        android:name="com.swein.androidkotlintool.permission.CUSTOM_RECEIVER"
+        android:protectionLevel="normal" />
+    
     <uses-feature
         android:name="android.hardware.camera"
         android:required="true" />
@@ -49,13 +53,15 @@
     
     <application
         android:allowBackup="true"
-        android:fullBackupContent="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity
+            android:name=".main.examples.inpersonsigning.InPersonSigningActivity"
+            android:exported="false" />
         <activity
             android:name=".main.examples.alarmmanager.demo.AlarmDemoActivity"
             android:exported="false" />
@@ -271,9 +277,6 @@
             android:name=".main.jetpackexample.lifecycle.LifecycleExampleActivity"
             android:exported="true" />
         <activity
-            android:name=".main.jetpackexample.databinding.DataBindingExampleActivity"
-            android:exported="true" />
-        <activity
             android:name=".main.jetpackexample.viewbinding.ViewBindingExampleActivity"
             android:exported="true" />
         <activity
@@ -394,7 +397,8 @@
         
         <receiver
             android:name=".main.examples.broadcastexample.BroadcastReceiverExample"
-            android:exported="true">
+            android:exported="true"
+            android:permission="com.swein.androidkotlintool.permission.CUSTOM_RECEIVER">
             <intent-filter>
                 <action android:name="com.swein.broadcast.passdata" />
             </intent-filter>
