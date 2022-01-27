@@ -3,14 +3,14 @@ package com.swein.androidkotlintool.main.examples.inpersonsigning
 import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.*
-import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
+import android.view.ViewGroup
 import kotlin.math.max
 import kotlin.math.min
 
 
-class SignatureView: View {
+class SignatureView(context: Context): View(context) {
 
     private var strokeWidth = 10f
     private var strokeColor = Color.BLACK
@@ -23,19 +23,10 @@ class SignatureView: View {
     private var lastTouchY = 0f
     private val rect = RectF()
 
-    constructor(context: Context) : super(context) {
-        init()
-    }
+    init {
 
-    constructor(context: Context, attributeSet: AttributeSet?) : super(context, attributeSet) {
-        init()
-    }
+        layoutParams = ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
 
-    constructor(context: Context, attributeSet: AttributeSet?, defStyleAttr: Int) : super(context, attributeSet, defStyleAttr) {
-        init()
-    }
-
-    private fun init() {
         paint.isAntiAlias = true
         paint.color = strokeColor
         paint.style = Paint.Style.STROKE
