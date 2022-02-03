@@ -28,6 +28,7 @@ import com.swein.androidkotlintool.main.examples.alarmmanager.AlarmManagerExampl
 import com.swein.androidkotlintool.main.examples.alarmmanager.demo.AlarmDemoActivity
 import com.swein.androidkotlintool.main.examples.broadcastexample.BroadcastExampleActivity
 import com.swein.androidkotlintool.main.examples.customintentexample.CustomIntentExampleActivity
+import com.swein.androidkotlintool.main.examples.googlemapexample.GoogleMapExampleActivity
 import com.swein.androidkotlintool.main.examples.htmleditorexample.HtmlEditorExampleActivity
 import com.swein.androidkotlintool.main.examples.inpersonsigning.InPersonSigningActivity
 import com.swein.androidkotlintool.main.examples.notificationexample.NotificationExampleActivity
@@ -173,7 +174,8 @@ class MainActivity : BasicPermissionActivity() {
 //        ActivityUtil.startNewActivityWithoutFinish(this, NotificationExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, AlarmManagerExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, AlarmDemoActivity::class.java)
-        ActivityUtil.startNewActivityWithoutFinish(this, InPersonSigningActivity::class.java)
+//        ActivityUtil.startNewActivityWithoutFinish(this, InPersonSigningActivity::class.java)
+        ActivityUtil.startNewActivityWithoutFinish(this, GoogleMapExampleActivity::class.java)
 
 
 //        SnackBarUtility.showSnackBar(frameLayoutRoot, "test")
