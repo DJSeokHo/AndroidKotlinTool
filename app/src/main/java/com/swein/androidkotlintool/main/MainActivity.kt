@@ -15,7 +15,6 @@ import com.swein.androidkotlintool.constants.Constants
 import com.swein.androidkotlintool.framework.module.basicpermission.BasicPermissionActivity
 import com.swein.androidkotlintool.framework.module.basicpermission.PermissionManager
 import com.swein.androidkotlintool.framework.module.basicpermission.RequestPermission
-import com.swein.androidkotlintool.framework.module.shcameraphoto.demo.SHCameraPhotoFragmentDemoActivity
 import com.swein.androidkotlintool.framework.module.volley.VolleyModule
 import com.swein.androidkotlintool.framework.utility.activity.ActivityUtil
 import com.swein.androidkotlintool.framework.utility.display.DisplayUtility
@@ -24,26 +23,11 @@ import com.swein.androidkotlintool.framework.utility.eventsplitshot.subject.ESSA
 import com.swein.androidkotlintool.framework.utility.glide.SHGlide
 import com.swein.androidkotlintool.framework.utility.debug.ILog
 import com.swein.androidkotlintool.framework.utility.screen.ScreenUtil
-import com.swein.androidkotlintool.main.examples.alarmmanager.AlarmManagerExampleActivity
-import com.swein.androidkotlintool.main.examples.alarmmanager.demo.AlarmDemoActivity
-import com.swein.androidkotlintool.main.examples.broadcastexample.BroadcastExampleActivity
-import com.swein.androidkotlintool.main.examples.customintentexample.CustomIntentExampleActivity
-import com.swein.androidkotlintool.main.examples.googlemapexample.GoogleMapExampleActivity
-import com.swein.androidkotlintool.main.examples.htmleditorexample.HtmlEditorExampleActivity
-import com.swein.androidkotlintool.main.examples.inpersonsigning.InPersonSigningActivity
-import com.swein.androidkotlintool.main.examples.notificationexample.NotificationExampleActivity
-import com.swein.androidkotlintool.main.examples.overlapviewexample.OverLapViewActivity
-import com.swein.androidkotlintool.main.examples.regularexpression.RegularExpressionExampleActivity
-import com.swein.androidkotlintool.main.examples.scenetransitionanimationexample.SceneTransitionAnimationExampleActivity
-import com.swein.androidkotlintool.main.examples.sensorexample.SensorExampleActivity
-import com.swein.androidkotlintool.main.examples.sensorexample.light.LightSensorExampleActivity
-import com.swein.androidkotlintool.main.examples.systemuivisibility.SystemUIVisibilityActivity
 import com.swein.androidkotlintool.main.moduledemo.ModuleDemoActivity
 import com.swein.androidkotlintool.template.bottomtab.activity.TabHostActivity
 import com.swein.androidkotlintool.template.handlerthread.HandlerThreadTemplateActivity
 import com.swein.androidkotlintool.template.list.SHListActivity
 import com.swein.androidkotlintool.template.memeberjoin.MemberJoinTemplateActivity
-import kotlinx.coroutines.*
 
 class MainActivity : BasicPermissionActivity() {
 
@@ -175,7 +159,7 @@ class MainActivity : BasicPermissionActivity() {
 //        ActivityUtil.startNewActivityWithoutFinish(this, AlarmManagerExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, AlarmDemoActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, InPersonSigningActivity::class.java)
-        ActivityUtil.startNewActivityWithoutFinish(this, GoogleMapExampleActivity::class.java)
+//        ActivityUtil.startNewActivityWithoutFinish(this, GoogleMapExampleActivity::class.java)
 
 
 //        SnackBarUtility.showSnackBar(frameLayoutRoot, "test")

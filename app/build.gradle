@@ -8,6 +8,7 @@ apply plugin: 'kotlin-kapt'
 
 apply plugin: 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
 
+
 android {
     compileSdkVersion 31
 
@@ -137,18 +138,6 @@ dependencies {
 
     // chart
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
-
-    // navigation ----------------------------------->
-    // Kotlin
-    implementation "androidx.navigation:navigation-fragment-ktx:2.4.0"
-    implementation "androidx.navigation:navigation-ui-ktx:2.4.0"
-
-    // Feature module Support
-    implementation "androidx.navigation:navigation-dynamic-features-fragment:2.4.0"
-
-    // Testing Navigation
-    androidTestImplementation "androidx.navigation:navigation-testing:2.4.0"
-    // <----------------------------------- navigation
 
     // Declare the dependency for the Firebase Authentication library
     // When using the BoM, you don't specify versions in Firebase library dependencies
