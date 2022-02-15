@@ -23,6 +23,7 @@ import com.swein.androidkotlintool.framework.utility.eventsplitshot.subject.ESSA
 import com.swein.androidkotlintool.framework.utility.glide.SHGlide
 import com.swein.androidkotlintool.framework.utility.debug.ILog
 import com.swein.androidkotlintool.framework.utility.screen.ScreenUtil
+import com.swein.androidkotlintool.main.examples.multiplebackstack.MultipleBackStackExampleActivity
 import com.swein.androidkotlintool.main.moduledemo.ModuleDemoActivity
 import com.swein.androidkotlintool.template.bottomtab.activity.TabHostActivity
 import com.swein.androidkotlintool.template.handlerthread.HandlerThreadTemplateActivity
@@ -122,8 +123,7 @@ class MainActivity : BasicPermissionActivity() {
 //        ActivityUtil.startNewActivityWithoutFinish(this, InfinityAutoScrollPaddingBannerExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, CircleMenuExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, MultipleViewTypesRecyclerViewExampleActivity::class.java)
-//        ActivityUtil.startNewActivityWithoutFinish(this, JetpackNavigationExampleActivity::class.java)
-//        ActivityUtil.startNewActivityWithoutFinish(this, MultipleBackStackExampleActivity::class.java)
+        ActivityUtil.startNewActivityWithoutFinish(this, MultipleBackStackExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, MultipleSelectionRecyclerViewExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, WebViewExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, FirebaseAuthPhoneActivity::class.java)

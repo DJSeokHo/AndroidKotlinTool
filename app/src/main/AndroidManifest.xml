@@ -59,7 +59,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-       
+        <activity
+            android:name=".main.examples.multiplebackstack.MultipleBackStackExampleActivity"
+            android:exported="false" />
         <activity
             android:name=".main.examples.googlemapexample.GoogleMapExampleActivity"
             android:exported="false" />
@@ -175,19 +177,7 @@
             android:exported="true" />
         <activity android:name=".main.examples.webview.WebViewExampleActivity" />
         <activity
-            android:name=".main.examples.multiplebackstackforfragmentsinactivity.post.PostActivity"
-            android:exported="true" />
-        <activity
             android:name=".main.examples.multipleselectionrecyclerview.MultipleSelectionRecyclerViewExampleActivity"
-            android:exported="true" />
-        <activity
-            android:name=".main.examples.multiplebackstackforfragmentsinactivity.main.MultipleBackStackExampleActivity"
-            android:exported="true" />
-        <activity
-            android:name=".main.jetpackexample.navigation.post.PostActivity"
-            android:exported="true" />
-        <activity
-            android:name=".main.jetpackexample.navigation.JetpackNavigationExampleActivity"
             android:exported="true" />
         <activity
             android:name=".main.examples.multipleviewtypesrecyclerview.MultipleViewTypesRecyclerViewExampleActivity"

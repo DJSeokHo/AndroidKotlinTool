@@ -49,6 +49,7 @@
         <entry key="app/src/main/res/layout/activity_html_editor_example.xml" value="0.18" />
         <entry key="app/src/main/res/layout/activity_in_person_signing.xml" value="0.284375" />
         <entry key="app/src/main/res/layout/activity_input_info_example.xml" value="0.14" />
+        <entry key="app/src/main/res/layout/activity_jetpack_navigation_example.xml" value="0.275" />
         <entry key="app/src/main/res/layout/activity_ktor_example.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_light_sensor_example.xml" value="0.28177083333333336" />
         <entry key="app/src/main/res/layout/activity_live_data_demo.xml" value="0.3494791666666667" />
@@ -57,6 +58,8 @@
         <entry key="app/src/main/res/layout/activity_mdday_five.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_mdday_seven.xml" value="0.10648148148148148" />
         <entry key="app/src/main/res/layout/activity_motion_layout_basic.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_multiple_back_stack_example.xml" value="0.3171875" />
+        <entry key="app/src/main/res/layout/activity_multiple_back_stack_example2.xml" value="0.2890625" />
         <entry key="app/src/main/res/layout/activity_mvvmrecycler_view_example.xml" value="0.16995947315096252" />
         <entry key="app/src/main/res/layout/activity_navigation_basic_example.xml" value="0.303125" />
         <entry key="app/src/main/res/layout/activity_navigation_example.xml" value="0.30520833333333336" />
@@ -65,6 +68,8 @@
         <entry key="app/src/main/res/layout/activity_over_lap_view.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_paging_example.xml" value="0.2765625" />
         <entry key="app/src/main/res/layout/activity_pipexample.xml" value="0.30104166666666665" />
+        <entry key="app/src/main/res/layout/activity_post.xml" value="0.275" />
+        <entry key="app/src/main/res/layout/activity_post2.xml" value="0.2890625" />
         <entry key="app/src/main/res/layout/activity_profile_example.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_recycler_view_with_slide.xml" value="0.20833333333333334" />
         <entry key="app/src/main/res/layout/activity_register_example.xml" value="0.25" />
@@ -83,19 +88,34 @@
         <entry key="app/src/main/res/layout/activity_unity_ads_example.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_web_view_example.xml" value="0.2015625" />
         <entry key="app/src/main/res/layout/activity_youtube_player_example.xml" value="0.2875" />
+        <entry key="app/src/main/res/layout/fragment_auth.xml" value="0.275" />
         <entry key="app/src/main/res/layout/fragment_bottom_action_sheet.xml" value="0.26458333333333334" />
         <entry key="app/src/main/res/layout/fragment_custom_tab_layout_example.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_discover.xml" value="0.2890625" />
         <entry key="app/src/main/res/layout/fragment_exo_player_example.xml" value="0.2791666666666667" />
+        <entry key="app/src/main/res/layout/fragment_favorite.xml" value="0.275" />
+        <entry key="app/src/main/res/layout/fragment_favorite2.xml" value="0.2890625" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.1421875" />
+        <entry key="app/src/main/res/layout/fragment_home2.xml" value="0.275" />
+        <entry key="app/src/main/res/layout/fragment_m_b_s_home.xml" value="0.2890625" />
+        <entry key="app/src/main/res/layout/fragment_m_b_s_profile.xml" value="0.2890625" />
+        <entry key="app/src/main/res/layout/fragment_m_b_s_search.xml" value="0.2890625" />
+        <entry key="app/src/main/res/layout/fragment_modify_profile.xml" value="0.275" />
         <entry key="app/src/main/res/layout/fragment_n_b_e_main.xml" value="0.303125" />
+        <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.275" />
+        <entry key="app/src/main/res/layout/fragment_profile2.xml" value="0.275" />
         <entry key="app/src/main/res/layout/fragment_s_h_camera_photo.xml" value="0.14513677811550152" />
         <entry key="app/src/main/res/layout/fragment_schedule.xml" value="0.30833333333333335" />
+        <entry key="app/src/main/res/layout/fragment_sign_in.xml" value="0.275" />
+        <entry key="app/src/main/res/layout/fragment_sign_up.xml" value="0.275" />
         <entry key="app/src/main/res/layout/new_app_widget.xml" value="0.146403242147923" />
         <entry key="app/src/main/res/layout/new_app_widget_configure.xml" value="0.30104166666666665" />
+        <entry key="app/src/main/res/layout/view_custom_bottom_navigation.xml" value="0.2890625" />
         <entry key="app/src/main/res/layout/view_google_map_popup.xml" value="0.2546875" />
         <entry key="app/src/main/res/layout/view_holder_album_selector.xml" value="0.14989733059548255" />
         <entry key="app/src/main/res/layout/view_holder_album_selector_item.xml" value="0.14513677811550152" />
         <entry key="app/src/main/res/layout/view_holder_custom_tab.xml" value="0.14583333333333334" />
+        <entry key="app/src/main/res/layout/view_holder_custom_top_navigation_bar.xml" value="0.2890625" />
         <entry key="app/src/main/res/layout/view_holder_firebase_pagination_item.xml" value="0.275" />
         <entry key="app/src/main/res/layout/view_holder_flow_example_item.xml" value="0.3494791666666667" />
         <entry key="app/src/main/res/layout/view_holder_github_example_footer_item.xml" value="0.278125" />
