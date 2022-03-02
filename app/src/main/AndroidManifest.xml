@@ -19,6 +19,7 @@
         tools:ignore="ProtectedPermissions" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.Manifest.permission.READ_CONTACTS" />
@@ -59,6 +60,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity
+            android:name=".main.examples.patternlockexample.PatternLockExampleActivity"
+            android:exported="false" />
         <activity
             android:name=".main.examples.multiplebackstack.MultipleBackStackExampleActivity"
             android:exported="false" />
