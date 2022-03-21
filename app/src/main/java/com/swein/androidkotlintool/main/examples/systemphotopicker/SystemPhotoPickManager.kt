@@ -234,11 +234,11 @@ class SystemPhotoPickManager(private val componentActivity: ComponentActivity) {
         )
 
         takePicture.launch(tempImageUri)
-
     }
 
-    fun takePictureWithUri(takeUriDelegate: (uri: Uri) -> Unit) {
+    fun takePictureWithUri(shouldCompress: Boolean = false, takeUriDelegate: (uri: Uri) -> Unit) {
 
+        this.shouldCompress = shouldCompress
         this.takeUriDelegate = takeUriDelegate
 
         tempImageUri = FileProvider.getUriForFile(

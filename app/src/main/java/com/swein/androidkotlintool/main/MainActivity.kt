@@ -23,6 +23,7 @@ import com.swein.androidkotlintool.framework.utility.eventsplitshot.subject.ESSA
 import com.swein.androidkotlintool.framework.utility.glide.SHGlide
 import com.swein.androidkotlintool.framework.utility.debug.ILog
 import com.swein.androidkotlintool.framework.utility.screen.ScreenUtil
+import com.swein.androidkotlintool.main.examples.email.SendEmailExampleActivity
 import com.swein.androidkotlintool.main.examples.multiplebackstack.MultipleBackStackExampleActivity
 import com.swein.androidkotlintool.main.examples.patternlockexample.PatternLockExampleActivity
 import com.swein.androidkotlintool.main.moduledemo.ModuleDemoActivity
@@ -161,7 +162,8 @@ class MainActivity : BasicPermissionActivity() {
 //        ActivityUtil.startNewActivityWithoutFinish(this, AlarmDemoActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, InPersonSigningActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, GoogleMapExampleActivity::class.java)
-        ActivityUtil.startNewActivityWithoutFinish(this, PatternLockExampleActivity::class.java)
+//        ActivityUtil.startNewActivityWithoutFinish(this, PatternLockExampleActivity::class.java)
+        ActivityUtil.startNewActivityWithoutFinish(this, SendEmailExampleActivity::class.java)
 
 
 //        SnackBarUtility.showSnackBar(frameLayoutRoot, "test")

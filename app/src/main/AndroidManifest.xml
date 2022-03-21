@@ -61,6 +61,9 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".main.examples.email.SendEmailExampleActivity"
+            android:exported="false" />
+        <activity
             android:name=".main.examples.patternlockexample.PatternLockExampleActivity"
             android:exported="false" />
         <activity
