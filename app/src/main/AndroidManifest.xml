@@ -8,6 +8,7 @@
             <action android:name="com.google.android.youtube.api.service.START" />
         </intent>
     </queries> <!-- 允许程序监视、修改或放弃拨打电话 -->
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
@@ -60,6 +61,23 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity
+            android:name=".main.examples.googleadmobexample.AdmobNativeExampleActivity"
+            android:exported="false"
+            android:hardwareAccelerated="true" />
+        <activity
+            android:name=".main.examples.googleadmobexample.AdmobRewardedExampleActivity"
+            android:exported="false"
+            android:hardwareAccelerated="true" />
+        <activity
+            android:name=".main.examples.googleadmobexample.AdmobInterstitialExampleActivity"
+            android:exported="false" />
+        <activity
+            android:name=".main.examples.googleadmobexample.AdmobBannerExampleActivity"
+            android:exported="false" />
+        <activity
+            android:name=".main.examples.googleadmobexample.GoogleAdmobExampleActivity"
+            android:exported="false" />
         <activity
             android:name=".main.examples.email.SendEmailExampleActivity"
             android:exported="false" />
@@ -398,6 +416,9 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="${MAPS_API_KEY}" />
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-3940256099942544~3347511713" />
         
         <receiver
             android:name=".main.examples.broadcastexample.BroadcastReceiverExample"

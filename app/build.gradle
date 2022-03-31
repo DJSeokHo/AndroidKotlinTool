@@ -165,6 +165,9 @@ dependencies {
     // google map
     implementation 'com.google.android.gms:play-services-maps:18.0.2'
 
+    // admob
+    implementation 'com.google.android.gms:play-services-ads:20.6.0'
+
 }
 
 apply plugin: 'com.google.gms.google-services'
