@@ -23,10 +23,13 @@ import com.swein.androidkotlintool.framework.utility.eventsplitshot.subject.ESSA
 import com.swein.androidkotlintool.framework.utility.glide.SHGlide
 import com.swein.androidkotlintool.framework.utility.debug.ILog
 import com.swein.androidkotlintool.framework.utility.screen.ScreenUtil
+import com.swein.androidkotlintool.main.examples.circlemenu.CircleMenuExampleActivity
 import com.swein.androidkotlintool.main.examples.email.SendEmailExampleActivity
 import com.swein.androidkotlintool.main.examples.googleadmobexample.GoogleAdmobExampleActivity
 import com.swein.androidkotlintool.main.examples.multiplebackstack.MultipleBackStackExampleActivity
 import com.swein.androidkotlintool.main.examples.patternlockexample.PatternLockExampleActivity
+import com.swein.androidkotlintool.main.examples.recyclerviewwaterfall.RecyclerViewWaterfallExampleActivity
+import com.swein.androidkotlintool.main.examples.rotatingcirclemenu.RotatingCircleMenuExampleActivity
 import com.swein.androidkotlintool.main.moduledemo.ModuleDemoActivity
 import com.swein.androidkotlintool.template.bottomtab.activity.TabHostActivity
 import com.swein.androidkotlintool.template.handlerthread.HandlerThreadTemplateActivity
@@ -124,7 +127,6 @@ class MainActivity : BasicPermissionActivity() {
 //        ActivityUtil.startNewActivityWithoutFinish(this, NetworkStateMonitorActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, RxKotlinLiteDemoActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, InfinityAutoScrollPaddingBannerExampleActivity::class.java)
-//        ActivityUtil.startNewActivityWithoutFinish(this, CircleMenuExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, MultipleViewTypesRecyclerViewExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, MultipleBackStackExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, MultipleSelectionRecyclerViewExampleActivity::class.java)
@@ -165,7 +167,10 @@ class MainActivity : BasicPermissionActivity() {
 //        ActivityUtil.startNewActivityWithoutFinish(this, GoogleMapExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, PatternLockExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, SendEmailExampleActivity::class.java)
-        ActivityUtil.startNewActivityWithoutFinish(this, GoogleAdmobExampleActivity::class.java)
+//        ActivityUtil.startNewActivityWithoutFinish(this, GoogleAdmobExampleActivity::class.java)
+//        ActivityUtil.startNewActivityWithoutFinish(this, RecyclerViewWaterfallExampleActivity::class.java)
+//        ActivityUtil.startNewActivityWithoutFinish(this, CircleMenuExampleActivity::class.java)
+        ActivityUtil.startNewActivityWithoutFinish(this, RotatingCircleMenuExampleActivity::class.java)
 
 
 //        SnackBarUtility.showSnackBar(frameLayoutRoot, "test")

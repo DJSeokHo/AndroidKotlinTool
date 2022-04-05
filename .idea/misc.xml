@@ -20,6 +20,7 @@
         <entry key="app/src/main/res/drawable/buy_button_bg.xml" value="0.22962962962962963" />
         <entry key="app/src/main/res/drawable/circle_bg_gradient.xml" value="0.26851851851851855" />
         <entry key="app/src/main/res/drawable/circle_gray_border_white_bg.xml" value="0.12083333333333333" />
+        <entry key="app/src/main/res/drawable/circle_menu_bg.xml" value="0.2375" />
         <entry key="app/src/main/res/drawable/circle_white_bg.xml" value="0.24479166666666666" />
         <entry key="app/src/main/res/drawable/html_editor_bg.xml" value="0.22962962962962963" />
         <entry key="app/src/main/res/drawable/rect_bg_gradient.xml" value="0.26851851851851855" />
@@ -34,6 +35,7 @@
         <entry key="app/src/main/res/layout/activity_app_widget_example.xml" value="0.30104166666666665" />
         <entry key="app/src/main/res/layout/activity_broadcast_example.xml" value="0.3296875" />
         <entry key="app/src/main/res/layout/activity_callback_to_coroutine.xml" value="0.29739583333333336" />
+        <entry key="app/src/main/res/layout/activity_circle_menu_example.xml" value="0.27291666666666664" />
         <entry key="app/src/main/res/layout/activity_cloud_fire_store_demo.xml" value="0.29739583333333336" />
         <entry key="app/src/main/res/layout/activity_custom_intent_example.xml" value="0.315625" />
         <entry key="app/src/main/res/layout/activity_custom_schedule_example.xml" value="0.12" />
@@ -78,9 +80,11 @@
         <entry key="app/src/main/res/layout/activity_post.xml" value="0.275" />
         <entry key="app/src/main/res/layout/activity_post2.xml" value="0.2890625" />
         <entry key="app/src/main/res/layout/activity_profile_example.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_recycler_view_waterfall_example.xml" value="0.30104166666666665" />
         <entry key="app/src/main/res/layout/activity_recycler_view_with_slide.xml" value="0.20833333333333334" />
         <entry key="app/src/main/res/layout/activity_register_example.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_regular_expression_example.xml" value="0.15833333333333333" />
+        <entry key="app/src/main/res/layout/activity_rotating_circle_menu_example.xml" value="0.27291666666666664" />
         <entry key="app/src/main/res/layout/activity_rx_kotlin_lite_demo.xml" value="0.3494791666666667" />
         <entry key="app/src/main/res/layout/activity_scene_transition_animation_detail_example.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_scene_transition_animation_example.xml" value="0.33" />
@@ -96,6 +100,7 @@
         <entry key="app/src/main/res/layout/activity_unity_ads_example.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_web_view_example.xml" value="0.2015625" />
         <entry key="app/src/main/res/layout/activity_youtube_player_example.xml" value="0.2875" />
+        <entry key="app/src/main/res/layout/circle_menu_item.xml" value="0.27291666666666664" />
         <entry key="app/src/main/res/layout/fragment_auth.xml" value="0.275" />
         <entry key="app/src/main/res/layout/fragment_bottom_action_sheet.xml" value="0.26458333333333334" />
         <entry key="app/src/main/res/layout/fragment_custom_tab_layout_example.xml" value="0.25" />
@@ -137,6 +142,7 @@
         <entry key="app/src/main/res/layout/view_holder_sh_selected_image.xml" value="0.1519756838905775" />
         <entry key="app/src/main/res/layout/view_holder_sh_selected_image_item.xml" value="0.1519756838905775" />
         <entry key="app/src/main/res/layout/view_holder_slide_item.xml" value="0.20833333333333334" />
+        <entry key="app/src/main/res/layout/view_holder_waterfall_item.xml" value="0.2869791666666667" />
         <entry key="app/src/main/res/layout/view_holder_web.xml" value="0.2015625" />
         <entry key="app/src/main/res/layout/view_navigation_bar_template.xml" value="0.21458333333333332" />
         <entry key="app/src/main/res/layout/view_over_lap_item_view.xml" value="0.1046875" />
