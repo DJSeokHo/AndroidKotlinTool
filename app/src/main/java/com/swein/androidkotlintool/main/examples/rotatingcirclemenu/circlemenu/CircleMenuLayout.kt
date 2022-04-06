@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import com.swein.androidkotlintool.R
 import com.swein.androidkotlintool.framework.utility.debug.ILog
 import com.swein.androidkotlintool.framework.utility.display.DisplayUtility
+import com.swein.androidkotlintool.main.examples.rotatingcirclemenu.circlemenu.model.CircleMenuModel
 import kotlin.math.*
 
 class CircleMenuLayout: ViewGroup {
@@ -17,28 +18,21 @@ class CircleMenuLayout: ViewGroup {
 
         private const val DISABLE_CLICK_VALUE = 3
 
-        // 370 is a best value I think...
-        private const val AUTO_ROTATING_THRESHOLD_VALUE = 250
+        // 150 is a best value I think...
+        private const val AUTO_ROTATING_THRESHOLD_VALUE = 150
     }
 
     private var circleMenuRadius = 0
     private var circleMenuItemStartAngle = -90f
 
-    constructor(context: Context) : super(context) {
-        initView()
-    }
+    constructor(context: Context) : super(context)
+    constructor(context: Context, attributeSet: AttributeSet) : super(context, attributeSet)
+    constructor(context: Context, attributeSet: AttributeSet, defStyleAttr: Int) : super(context, attributeSet, defStyleAttr)
 
-    constructor(context: Context, attributeSet: AttributeSet) : super(context, attributeSet) {
-        initView()
-    }
 
-    constructor(context: Context, attributeSet: AttributeSet, defStyleAttr: Int) : super(context, attributeSet, defStyleAttr) {
-        initView()
-    }
-
-    private fun initView() {
-        setBackgroundResource(R.drawable.circle_menu_bg)
-        circleMenuRadius = (DisplayUtility.dipToPx(context, 300f) * 0.5f).toInt()
+    fun initView(backgroundResource: Int, widthDP: Float) {
+        setBackgroundResource(backgroundResource)
+        circleMenuRadius = (DisplayUtility.dipToPx(context, widthDP) * 0.5f).toInt()
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
@@ -154,9 +148,12 @@ class CircleMenuLayout: ViewGroup {
 
             MotionEvent.ACTION_DOWN -> {
 //                ILog.debug(TAG, "ACTION_DOWN $x $y, center is $circleMenuRadius, $circleMenuRadius")
+
                 touchDownX = x
                 touchDownY = y
+
                 totalTimeBetweenTouchDownAndTouchUp = System.currentTimeMillis()
+
                 tempAngleBetweenTouchDownAndTouchUp = 0f
 
                 if (isAutoRotating) {
@@ -202,6 +199,8 @@ class CircleMenuLayout: ViewGroup {
 
                     post(AutoRotatingRunnable(anglePerSecond, shouldStopAutoRotating = {
                         isAutoRotating = false
+                    }, onRePost = {
+                        postDelayed(it, 16)
                     }).also {
                         autoRotatingRunnable = it
                     })
@@ -226,6 +225,7 @@ class CircleMenuLayout: ViewGroup {
     private inner class AutoRotatingRunnable(
         private var angelPerSecond: Float,
         private val shouldStopAutoRotating: () -> Unit,
+        private val onRePost: (runnable: Runnable) -> Unit
         ) : Runnable {
 
         override fun run() {
@@ -237,12 +237,14 @@ class CircleMenuLayout: ViewGroup {
 
             isAutoRotating = true
             // 不断改变mStartAngle，让其滚动，/30为了避免滚动太快
-            circleMenuItemStartAngle += angelPerSecond / 30
+            circleMenuItemStartAngle += angelPerSecond / 20
             // 逐渐减小这个值
-            angelPerSecond *= 0.97f
-            postDelayed(this, 16)
-            // 重新布局
+            angelPerSecond *= 0.98f
+
             requestLayout()
+
+            onRePost(this)
+
         }
     }
 
@@ -253,28 +255,28 @@ class CircleMenuLayout: ViewGroup {
     }
 
     private fun calculateQuadrant(x: Float, y: Float, radius: Float): Int {
-        val tempX = (x - radius).toInt()
-        val tempY = (y - radius).toInt()
+        // radius as the center point of the circle menu
 
         return when {
-            tempX >= 0 && tempY >= 0 -> {
+            x >= radius && y >= radius -> {
                 4
             }
 
-            tempX >= 0 && tempY < 0 -> {
+            x >= radius && y < radius -> {
                 1
             }
 
-            tempX < 0 && tempY >= 0 -> {
+            x < radius && y >= radius -> {
                 3
             }
 
-            tempX < 0 && tempY < 0 -> {
+            x < radius && y < radius -> {
                 2
             }
             else -> {
                 0
             }
         }
+
     }
 }

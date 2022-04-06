@@ -2,8 +2,12 @@ package com.swein.androidkotlintool.main.examples.rotatingcirclemenu
 
 import android.os.Bundle
 import android.view.View
+import android.widget.ImageButton
+import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.cardview.widget.CardView
 import com.swein.androidkotlintool.R
 import com.swein.androidkotlintool.main.examples.rotatingcirclemenu.circlemenu.CircleMenuLayout
 import com.swein.androidkotlintool.main.examples.rotatingcirclemenu.circlemenu.item.CircleMenuItemView
@@ -15,52 +19,95 @@ class RotatingCircleMenuExampleActivity : AppCompatActivity() {
         findViewById(R.id.circleMenuLayout)
     }
 
-//    private lateinit var mCircleMenuLayoutOld: CircleMenuLayoutOld
-//
-//    private val mItemTexts = listOf(
-//        "安全中心 ", "特色服务", "投资理财",
-//        "转账汇款", "我的账户", "信用卡"
-//    )
-//    private val mItemImgs = listOf(
-//        R.drawable.home_mbank_1_normal,
-//        R.drawable.home_mbank_2_normal, R.drawable.home_mbank_3_normal,
-//        R.drawable.home_mbank_4_normal, R.drawable.home_mbank_5_normal,
-//        R.drawable.home_mbank_6_normal
-//    )
+    private val cardView: CardView by lazy {
+        findViewById(R.id.cardView)
+    }
+
+    private val imageButton: ImageButton by lazy {
+        findViewById(R.id.imageButton)
+    }
+
+    private val imageView: ImageView by lazy {
+        findViewById(R.id.imageView)
+    }
+
+    private val textView: TextView by lazy {
+        findViewById(R.id.textView)
+    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_rotating_circle_menu_example)
 
+        circleMenuLayout.initView(R.drawable.circle_menu_bg, 300f)
+
         circleMenuLayout.post {
-            for (i in 0 until 6) {
 
-                CircleMenuItemView(this, CircleMenuModel(R.mipmap.ti_profile, "menu$i")).also {
+            CircleMenuItemView(this, CircleMenuModel(R.mipmap.ti_cm_post, "Post"), onItemClick = {
+                imageView.setImageResource(it.imageResource)
+                textView.text = it.title
+            }).also {
 
-                    circleMenuLayout.addView(it)
+                circleMenuLayout.addView(it)
 
-                }
             }
+
+            CircleMenuItemView(this, CircleMenuModel(R.mipmap.ti_cm_camera, "Camera"), onItemClick = {
+                imageView.setImageResource(it.imageResource)
+                textView.text = it.title
+            }).also {
+
+                circleMenuLayout.addView(it)
+
+            }
+
+            CircleMenuItemView(this, CircleMenuModel(R.mipmap.ti_cm_chatting, "Chatting"), onItemClick = {
+                imageView.setImageResource(it.imageResource)
+                textView.text = it.title
+            }).also {
+
+                circleMenuLayout.addView(it)
+
+            }
+
+            CircleMenuItemView(this, CircleMenuModel(R.mipmap.ti_cm_map, "Map"), onItemClick = {
+                imageView.setImageResource(it.imageResource)
+                textView.text = it.title
+            }).also {
+
+                circleMenuLayout.addView(it)
+
+            }
+
+            CircleMenuItemView(this, CircleMenuModel(R.mipmap.ti_cm_profile, "Profile"), onItemClick = {
+                imageView.setImageResource(it.imageResource)
+                textView.text = it.title
+            }).also {
+
+                circleMenuLayout.addView(it)
+
+            }
+
+            CircleMenuItemView(this, CircleMenuModel(R.mipmap.ti_cm_search, "Search"), onItemClick = {
+                imageView.setImageResource(it.imageResource)
+                textView.text = it.title
+            }).also {
+
+                circleMenuLayout.addView(it)
+
+            }
+
         }
 
-//        mCircleMenuLayoutOld = findViewById<View>(R.id.id_menulayout) as CircleMenuLayoutOld
-//        mCircleMenuLayoutOld.setMenuItemIconsAndTexts(mItemImgs, mItemTexts)
-//
-//        mCircleMenuLayoutOld.setOnMenuItemClickListener(object : CircleMenuLayoutOld.OnMenuItemClickListener {
-//            override fun itemClick(view: View?, pos: Int) {
-//                Toast.makeText(
-//                    this@RotatingCircleMenuExampleActivity, mItemTexts[pos],
-//                    Toast.LENGTH_SHORT
-//                ).show()
-//            }
-//
-//            override fun itemCenterClick(view: View?) {
-//                Toast.makeText(
-//                    this@RotatingCircleMenuExampleActivity,
-//                    "you can do something just like ccb  ",
-//                    Toast.LENGTH_SHORT
-//                ).show()
-//            }
-//        })
+        imageButton.setOnClickListener {
+
+            cardView.visibility = if (cardView.visibility == View.VISIBLE) {
+                View.INVISIBLE
+            }
+            else {
+                View.VISIBLE
+            }
+        }
     }
 }

@@ -12,7 +12,8 @@ import com.swein.androidkotlintool.main.examples.rotatingcirclemenu.circlemenu.m
 @SuppressLint("ViewConstructor")
 class CircleMenuItemView(
     context: Context,
-    circleMenuModel: CircleMenuModel
+    circleMenuModel: CircleMenuModel,
+    onItemClick: (model: CircleMenuModel) -> Unit
 ): ConstraintLayout(context) {
 
     private var textView: TextView
@@ -29,7 +30,7 @@ class CircleMenuItemView(
         textView.text = circleMenuModel.title
 
         setOnClickListener {
-            Toast.makeText(it.context, circleMenuModel.title, Toast.LENGTH_SHORT).show()
+            onItemClick(circleMenuModel)
         }
     }
 }

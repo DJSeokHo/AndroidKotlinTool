@@ -26,6 +26,7 @@
         <entry key="app/src/main/res/drawable/rect_bg_gradient.xml" value="0.26851851851851855" />
         <entry key="app/src/main/res/drawable/round_corner_bg_gradient_stroke.xml" value="0.26851851851851855" />
         <entry key="app/src/main/res/drawable/switch_custom_thumb_selector.xml" value="0.2282051282051282" />
+        <entry key="app/src/main/res/drawable/ti_circle_menu_bg.xml" value="0.2375" />
         <entry key="app/src/main/res/layout/activity_admob_banner_example.xml" value="0.2875" />
         <entry key="app/src/main/res/layout/activity_admob_interstitial.xml" value="0.2734375" />
         <entry key="app/src/main/res/layout/activity_admob_interstitial_example.xml" value="0.16041666666666668" />
