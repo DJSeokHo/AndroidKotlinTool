@@ -56,6 +56,7 @@
         <entry key="app/src/main/res/layout/activity_google_map_example.xml" value="0.26875" />
         <entry key="app/src/main/res/layout/activity_group_recycler_view.xml" value="0.2984375" />
         <entry key="app/src/main/res/layout/activity_html_editor_example.xml" value="0.18" />
+        <entry key="app/src/main/res/layout/activity_iglike_list.xml" value="0.33125" />
         <entry key="app/src/main/res/layout/activity_in_person_signing.xml" value="0.284375" />
         <entry key="app/src/main/res/layout/activity_input_info_example.xml" value="0.14" />
         <entry key="app/src/main/res/layout/activity_jetpack_navigation_example.xml" value="0.275" />
@@ -136,6 +137,7 @@
         <entry key="app/src/main/res/layout/view_holder_github_example_item.xml" value="0.278125" />
         <entry key="app/src/main/res/layout/view_holder_group_example_header_item.xml" value="0.2703125" />
         <entry key="app/src/main/res/layout/view_holder_group_example_item.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/view_holder_ig_like_item.xml" value="0.33125" />
         <entry key="app/src/main/res/layout/view_holder_paging_example.xml" value="0.2921875" />
         <entry key="app/src/main/res/layout/view_holder_scene_transition_animation_item.xml" value="0.2869791666666667" />
         <entry key="app/src/main/res/layout/view_holder_schedule.xml" value="0.2" />
