@@ -46,6 +46,7 @@ class IGLikeItemViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
 
             imageView?.let {
                 Glide.with(it.context).asBitmap().load(model.imageUrl)
+                    .transition(BitmapTransitionOptions.withCrossFade())
                     .skipMemoryCache(true)
                     .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
                     .into(it)

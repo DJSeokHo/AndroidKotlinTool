@@ -29,6 +29,7 @@ import com.swein.androidkotlintool.main.examples.googleadmobexample.GoogleAdmobE
 import com.swein.androidkotlintool.main.examples.instagreamlike.IGLikeListActivity
 import com.swein.androidkotlintool.main.examples.multiplebackstack.MultipleBackStackExampleActivity
 import com.swein.androidkotlintool.main.examples.patternlockexample.PatternLockExampleActivity
+import com.swein.androidkotlintool.main.examples.recyclerviewheaderfooter.RecyclerViewWithHeaderAndFooterExampleActivity
 import com.swein.androidkotlintool.main.examples.recyclerviewwaterfall.RecyclerViewWaterfallExampleActivity
 import com.swein.androidkotlintool.main.examples.rotatingcirclemenu.RotatingCircleMenuExampleActivity
 import com.swein.androidkotlintool.main.moduledemo.ModuleDemoActivity
@@ -173,6 +174,7 @@ class MainActivity : BasicPermissionActivity() {
         ActivityUtil.startNewActivityWithoutFinish(this, RecyclerViewWaterfallExampleActivity::class.java)
         ActivityUtil.startNewActivityWithoutFinish(this, RotatingCircleMenuExampleActivity::class.java)
         ActivityUtil.startNewActivityWithoutFinish(this, IGLikeListActivity::class.java)
+//        ActivityUtil.startNewActivityWithoutFinish(this, RecyclerViewWithHeaderAndFooterExampleActivity::class.java)
 
 
 //        SnackBarUtility.showSnackBar(frameLayoutRoot, "test")

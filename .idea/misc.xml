@@ -83,6 +83,7 @@
         <entry key="app/src/main/res/layout/activity_post2.xml" value="0.2890625" />
         <entry key="app/src/main/res/layout/activity_profile_example.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_recycler_view_waterfall_example.xml" value="0.30104166666666665" />
+        <entry key="app/src/main/res/layout/activity_recycler_view_with_header_and_footer_example.xml" value="0.2890625" />
         <entry key="app/src/main/res/layout/activity_recycler_view_with_slide.xml" value="0.20833333333333334" />
         <entry key="app/src/main/res/layout/activity_register_example.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_regular_expression_example.xml" value="0.15833333333333333" />
@@ -139,6 +140,10 @@
         <entry key="app/src/main/res/layout/view_holder_group_example_item.xml" value="0.22" />
         <entry key="app/src/main/res/layout/view_holder_ig_like_item.xml" value="0.33125" />
         <entry key="app/src/main/res/layout/view_holder_paging_example.xml" value="0.2921875" />
+        <entry key="app/src/main/res/layout/view_holder_rhf_item.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/view_holder_rhf_item_footer.xml" value="0.2890625" />
+        <entry key="app/src/main/res/layout/view_holder_rhf_tiem.xml" value="0.2890625" />
+        <entry key="app/src/main/res/layout/view_holder_rhf_tiem_header.xml" value="0.2890625" />
         <entry key="app/src/main/res/layout/view_holder_scene_transition_animation_item.xml" value="0.2869791666666667" />
         <entry key="app/src/main/res/layout/view_holder_schedule.xml" value="0.2" />
         <entry key="app/src/main/res/layout/view_holder_schedule_time.xml" value="0.165" />
