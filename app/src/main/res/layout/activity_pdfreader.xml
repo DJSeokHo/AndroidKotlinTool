@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".main.examples.pdfreader.PDFReaderActivity"
+    android:background="@color/white">
+    
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="80dp"
+        android:scrollbars="none"/>
+  
+    <LinearLayout
+        app:layout_constraintTop_toBottomOf="@+id/recyclerView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:gravity="center">
+        
+        <Button
+            android:textAllCaps="false"
+            android:text="Previous"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#FF5722"
+            android:textSize="8pt"
+            android:id="@+id/buttonLeft"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+       
+        <TextView
+            android:layout_marginHorizontal="20dp"
+            android:textStyle="bold"
+            android:textSize="10pt"
+            android:textColor="#FF5722"
+            android:id="@+id/textViewPage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        
+        <Button
+            android:textAllCaps="false"
+            android:text="Next"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#FF5722"
+            android:textSize="8pt"
+            android:id="@+id/buttonRight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        
+    </LinearLayout>
+    
+    <LinearLayout
+        android:visibility="gone"
+        android:gravity="center"
+        android:id="@+id/progress"
+        android:background="@color/transparent"
+        android:clickable="true"
+        android:focusable="true"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        
+        <ProgressBar
+            android:layout_gravity="center"
+            android:indeterminateTint="#FF5722"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        
+        <TextView
+            android:textColor="#FF5722"
+            android:textSize="6pt"
+            android:textStyle="bold"
+            android:id="@+id/textViewProgress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    
+    </LinearLayout>
+    
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -17,21 +17,16 @@ import com.swein.androidkotlintool.framework.module.basicpermission.PermissionMa
 import com.swein.androidkotlintool.framework.module.basicpermission.RequestPermission
 import com.swein.androidkotlintool.framework.module.volley.VolleyModule
 import com.swein.androidkotlintool.framework.utility.activity.ActivityUtil
+import com.swein.androidkotlintool.framework.utility.debug.ILog
 import com.swein.androidkotlintool.framework.utility.display.DisplayUtility
 import com.swein.androidkotlintool.framework.utility.eventsplitshot.eventcenter.EventCenter
 import com.swein.androidkotlintool.framework.utility.eventsplitshot.subject.ESSArrows
 import com.swein.androidkotlintool.framework.utility.glide.SHGlide
-import com.swein.androidkotlintool.framework.utility.debug.ILog
 import com.swein.androidkotlintool.framework.utility.screen.ScreenUtil
-import com.swein.androidkotlintool.main.examples.circlemenu.CircleMenuExampleActivity
-import com.swein.androidkotlintool.main.examples.email.SendEmailExampleActivity
-import com.swein.androidkotlintool.main.examples.googleadmobexample.GoogleAdmobExampleActivity
-import com.swein.androidkotlintool.main.examples.instagreamlike.IGLikeListActivity
-import com.swein.androidkotlintool.main.examples.multiplebackstack.MultipleBackStackExampleActivity
-import com.swein.androidkotlintool.main.examples.patternlockexample.PatternLockExampleActivity
-import com.swein.androidkotlintool.main.examples.recyclerviewheaderfooter.RecyclerViewWithHeaderAndFooterExampleActivity
-import com.swein.androidkotlintool.main.examples.recyclerviewwaterfall.RecyclerViewWaterfallExampleActivity
-import com.swein.androidkotlintool.main.examples.rotatingcirclemenu.RotatingCircleMenuExampleActivity
+import com.swein.androidkotlintool.main.examples.backgroundrunningwhitelist.BackgroundRunningWhiteListActivity
+import com.swein.androidkotlintool.main.examples.lottieexample.LottieExampleActivity
+import com.swein.androidkotlintool.main.examples.pdfreader.PDFReaderActivity
+import com.swein.androidkotlintool.main.examples.unityadsexample.UnityAdsExampleActivity
 import com.swein.androidkotlintool.main.moduledemo.ModuleDemoActivity
 import com.swein.androidkotlintool.template.bottomtab.activity.TabHostActivity
 import com.swein.androidkotlintool.template.handlerthread.HandlerThreadTemplateActivity
@@ -171,10 +166,13 @@ class MainActivity : BasicPermissionActivity() {
 //        ActivityUtil.startNewActivityWithoutFinish(this, SendEmailExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, GoogleAdmobExampleActivity::class.java)
         //        ActivityUtil.startNewActivityWithoutFinish(this, CircleMenuExampleActivity::class.java)
-        ActivityUtil.startNewActivityWithoutFinish(this, RecyclerViewWaterfallExampleActivity::class.java)
-        ActivityUtil.startNewActivityWithoutFinish(this, RotatingCircleMenuExampleActivity::class.java)
-        ActivityUtil.startNewActivityWithoutFinish(this, IGLikeListActivity::class.java)
+//        ActivityUtil.startNewActivityWithoutFinish(this, RecyclerViewWaterfallExampleActivity::class.java)
+//        ActivityUtil.startNewActivityWithoutFinish(this, RotatingCircleMenuExampleActivity::class.java)
+//        ActivityUtil.startNewActivityWithoutFinish(this, IGLikeListActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, RecyclerViewWithHeaderAndFooterExampleActivity::class.java)
+//        ActivityUtil.startNewActivityWithoutFinish(this, BackgroundRunningWhiteListActivity::class.java)
+        ActivityUtil.startNewActivityWithoutFinish(this, LottieExampleActivity::class.java)
+//        ActivityUtil.startNewActivityWithoutFinish(this, PDFReaderActivity::class.java)
 
 
 //        SnackBarUtility.showSnackBar(frameLayoutRoot, "test")

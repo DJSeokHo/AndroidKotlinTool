@@ -12,45 +12,17 @@ import androidx.recyclerview.widget.LinearSmoothScroller
 import androidx.recyclerview.widget.RecyclerView
 import kotlin.math.roundToInt
 
-/**
- * A [android.support.v7.widget.RecyclerView.LayoutManager] which layouts and orders its views
- * based on width and height spans.
- *
- * @param orientation Whether the views will be layouted and scrolled in vertical or horizontal
- * @param spans How many spans does the layout have per row or column
- */
 open class IGLayoutManager(val orientation: Orientation,
                                     val spans: Int) : RecyclerView.LayoutManager() {
 
-    //==============================================================================================
-    //  ~ Orientation & Direction enums
-    //==============================================================================================
-
-    /**
-     * Orientations to layout and scroll views
-     * <li>VERTICAL</li>
-     * <li>HORIZONTAL</li>
-     */
     enum class Orientation {
         VERTICAL, HORIZONTAL
     }
 
-    /**
-     * Direction of scroll for layouting process
-     * <li>START</li>
-     * <li>END</li>
-     */
     enum class Direction {
         START, END
     }
 
-    //==============================================================================================
-    //  ~ Properties
-    //==============================================================================================
-
-    /**
-     * Current scroll amount
-     */
     protected var scroll = 0
 
     /**

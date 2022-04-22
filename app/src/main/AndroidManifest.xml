@@ -41,6 +41,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
     <uses-permission android:name="com.android.launcher.permission.UNINSTALL_SHORTCUT" />
+    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
     
     <permission
         android:name="com.swein.androidkotlintool.permission.CUSTOM_RECEIVER"
@@ -61,6 +62,19 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity
+            android:name=".main.examples.lottieexample.LottieExampleActivity"
+            android:exported="false" />
+        <activity
+            android:name=".main.examples.pdfreader.PDFReaderActivity"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".main.examples.backgroundrunningwhitelist.BackgroundRunningWhiteListActivity"
+            android:exported="false"
+            android:launchMode="singleTask" />
         <activity
             android:name=".main.examples.recyclerviewheaderfooter.RecyclerViewWithHeaderAndFooterExampleActivity"
             android:exported="false" />
