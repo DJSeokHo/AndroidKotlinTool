@@ -24,6 +24,8 @@ import com.swein.androidkotlintool.framework.utility.eventsplitshot.subject.ESSA
 import com.swein.androidkotlintool.framework.utility.glide.SHGlide
 import com.swein.androidkotlintool.framework.utility.screen.ScreenUtil
 import com.swein.androidkotlintool.main.examples.backgroundrunningwhitelist.BackgroundRunningWhiteListActivity
+import com.swein.androidkotlintool.main.examples.customschedule.CustomScheduleExampleActivity
+import com.swein.androidkotlintool.main.examples.dragindicatorexample.DragIndicatorExampleActivity
 import com.swein.androidkotlintool.main.examples.lottieexample.LottieExampleActivity
 import com.swein.androidkotlintool.main.examples.pdfreader.PDFReaderActivity
 import com.swein.androidkotlintool.main.examples.unityadsexample.UnityAdsExampleActivity
@@ -171,8 +173,9 @@ class MainActivity : BasicPermissionActivity() {
 //        ActivityUtil.startNewActivityWithoutFinish(this, IGLikeListActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, RecyclerViewWithHeaderAndFooterExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, BackgroundRunningWhiteListActivity::class.java)
-        ActivityUtil.startNewActivityWithoutFinish(this, LottieExampleActivity::class.java)
+//        ActivityUtil.startNewActivityWithoutFinish(this, LottieExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, PDFReaderActivity::class.java)
+        ActivityUtil.startNewActivityWithoutFinish(this, DragIndicatorExampleActivity::class.java)
 
 
 //        SnackBarUtility.showSnackBar(frameLayoutRoot, "test")
