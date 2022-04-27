@@ -7,20 +7,37 @@
     tools:context=".main.examples.dragindicatorexample.DragIndicatorExampleActivity"
     android:background="@color/white">
     
-    <com.swein.androidkotlintool.main.examples.dragindicatorexample.VerticalDragAbleIndicatorView
-        android:background="@drawable/drag_indicator_rounded_bg"
+<!--    <com.swein.androidkotlintool.main.examples.dragindicatorexample.VerticalDragAbleIndicatorView-->
+<!--        android:background="@drawable/drag_indicator_rounded_bg"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        android:id="@+id/verticalDragAbleIndicatorView"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"/>-->
+
+    <FrameLayout
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:id="@+id/verticalDragAbleIndicatorView"
+        android:layout_margin="20dp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-  
+        android:layout_height="wrap_content">
+    
+        <com.swein.androidkotlintool.main.examples.dragindicatorexample.VerticalDragAbleIndicatorWithoutMarginView
+            android:background="@drawable/drag_indicator_perfect_rounded_bg"
+            android:id="@+id/verticalDragAbleIndicatorWithoutMarginView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        
+    </FrameLayout>
+    
     <TextView
         android:layout_margin="10dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         android:textColor="@color/black"
-        android:textSize="10pt"
+        android:textSize="16pt"
         android:textStyle="bold"
         android:id="@+id/textView"
         android:layout_width="wrap_content"

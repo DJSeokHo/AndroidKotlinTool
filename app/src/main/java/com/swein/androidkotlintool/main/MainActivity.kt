@@ -28,6 +28,7 @@ import com.swein.androidkotlintool.main.examples.customschedule.CustomScheduleEx
 import com.swein.androidkotlintool.main.examples.dragindicatorexample.DragIndicatorExampleActivity
 import com.swein.androidkotlintool.main.examples.lottieexample.LottieExampleActivity
 import com.swein.androidkotlintool.main.examples.pdfreader.PDFReaderActivity
+import com.swein.androidkotlintool.main.examples.switchtwoviews.SwitchTwoViewsExampleActivity
 import com.swein.androidkotlintool.main.examples.unityadsexample.UnityAdsExampleActivity
 import com.swein.androidkotlintool.main.moduledemo.ModuleDemoActivity
 import com.swein.androidkotlintool.template.bottomtab.activity.TabHostActivity
@@ -175,7 +176,8 @@ class MainActivity : BasicPermissionActivity() {
 //        ActivityUtil.startNewActivityWithoutFinish(this, BackgroundRunningWhiteListActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, LottieExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, PDFReaderActivity::class.java)
-        ActivityUtil.startNewActivityWithoutFinish(this, DragIndicatorExampleActivity::class.java)
+//        ActivityUtil.startNewActivityWithoutFinish(this, DragIndicatorExampleActivity::class.java)
+//        ActivityUtil.startNewActivityWithoutFinish(this, SwitchTwoViewsExampleActivity::class.java)
 
 
 //        SnackBarUtility.showSnackBar(frameLayoutRoot, "test")

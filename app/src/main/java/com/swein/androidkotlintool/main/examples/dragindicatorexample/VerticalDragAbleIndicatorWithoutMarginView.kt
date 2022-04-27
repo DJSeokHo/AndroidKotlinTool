@@ -8,11 +8,12 @@ import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import android.widget.FrameLayout
 import com.swein.androidkotlintool.framework.utility.debug.ILog
 import kotlin.math.abs
 
 @SuppressLint("ViewConstructor")
-class VerticalDragAbleIndicatorView : View {
+class VerticalDragAbleIndicatorWithoutMarginView : View {
 
     companion object {
         private const val TAG = "VerticalDragAbleIndicatorView"
@@ -38,7 +39,7 @@ class VerticalDragAbleIndicatorView : View {
     private var indicatorY = 0f
     private var indicatorR = 0f
 
-    private var onItemSelected: ((itemModel: ItemModel) -> Unit)? = null
+    var onItemSelected: ((itemModel: ItemModel) -> Unit)? = null
 
     private val paint = Paint()
 
@@ -70,16 +71,11 @@ class VerticalDragAbleIndicatorView : View {
         }
     }
 
-    init {
-        layoutParams = ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
-    }
-
     fun initData(
         itemList: List<ItemModel>,
         itemWidthDp: Float,
         itemHeightDp: Float,
         indicatorRadiusDp: Float,
-        topMarginDp: Float = 0f,
         indicatorDefaultPosition: Int = -1, // indicatorDefaultPosition should be [-1, list.size - 1]
         onItemSelected: ((itemModel: ItemModel) -> Unit)? = null
     ) {
@@ -87,69 +83,43 @@ class VerticalDragAbleIndicatorView : View {
         this.onItemSelected = onItemSelected
 
         list.clear()
-
-        if (topMarginDp != 0f) {
-            list.add(ItemModel(title = "", x = 0f, y = 0f, width = dipToPx(itemWidthDp), height = dipToPx(topMarginDp)))
-        }
-
         list.addAll(itemList)
 
+        // x, y, width, height is a area for title text.
+        // we will draw the text in the center of the area.
         for (i in 0 until list.size) {
 
-            if (topMarginDp != 0f && i == 0) {
-                continue
-            }
-
-            if (i == 0) {
-                list[i].title = "${list.size - i}"
-                list[i].x = 0f
-                list[i].y = dipToPx(topMarginDp) // top margin
-                list[i].width = dipToPx(itemWidthDp)
-                list[i].height = dipToPx(itemHeightDp)
+            list[i].title = "$i"
+            list[i].x = 0f
+            list[i].y = if (i == 0) {
+                dipToPx(0f)
             }
             else {
-                list[i].title = "${list.size - i}"
-                list[i].x = 0f
-                list[i].y = list[i - 1].y + list[i - 1].height
-                list[i].width = dipToPx(itemWidthDp)
-                list[i].height = dipToPx(itemHeightDp)
+                list[i - 1].y + list[i - 1].height
             }
+
+            list[i].width = dipToPx(itemWidthDp)
+            list[i].height = dipToPx(itemHeightDp)
 
         }
 
         val lastItem = list[list.size - 1]
-        layoutParams = ViewGroup.LayoutParams(dipToPx(itemWidthDp).toInt(), (lastItem.y + lastItem.height).toInt())
 
+        layoutParams.width = dipToPx(itemWidthDp).toInt()
+        layoutParams.height = (lastItem.y + lastItem.height).toInt()
 
         indicatorR = dipToPx(indicatorRadiusDp)
         indicatorX = dipToPx(itemWidthDp * 0.5f)
-        indicatorY = dipToPx(topMarginDp * 0.5f)
-
-        indicatorY = if (topMarginDp == 0f) {
-            list[0].y + list[0].height * 0.5f
-        }
-        else {
-            list[0].y + list[0].width * 0.5f
-        }
+        indicatorY = list[0].y + list[0].height * 0.5f
 
         if (indicatorDefaultPosition != -1) {
-            indicatorY = if (topMarginDp == 0f) {
-                list[indicatorDefaultPosition].y + list[indicatorDefaultPosition].height * 0.5f
-            }
-            else {
-                list[indicatorDefaultPosition + 1].y + list[indicatorDefaultPosition + 1].height * 0.5f
-            }
+            indicatorY = list[indicatorDefaultPosition].y + list[indicatorDefaultPosition].height * 0.5f
         }
 
         this.onItemSelected?.let {
 
             if (indicatorDefaultPosition >=0 && indicatorDefaultPosition < list.size) {
-                if (topMarginDp == 0f) {
-                    it(list[indicatorDefaultPosition])
-                }
-                else {
-                    it(list[indicatorDefaultPosition + 1])
-                }
+                it(list[indicatorDefaultPosition])
             }
             else {
                 it(list[0])
@@ -175,8 +145,17 @@ class VerticalDragAbleIndicatorView : View {
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
 
+        // do not create object in onDraw() !!!!
+
+        // draw order is important
+
+        // background is on the bottom
         drawBackground(canvas, Color.parseColor("#00000000"))
+
+        // indicator will over the background
         drawIndicator(canvas)
+
+        // text will over the indicator
         drawTexts(canvas)
 
     }
@@ -212,8 +191,6 @@ class VerticalDragAbleIndicatorView : View {
             val top = fontMetrics.top
             val bottom = fontMetrics.bottom
             val y = list[i].y + list[i].height * 0.5f
-
-            // center y of the title text area
             val centerY = y - top * 0.5f - bottom * 0.5f
 
             canvas?.drawText(list[i].title, x, centerY, paint)
@@ -290,21 +267,14 @@ class VerticalDragAbleIndicatorView : View {
             onItemSelected(list[itemIndex])
         }
 
-        return if (itemIndex == 0) {
-
-            if (list[itemIndex].title == "") {
-                list[0].y + list[itemIndex].width * 0.5f
-            }
-            else {
-                list[itemIndex].y + list[itemIndex].height * 0.5f
-            }
-        }
-        else {
-            list[itemIndex].y + list[itemIndex].height * 0.5f
-        }
+        return list[itemIndex].y + list[itemIndex].height * 0.5f
     }
 
-    private fun dipToPx(dipValue: Float): Float = dipValue * context.resources.displayMetrics.density
+    private fun dipToPx(dipValue: Float): Float {
+        return dipValue * context.resources.displayMetrics.density
+    }
 
-    private fun spToPx(spValue: Float): Float = spValue * context.resources.displayMetrics.scaledDensity
+    private fun spToPx(spValue: Float): Float {
+        return spValue * context.resources.displayMetrics.scaledDensity
+    }
 }
