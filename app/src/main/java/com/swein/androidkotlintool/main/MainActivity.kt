@@ -175,9 +175,9 @@ class MainActivity : BasicPermissionActivity() {
 //        ActivityUtil.startNewActivityWithoutFinish(this, RecyclerViewWithHeaderAndFooterExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, BackgroundRunningWhiteListActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, LottieExampleActivity::class.java)
-//        ActivityUtil.startNewActivityWithoutFinish(this, PDFReaderActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, DragIndicatorExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, SwitchTwoViewsExampleActivity::class.java)
+        ActivityUtil.startNewActivityWithoutFinish(this, PDFReaderActivity::class.java)
 
 
 //        SnackBarUtility.showSnackBar(frameLayoutRoot, "test")

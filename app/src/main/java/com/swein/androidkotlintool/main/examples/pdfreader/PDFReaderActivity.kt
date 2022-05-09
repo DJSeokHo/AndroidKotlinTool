@@ -83,8 +83,7 @@ class PDFReaderActivity : AppCompatActivity() {
         ) {
 
             // https://file-examples.com/index.php/sample-documents-download/sample-pdf-download/
-//            viewModel.pdf(this, "https://file-examples.com/storage/fe8d415a4e625f28ea2bfd7/2017/10/file-example_PDF_1MB.pdf")
-            viewModel.pdf(this, "https://file-examples.com/storage/fe8d415a4e625f28ea2bfd7/2017/10/file-example_PDF_500_kB.pdf")
+            viewModel.pdf(this, "https://file-examples.com/storage/fef8fbdce362705a7927afd/2017/10/file-example_PDF_1MB.pdf")
 
         }
     }

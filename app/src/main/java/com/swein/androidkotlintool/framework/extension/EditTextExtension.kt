@@ -1,4 +1,4 @@
-package com.swein.androidkotlintool.framework.extension
+package kr.co.dotv365.android.framework.extension
 
 import android.widget.EditText
 
