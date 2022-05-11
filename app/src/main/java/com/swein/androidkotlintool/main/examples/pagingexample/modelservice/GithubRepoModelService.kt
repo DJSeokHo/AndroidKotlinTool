@@ -48,8 +48,6 @@ object GithubRepoModelService {
             modelList.add(githubRepoItemModel)
         }
 
-
-
         return@withContext modelList
     }
 
