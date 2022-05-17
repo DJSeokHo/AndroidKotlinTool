@@ -29,6 +29,13 @@
             {
               "client_id": "333193241308-e7vjk03hos0g8efqieu5fi18uhcjfb6i.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "333193241308-rjd3qc6kbd2p2kqlluimhn7a8d05lkds.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.swein.SHSwiftTool"
+              }
             }
           ]
         }

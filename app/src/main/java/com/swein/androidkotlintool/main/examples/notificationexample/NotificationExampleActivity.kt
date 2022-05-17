@@ -169,8 +169,7 @@ class NotificationExampleActivity : AppCompatActivity() {
                 IntentUtility.PendingIntentEnum.ACTIVITY,
                 this,
                 567,
-                intent,
-                PendingIntent.FLAG_UPDATE_CURRENT
+                intent
             )
 
             NotificationUtility.showNotification(

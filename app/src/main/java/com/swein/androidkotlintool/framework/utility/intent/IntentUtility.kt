@@ -26,7 +26,7 @@ object IntentUtility {
         context: Context,
         requestCode: Int,
         intent: Intent,
-        flag: Int = PendingIntent.FLAG_UPDATE_CURRENT,
+        flag: Int = PendingIntent.FLAG_IMMUTABLE,
     ): PendingIntent {
         /*
         public static final int FLAG_CANCEL_CURRENT = 268435456
