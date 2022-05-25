@@ -23,14 +23,7 @@ import com.swein.androidkotlintool.framework.utility.eventsplitshot.eventcenter.
 import com.swein.androidkotlintool.framework.utility.eventsplitshot.subject.ESSArrows
 import com.swein.androidkotlintool.framework.utility.glide.SHGlide
 import com.swein.androidkotlintool.framework.utility.screen.ScreenUtil
-import com.swein.androidkotlintool.main.examples.backgroundrunningwhitelist.BackgroundRunningWhiteListActivity
-import com.swein.androidkotlintool.main.examples.customschedule.CustomScheduleExampleActivity
-import com.swein.androidkotlintool.main.examples.dragindicatorexample.DragIndicatorExampleActivity
-import com.swein.androidkotlintool.main.examples.lottieexample.LottieExampleActivity
-import com.swein.androidkotlintool.main.examples.notificationexample.NotificationExampleActivity
-import com.swein.androidkotlintool.main.examples.pdfreader.PDFReaderActivity
-import com.swein.androidkotlintool.main.examples.switchtwoviews.SwitchTwoViewsExampleActivity
-import com.swein.androidkotlintool.main.examples.unityadsexample.UnityAdsExampleActivity
+import com.swein.androidkotlintool.main.examples.conceptanimationexample.ConceptPageExampleActivity
 import com.swein.androidkotlintool.main.moduledemo.ModuleDemoActivity
 import com.swein.androidkotlintool.template.bottomtab.activity.TabHostActivity
 import com.swein.androidkotlintool.template.handlerthread.HandlerThreadTemplateActivity
@@ -179,6 +172,7 @@ class MainActivity : BasicPermissionActivity() {
 //        ActivityUtil.startNewActivityWithoutFinish(this, DragIndicatorExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, SwitchTwoViewsExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, PDFReaderActivity::class.java)
+        ActivityUtil.startNewActivityWithoutFinish(this, ConceptPageExampleActivity::class.java)
 
 
 //        SnackBarUtility.showSnackBar(frameLayoutRoot, "test")

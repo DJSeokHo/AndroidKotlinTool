@@ -59,7 +59,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-     
+        <activity
+            android:name=".main.examples.conceptanimationexample.ConceptPageExampleActivity"
+            android:exported="false" />
         <activity
             android:name=".main.examples.switchtwoviews.SwitchTwoViewsExampleActivity"
             android:exported="false" />
@@ -459,7 +461,6 @@
                 <action android:name="com.swein.broadcast.passdata" />
             </intent-filter>
         </receiver>
-       
     </application>
 
 </manifest>
