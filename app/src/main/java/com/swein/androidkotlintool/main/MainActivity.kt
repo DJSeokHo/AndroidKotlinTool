@@ -24,6 +24,7 @@ import com.swein.androidkotlintool.framework.utility.eventsplitshot.subject.ESSA
 import com.swein.androidkotlintool.framework.utility.glide.SHGlide
 import com.swein.androidkotlintool.framework.utility.screen.ScreenUtil
 import com.swein.androidkotlintool.main.examples.conceptanimationexample.ConceptPageExampleActivity
+import com.swein.androidkotlintool.main.examples.systemuivisibility.SystemUIVisibilityActivity
 import com.swein.androidkotlintool.main.moduledemo.ModuleDemoActivity
 import com.swein.androidkotlintool.template.bottomtab.activity.TabHostActivity
 import com.swein.androidkotlintool.template.handlerthread.HandlerThreadTemplateActivity
@@ -146,7 +147,7 @@ class MainActivity : BasicPermissionActivity() {
 //        ActivityUtil.startNewActivityWithoutFinish(this, ShapeAbleImageViewExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, KtorExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, CustomTabLayoutExampleActivity::class.java)
-//        ActivityUtil.startNewActivityWithoutFinish(this, SystemUIVisibilityActivity::class.java)
+        ActivityUtil.startNewActivityWithoutFinish(this, SystemUIVisibilityActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, SceneTransitionAnimationExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, OverLapViewActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, SensorExampleActivity::class.java)
@@ -172,7 +173,7 @@ class MainActivity : BasicPermissionActivity() {
 //        ActivityUtil.startNewActivityWithoutFinish(this, DragIndicatorExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, SwitchTwoViewsExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, PDFReaderActivity::class.java)
-        ActivityUtil.startNewActivityWithoutFinish(this, ConceptPageExampleActivity::class.java)
+//        ActivityUtil.startNewActivityWithoutFinish(this, ConceptPageExampleActivity::class.java)
 
 
 //        SnackBarUtility.showSnackBar(frameLayoutRoot, "test")

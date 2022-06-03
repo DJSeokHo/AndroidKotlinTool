@@ -41,6 +41,7 @@
         <entry key="app/src/main/res/layout/activity_background_running_white_list.xml" value="0.14447463768115942" />
         <entry key="app/src/main/res/layout/activity_broadcast_example.xml" value="0.3296875" />
         <entry key="app/src/main/res/layout/activity_callback_to_coroutine.xml" value="0.29739583333333336" />
+        <entry key="app/src/main/res/layout/activity_camera_demo.xml" value="0.13451086956521738" />
         <entry key="app/src/main/res/layout/activity_circle_menu_example.xml" value="0.27291666666666664" />
         <entry key="app/src/main/res/layout/activity_cloud_fire_store_demo.xml" value="0.29739583333333336" />
         <entry key="app/src/main/res/layout/activity_concept_page_example.xml" value="0.2966485507246377" />
@@ -73,7 +74,7 @@
         <entry key="app/src/main/res/layout/activity_light_sensor_example.xml" value="0.28177083333333336" />
         <entry key="app/src/main/res/layout/activity_live_data_demo.xml" value="0.3494791666666667" />
         <entry key="app/src/main/res/layout/activity_login_example.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/activity_lottie_example.xml" value="0.31979166666666664" />
+        <entry key="app/src/main/res/layout/activity_lottie_example.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_m_v_p_login.xml" value="0.2875" />
         <entry key="app/src/main/res/layout/activity_mdday_five.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_mdday_seven.xml" value="0.10648148148148148" />
@@ -112,7 +113,7 @@
         <entry key="app/src/main/res/layout/activity_system_photo_and_crop_example.xml" value="0.33242753623188404" />
         <entry key="app/src/main/res/layout/activity_system_photo_picker_example.xml" value="0.2921875" />
         <entry key="app/src/main/res/layout/activity_system_ui_visibility.xml" value="0.28489583333333335" />
-        <entry key="app/src/main/res/layout/activity_system_uivisibility.xml" value="0.2" />
+        <entry key="app/src/main/res/layout/activity_system_uivisibility.xml" value="0.21" />
         <entry key="app/src/main/res/layout/activity_unity_ads_example.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_vlcplayer_example.xml" value="0.23072916666666668" />
         <entry key="app/src/main/res/layout/activity_web_view_example.xml" value="0.2015625" />
