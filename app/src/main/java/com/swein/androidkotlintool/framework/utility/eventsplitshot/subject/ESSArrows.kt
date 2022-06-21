@@ -16,6 +16,7 @@ class ESSArrows {
         const val PAYMENT_FAIL = "PAYMENT_FAIL"
 
         const val REQUEST_REFRESH = "REQUEST_REFRESH"
+        const val SCAN_QR_FINISHED = "SCAN_QR_FINISHED"
     }
 
 }

@@ -124,6 +124,7 @@ class CloudFireStoreDemoActivity : AppCompatActivity() {
                         }
 
                         is MemberViewModelState.None -> Unit
+                        else -> {}
                     }
                 }
 

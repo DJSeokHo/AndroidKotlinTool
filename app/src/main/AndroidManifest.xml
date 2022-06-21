@@ -60,6 +60,9 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".main.examples.qr.QRScannerActivity"
+            android:exported="false" />
+        <activity
             android:name=".main.examples.conceptanimationexample.ConceptPageExampleActivity"
             android:exported="false" />
         <activity

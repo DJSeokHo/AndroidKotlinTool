@@ -37,7 +37,7 @@ class AdmobInterstitialExampleActivity : AppCompatActivity() {
                                 ILog.debug(TAG, "Ad was dismissed.")
                             }
 
-                            override fun onAdFailedToShowFullScreenContent(adError: AdError?) {
+                            override fun onAdFailedToShowFullScreenContent(p0: AdError) {
                                 ILog.debug(TAG, "Ad failed to show.")
                             }
 

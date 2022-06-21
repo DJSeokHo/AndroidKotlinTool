@@ -50,7 +50,7 @@ class AdmobRewardedExampleActivity : AppCompatActivity() {
                         ILog.debug(TAG, "Ad was shown.")
                     }
 
-                    override fun onAdFailedToShowFullScreenContent(adError: AdError?) {
+                    override fun onAdFailedToShowFullScreenContent(p0: AdError) {
                         // Called when ad fails to show.
                         ILog.debug(TAG, "Ad failed to show.")
                     }

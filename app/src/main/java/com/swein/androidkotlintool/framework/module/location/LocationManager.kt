@@ -45,7 +45,7 @@ object LocationManager {
         override fun onLocationResult(locationResult: LocationResult) {
             super.onLocationResult(locationResult)
 
-            onUpdateLocation?.get()?.invoke(locationResult.lastLocation.latitude, locationResult.lastLocation.longitude)
+            onUpdateLocation?.get()?.invoke(locationResult.lastLocation?.latitude ?: 0.0, locationResult.lastLocation?.longitude ?: 0.0)
             onUpdateLocationDetail?.get()?.invoke(locationResult)
 
         }
