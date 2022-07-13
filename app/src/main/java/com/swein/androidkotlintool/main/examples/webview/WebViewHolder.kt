@@ -179,6 +179,7 @@ class WebViewHolder : FrameLayout {
             return super.shouldOverrideUrlLoading(view, request)
         }
 
+        @Deprecated("Deprecated in Java")
         override fun shouldOverrideUrlLoading(view: WebView?, url: String?): Boolean {
             Log.d(TAG, "shouldOverrideUrlLoading")
 //            return super.shouldOverrideUrlLoading(view, url)

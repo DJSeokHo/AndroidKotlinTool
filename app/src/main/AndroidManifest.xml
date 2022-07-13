@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-    
+
     <queries>
         <intent>
             <action android:name="com.google.android.youtube.api.service.START" />
@@ -39,18 +39,18 @@
     <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
     <uses-permission android:name="com.android.launcher.permission.UNINSTALL_SHORTCUT" />
     <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
-    
+
     <permission
         android:name="com.swein.androidkotlintool.permission.CUSTOM_RECEIVER"
         android:protectionLevel="normal" />
-    
+
     <uses-feature
         android:name="android.hardware.camera"
         android:required="true" />
     <uses-feature
         android:name="android.hardware.camera.autofocus"
         android:required="false" />
-    
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -59,6 +59,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity
+            android:name=".main.examples.searchpageexample.SearchPageExampleActivity"
+            android:exported="false" />
         <activity
             android:name=".main.examples.imagesimilarity.ImageSimilarityActivity"
             android:exported="false" />
@@ -401,7 +404,7 @@
             android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-    
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -409,11 +412,11 @@
             android:name=".main.MainActivity"
             android:launchMode="singleTask"
             tools:ignore="Instantiatable" />
-        
+
         <receiver
             android:name=".framework.utility.shortcut.ShortcutReceiver"
             android:exported="false" />
-        
+
         <uses-library
             android:name="org.apache.http.legacy"
             android:required="false" /> <!-- FileProvider used to share photos with other apps -->
@@ -431,24 +434,24 @@
             android:authorities="${applicationId}.androidx-startup"
             android:exported="false"
             tools:node="merge">
-    
+
             <!-- This entry makes ExampleLoggerInitializer discoverable. -->
             <meta-data
                 android:name="com.swein.androidkotlintool.main.jetpackexample.appstartup.AppStartUpExample"
                 android:value="androidx.startup" />
-    
+
             <!-- if you don't need -->
             <!-- <meta-data -->
             <!-- android:name="com.swein.androidkotlintool.main.examples.appstartup.AppStartUpExample" -->
             <!-- tools:node="remove" -->
             <!-- /> -->
         </provider>
-        
+
         <service
             android:name=".framework.module.location.service.LocationService"
             android:enabled="true"
             android:exported="false" />
-        
+
         <meta-data
             android:name="android.notch_support"
             android:value="true" />
@@ -458,7 +461,7 @@
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="ca-app-pub-3940256099942544~3347511713" />
-        
+
         <receiver
             android:name=".main.examples.broadcastexample.BroadcastReceiverExample"
             android:exported="true"
