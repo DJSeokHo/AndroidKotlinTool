@@ -153,8 +153,8 @@ dependencies {
 
     implementation files('../libs/YouTubeAndroidPlayerApi.jar')
 
-    implementation 'com.google.android.exoplayer:exoplayer:2.18.0'
-    implementation 'com.google.android.exoplayer:exoplayer-ui:2.18.0'
+    implementation 'com.google.android.exoplayer:exoplayer:2.18.1'
+    implementation 'com.google.android.exoplayer:exoplayer-ui:2.18.1'
 
     implementation 'androidx.paging:paging-runtime-ktx:3.1.1'
 //    implementation("androidx.paging:paging-compose:1.0.0-alpha12")
@@ -170,10 +170,10 @@ dependencies {
     implementation "io.ktor:ktor-client-gson:1.6.4"
 
     // google map
-    implementation 'com.google.android.gms:play-services-maps:18.0.2'
+    implementation 'com.google.android.gms:play-services-maps:18.1.0'
 
     // admob
-    implementation 'com.google.android.gms:play-services-ads:21.0.0'
+    implementation 'com.google.android.gms:play-services-ads:21.1.0'
 
     // zooming image view
     implementation 'com.github.chrisbanes:PhotoView:2.3.0'

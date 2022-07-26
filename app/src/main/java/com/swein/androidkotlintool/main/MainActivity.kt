@@ -179,7 +179,7 @@ class MainActivity : BasicPermissionActivity() {
 //        ActivityUtil.startNewActivityWithoutFinish(this, PDFReaderActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, ConceptPageExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, QRScannerActivity::class.java)
-//        ActivityUtil.startNewActivityWithoutFinish(this, ImageSimilarityActivity::class.java)
+        ActivityUtil.startNewActivityWithoutFinish(this, ImageSimilarityActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, SearchPageExampleActivity::class.java)
 
 
