@@ -23,12 +23,7 @@ import com.swein.androidkotlintool.framework.utility.eventsplitshot.eventcenter.
 import com.swein.androidkotlintool.framework.utility.eventsplitshot.subject.ESSArrows
 import com.swein.androidkotlintool.framework.utility.glide.SHGlide
 import com.swein.androidkotlintool.framework.utility.screen.ScreenUtil
-import com.swein.androidkotlintool.main.examples.conceptanimationexample.ConceptPageExampleActivity
-import com.swein.androidkotlintool.main.examples.imagesimilarity.ImageSimilarityActivity
-import com.swein.androidkotlintool.main.examples.qr.QRScannerActivity
 import com.swein.androidkotlintool.main.examples.searchpageexample.SearchPageExampleActivity
-import com.swein.androidkotlintool.main.examples.systemuivisibility.SystemUIVisibilityActivity
-import com.swein.androidkotlintool.main.examples.viewmodel.ViewModelDemoActivity
 import com.swein.androidkotlintool.main.moduledemo.ModuleDemoActivity
 import com.swein.androidkotlintool.template.bottomtab.activity.TabHostActivity
 import com.swein.androidkotlintool.template.handlerthread.HandlerThreadTemplateActivity
@@ -108,7 +103,7 @@ class MainActivity : BasicPermissionActivity() {
 //        ActivityUtil.startNewActivityWithoutFinish(this, SHCameraPhotoFragmentDemoActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, WorkManagerDemoActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, LiveDataDemoActivity::class.java)
-        ActivityUtil.startNewActivityWithoutFinish(this, ViewModelDemoActivity::class.java)
+//        ActivityUtil.startNewActivityWithoutFinish(this, ViewModelDemoActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, MVVMRecyclerViewExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, CustomViewExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, CustomAnimationExampleActivity::class.java)
@@ -179,8 +174,8 @@ class MainActivity : BasicPermissionActivity() {
 //        ActivityUtil.startNewActivityWithoutFinish(this, PDFReaderActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, ConceptPageExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, QRScannerActivity::class.java)
-        ActivityUtil.startNewActivityWithoutFinish(this, ImageSimilarityActivity::class.java)
-//        ActivityUtil.startNewActivityWithoutFinish(this, SearchPageExampleActivity::class.java)
+//        ActivityUtil.startNewActivityWithoutFinish(this, ImageSimilarityActivity::class.java)
+        ActivityUtil.startNewActivityWithoutFinish(this, SearchPageExampleActivity::class.java)
 
 
 //        SnackBarUtility.showSnackBar(frameLayoutRoot, "test")

@@ -67,21 +67,19 @@ class CustomAnimationExampleActivity : AppCompatActivity() {
         val animator = ObjectAnimator.ofFloat(customCircleProgressView, "progressValue", 0f, 100f).setDuration(1000)
         animator.interpolator = LinearInterpolator()
         animator.addListener(object : Animator.AnimatorListener {
-            override fun onAnimationStart(animation: Animator?) {
+            override fun onAnimationStart(p0: Animator) {
 
             }
 
-            override fun onAnimationEnd(animation: Animator?) {
-
+            override fun onAnimationEnd(p0: Animator) {
             }
 
-            override fun onAnimationCancel(animation: Animator?) {
-
+            override fun onAnimationCancel(p0: Animator) {
             }
 
-            override fun onAnimationRepeat(animation: Animator?) {
-
+            override fun onAnimationRepeat(p0: Animator) {
             }
+
         })
         animator.start()
     }
@@ -95,21 +93,19 @@ class CustomAnimationExampleActivity : AppCompatActivity() {
 //            .setInterpolator(AnticipateOvershootInterpolator()) // 速度模型 AccelerateDecelerateInterpolator() 默认, LinearInterpolator()
             .setInterpolator(BounceInterpolator()) // 速度模型 AccelerateDecelerateInterpolator() 默认, LinearInterpolator()
             .setDuration(500).setListener(object : Animator.AnimatorListener {
-                override fun onAnimationStart(animation: Animator?) {
+                override fun onAnimationStart(p0: Animator) {
 
                 }
 
-                override fun onAnimationEnd(animation: Animator?) {
-
+                override fun onAnimationEnd(p0: Animator) {
                 }
 
-                override fun onAnimationCancel(animation: Animator?) {
-
+                override fun onAnimationCancel(p0: Animator) {
                 }
 
-                override fun onAnimationRepeat(animation: Animator?) {
-
+                override fun onAnimationRepeat(p0: Animator) {
                 }
+
             })
     }
 }

@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/layout/activity_firebase_cloud_message_example.xml" value="0.16302083333333334" />
+        <entry key="app/src/main/res/layout/activity_firebase_demo.xml" value="0.2545289855072464" />
         <entry key="app/src/main/res/layout/activity_image_similarity.xml" value="0.16286727456940223" />
         <entry key="app/src/main/res/layout/activity_search_page_example.xml" value="0.31666666666666665" />
         <entry key="app/src/main/res/layout/view_holder_search_page_item.xml" value="0.3296875" />

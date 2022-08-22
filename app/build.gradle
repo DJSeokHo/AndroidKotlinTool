@@ -11,7 +11,7 @@ apply plugin: 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
 apply plugin: 'com.google.gms.google-services'
 
 android {
-    compileSdkVersion 32
+    compileSdkVersion 33
 
     defaultConfig {
         configurations.all {
@@ -19,7 +19,7 @@ android {
         }
         applicationId "com.swein.androidkotlintool"
         minSdkVersion 24
-        targetSdkVersion 32
+        targetSdkVersion 33
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -47,7 +47,7 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.core:core-ktx:1.8.0'
-    implementation 'androidx.appcompat:appcompat:1.4.2'
+    implementation 'androidx.appcompat:appcompat:1.5.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
 
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
@@ -78,14 +78,14 @@ dependencies {
     // CameraX core library using the camera2 implementation
 //    def camerax_version = "1.0.1"
     // The following line is optional, as the core library is included indirectly by camera-camera2
-    implementation "androidx.camera:camera-core:1.2.0-alpha03"
-    implementation "androidx.camera:camera-camera2:1.2.0-alpha03"
+    implementation "androidx.camera:camera-core:1.2.0-alpha04"
+    implementation "androidx.camera:camera-camera2:1.2.0-alpha04"
     // If you want to additionally use the CameraX Lifecycle library
-    implementation "androidx.camera:camera-lifecycle:1.2.0-alpha03"
+    implementation "androidx.camera:camera-lifecycle:1.2.0-alpha04"
     // If you want to additionally use the CameraX View class
-    implementation "androidx.camera:camera-view:1.2.0-alpha03"
+    implementation "androidx.camera:camera-view:1.2.0-alpha04"
     // If you want to additionally use the CameraX Extensions library
-    implementation "androidx.camera:camera-extensions:1.2.0-alpha03"
+    implementation "androidx.camera:camera-extensions:1.2.0-alpha04"
 
     // glide
     implementation 'com.github.bumptech.glide:glide:4.12.0'
@@ -97,15 +97,15 @@ dependencies {
 
     // Lifecycle components
 
-    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.5.0"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.5.1"
 
-    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.5.0"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.5.1"
 
     implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
 
-    implementation "androidx.lifecycle:lifecycle-common-java8:2.5.0"
+    implementation "androidx.lifecycle:lifecycle-common-java8:2.5.1"
 
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.0"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1"
 
     // coroutines
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.1"
@@ -128,16 +128,16 @@ dependencies {
     implementation 'com.google.firebase:firebase-firestore-ktx'
 
     // room ----------------------------------->
-    implementation "androidx.room:room-runtime:2.4.2"
-    kapt "androidx.room:room-compiler:2.4.2"
+    implementation "androidx.room:room-runtime:2.4.3"
+    kapt "androidx.room:room-compiler:2.4.3"
 
     // optional - Kotlin Extensions and Coroutines support for Room
-    implementation "androidx.room:room-ktx:2.4.2"
+    implementation "androidx.room:room-ktx:2.4.3"
     // <----------------------------------- room
 
     // view model
-    implementation 'androidx.activity:activity-ktx:1.5.0'
-    implementation 'androidx.fragment:fragment-ktx:1.5.0'
+    implementation 'androidx.activity:activity-ktx:1.5.1'
+    implementation 'androidx.fragment:fragment-ktx:1.5.2'
 
     implementation 'com.google.android.material:material:1.6.1'
 
@@ -182,7 +182,7 @@ dependencies {
     implementation 'com.airbnb.android:lottie:5.2.0'
 
     // push
-    implementation 'com.google.firebase:firebase-messaging:23.0.6'
+    implementation 'com.google.firebase:firebase-messaging:23.0.7'
 }
 
 
