@@ -162,7 +162,7 @@ class MainActivity : BasicPermissionActivity() {
 //        ActivityUtil.startNewActivityWithoutFinish(this, PatternLockExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, SendEmailExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, GoogleAdmobExampleActivity::class.java)
-        //        ActivityUtil.startNewActivityWithoutFinish(this, CircleMenuExampleActivity::class.java)
+//        ActivityUtil.startNewActivityWithoutFinish(this, CircleMenuExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, RecyclerViewWaterfallExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, RotatingCircleMenuExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, IGLikeListActivity::class.java)
