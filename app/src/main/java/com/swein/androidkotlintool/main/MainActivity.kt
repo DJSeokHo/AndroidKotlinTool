@@ -23,6 +23,7 @@ import com.swein.androidkotlintool.framework.utility.eventsplitshot.eventcenter.
 import com.swein.androidkotlintool.framework.utility.eventsplitshot.subject.ESSArrows
 import com.swein.androidkotlintool.framework.utility.glide.SHGlide
 import com.swein.androidkotlintool.framework.utility.screen.ScreenUtil
+import com.swein.androidkotlintool.main.examples.imagesimilarity.ImageSimilarityActivity
 import com.swein.androidkotlintool.main.examples.searchpageexample.SearchPageExampleActivity
 import com.swein.androidkotlintool.main.moduledemo.ModuleDemoActivity
 import com.swein.androidkotlintool.template.bottomtab.activity.TabHostActivity
@@ -174,8 +175,8 @@ class MainActivity : BasicPermissionActivity() {
 //        ActivityUtil.startNewActivityWithoutFinish(this, PDFReaderActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, ConceptPageExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, QRScannerActivity::class.java)
-//        ActivityUtil.startNewActivityWithoutFinish(this, ImageSimilarityActivity::class.java)
-        ActivityUtil.startNewActivityWithoutFinish(this, SearchPageExampleActivity::class.java)
+        ActivityUtil.startNewActivityWithoutFinish(this, ImageSimilarityActivity::class.java)
+//        ActivityUtil.startNewActivityWithoutFinish(this, SearchPageExampleActivity::class.java)
 
 
 //        SnackBarUtility.showSnackBar(frameLayoutRoot, "test")

@@ -1,7 +1,6 @@
 package com.swein.androidkotlintool.main.examples.imagesimilarity
 
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
+import android.graphics.*
 import android.media.ThumbnailUtils
 import android.os.Bundle
 import android.widget.Button
@@ -9,6 +8,7 @@ import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import com.swein.androidkotlintool.R
 import com.swein.androidkotlintool.framework.utility.debug.ILog
+import kotlin.math.pow
 
 
 /**
@@ -144,7 +144,7 @@ class ImageSimilarityActivity : AppCompatActivity() {
             val similarityO3 = (similarity(hex, hex3))
             val similarityO4 = (similarity(hex, hex4))
 
-            ILog.debug("???", "differenceO1 $similarityO1")
+            ILog.debug("???", "similarityO1 $similarityO1")
             ILog.debug("???", "similarityO2 $similarityO2")
             ILog.debug("???", "similarityO3 $similarityO3")
             ILog.debug("???", "similarityO4 $similarityO4")
