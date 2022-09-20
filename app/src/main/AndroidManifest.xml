@@ -39,9 +39,9 @@
     <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
     <uses-permission android:name="com.android.launcher.permission.UNINSTALL_SHORTCUT" />
     <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
-
-
-    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" tools:node="remove"/>
+    <uses-permission
+        android:name="android.permission.POST_NOTIFICATIONS"
+        tools:node="remove" />
 
     <permission
         android:name="com.swein.androidkotlintool.permission.CUSTOM_RECEIVER"
@@ -62,7 +62,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-
+        <activity
+            android:name=".main.examples.onbackpresseddispatcherexample.OnBackPressedDispatcherExampleActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
         <activity
             android:name=".main.examples.searchpageexample.SearchPageExampleActivity"
             android:exported="false" />
@@ -474,7 +480,6 @@
                 <action android:name="com.swein.broadcast.passdata" />
             </intent-filter>
         </receiver>
-
     </application>
 
 </manifest>
