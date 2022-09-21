@@ -3,6 +3,7 @@ package com.swein.androidkotlintool.framework.utility.window
 import android.app.Activity
 import android.content.Context
 import android.content.res.Configuration
+import android.graphics.Color
 import android.os.Build
 import android.view.View
 import android.view.WindowInsets
@@ -23,6 +24,15 @@ object WindowUtility {
             WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
             WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
         )
+    }
+
+    fun transparencyBar(activity: Activity) {
+        val window = activity.window
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+        window.statusBarColor = Color.TRANSPARENT
+        window.decorView.systemUiVisibility = (View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN)
     }
 
     fun setStateBarVisible(activity: Activity) {
@@ -144,5 +154,14 @@ object WindowUtility {
 
     fun layoutNormalScreen(activity: Activity) {
         activity.window.decorView.systemUiVisibility = 0
+    }
+
+    fun toggleFullScreen(activity: Activity) {
+
+        WindowUtility.layoutFullScreen(activity)
+        WindowUtility.setStateBarToDarkTheme(activity)
+        WindowUtility.setStatusBarColor(activity, Color.TRANSPARENT)
+        WindowUtility.setNavigationBarColor(activity, Color.TRANSPARENT)
+
     }
 }

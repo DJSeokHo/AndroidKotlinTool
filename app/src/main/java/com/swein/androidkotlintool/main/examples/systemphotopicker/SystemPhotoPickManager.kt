@@ -1,6 +1,7 @@
 package com.swein.androidkotlintool.main.examples.systemphotopicker
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -13,13 +14,11 @@ import androidx.activity.ComponentActivity
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.FileProvider
-import androidx.exifinterface.media.ExifInterface
 import com.swein.androidkotlintool.BuildConfig
 import com.swein.androidkotlintool.framework.utility.debug.ILog
 import com.swein.androidkotlintool.main.examples.permissionexample.PermissionManager
 import java.io.File
 import java.io.FileOutputStream
-import java.util.*
 
 /**
 StartActivityForResult()
@@ -90,9 +89,11 @@ class SystemPhotoPickManager(private val componentActivity: ComponentActivity) {
 
                 takeBitmapDelegate?.let { takeBitmapDelegate ->
 
-                    val exif = ExifInterface(tempImageFilePath)
+                    val exif = android.media.ExifInterface(tempImageFilePath)
+
+                    @SuppressLint("ExifInterface")
                     val exifOrientation: Int = exif.getAttributeInt(
-                        ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL
+                        android.media.ExifInterface.TAG_ORIENTATION, android.media.ExifInterface.ORIENTATION_NORMAL
                     )
                     val exifDegree: Int = exifOrientationToDegrees(exifOrientation)
 
@@ -189,10 +190,11 @@ class SystemPhotoPickManager(private val componentActivity: ComponentActivity) {
             arrayOf(
                 Manifest.permission.CAMERA,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                Manifest.permission.READ_EXTERNAL_STORAGE)
-        ) {
-            runnable(this)
-        }
+                Manifest.permission.READ_EXTERNAL_STORAGE),
+            runnableAfterPermissionGranted = {
+                runnable(this)
+            }
+        )
     }
 
     fun selectPicture(selectedDelegate: (uri: Uri) -> Unit) {
@@ -234,11 +236,11 @@ class SystemPhotoPickManager(private val componentActivity: ComponentActivity) {
         )
 
         takePicture.launch(tempImageUri)
+
     }
 
-    fun takePictureWithUri(shouldCompress: Boolean = false, takeUriDelegate: (uri: Uri) -> Unit) {
+    fun takePictureWithUri(takeUriDelegate: (uri: Uri) -> Unit) {
 
-        this.shouldCompress = shouldCompress
         this.takeUriDelegate = takeUriDelegate
 
         tempImageUri = FileProvider.getUriForFile(
@@ -270,9 +272,11 @@ class SystemPhotoPickManager(private val componentActivity: ComponentActivity) {
     private fun compressImage(filePath: String, targetMB: Double = 1.0) {
         var image: Bitmap = BitmapFactory.decodeFile(filePath)
 
-        val exif = ExifInterface(filePath)
+        val exif = android.media.ExifInterface(filePath)
+
+        @SuppressLint("ExifInterface")
         val exifOrientation: Int = exif.getAttributeInt(
-            ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL
+            android.media.ExifInterface.TAG_ORIENTATION, android.media.ExifInterface.ORIENTATION_NORMAL
         )
         val exifDegree: Int = exifOrientationToDegrees(exifOrientation)
 
@@ -309,15 +313,16 @@ class SystemPhotoPickManager(private val componentActivity: ComponentActivity) {
         )
     }
 
+    @SuppressLint("ExifInterface")
     private fun exifOrientationToDegrees(exifOrientation: Int): Int {
         return when (exifOrientation) {
-            ExifInterface.ORIENTATION_ROTATE_90 -> {
+            android.media.ExifInterface.ORIENTATION_ROTATE_90 -> {
                 90
             }
-            ExifInterface.ORIENTATION_ROTATE_180 -> {
+            android.media.ExifInterface.ORIENTATION_ROTATE_180 -> {
                 180
             }
-            ExifInterface.ORIENTATION_ROTATE_270 -> {
+            android.media.ExifInterface.ORIENTATION_ROTATE_270 -> {
                 270
             }
             else -> 0

@@ -36,7 +36,7 @@ class SendEmailExampleActivity : AppCompatActivity() {
 
             systemPhotoPickManager.requestPermission {
 
-                it.takePictureWithUri(true) { uri ->
+                it.takePictureWithUri { uri ->
 
                     this.imageUri = uri
 
