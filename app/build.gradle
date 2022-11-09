@@ -51,7 +51,7 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
 
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation 'com.google.firebase:firebase-storage-ktx:20.0.2'
+    implementation 'com.google.firebase:firebase-storage-ktx:20.1.0'
     implementation 'com.android.support.constraint:constraint-layout:2.0.4'
 
     implementation 'androidx.window:window:1.0.0'
@@ -78,14 +78,14 @@ dependencies {
     // CameraX core library using the camera2 implementation
 //    def camerax_version = "1.0.1"
     // The following line is optional, as the core library is included indirectly by camera-camera2
-    implementation "androidx.camera:camera-core:1.2.0-beta02"
-    implementation "androidx.camera:camera-camera2:1.2.0-beta02"
+    implementation "androidx.camera:camera-core:1.2.0-rc01"
+    implementation "androidx.camera:camera-camera2:1.2.0-rc01"
     // If you want to additionally use the CameraX Lifecycle library
-    implementation "androidx.camera:camera-lifecycle:1.2.0-beta02"
+    implementation "androidx.camera:camera-lifecycle:1.2.0-rc01"
     // If you want to additionally use the CameraX View class
-    implementation "androidx.camera:camera-view:1.2.0-beta02"
+    implementation "androidx.camera:camera-view:1.2.0-rc01"
     // If you want to additionally use the CameraX Extensions library
-    implementation "androidx.camera:camera-extensions:1.2.0-beta02"
+    implementation "androidx.camera:camera-extensions:1.2.0-rc01"
 
     // glide
     implementation 'com.github.bumptech.glide:glide:4.12.0'
@@ -118,7 +118,7 @@ dependencies {
     implementation 'androidx.work:work-runtime-ktx:2.7.1'
     // WorkManager ============
 
-    implementation 'com.google.android.gms:play-services-location:20.0.0'
+    implementation 'com.google.android.gms:play-services-location:21.0.0'
 
     // app start up
     implementation 'androidx.startup:startup-runtime:1.1.1'
@@ -136,10 +136,10 @@ dependencies {
     // <----------------------------------- room
 
     // view model
-    implementation 'androidx.activity:activity-ktx:1.6.0'
-    implementation 'androidx.fragment:fragment-ktx:1.5.3'
+    implementation 'androidx.activity:activity-ktx:1.6.1'
+    implementation 'androidx.fragment:fragment-ktx:1.5.4'
 
-    implementation 'com.google.android.material:material:1.6.1'
+    implementation 'com.google.android.material:material:1.7.0'
 
     // chart
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
@@ -173,7 +173,7 @@ dependencies {
     implementation 'com.google.android.gms:play-services-maps:18.1.0'
 
     // admob
-    implementation 'com.google.android.gms:play-services-ads:21.2.0'
+    implementation 'com.google.android.gms:play-services-ads:21.3.0'
 
     // zooming image view
     implementation 'com.github.chrisbanes:PhotoView:2.3.0'
@@ -182,7 +182,7 @@ dependencies {
     implementation 'com.airbnb.android:lottie:5.2.0'
 
     // push
-    implementation 'com.google.firebase:firebase-messaging:23.0.8'
+    implementation 'com.google.firebase:firebase-messaging:23.1.0'
 }
 
 

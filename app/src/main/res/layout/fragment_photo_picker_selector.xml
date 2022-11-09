@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".main.examples.newsystemphotopicker.PhotoPickerSelectorFragment"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:paddingVertical="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <Button
+            android:textColor="@color/white"
+            android:textAllCaps="false"
+            android:textSize="8pt"
+            android:text="Single"
+            android:backgroundTint="#7851E4"
+            android:id="@+id/buttonSingle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:textColor="@color/white"
+            android:textAllCaps="false"
+            android:textSize="8pt"
+            android:text="Multiple"
+            android:backgroundTint="#7851E4"
+            android:layout_marginStart="26dp"
+            android:id="@+id/buttonMultiple"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+</FrameLayout>

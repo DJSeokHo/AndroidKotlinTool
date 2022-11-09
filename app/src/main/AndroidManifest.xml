@@ -63,6 +63,13 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".main.examples.newsystemphotopicker.NewSystemPhotoPickerActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".main.examples.imagesimilaritycameraexample.ImageSimilarityCameraActivity"
             android:exported="false">
             <meta-data

@@ -23,10 +23,7 @@ import com.swein.androidkotlintool.framework.utility.eventsplitshot.eventcenter.
 import com.swein.androidkotlintool.framework.utility.eventsplitshot.subject.ESSArrows
 import com.swein.androidkotlintool.framework.utility.glide.SHGlide
 import com.swein.androidkotlintool.framework.utility.screen.ScreenUtil
-import com.swein.androidkotlintool.main.examples.imagesimilarity.ImageSimilarityActivity
-import com.swein.androidkotlintool.main.examples.imagesimilaritycameraexample.ImageSimilarityCameraActivity
-import com.swein.androidkotlintool.main.examples.onbackpresseddispatcherexample.OnBackPressedDispatcherExampleActivity
-import com.swein.androidkotlintool.main.examples.searchpageexample.SearchPageExampleActivity
+import com.swein.androidkotlintool.main.examples.newsystemphotopicker.NewSystemPhotoPickerActivity
 import com.swein.androidkotlintool.main.moduledemo.ModuleDemoActivity
 import com.swein.androidkotlintool.template.bottomtab.activity.TabHostActivity
 import com.swein.androidkotlintool.template.handlerthread.HandlerThreadTemplateActivity
@@ -180,7 +177,8 @@ class MainActivity : BasicPermissionActivity() {
 //        ActivityUtil.startNewActivityWithoutFinish(this, ImageSimilarityActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, SearchPageExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, OnBackPressedDispatcherExampleActivity::class.java)
-        ActivityUtil.startNewActivityWithoutFinish(this, ImageSimilarityCameraActivity::class.java)
+//        ActivityUtil.startNewActivityWithoutFinish(this, ImageSimilarityCameraActivity::class.java)
+        ActivityUtil.startNewActivityWithoutFinish(this, NewSystemPhotoPickerActivity::class.java)
 
 
 //        SnackBarUtility.showSnackBar(frameLayoutRoot, "test")
