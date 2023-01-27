@@ -23,6 +23,7 @@ import com.swein.androidkotlintool.framework.utility.eventsplitshot.eventcenter.
 import com.swein.androidkotlintool.framework.utility.eventsplitshot.subject.ESSArrows
 import com.swein.androidkotlintool.framework.utility.glide.SHGlide
 import com.swein.androidkotlintool.framework.utility.screen.ScreenUtil
+import com.swein.androidkotlintool.main.examples.autoresizingtextexample.AutoResizingTextExampleActivity
 import com.swein.androidkotlintool.main.examples.newsystemphotopicker.NewSystemPhotoPickerActivity
 import com.swein.androidkotlintool.main.moduledemo.ModuleDemoActivity
 import com.swein.androidkotlintool.template.bottomtab.activity.TabHostActivity
@@ -178,7 +179,8 @@ class MainActivity : BasicPermissionActivity() {
 //        ActivityUtil.startNewActivityWithoutFinish(this, SearchPageExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, OnBackPressedDispatcherExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, ImageSimilarityCameraActivity::class.java)
-        ActivityUtil.startNewActivityWithoutFinish(this, NewSystemPhotoPickerActivity::class.java)
+//        ActivityUtil.startNewActivityWithoutFinish(this, NewSystemPhotoPickerActivity::class.java)
+        ActivityUtil.startNewActivityWithoutFinish(this, AutoResizingTextExampleActivity::class.java)
 
 
 //        SnackBarUtility.showSnackBar(frameLayoutRoot, "test")

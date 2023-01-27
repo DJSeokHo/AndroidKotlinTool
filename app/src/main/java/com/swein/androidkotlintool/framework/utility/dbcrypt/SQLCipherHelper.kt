@@ -71,12 +71,12 @@ class SQLCipherHelper {
                 db.rawExecSQL("SELECT sqlcipher_export('encrypted')")
                 db.rawExecSQL("DETACH DATABASE encrypted;")
 
-                val version = db.getVersion()
+                val version = db.version
 
                 db.close()
 
                 db = SQLiteDatabase.openDatabase(newFile.absolutePath, passphrase, null, SQLiteDatabase.OPEN_READWRITE)
-                db.setVersion(version)
+                db.version = version
                 db.close()
 
                 originalFile.delete()

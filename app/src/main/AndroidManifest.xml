@@ -63,6 +63,9 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".main.examples.autoresizingtextexample.AutoResizingTextExampleActivity"
+            android:exported="false" />
+        <activity
             android:name=".main.examples.newsystemphotopicker.NewSystemPhotoPickerActivity"
             android:exported="false">
             <meta-data
