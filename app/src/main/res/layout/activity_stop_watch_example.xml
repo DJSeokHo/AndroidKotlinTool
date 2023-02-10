@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".main.examples.stopwatchexample.StopWatchExampleActivity"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/buttonHourPlus"
+                android:backgroundTint="@color/gray"
+                android:textSize="12pt"
+                android:textColor="@color/white"
+                android:text="+"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:maxLength="2"
+                android:maxLines="1"
+                android:textStyle="bold"
+                android:layout_marginVertical="4dp"
+                android:text="00"
+                android:textSize="12pt"
+                android:textColor="@color/black"
+                android:id="@+id/textViewHour"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <Button
+                android:id="@+id/buttonHourMinus"
+                android:backgroundTint="@color/gray"
+                android:textSize="12pt"
+                android:textColor="@color/white"
+                android:text="-"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:textStyle="bold"
+            android:layout_marginVertical="4dp"
+            android:text=":"
+            android:textSize="12pt"
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/buttonMinutePlus"
+                android:backgroundTint="@color/gray"
+                android:textSize="12pt"
+                android:textColor="@color/white"
+                android:text="+"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:maxLength="2"
+                android:maxLines="1"
+                android:textStyle="bold"
+                android:layout_marginVertical="4dp"
+                android:text="00"
+                android:textSize="12pt"
+                android:textColor="@color/black"
+                android:id="@+id/textViewMinute"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <Button
+                android:id="@+id/buttonMinuteMinus"
+                android:backgroundTint="@color/gray"
+                android:textSize="12pt"
+                android:textColor="@color/white"
+                android:text="-"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:textStyle="bold"
+            android:layout_marginVertical="4dp"
+            android:text=":"
+            android:textSize="12pt"
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/buttonSecondPlus"
+                android:backgroundTint="@color/gray"
+                android:textSize="12pt"
+                android:textColor="@color/white"
+                android:text="+"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:maxLength="2"
+                android:maxLines="1"
+                android:textStyle="bold"
+                android:layout_marginVertical="4dp"
+                android:text="00"
+                android:textSize="12pt"
+                android:textColor="@color/black"
+                android:id="@+id/textViewSecond"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <Button
+                android:id="@+id/buttonSecondMinus"
+                android:backgroundTint="@color/gray"
+                android:textSize="12pt"
+                android:textColor="@color/white"
+                android:text="-"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:layout_marginTop="20dp"
+        android:id="@+id/buttonStart"
+        android:backgroundTint="@color/white"
+        android:textSize="10pt"
+        android:textColor="@color/black"
+        android:text="Start"
+        android:textAllCaps="false"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:layout_marginTop="10dp"
+        android:id="@+id/buttonReset"
+        android:backgroundTint="@color/white"
+        android:textSize="10pt"
+        android:textColor="@color/black"
+        android:text="Reset"
+        android:textAllCaps="false"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>

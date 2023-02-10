@@ -24,10 +24,13 @@ import com.swein.androidkotlintool.R
 import com.swein.androidkotlintool.framework.utility.bitmap.BitmapUtil
 import com.swein.androidkotlintool.framework.utility.debug.ILog
 import com.swein.androidkotlintool.framework.utility.glide.SHGlide
+import com.swein.androidkotlintool.framework.utility.thread.ThreadUtility
 import com.swein.androidkotlintool.framework.utility.window.WindowUtility
 import com.swein.androidkotlintool.main.examples.permissionexample.PermissionManager
 import com.swein.androidkotlintool.main.examples.systemphotopicker.SystemPhotoPickManager
 import java.io.File
+import java.io.InputStream
+import java.net.URL
 import java.util.concurrent.Executors
 import kotlin.math.abs
 import kotlin.math.max
@@ -122,6 +125,23 @@ class ImageSimilarityCameraActivity : AppCompatActivity() {
     }
 
     private fun setListener() {
+
+        if (true) {
+
+            ThreadUtility.startThread {
+
+                val inputStream: InputStream = URL("https://dl.dropboxusercontent.com/s/fwpfc89pk77o2ta/img_v_sh_2_4_print.png").openStream()
+                bitmapSample = BitmapFactory.decodeStream(inputStream)
+                inputStream.close()
+
+                ThreadUtility.startUIThread(0) {
+                    SHGlide.setImage(imageViewSample, bitmap = bitmapSample)
+                }
+            }
+
+            return
+        }
+
         imageViewSample.setOnClickListener {
 
 //            systemPhotoPickManager.takePictureWithBitmap {
