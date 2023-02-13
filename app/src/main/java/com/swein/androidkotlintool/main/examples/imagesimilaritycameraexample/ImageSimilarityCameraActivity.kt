@@ -126,6 +126,7 @@ class ImageSimilarityCameraActivity : AppCompatActivity() {
 
     private fun setListener() {
 
+        // TODO delete
         if (true) {
 
             ThreadUtility.startThread {
@@ -141,6 +142,8 @@ class ImageSimilarityCameraActivity : AppCompatActivity() {
 
             return
         }
+        // TODO delete
+
 
         imageViewSample.setOnClickListener {
 

@@ -180,10 +180,10 @@ class MainActivity : BasicPermissionActivity() {
 //        ActivityUtil.startNewActivityWithoutFinish(this, ImageSimilarityActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, SearchPageExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, OnBackPressedDispatcherExampleActivity::class.java)
-        ActivityUtil.startNewActivityWithoutFinish(this, ImageSimilarityCameraActivity::class.java)
+//        ActivityUtil.startNewActivityWithoutFinish(this, ImageSimilarityCameraActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, NewSystemPhotoPickerActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, AutoResizingTextExampleActivity::class.java)
-//        ActivityUtil.startNewActivityWithoutFinish(this, StopWatchExampleActivity::class.java)
+        ActivityUtil.startNewActivityWithoutFinish(this, StopWatchExampleActivity::class.java)
 
 
 //        SnackBarUtility.showSnackBar(frameLayoutRoot, "test")
