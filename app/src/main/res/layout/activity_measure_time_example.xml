@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".main.examples.measuretimeexample.MeasureTimeExampleActivity"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@color/white">
+
+    <Button
+        android:id="@+id/buttonCommon"
+        android:textSize="10pt"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/black"
+        android:text="common"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/buttonSequential"
+        android:textSize="10pt"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/black"
+        android:text="sequential"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/buttonConcurrent"
+        android:textSize="10pt"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/black"
+        android:layout_marginTop="20dp"
+        android:text="concurrent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>

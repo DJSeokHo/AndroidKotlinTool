@@ -25,6 +25,7 @@ import com.swein.androidkotlintool.framework.utility.glide.SHGlide
 import com.swein.androidkotlintool.framework.utility.screen.ScreenUtil
 import com.swein.androidkotlintool.main.examples.autoresizingtextexample.AutoResizingTextExampleActivity
 import com.swein.androidkotlintool.main.examples.imagesimilaritycameraexample.ImageSimilarityCameraActivity
+import com.swein.androidkotlintool.main.examples.measuretimeexample.MeasureTimeExampleActivity
 import com.swein.androidkotlintool.main.examples.newsystemphotopicker.NewSystemPhotoPickerActivity
 import com.swein.androidkotlintool.main.examples.stopwatchexample.StopWatchExampleActivity
 import com.swein.androidkotlintool.main.moduledemo.ModuleDemoActivity
@@ -183,7 +184,8 @@ class MainActivity : BasicPermissionActivity() {
 //        ActivityUtil.startNewActivityWithoutFinish(this, ImageSimilarityCameraActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, NewSystemPhotoPickerActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, AutoResizingTextExampleActivity::class.java)
-        ActivityUtil.startNewActivityWithoutFinish(this, StopWatchExampleActivity::class.java)
+//        ActivityUtil.startNewActivityWithoutFinish(this, StopWatchExampleActivity::class.java)
+        ActivityUtil.startNewActivityWithoutFinish(this, MeasureTimeExampleActivity::class.java)
 
 
 //        SnackBarUtility.showSnackBar(frameLayoutRoot, "test")
