@@ -37,7 +37,7 @@ class PixelColorPickerExampleActivity : AppCompatActivity() {
         setContentView(R.layout.activity_pixel_color_picker_example)
 
         bitmap = BitmapFactory.decodeResource(this.resources, R.drawable.coding_with_cat)
-        imageView.setImageResource(R.drawable.coding_with_cat)
+        imageView.setImageBitmap(bitmap)
 
         imageView.post {
 
