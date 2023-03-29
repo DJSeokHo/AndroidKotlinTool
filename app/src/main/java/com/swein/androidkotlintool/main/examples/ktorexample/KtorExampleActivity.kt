@@ -11,18 +11,11 @@ import com.swein.androidkotlintool.R
 import com.swein.androidkotlintool.framework.utility.debug.ILog
 import com.swein.androidkotlintool.main.examples.ktorexample.KtorExampleConstants.MY_TEST_SERVER_DOMAIN
 import com.swein.androidkotlintool.main.examples.ktorexample.KtorExampleConstants.SAMPLE_IMAGE_FILE_PATH
-import io.ktor.client.*
-import io.ktor.client.engine.android.*
-import io.ktor.client.features.*
-import io.ktor.client.features.json.*
-import io.ktor.client.features.logging.*
-import io.ktor.client.request.*
-import io.ktor.client.request.forms.*
 import io.ktor.client.statement.*
-import io.ktor.http.*
-import io.ktor.http.content.*
-import io.ktor.utils.io.core.*
-import kotlinx.coroutines.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.launch
 import org.json.JSONObject
 
 class KtorExampleActivity : AppCompatActivity() {
@@ -59,9 +52,9 @@ class KtorExampleActivity : AppCompatActivity() {
                         }
 
                         val response = request.await()
-                        ILog.debug("??? response", response.readText())
+                        ILog.debug("??? response", response.bodyAsText())
 
-                        val jsonObject = JSONObject(response.readText())
+                        val jsonObject = JSONObject(response.bodyAsText())
                         val success = jsonObject.getBoolean("success")
                         if (success) {
                             val token = jsonObject.getString("value")
@@ -76,7 +69,7 @@ class KtorExampleActivity : AppCompatActivity() {
                             }
 
                             val infoResponse = infoRequest.await()
-                            ILog.debug("??? infoResponse", infoResponse.readText())
+                            ILog.debug("??? infoResponse", infoResponse.bodyAsText())
                             hideProgress()
                         }
 
@@ -119,7 +112,7 @@ class KtorExampleActivity : AppCompatActivity() {
                         }
 
                         val response = request.await()
-                        ILog.debug("??? response", response.readText())
+                        ILog.debug("??? response", response.bodyAsText())
                         hideProgress()
                     }
                 }

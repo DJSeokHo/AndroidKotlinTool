@@ -78,14 +78,14 @@ dependencies {
     // CameraX core library using the camera2 implementation
 //    def camerax_version = "1.0.1"
     // The following line is optional, as the core library is included indirectly by camera-camera2
-    implementation "androidx.camera:camera-core:1.3.0-alpha04"
-    implementation "androidx.camera:camera-camera2:1.3.0-alpha04"
+    implementation "androidx.camera:camera-core:1.3.0-alpha05"
+    implementation "androidx.camera:camera-camera2:1.3.0-alpha05"
     // If you want to additionally use the CameraX Lifecycle library
-    implementation "androidx.camera:camera-lifecycle:1.3.0-alpha04"
+    implementation "androidx.camera:camera-lifecycle:1.3.0-alpha05"
     // If you want to additionally use the CameraX View class
-    implementation "androidx.camera:camera-view:1.3.0-alpha04"
+    implementation "androidx.camera:camera-view:1.3.0-alpha05"
     // If you want to additionally use the CameraX Extensions library
-    implementation "androidx.camera:camera-extensions:1.3.0-alpha04"
+    implementation "androidx.camera:camera-extensions:1.3.0-alpha05"
 
     // glide
     implementation 'com.github.bumptech.glide:glide:4.12.0'
@@ -97,15 +97,15 @@ dependencies {
 
     // Lifecycle components
 
-    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.5.1"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.6.0"
 
-    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.5.1"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.6.0"
 
     implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
 
-    implementation "androidx.lifecycle:lifecycle-common-java8:2.5.1"
+    implementation "androidx.lifecycle:lifecycle-common-java8:2.6.0"
 
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.0"
 
     // coroutines
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4"
@@ -113,9 +113,9 @@ dependencies {
 
     // WorkManager ============
     // (Java only)
-    implementation 'androidx.work:work-runtime:2.8.0'
+    implementation 'androidx.work:work-runtime:2.8.1'
     // Kotlin + coroutines
-    implementation 'androidx.work:work-runtime-ktx:2.8.0'
+    implementation 'androidx.work:work-runtime-ktx:2.8.1'
     // WorkManager ============
 
     implementation 'com.google.android.gms:play-services-location:21.0.1'
@@ -153,8 +153,8 @@ dependencies {
 
     implementation files('../libs/YouTubeAndroidPlayerApi.jar')
 
-    implementation 'com.google.android.exoplayer:exoplayer:2.18.3'
-    implementation 'com.google.android.exoplayer:exoplayer-ui:2.18.3'
+    implementation 'com.google.android.exoplayer:exoplayer:2.18.5'
+    implementation 'com.google.android.exoplayer:exoplayer-ui:2.18.5'
 
     implementation 'androidx.paging:paging-runtime-ktx:3.1.1'
 //    implementation("androidx.paging:paging-compose:1.0.0-alpha12")
@@ -164,10 +164,12 @@ dependencies {
 
 
     // ktor
-    implementation "io.ktor:ktor-client-core:1.6.4"
+    implementation "io.ktor:ktor-client-core:2.2.1"
     implementation "io.ktor:ktor-client-android:1.6.4"
-    implementation "io.ktor:ktor-client-logging:1.6.4"
+    implementation "io.ktor:ktor-client-logging:2.2.1"
     implementation "io.ktor:ktor-client-gson:1.6.4"
+    implementation "io.ktor:ktor-server-content-negotiation:2.2.1"
+    implementation "io.ktor:ktor-serialization-kotlinx-json:2.2.1"
 
     // google map
     implementation 'com.google.android.gms:play-services-maps:18.1.0'
@@ -182,7 +184,7 @@ dependencies {
     implementation 'com.airbnb.android:lottie:5.2.0'
 
     // push
-    implementation 'com.google.firebase:firebase-messaging:23.1.1'
+    implementation 'com.google.firebase:firebase-messaging:23.1.2'
 }
 
 

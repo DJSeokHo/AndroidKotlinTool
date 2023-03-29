@@ -4,11 +4,13 @@ import io.ktor.client.*
 import io.ktor.client.engine.android.*
 import io.ktor.client.features.*
 import io.ktor.client.features.json.*
-import io.ktor.client.features.logging.*
+import io.ktor.client.plugins.*
+import io.ktor.client.plugins.logging.*
 import io.ktor.client.request.*
 import io.ktor.client.request.forms.*
 import io.ktor.client.statement.*
 import io.ktor.http.*
+import io.ktor.util.*
 import java.io.File
 
 data class FormDataFile(
@@ -45,10 +47,10 @@ object KtorWrapper {
                 level = LogLevel.ALL
             }
 
-            install(JsonFeature) {
-                serializer = GsonSerializer()
-                acceptContentTypes = acceptContentTypes + ContentType.Application.Json
-            }
+//            install(JsonFeature) {
+//                serializer = GsonSerializer()
+//                acceptContentTypes = acceptContentTypes + ContentType.Application.Json
+//            }
 
             engine {
                 connectTimeout = 100_000
@@ -57,10 +59,10 @@ object KtorWrapper {
 
             HttpResponseValidator {
 
-                handleResponseException { e ->
+                handleResponseExceptionWithRequest { throwable, request ->
 
                     onLog?.let { onLog ->
-                        e.message?.let { message ->
+                        throwable.message?.let { message ->
                             onLog(message)
                         }
                     }
@@ -112,6 +114,7 @@ object KtorWrapper {
         }
     }
 
+    @OptIn(InternalAPI::class)
     suspend fun post(
         url: String,
         headerMap: MutableMap<String, String>? = null,
@@ -177,6 +180,7 @@ object KtorWrapper {
         }
     }
 
+    @OptIn(InternalAPI::class)
     suspend fun put(
         url: String,
         headerMap: MutableMap<String, String>? = null,
@@ -242,6 +246,7 @@ object KtorWrapper {
         }
     }
 
+    @OptIn(InternalAPI::class)
     suspend fun delete(
         url: String,
         headerMap: MutableMap<String, String>? = null,
