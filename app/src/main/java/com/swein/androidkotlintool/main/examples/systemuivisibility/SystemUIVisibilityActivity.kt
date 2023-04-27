@@ -74,7 +74,7 @@ class SystemUIVisibilityActivity : AppCompatActivity() {
         }
     }
 
-    fun setStateBarVisible(activity: Activity) {
+    private fun setStateBarVisible(activity: Activity) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             activity.window.decorView.windowInsetsController?.show(WindowInsets.Type.statusBars())
         }
@@ -83,7 +83,7 @@ class SystemUIVisibilityActivity : AppCompatActivity() {
         }
     }
 
-    fun setStateBarInVisible(activity: Activity) {
+    private fun setStateBarInVisible(activity: Activity) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             activity.window.decorView.windowInsetsController?.hide(WindowInsets.Type.statusBars())
         }
@@ -92,21 +92,21 @@ class SystemUIVisibilityActivity : AppCompatActivity() {
         }
     }
 
-    fun setStateBarToLightTheme(activity: Activity) {
+    private fun setStateBarToLightTheme(activity: Activity) {
         ViewCompat.getWindowInsetsController(activity.window.decorView)?.isAppearanceLightStatusBars = true
     }
 
-    fun setStateBarToDarkTheme(activity: Activity) {
+    private fun setStateBarToDarkTheme(activity: Activity) {
         ViewCompat.getWindowInsetsController(activity.window.decorView)?.isAppearanceLightStatusBars = false
     }
 
-    fun setStatusBarColor(activity: Activity, color: Int) {
+    private fun setStatusBarColor(activity: Activity, color: Int) {
         val window = activity.window
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
         window.statusBarColor = color
     }
 
-    fun setNavigationBarVisible(activity: Activity) {
+    private fun setNavigationBarVisible(activity: Activity) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             activity.window.decorView.windowInsetsController?.show(WindowInsets.Type.navigationBars())
         }
@@ -115,7 +115,7 @@ class SystemUIVisibilityActivity : AppCompatActivity() {
         }
     }
 
-    fun setNavigationBarInVisible(activity: Activity) {
+    private fun setNavigationBarInVisible(activity: Activity) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             activity.window.decorView.windowInsetsController?.hide(WindowInsets.Type.navigationBars())
         }
@@ -125,22 +125,22 @@ class SystemUIVisibilityActivity : AppCompatActivity() {
     }
 
 
-    fun setNavigationBarToLightTheme(activity: Activity) {
+    private fun setNavigationBarToLightTheme(activity: Activity) {
         ViewCompat.getWindowInsetsController(activity.window.decorView)?.isAppearanceLightNavigationBars = true
     }
 
-    fun setNavigationBarToDarkTheme(activity: Activity) {
+    private fun setNavigationBarToDarkTheme(activity: Activity) {
         ViewCompat.getWindowInsetsController(activity.window.decorView)?.isAppearanceLightNavigationBars = false
     }
 
-    fun setNavigationBarColor(activity: Activity, color: Int) {
+    private fun setNavigationBarColor(activity: Activity, color: Int) {
         val window = activity.window
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
         window.navigationBarColor = color
     }
 
 
-    fun enableImmersiveMode(activity: Activity) {
+    private fun enableImmersiveMode(activity: Activity) {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             activity.window.setDecorFitsSystemWindows(false)
@@ -159,7 +159,7 @@ class SystemUIVisibilityActivity : AppCompatActivity() {
 
     }
 
-    fun disableImmersiveMode(activity: Activity) {
+    private fun disableImmersiveMode(activity: Activity) {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             activity.window.setDecorFitsSystemWindows(true)
@@ -175,12 +175,12 @@ class SystemUIVisibilityActivity : AppCompatActivity() {
         }
     }
 
-    fun layoutFullScreen(activity: Activity) {
+    private fun layoutFullScreen(activity: Activity) {
         activity.window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or View.SYSTEM_UI_FLAG_LAYOUT_STABLE
         activity.window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION or View.SYSTEM_UI_FLAG_LAYOUT_STABLE
     }
 
-    fun layoutNormalScreen(activity: Activity) {
+    private fun layoutNormalScreen(activity: Activity) {
         activity.window.decorView.systemUiVisibility = 0
     }
 

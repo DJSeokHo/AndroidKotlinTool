@@ -1,181 +1,159 @@
 package com.swein.androidkotlintool.main.examples.exoplayerexample
 
+import android.app.Activity
 import android.content.res.Configuration
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
+import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.View
+import android.view.WindowInsets
+import android.view.WindowInsetsController
 import android.view.WindowManager
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
-import com.google.android.exoplayer2.*
-import com.google.android.exoplayer2.source.MediaSource
-import com.google.android.exoplayer2.source.ProgressiveMediaSource
-import com.google.android.exoplayer2.source.hls.HlsMediaSource
-import com.google.android.exoplayer2.ui.PlayerView
-import com.google.android.exoplayer2.upstream.DataSource
-import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory
-import com.google.android.exoplayer2.util.Util
-import com.swein.androidkotlintool.R
 import androidx.core.view.ViewCompat
-import com.swein.androidkotlintool.framework.utility.debug.ILog
+import androidx.core.view.WindowInsetsCompat
+import com.google.android.exoplayer2.ExoPlayer
+import com.google.android.exoplayer2.MediaItem
+import com.google.android.exoplayer2.PlaybackException
+import com.google.android.exoplayer2.Player
+import com.google.android.exoplayer2.ui.StyledPlayerView
+import com.swein.androidkotlintool.R
 
 
 class ExoPlayerExampleActivity : AppCompatActivity() {
 
     private lateinit var constraintLayoutRoot: ConstraintLayout
-    private lateinit var exoPlayerView: PlayerView
+    private lateinit var styledPlayerView: StyledPlayerView
 
-    private lateinit var simpleExoPlayer: SimpleExoPlayer
-    private lateinit var mediaSource: MediaSource
+    private lateinit var exoPlayer: ExoPlayer
 
-    private lateinit var urlType: URLType
+//    private lateinit var urlType: URLType
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_exo_player_example)
 
         // don't forget
-        // <uses-permission android:name="android.permission.WAKE_LOCK" />
         window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
 
-        val rootView = window.decorView.rootView
+//        val rootView = window.decorView.rootView
 
         findView()
         initPlayer()
 
-        ViewCompat.setOnApplyWindowInsetsListener(rootView) { _, insets ->
+//        ViewCompat.setOnApplyWindowInsetsListener(rootView) { _, windowInsetsCompat: WindowInsetsCompat ->
+//
+//           windowInsetsCompat.consumeSystemWindowInsets()
+//        }
 
-            ILog.debug("topInset", "${insets.systemWindowInsetTop}")
-            ILog.debug("bottomInset", "${insets.systemWindowInsetBottom}")
-
-            insets.consumeSystemWindowInsets()
-        }
     }
 
     private fun findView() {
         constraintLayoutRoot = findViewById(R.id.constraintLayoutRoot)
-        exoPlayerView = findViewById(R.id.exoPlayerView)
+        styledPlayerView = findViewById(R.id.styledPlayerView)
     }
 
     private fun initPlayer() {
-        simpleExoPlayer = SimpleExoPlayer.Builder(this).build()
+        exoPlayer = ExoPlayer.Builder(this).build()
 
-        simpleExoPlayer.addListener(playerListener)
+        exoPlayer.addListener(playerListener)
 
-        exoPlayerView.player = simpleExoPlayer
+        styledPlayerView.player = exoPlayer
 
-        createMediaSource()
+        // streaming video doesn't need a controller, mp4 video needs a controller
+//        styledPlayerView.useController = true
+//        exoPlayer.setMediaItem(MediaItem.fromUri(Uri.parse("http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4")))
 
-        // Prepare the player with the source.
-        simpleExoPlayer.setMediaSource(mediaSource)
-        simpleExoPlayer.prepare()
+        // HLS(Http Live Streaming) is a video transfer protocol, the suffix of the video is m3u8
+        exoPlayer.setMediaItem(MediaItem.fromUri(Uri.parse("https://cph-p2p-msl.akamaized.net/hls/live/2000341/test/master.m3u8")))
+
+        exoPlayer.prepare()
     }
 
-    private fun createMediaSource() {
+//    private fun enableImmersiveMode(activity: Activity) {
+//
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+//            activity.window.setDecorFitsSystemWindows(false)
+//            val controller = activity.window.insetsController
+//            controller?.hide(WindowInsets.Type.statusBars() or WindowInsets.Type.navigationBars())
+//            controller?.systemBarsBehavior = WindowInsetsController.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+//        }
+//        else {
+//            activity.window.decorView.systemUiVisibility = (View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+//                    or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+//                    or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+//                    or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+//                    or View.SYSTEM_UI_FLAG_FULLSCREEN
+//                    or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY)
+//        }
+//
+//    }
+//
+//    private fun disableImmersiveMode(activity: Activity) {
+//
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+//            activity.window.setDecorFitsSystemWindows(true)
+//            val controller = activity.window.insetsController
+//            controller?.show(WindowInsets.Type.statusBars() or WindowInsets.Type.navigationBars())
+//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+//                controller?.systemBarsBehavior = WindowInsetsController.BEHAVIOR_DEFAULT
+//            }
+//        }
+//        else {
+//            activity.window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_VISIBLE
+//
+//        }
+//    }
 
-//        urlType = URLType.MP4
-//        urlType.url = "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"
-
-        urlType = URLType.HLS
-        urlType.url = "https://cph-p2p-msl.akamaized.net/hls/live/2000341/test/master.m3u8"
-
-        Log.d("???", "createMediaSource ${urlType.name} ${urlType.url}")
-
-        simpleExoPlayer.seekTo(0)
-
-        when (urlType) {
-            URLType.MP4 -> {
-                val dataSourceFactory: DataSource.Factory = DefaultDataSourceFactory(
-                    this,
-                    Util.getUserAgent(this, applicationInfo.name)
-                )
-                mediaSource = ProgressiveMediaSource.Factory(dataSourceFactory).createMediaSource(
-                    MediaItem.fromUri(Uri.parse(urlType.url)))
-            }
-            URLType.HLS -> {
-                val dataSourceFactory: DataSource.Factory = DefaultDataSourceFactory(
-                    this,
-                    Util.getUserAgent(this, applicationInfo.name)
-                )
-                mediaSource = HlsMediaSource.Factory(dataSourceFactory).createMediaSource(
-                    MediaItem.fromUri(
-                        Uri.parse(urlType.url)))
-            }
-        }
-
-    }
-
-    private fun hideSystemUI() {
-
-        actionBar?.hide()
-
-        window.decorView.systemUiVisibility = (View.SYSTEM_UI_FLAG_IMMERSIVE
-                or View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                or View.SYSTEM_UI_FLAG_FULLSCREEN)
-    }
-
-    private fun showSystemUI() {
-
-        actionBar?.show()
-
-        window.decorView.systemUiVisibility = (View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN)
-    }
-
-    override fun onConfigurationChanged(newConfig: Configuration) {
-        super.onConfigurationChanged(newConfig)
-
-        val constraintSet = ConstraintSet()
-        constraintSet.connect(exoPlayerView.id, ConstraintSet.TOP, ConstraintSet.PARENT_ID, ConstraintSet.TOP, 0)
-        constraintSet.connect(exoPlayerView.id, ConstraintSet.BOTTOM, ConstraintSet.PARENT_ID, ConstraintSet.BOTTOM, 0)
-        constraintSet.connect(exoPlayerView.id, ConstraintSet.START, ConstraintSet.PARENT_ID, ConstraintSet.START, 0)
-        constraintSet.connect(exoPlayerView.id, ConstraintSet.END, ConstraintSet.PARENT_ID, ConstraintSet.END, 0)
-
-        constraintSet.applyTo(constraintLayoutRoot)
-
-        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-
-            hideSystemUI()
-        }
-        else {
-
-            showSystemUI()
-
-            val layoutParams = exoPlayerView.layoutParams as ConstraintLayout.LayoutParams
-            layoutParams.dimensionRatio = "16:9"
-        }
-
-        window.decorView.requestLayout()
-
-
-    }
+//    override fun onConfigurationChanged(newConfig: Configuration) {
+//        super.onConfigurationChanged(newConfig)
+//
+//        val constraintSet = ConstraintSet()
+//        constraintSet.connect(styledPlayerView.id, ConstraintSet.TOP, ConstraintSet.PARENT_ID, ConstraintSet.TOP, 0)
+//        constraintSet.connect(styledPlayerView.id, ConstraintSet.BOTTOM, ConstraintSet.PARENT_ID, ConstraintSet.BOTTOM, 0)
+//        constraintSet.connect(styledPlayerView.id, ConstraintSet.START, ConstraintSet.PARENT_ID, ConstraintSet.START, 0)
+//        constraintSet.connect(styledPlayerView.id, ConstraintSet.END, ConstraintSet.PARENT_ID, ConstraintSet.END, 0)
+//
+//        constraintSet.applyTo(constraintLayoutRoot)
+//
+//        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+//
+//            enableImmersiveMode(this)
+//
+//        }
+//        else {
+//
+//            disableImmersiveMode(this)
+//
+//            val layoutParams = styledPlayerView.layoutParams as ConstraintLayout.LayoutParams
+//            layoutParams.dimensionRatio = "16:9"
+//        }
+//
+//        window.decorView.requestLayout()
+//    }
 
     override fun onResume() {
         super.onResume()
 
-        simpleExoPlayer.playWhenReady = true
-        simpleExoPlayer.play()
+        exoPlayer.playWhenReady = true
+        exoPlayer.play()
     }
 
     override fun onPause() {
         super.onPause()
 
-        simpleExoPlayer.pause()
-        simpleExoPlayer.playWhenReady = false
+        exoPlayer.pause()
+        exoPlayer.playWhenReady = false
     }
 
     override fun onStop() {
         super.onStop()
 
-        simpleExoPlayer.pause()
-        simpleExoPlayer.playWhenReady = false
+        exoPlayer.pause()
+        exoPlayer.playWhenReady = false
     }
 
     override fun onDestroy() {
@@ -183,8 +161,8 @@ class ExoPlayerExampleActivity : AppCompatActivity() {
 
         window.clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
 
-        simpleExoPlayer.stop()
-        simpleExoPlayer.clearMediaItems()
+        exoPlayer.stop()
+        exoPlayer.clearMediaItems()
     }
 
     private var playerListener = object : Player.Listener {
@@ -193,14 +171,10 @@ class ExoPlayerExampleActivity : AppCompatActivity() {
         override fun onRenderedFirstFrame() {
             super.onRenderedFirstFrame()
 
-            if (urlType == URLType.HLS) {
-                exoPlayerView.useController = false
-            }
+            // after the video was playing, you can do something here
+            // for example, show a toast, or change UI, or make UI to full screen, or........
 
-            if (urlType == URLType.MP4) {
-                exoPlayerView.useController = true
-            }
-
+            Toast.makeText(this@ExoPlayerExampleActivity, "have fun with this video", Toast.LENGTH_SHORT).show()
         }
 
         /* if you need
@@ -227,7 +201,7 @@ class ExoPlayerExampleActivity : AppCompatActivity() {
         override fun onPlaybackStateChanged(playbackState: Int) {
             super.onPlaybackStateChanged(playbackState)
 
-            if(!simpleExoPlayer.playWhenReady) {
+            if(!exoPlayer.playWhenReady) {
                 return
             }
 
@@ -286,8 +260,4 @@ class ExoPlayerExampleActivity : AppCompatActivity() {
         } */
         // audio
     }
-}
-
-enum class URLType(var url: String) {
-    MP4(""), HLS("")
 }

@@ -24,11 +24,13 @@ import com.swein.androidkotlintool.framework.utility.eventsplitshot.subject.ESSA
 import com.swein.androidkotlintool.framework.utility.glide.SHGlide
 import com.swein.androidkotlintool.framework.utility.screen.ScreenUtil
 import com.swein.androidkotlintool.main.examples.autoresizingtextexample.AutoResizingTextExampleActivity
+import com.swein.androidkotlintool.main.examples.exoplayerexample.ExoPlayerExampleActivity
 import com.swein.androidkotlintool.main.examples.imagesimilaritycameraexample.ImageSimilarityCameraActivity
 import com.swein.androidkotlintool.main.examples.measuretimeexample.MeasureTimeExampleActivity
 import com.swein.androidkotlintool.main.examples.newsystemphotopicker.NewSystemPhotoPickerActivity
 import com.swein.androidkotlintool.main.examples.pixelcolorpicker.PixelColorPickerExampleActivity
 import com.swein.androidkotlintool.main.examples.stopwatchexample.StopWatchExampleActivity
+import com.swein.androidkotlintool.main.examples.systemuivisibility.SystemUIVisibilityActivity
 import com.swein.androidkotlintool.main.moduledemo.ModuleDemoActivity
 import com.swein.androidkotlintool.template.bottomtab.activity.TabHostActivity
 import com.swein.androidkotlintool.template.handlerthread.HandlerThreadTemplateActivity
@@ -187,8 +189,9 @@ class MainActivity : BasicPermissionActivity() {
 //        ActivityUtil.startNewActivityWithoutFinish(this, AutoResizingTextExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, StopWatchExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, MeasureTimeExampleActivity::class.java)
-        ActivityUtil.startNewActivityWithoutFinish(this, PixelColorPickerExampleActivity::class.java)
-
+//        ActivityUtil.startNewActivityWithoutFinish(this, PixelColorPickerExampleActivity::class.java)
+        ActivityUtil.startNewActivityWithoutFinish(this, ExoPlayerExampleActivity::class.java)
+//        ActivityUtil.startNewActivityWithoutFinish(this, SystemUIVisibilityActivity::class.java)
 
 //        SnackBarUtility.showSnackBar(frameLayoutRoot, "test")
 //        SnackBarUtility.showSnackBar(frameLayoutRoot, "test", "click me") {
