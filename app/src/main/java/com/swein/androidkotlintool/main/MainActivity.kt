@@ -11,6 +11,9 @@ import android.widget.Button
 import android.widget.FrameLayout
 import android.widget.ImageView
 import com.swein.androidkotlintool.R
+import com.swein.androidkotlintool.advanceexamples.customtouchevent.CustomTouchEventExampleActivity
+import com.swein.androidkotlintool.advanceexamples.scalableimageview.ScalableImageViewExampleActivity
+import com.swein.androidkotlintool.advanceexamples.threads.ThreadsExamplesActivity
 import com.swein.androidkotlintool.constants.Constants
 import com.swein.androidkotlintool.framework.module.basicpermission.BasicPermissionActivity
 import com.swein.androidkotlintool.framework.module.basicpermission.PermissionManager
@@ -23,14 +26,7 @@ import com.swein.androidkotlintool.framework.utility.eventsplitshot.eventcenter.
 import com.swein.androidkotlintool.framework.utility.eventsplitshot.subject.ESSArrows
 import com.swein.androidkotlintool.framework.utility.glide.SHGlide
 import com.swein.androidkotlintool.framework.utility.screen.ScreenUtil
-import com.swein.androidkotlintool.main.examples.autoresizingtextexample.AutoResizingTextExampleActivity
-import com.swein.androidkotlintool.main.examples.exoplayerexample.ExoPlayerExampleActivity
-import com.swein.androidkotlintool.main.examples.imagesimilaritycameraexample.ImageSimilarityCameraActivity
-import com.swein.androidkotlintool.main.examples.measuretimeexample.MeasureTimeExampleActivity
-import com.swein.androidkotlintool.main.examples.newsystemphotopicker.NewSystemPhotoPickerActivity
-import com.swein.androidkotlintool.main.examples.pixelcolorpicker.PixelColorPickerExampleActivity
-import com.swein.androidkotlintool.main.examples.stopwatchexample.StopWatchExampleActivity
-import com.swein.androidkotlintool.main.examples.systemuivisibility.SystemUIVisibilityActivity
+import com.swein.androidkotlintool.main.examples.dragtodeleteexample.DragToDeleteExampleActivity
 import com.swein.androidkotlintool.main.moduledemo.ModuleDemoActivity
 import com.swein.androidkotlintool.template.bottomtab.activity.TabHostActivity
 import com.swein.androidkotlintool.template.handlerthread.HandlerThreadTemplateActivity
@@ -50,15 +46,7 @@ class MainActivity : BasicPermissionActivity() {
         }
     }
 
-    class Tes {
-
-        var number: Int
-
-        constructor(number: Int) {
-            this.number = number
-        }
-
-    }
+    class Tes(var number: Int)
 
     companion object {
         private const val TAG = "MainActivity"
@@ -190,8 +178,11 @@ class MainActivity : BasicPermissionActivity() {
 //        ActivityUtil.startNewActivityWithoutFinish(this, StopWatchExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, MeasureTimeExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, PixelColorPickerExampleActivity::class.java)
-        ActivityUtil.startNewActivityWithoutFinish(this, ExoPlayerExampleActivity::class.java)
-//        ActivityUtil.startNewActivityWithoutFinish(this, SystemUIVisibilityActivity::class.java)
+//        ActivityUtil.startNewActivityWithoutFinish(this, ExoPlayerExampleActivity::class.java)
+//        ActivityUtil.startNewActivityWithoutFinish(this, CustomTouchEventExampleActivity::class.java)
+//        ActivityUtil.startNewActivityWithoutFinish(this, ScalableImageViewExampleActivity::class.java)
+//        ActivityUtil.startNewActivityWithoutFinish(this, ThreadsExamplesActivity::class.java)
+        ActivityUtil.startNewActivityWithoutFinish(this, DragToDeleteExampleActivity::class.java)
 
 //        SnackBarUtility.showSnackBar(frameLayoutRoot, "test")
 //        SnackBarUtility.showSnackBar(frameLayoutRoot, "test", "click me") {

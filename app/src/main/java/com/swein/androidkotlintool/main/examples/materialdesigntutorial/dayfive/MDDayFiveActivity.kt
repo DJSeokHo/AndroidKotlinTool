@@ -90,6 +90,7 @@ class MDDayFiveActivity : AppCompatActivity() {
         behavior!!.addBottomSheetCallback(bottomSheetCallback)
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
 
         behavior?.let {

@@ -53,6 +53,9 @@
     <uses-feature
         android:name="android.hardware.camera.autofocus"
         android:required="false" />
+    <uses-feature
+        android:name="android.hardware.telephony"
+        android:required="false" />
 
     <application
         android:allowBackup="true"
@@ -62,6 +65,18 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity
+            android:name=".main.examples.dragtodeleteexample.DragToDeleteExampleActivity"
+            android:exported="false" />
+        <activity
+            android:name=".advanceexamples.threads.ThreadsExamplesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".advanceexamples.scalableimageview.ScalableImageViewExampleActivity"
+            android:exported="false" />
+        <activity
+            android:name=".advanceexamples.customtouchevent.CustomTouchEventExampleActivity"
+            android:exported="false" />
         <activity
             android:name=".main.examples.pixelcolorpicker.PixelColorPickerExampleActivity"
             android:exported="false" />
