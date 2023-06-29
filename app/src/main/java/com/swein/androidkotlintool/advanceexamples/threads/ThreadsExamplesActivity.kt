@@ -22,8 +22,13 @@ class ThreadsExamplesActivity : AppCompatActivity() {
 //        callable()
 
 //        SynchronizedDemo1().runTest()
-        SynchronizedDemo2().runTest()
-        SynchronizedDemo2Good().runTest()
+//        SynchronizedDemo2().runTest()
+//        SynchronizedDemo2Good().runTest()
+
+//        ThreadInteractionDemo().runTest()
+
+//        ThreadWaitDemo().runTest()
+        ThreadWaitWithJoinDemo().runTest()
     }
 
     private fun thread() {

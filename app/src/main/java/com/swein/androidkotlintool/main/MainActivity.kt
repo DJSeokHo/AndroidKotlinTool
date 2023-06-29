@@ -11,9 +11,6 @@ import android.widget.Button
 import android.widget.FrameLayout
 import android.widget.ImageView
 import com.swein.androidkotlintool.R
-import com.swein.androidkotlintool.advanceexamples.customtouchevent.CustomTouchEventExampleActivity
-import com.swein.androidkotlintool.advanceexamples.scalableimageview.ScalableImageViewExampleActivity
-import com.swein.androidkotlintool.advanceexamples.threads.ThreadsExamplesActivity
 import com.swein.androidkotlintool.constants.Constants
 import com.swein.androidkotlintool.framework.module.basicpermission.BasicPermissionActivity
 import com.swein.androidkotlintool.framework.module.basicpermission.PermissionManager
@@ -26,7 +23,6 @@ import com.swein.androidkotlintool.framework.utility.eventsplitshot.eventcenter.
 import com.swein.androidkotlintool.framework.utility.eventsplitshot.subject.ESSArrows
 import com.swein.androidkotlintool.framework.utility.glide.SHGlide
 import com.swein.androidkotlintool.framework.utility.screen.ScreenUtil
-import com.swein.androidkotlintool.main.examples.dragtodeleteexample.DragToDeleteExampleActivity
 import com.swein.androidkotlintool.main.moduledemo.ModuleDemoActivity
 import com.swein.androidkotlintool.template.bottomtab.activity.TabHostActivity
 import com.swein.androidkotlintool.template.handlerthread.HandlerThreadTemplateActivity
@@ -182,7 +178,7 @@ class MainActivity : BasicPermissionActivity() {
 //        ActivityUtil.startNewActivityWithoutFinish(this, CustomTouchEventExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, ScalableImageViewExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, ThreadsExamplesActivity::class.java)
-        ActivityUtil.startNewActivityWithoutFinish(this, DragToDeleteExampleActivity::class.java)
+//        ActivityUtil.startNewActivityWithoutFinish(this, DragToDeleteExampleActivity::class.java)
 
 //        SnackBarUtility.showSnackBar(frameLayoutRoot, "test")
 //        SnackBarUtility.showSnackBar(frameLayoutRoot, "test", "click me") {

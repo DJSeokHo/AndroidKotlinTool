@@ -1,8 +1,5 @@
 package com.swein.androidkotlintool.advanceexamples.threads
 
-import com.swein.androidkotlintool.framework.utility.debug.ILog
-import java.lang.Exception
-
 class SynchronizedDemo3: TestDemo {
 
     private var x = 0
@@ -11,8 +8,8 @@ class SynchronizedDemo3: TestDemo {
     private var name = ""
 
     // 通过不同的锁可以同时监听两个不相关值的原子性和同步性。
-    private val monitorForXAndY = Any()
-    private val monitorForName = Any()
+    private val monitorForXAndY = Object()
+    private val monitorForName = Object()
 
     private fun count(value: Int) {
 
