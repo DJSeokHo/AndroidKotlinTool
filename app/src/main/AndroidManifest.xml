@@ -66,9 +66,11 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".main.examples.logutilitywithextension.LogUtilityWithExtensionActivity"
+            android:exported="false" />
+        <activity
             android:name=".main.examples.widgetexample.SimpleWidgetTargetActivity"
             android:exported="false" />
-
         <activity
             android:name=".main.examples.dragtodeleteexample.DragToDeleteExampleActivity"
             android:exported="false" />
@@ -525,7 +527,6 @@
                 <action android:name="com.swein.broadcast.passdata" />
             </intent-filter>
         </receiver>
-
     </application>
 
 </manifest>

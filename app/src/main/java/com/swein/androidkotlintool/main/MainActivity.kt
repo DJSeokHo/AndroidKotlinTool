@@ -23,6 +23,7 @@ import com.swein.androidkotlintool.framework.utility.eventsplitshot.eventcenter.
 import com.swein.androidkotlintool.framework.utility.eventsplitshot.subject.ESSArrows
 import com.swein.androidkotlintool.framework.utility.glide.SHGlide
 import com.swein.androidkotlintool.framework.utility.screen.ScreenUtil
+import com.swein.androidkotlintool.main.examples.logutilitywithextension.LogUtilityWithExtensionActivity
 import com.swein.androidkotlintool.main.moduledemo.ModuleDemoActivity
 import com.swein.androidkotlintool.template.bottomtab.activity.TabHostActivity
 import com.swein.androidkotlintool.template.handlerthread.HandlerThreadTemplateActivity
@@ -179,6 +180,7 @@ class MainActivity : BasicPermissionActivity() {
 //        ActivityUtil.startNewActivityWithoutFinish(this, ScalableImageViewExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, ThreadsExamplesActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, DragToDeleteExampleActivity::class.java)
+        ActivityUtil.startNewActivityWithoutFinish(this, LogUtilityWithExtensionActivity::class.java)
 
 //        SnackBarUtility.showSnackBar(frameLayoutRoot, "test")
 //        SnackBarUtility.showSnackBar(frameLayoutRoot, "test", "click me") {
