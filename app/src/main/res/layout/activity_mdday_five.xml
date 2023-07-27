@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".main.examples.materialdesigntutorial.dayfive.MDDayFiveActivity"
-    android:background="@color/white">
+    android:background="@color/app_basic_theme_color">
     
     <LinearLayout
         app:layout_constraintTop_toTopOf="parent"
@@ -15,7 +15,7 @@
         
         <Button
             android:id="@+id/buttonBottomActionSheet"
-            android:text=" Bottom Action Sheet"
+            android:text="Bottom Action Sheet"
             android:textSize="7pt"
             android:textColor="@color/white"
             android:backgroundTint="@color/black"

@@ -83,7 +83,7 @@ class MDDayFiveActivity : AppCompatActivity() {
         }
 
         findViewById<Button>(R.id.buttonBottomActionSheetFragment).setOnClickListener {
-            BottomActionSheetFragment(true).show(supportFragmentManager, BottomActionSheetFragment.TAG)
+            BottomActionSheetFragment(false).show(supportFragmentManager, BottomActionSheetFragment.TAG)
         }
 
         behavior = BottomSheetBehavior.from(bottomActionSheet)

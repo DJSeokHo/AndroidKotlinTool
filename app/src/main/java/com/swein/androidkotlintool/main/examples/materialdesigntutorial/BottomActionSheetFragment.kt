@@ -1,6 +1,7 @@
 package com.swein.androidkotlintool.main.examples.materialdesigntutorial
 
 import android.content.DialogInterface
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -28,8 +29,13 @@ class BottomActionSheetFragment(private val isFullScreen: Boolean = false): Bott
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        isCancelable = false
+
         if (isFullScreen) {
             setStyle(STYLE_NORMAL, R.style.BottomSheetDialogBg)
+        }
+        else {
+            setStyle(STYLE_NORMAL, R.style.TransparentBottomSheetDialogFragment)
         }
     }
 
@@ -107,6 +113,11 @@ class BottomActionSheetFragment(private val isFullScreen: Boolean = false): Bott
 
             })
 
+        }
+        else {
+            //拿到系统的 bottom_sheet
+            val view: FrameLayout = dialog?.findViewById(R.id.design_bottom_sheet)!!
+            view.setBackgroundColor(Color.TRANSPARENT)
         }
 
     }
