@@ -25,6 +25,7 @@ import com.swein.androidkotlintool.framework.utility.glide.SHGlide
 import com.swein.androidkotlintool.framework.utility.screen.ScreenUtil
 import com.swein.androidkotlintool.main.examples.logutilitywithextension.LogUtilityWithExtensionActivity
 import com.swein.androidkotlintool.main.examples.materialdesigntutorial.dayfive.MDDayFiveActivity
+import com.swein.androidkotlintool.main.examples.webview.WebViewExampleActivity
 import com.swein.androidkotlintool.main.moduledemo.ModuleDemoActivity
 import com.swein.androidkotlintool.template.bottomtab.activity.TabHostActivity
 import com.swein.androidkotlintool.template.handlerthread.HandlerThreadTemplateActivity
@@ -107,7 +108,7 @@ class MainActivity : BasicPermissionActivity() {
 //        ActivityUtil.startNewActivityWithoutFinish(this, MDDayThreeActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, ChartExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, MDDayFourActivity::class.java)
-        ActivityUtil.startNewActivityWithoutFinish(this, MDDayFiveActivity::class.java)
+//        ActivityUtil.startNewActivityWithoutFinish(this, MDDayFiveActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, MDDaySixActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, MDDaySevenActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, ArcSlidingMenuActivity::class.java)
@@ -117,7 +118,7 @@ class MainActivity : BasicPermissionActivity() {
 //        ActivityUtil.startNewActivityWithoutFinish(this, MultipleViewTypesRecyclerViewExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, MultipleBackStackExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, MultipleSelectionRecyclerViewExampleActivity::class.java)
-//        ActivityUtil.startNewActivityWithoutFinish(this, WebViewExampleActivity::class.java)
+        ActivityUtil.startNewActivityWithoutFinish(this, WebViewExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, FirebaseAuthPhoneActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, OTPVerificationCodeViewExampleActivity::class.java)
 //        ActivityUtil.startNewActivityWithoutFinish(this, FlowExampleActivity::class.java)

@@ -44,7 +44,7 @@ class WebViewHolder : FrameLayout {
             isUserGesture: Boolean,
             resultMsg: Message?
         ): Boolean {
-            Log.d(TAG, "onCreateWindow")
+            Log.d(TAG, "onCreateWindow ${view?.url}")
 
             view?.webChromeClient = this
 
@@ -277,6 +277,7 @@ class WebViewHolder : FrameLayout {
         webSettings.javaScriptCanOpenWindowsAutomatically = true
         webSettings.loadsImagesAutomatically = true
         webSettings.mediaPlaybackRequiresUserGesture = false
+//        webSettings.setSupportMultipleWindows(true)
         WebView.setWebContentsDebuggingEnabled(true)
     }
 

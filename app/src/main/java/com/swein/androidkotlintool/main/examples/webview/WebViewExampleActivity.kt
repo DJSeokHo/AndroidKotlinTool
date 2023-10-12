@@ -40,6 +40,8 @@ class WebViewExampleActivity : AppCompatActivity() {
         frameLayoutContainer.addView(webViewHolder)
         webViewHolder.setDelegate(
             onPageFinished = { url ->
+
+                ILog.debug("???", "onPageFinished $url")
                 val success = true
 
                 if (url.contains("reservationId=") && url.contains("success=")) {
@@ -206,7 +208,8 @@ class WebViewExampleActivity : AppCompatActivity() {
             }), "paymentInterface")
         }
 
-        webViewHolder.loadUrl("https://www.google.com")
+//        webViewHolder.loadUrl("https://www.google.com")
+        webViewHolder.loadUrl("https://m.likepick.co.kr")
     }
 
     override fun onBackPressed() {
